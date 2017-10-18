@@ -23,6 +23,7 @@
     }
   ],
   "variables": {
+    "headless": "True",
     "cleanup_build_tools": "false",
     "cpus": "1",
     "desktop": "false",
