@@ -1,12 +1,9 @@
 {
   "_comment": "Build with `packer build -var-file=centos7.json centos.json`",
   "vm_name": "centos7",
-  "cpus": "1",
-  "disk_size": "65536",
   "kickstart": "centos7.cfg",
   "iso_checksum": "fe3d960cce4d2c1c9f1b66817fe87cc0ee1a1c6c5dd126204cb5c33d51a45620",
   "iso_checksum_type": "sha256",
   "iso_name": "CentOS-7-x86_64-NetInstall-1708.iso",
-  "iso_url": "http://mirror.chpc.utah.edu/pub/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1708.iso",
-  "memory": "512"
+  "iso_url": "http://mirror.chpc.utah.edu/pub/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1708.iso"
 }
