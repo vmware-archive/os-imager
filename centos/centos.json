@@ -19,10 +19,12 @@
       "ssh_username": "{{ user `ssh_username` }}",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "{{ user `vm_name` }}"
+      "vm_name": "{{ user `vm_name` }}",
+      "vnc_bind_address": "0.0.0.0"
     }
   ],
   "variables": {
+    "headless": "True",
     "cleanup_build_tools": "false",
     "cpus": "1",
     "desktop": "false",
