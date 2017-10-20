@@ -18,6 +18,7 @@
             "boot_command": [
                 "<enter>",
                 "<wait2m>curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/enable-ssh.sh<enter><wait5>",
+                "curl -o /PKGBUILD http://{{.HTTPIP}}:{{.HTTPPort}}/PKGBUILD<enter><wait5>",
                 "bash enable-ssh.sh<enter>"
             ],
             "disk_size": 10240,
@@ -29,7 +30,8 @@
             "qemuargs": [
                 [ "-m", "2048m" ],
                 [ "--smp", "cores=2,threads=1,sockets=1"]
-            ]
+            ],
+            "name": "arch.qcow2"
         }
     ],
     "provisioners": [
