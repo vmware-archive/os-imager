@@ -33,6 +33,9 @@
 	"variables": {
 		"headless": "True",
 		"cleanup_build_tools": "false",
+                "desktop": "false",
+                "disk_size": "10240",
+                "http_directory": "kickstart",
 		"ssh_password": "salt",
 		"ssh_username": "salt",
 		"update": "true",
