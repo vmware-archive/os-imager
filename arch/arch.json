@@ -10,6 +10,7 @@
 	"builders": [
 		{
 			"type": "qemu",
+			"headless": "True",
 			"iso_url": "{{ user `iso_url` }}",
 			"iso_checksum_url": "{{ user `iso_checksum_url` }}",
 			"iso_checksum_type": "{{ user `iso_checksum_type` }}",
