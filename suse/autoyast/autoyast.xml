@@ -138,9 +138,12 @@
             <package>autoyast2</package>
             <package>yast2-installation</package>
             <package>yast2-network</package>
-						<package>yast2-theme-openSUSE</package>
-						<package>iputils</package>
-						<package>vim</package>
+            <package>yast2-theme-openSUSE</package>
+            <package>iputils</package>
+            <package>vim</package>
+            <package>ruby</package>
+            <package>cloud-utils-growpart</package>
+            <package>util-linux</package>
         </packages>
         <remove-packages config:type="list">
             <package>kernel-firmware</package>
@@ -208,4 +211,13 @@
     <kdump>
         <add_crash_kernel config:type="boolean">false</add_crash_kernel>
     </kdump>
+    <scripts>
+      <chroot-scripts config:type="list">
+        <script>
+          zypper install -y https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm
+          systemctl enable vmcontext
+        </script>
+      </chroot-scripts>
+    </scripts>
+</scripts>
 </profile>
