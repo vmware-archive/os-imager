@@ -1,43 +1,46 @@
 {
-  "_comment": "Build with `packer build centos.json`",
-  "builders": [
-    {
-      "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart` }}<enter>"
-      ],
-      "iso_urls": [
-        "{{ user `iso_path` }}/{{ user `iso_name` }}",
-        "{{ user `iso_url` }}"
-      ],
-      "iso_checksum": "{{ user `iso_checksum` }}",
-      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
-      "disk_size": "{{ user `disk_size` }}",
-      "headless": "{{ user `headless` }}",
-      "http_directory": "{{ user `http_directory` }}",
-      "output_directory": "output-{{ user `vm_name` }}-qemu-iso",
-      "ssh_password": "{{ user `ssh_password` }}",
-      "ssh_username": "{{ user `ssh_username` }}",
-      "ssh_wait_timeout": "10000s",
-      "type": "qemu",
-      "vm_name": "{{ user `vm_name` }}",
-      "vnc_bind_address": "0.0.0.0",
-      "qemuargs": [
-        [ "-m", "2048m" ],
-        [ "--smp", "cores=2,threads=1,sockets=1"]
-      ]
-    }
-  ],
-  "variables": {
-    "headless": "True",
-    "cleanup_build_tools": "false",
-    "cpus": "2",
-    "desktop": "false",
-    "disk_size": "10240",
-    "http_directory": "kickstart",
-    "memory": "2048",
-    "ssh_password": "salt",
-    "ssh_username": "salt",
-    "update": "true",
-    "version": "0.0.99"
-  }
+        "_comment": "Build with `packer build centos.json`",
+	"provisioners": [{
+                "type": "shell",
+                "execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+                "script": "scripts/cleanup.sh"
+       }],
+	"builders": [{
+		"boot_command": [
+			"<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart` }}<enter>"
+		],
+		"iso_urls": [
+			"{{ user `iso_path` }}/{{ user `iso_name` }}",
+			"{{ user `iso_url` }}"
+		],
+		"iso_checksum": "{{ user `iso_checksum` }}",
+		"iso_checksum_type": "{{ user `iso_checksum_type` }}",
+		"disk_size": "{{ user `disk_size` }}",
+		"headless": "{{ user `headless` }}",
+		"http_directory": "{{ user `http_directory` }}",
+		"output_directory": "output-{{ user `vm_name` }}-qemu-iso",
+		"ssh_password": "{{ user `ssh_password` }}",
+		"ssh_username": "{{ user `ssh_username` }}",
+		"ssh_wait_timeout": "10000s",
+		"type": "qemu",
+		"vm_name": "{{ user `vm_name` }}",
+		"vnc_bind_address": "0.0.0.0",
+		"qemuargs": [
+			["-m", "2048m"],
+			["--smp", "cores=2,threads=1,sockets=1"]
+		]
+	}],
+	"variables": {
+		"headless": "True",
+		"cleanup_build_tools": "false",
+		"cpus": "2",
+		"desktop": "false",
+		"disk_size": "10240",
+		"http_directory": "kickstart",
+		"memory": "2048",
+		"ssh_password": "salt",
+		"ssh_username": "salt",
+		"update": "true",
+		"version": "0.0.99"
+	}
 }
