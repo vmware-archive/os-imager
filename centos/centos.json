@@ -33,11 +33,6 @@
 	"variables": {
 		"headless": "True",
 		"cleanup_build_tools": "false",
-		"cpus": "2",
-		"desktop": "false",
-		"disk_size": "10240",
-		"http_directory": "kickstart",
-		"memory": "2048",
 		"ssh_password": "salt",
 		"ssh_username": "salt",
 		"update": "true",
