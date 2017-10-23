@@ -216,6 +216,7 @@
         <script>
           zypper install -y https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm
           systemctl enable vmcontext
+          sed -i '/^PasswordAuthentication no/d' /etc/ssh/sshd_config
         </script>
       </chroot-scripts>
     </scripts>
