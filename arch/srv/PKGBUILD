@@ -1,0 +1,18 @@
+pkgname=one-context
+pkgver=5.0.3
+pkgrel=1
+pkgdesc='OpenNebula Contextualisation'
+arch=('any')
+url='https://github.com/OpenNebula/addon-context-linux/releases'
+license=('Apache')
+depends=('mkinitcpio-growrootfs')
+source=("https://github.com/OpenNebula/addon-context-linux/archive/v${pkgver}.tar.gz")
+sha256sums=('9f33e939689ac7e9912a3fd77244015221485ce09a49bc850b71c38e34a05d1e')
+
+package() {
+    cp -rT ${srcdir}/addon-context-linux-${pkgver}/base_arch ${pkgdir}
+    cp -rT ${srcdir}/addon-context-linux-${pkgver}/base ${pkgdir}
+    cp -rT ${pkgdir}/usr/sbin ${pkgdir}/usr/bin
+    rm ${pkgdir}/usr/sbin/one-contextd
+    rmdir ${pkgdir}/usr/sbin
+}
