@@ -133,9 +133,6 @@
             <package>yast2-users</package>
             <package>zypper</package>
             <package>bash</package>
-            <package>puppet</package>
-            <package>autoyast2-installation</package>
-            <package>autoyast2</package>
             <package>yast2-installation</package>
             <package>yast2-network</package>
             <package>yast2-theme-openSUSE</package>
@@ -148,6 +145,7 @@
         <remove-packages config:type="list">
             <package>kernel-firmware</package>
             <package>yast2-branding-openSUSE</package>
+            <package>yast2-firstboot</package>
         </remove-packages>
     </software>
 
@@ -213,6 +211,7 @@
     </kdump>
     <scripts>
       <chroot-scripts config:type="list">
+        <chrooted config:type="boolean">true</chrooted>
         <script>
           zypper install -y https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm
           systemctl enable vmcontext
