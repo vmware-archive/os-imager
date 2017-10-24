@@ -129,13 +129,8 @@
       <package>procps</package>
       <package>sudo</package>
       <package>vim-data</package>
-      <package>yast2-hardware-detection</package>
-      <package>yast2-users</package>
       <package>zypper</package>
       <package>bash</package>
-      <package>yast2-installation</package>
-      <package>yast2-network</package>
-      <package>yast2-theme-openSUSE</package>
       <package>iputils</package>
       <package>vim</package>
       <package>ruby</package>
@@ -144,8 +139,6 @@
     </packages>
     <remove-packages config:type="list">
       <package>kernel-firmware</package>
-      <package>yast2-branding-openSUSE</package>
-      <package>yast2-firstboot</package>
     </remove-packages>
   </software>
 
