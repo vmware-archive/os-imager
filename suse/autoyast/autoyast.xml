@@ -1,34 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE profile>
-
 <!-- http://doc.opensuse.org/projects/autoyast/configuration.html -->
-
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
   <general>
     <mode>
       <confirm config:type="boolean">false</confirm>
       <forceboot config:type="boolean">true</forceboot>
-      <final_reboot config:type="boolean">false</final_reboot>
+      <final_reboot config:type="boolean">true</final_reboot>
     </mode>
   </general>
-  <report>
-    <messages>
-      <show config:type="boolean">false</show>
-      <timeout config:type="integer">10</timeout>
-      <log config:type="boolean">true</log>
-    </messages>
-    <warnings>
-      <show config:type="boolean">false</show>
-      <timeout config:type="integer">10</timeout>
-      <log config:type="boolean">true</log>
-    </warnings>
-    <errors>
-      <show config:type="boolean">false</show>
-      <timeout config:type="integer">10</timeout>
-      <log config:type="boolean">true</log>
-    </errors>
-  </report>
-
   <keyboard>
     <keymap>english-us</keymap>
   </keyboard>
@@ -40,7 +20,6 @@
     <hwclock>UTC</hwclock>
     <timezone>UTC</timezone>
   </timezone>
-
   <partitioning config:type="list">
     <drive>
       <device>/dev/vda</device>
@@ -81,11 +60,9 @@
       <use>all</use>
     </drive>
   </partitioning>
-
   <bootloader>
     <loader_type>grub2</loader_type>
   </bootloader>
-
   <networking>
     <ipv6 config:type="boolean">false</ipv6>
     <keep_install_network config:type="boolean">true</keep_install_network>
@@ -103,15 +80,13 @@
       </interface>
     </interfaces>
   </networking>
-
   <firewall>
     <enable_firewall config:type="boolean">false</enable_firewall>
     <start_firewall config:type="boolean">false</start_firewall>
   </firewall>
-
   <software>
     <image/>
-	<instsource>http://download.opensuse.org/distribution/leap/42.3/repo/oss/</instsource>
+    <instsource>http://download.opensuse.org/distribution/leap/42.3/repo/oss/</instsource>
     <do_online_update config:type="boolean">true</do_online_update>
     <kernel>kernel-default</kernel>
     <patterns config:type="list">
@@ -134,14 +109,13 @@
       <package>iputils</package>
       <package>vim</package>
       <package>ruby</package>
-      <package>cloud-utils-growpart</package>
+      <package>growpart</package>
       <package>util-linux</package>
     </packages>
     <remove-packages config:type="list">
       <package>kernel-firmware</package>
     </remove-packages>
   </software>
-
   <runlevel>
     <default>3</default>
     <services config:type="list">
@@ -155,7 +129,6 @@
       </service>
     </services>
   </runlevel>
-
   <groups config:type="list">
     <group>
       <gid>100</gid>
@@ -163,7 +136,6 @@
       <userlist/>
     </group>
   </groups>
-
   <user_defaults>
     <expire/>
     <group>100</group>
@@ -175,9 +147,6 @@
     <skel>/etc/skel</skel>
     <umask>022</umask>
   </user_defaults>
-  <firstboot>
-    <firstboot_enabled config:type="boolean">true</firstboot_enabled>
-  </firstboot>
   <users config:type="list">
     <user>
       <user_password>salt</user_password>
@@ -201,17 +170,20 @@
       <username>salt</username>
     </user>
   </users>
-  <kdump>
-    <add_crash_kernel config:type="boolean">false</add_crash_kernel>
-  </kdump>
   <scripts>
-    <chroot-scripts config:type="list">
-      <chrooted config:type="boolean">true</chrooted>
+    <post-scripts config:type="list">
       <script>
+        <interpreter>shell</interpreter>
+        <filename>opennebula.sh</filename>
+        <source> <![CDATA[
+        #!/bin/bash
         zypper install -y https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm
         systemctl enable vmcontext
         sed -i '/^PasswordAuthentication no/d' /etc/ssh/sshd_config
+        systemctl enable sshd
+]]>
+        </source>
       </script>
-    </chroot-scripts>
+    </post-scripts>
   </scripts>
 </profile>

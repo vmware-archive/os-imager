@@ -25,7 +25,8 @@
       "vnc_bind_address": "0.0.0.0",
       "qemuargs": [
         [ "-m", "2048m" ],
-        [ "--smp", "cores=2,threads=1,sockets=1"]
+        [ "--smp", "cores=2,threads=1,sockets=1"],
+        [ "--enable-kvm"]
       ]
     }
   ]
