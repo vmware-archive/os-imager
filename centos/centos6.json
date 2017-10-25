@@ -7,7 +7,6 @@
   "kickstart": "centos6.cfg",
   "iso_checksum": "32f9f74fd27ec1ff7cc4f39a80d0dae34d9ec18b",
   "iso_checksum_type": "sha1",
-  "iso_name": "CentOS-6.9-x86_64-netinstall.iso",
   "iso_url": "http://mirror.chpc.utah.edu/pub/centos/6.9/isos/x86_64/CentOS-6.9-x86_64-netinstall.iso",
   "memory": "2048"
 }
