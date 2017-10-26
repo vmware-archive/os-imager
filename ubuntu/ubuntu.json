@@ -39,6 +39,7 @@
       "vm_name": "{{ user `vm_name` }}",
       "vnc_bind_address": "{{ user `vnc_bind_address` }}",
       "qemuargs": [
+        ["-enable-kvm"],
         ["-m", "{{ user `memory` }}"],
         ["--smp", "cores={{ user `cpus` }},threads={{ user `threads` }},sockets={{ user `sockets` }}"]
       ]

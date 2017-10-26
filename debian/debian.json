@@ -46,11 +46,6 @@
 
     "provisioners": [
         {
-            "type": "file",
-            "source": "scripts/",
-            "destination": "/home/packer/"
-        },
-        {
             "type": "shell",
             "execute_command": "echo '{{user `password`}}' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
             "scripts": [
