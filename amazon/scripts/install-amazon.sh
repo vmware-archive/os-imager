@@ -1,12 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ $PACKER_BUILDER_TYPE == "qemu" ]]; then
-	DISK='/dev/vda'
-else
-	DISK='/dev/sda'
-fi
-
+DISK='/dev/vda'
 FQDN='amazon.saltstack.net'
 KEYMAP='us'
 LANGUAGE='en_US.UTF-8'

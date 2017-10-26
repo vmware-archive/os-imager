@@ -17,9 +17,9 @@
 			"boot_wait": "5s",
 			"boot_command": [
 				"<tab> cow_spacesize=2G<enter>",
-				"<wait1m10s>curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/enable-ssh.sh<enter><wait5>",
+				"<wait1m10s>curl -O http://{{.HTTPIP}}:{{.HTTPPort}}/install-amazon.sh<enter><wait5>",
 				"curl -o /pkgs.list http://{{.HTTPIP}}:{{.HTTPPort}}/pkgs.list<enter><wait5>",
-				"bash enable-ssh.sh<enter>"
+				"bash install-amazon.sh<enter>"
 			],
 			"disk_size": 10240,
 			"ssh_username": "salt",
@@ -28,18 +28,10 @@
 			"vnc_bind_address": "0.0.0.0",
 			"qemuargs": [
 				[ "-m", "4096m" ],
-				[ "--smp", "cores=2,threads=1,sockets=1"],
-				[ "--enable-kvm"]
+				[ "--smp", "cores=2,threads=1,sockets=1"]
 			],
 			"name": "amazon.qcow2",
 			"vnc_bind_address": "0.0.0.0"
-		}
-	],
-	"provisioners": [
-		{
-			"type": "shell",
-			"execute_command": "{{ .Vars }} sudo -E -S bash '{{ .Path }}'",
-			"script": "scripts/install-amazon.sh"
 		}
 	]
 }
