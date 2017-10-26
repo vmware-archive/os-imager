@@ -166,7 +166,6 @@ libpipeline
 aws-apitools-as
 dracut-modules-growroot
 ustr
-ec2-net-utils
 parted
 aws-cfn-bootstrap
 grubby
