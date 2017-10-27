@@ -37,6 +37,7 @@
       "ssh_username": "{{ user `ssh_username` }}",
       "ssh_wait_timeout": "10000s",
       "vm_name": "{{ user `vm_name` }}",
+      "name": "{{ user `name` }}",
       "vnc_bind_address": "{{ user `vnc_bind_address` }}",
       "qemuargs": [
         ["-enable-kvm"],
@@ -98,7 +99,6 @@
     "ssh_username": "salt",
     "update": "true",
     "version": "0.1.0",
-    "vnc_bind_address": "0.0.0.0",
-    "vm_name": "ubuntu1604"
+    "vnc_bind_address": "0.0.0.0"
   }
 }
