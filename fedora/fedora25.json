@@ -1,6 +1,7 @@
 {
   "_comment": "Build with `packer build -var-file=fedora25.json fedora.json`",
-  "vm_name": "fedora",
+  "vm_name": "fedora25",
+  "name": "fedora25.qcow2",
   "kickstart": "fedora.cfg",
   "iso_checksum": "86bc3694f4938382753d1e9536f2140a6c9c1978207766340c679a89509073c7",
   "iso_checksum_type": "sha256",

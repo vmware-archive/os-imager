@@ -1,6 +1,6 @@
 {
   "_comment": "Build with `packer build -var-file=centos6.json centos.json`",
-  "name": "centos6",
+  "name": "centos6.qcow2",
   "vm_name": "centos6",
   "cpus": "2",
   "disk_size": "20000",

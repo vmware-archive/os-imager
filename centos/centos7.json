@@ -1,5 +1,6 @@
 {
   "_comment": "Build with `packer build -var-file=centos7.json centos.json`",
+  "name": "centos7.qcow2",
   "vm_name": "centos7",
   "kickstart": "centos7.cfg",
   "iso_checksum": "fe3d960cce4d2c1c9f1b66817fe87cc0ee1a1c6c5dd126204cb5c33d51a45620",

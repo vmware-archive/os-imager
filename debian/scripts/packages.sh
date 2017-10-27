@@ -5,7 +5,6 @@ bind9-host
 bzip2
 curl
 dnsutils
-emacs24-nox
 htop
 nmon
 ntp
@@ -14,6 +13,6 @@ slurm
 sudo
 tcpdump
 unzip
-vim-nox
+vim
 "
 apt-get -y install $PACKAGES

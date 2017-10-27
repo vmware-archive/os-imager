@@ -6,6 +6,7 @@
                 "script": "scripts/cleanup.sh"
        }],
 	"builders": [{
+                "accelerator": "{{ user `accelerator` }}",
 		"boot_command": [
 			"<up><wait><tab> biosdevname=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart` }}<enter>"
 		],
@@ -18,7 +19,7 @@
 		"headless": "{{ user `headless` }}",
 		"http_directory": "{{ user `http_directory` }}",
                 "name": "{{ user `name` }}",
-		"output_directory": "output-{{ user `vm_name` }}-qemu-iso",
+		"output_directory": "output-{{ user `vm_name` }}",
 		"ssh_password": "{{ user `ssh_password` }}",
 		"ssh_username": "{{ user `ssh_username` }}",
 		"ssh_wait_timeout": "10000s",
@@ -32,6 +33,7 @@
 		]
 	}],
 	"variables": {
+                "accelerator": "kvm",
 		"headless": "True",
 		"cleanup_build_tools": "false",
                 "desktop": "false",

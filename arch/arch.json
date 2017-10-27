@@ -5,7 +5,9 @@
 		"iso_checksum_type": "sha1",
 		"ssh_timeout": "20m",
 		"country": "US",
-		"headless": "True"
+		"headless": "True",
+                "name": "arch.qcow2",
+                "vm_name": "arch"
 	},
 	"builders": [
 		{
@@ -33,8 +35,10 @@
 				[ "--smp", "cores=2,threads=1,sockets=1"],
 				[ "--enable-kvm"]
 			],
-			"name": "arch.qcow2",
-			"vnc_bind_address": "0.0.0.0"
+			"name": "{{ user `name` }}",
+                        "vm_name": "{{ user `vm_name` }}",
+			"vnc_bind_address": "0.0.0.0",
+                        "output_directory": "output-{{ user `vm_name` }}"
 		}
 	],
 	"provisioners": [

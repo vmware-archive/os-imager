@@ -1,6 +1,7 @@
 {
   "_comment": "Build with `packer build -var-file=debian8.json debian.json`",
   "vm_name": "debian8",
+  "name": "debian8.qcow2",
   "disk_size": "20000",
   "iso_checksum": "02514e325937cb149f0a277702942a949caf55c5",
   "iso_checksum_type": "sha1",
