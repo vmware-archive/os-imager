@@ -29,7 +29,7 @@
 			"qemuargs": [
 				[ "-m", "4096m" ],
 				[ "--smp", "cores=2,threads=1,sockets=1"],
-                [ "--enable-kvm"]
+				[ "--enable-kvm"]
 			],
 			"name": "amazon.qcow2",
 			"vnc_bind_address": "0.0.0.0"
