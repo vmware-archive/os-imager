@@ -117,7 +117,26 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 	echo 'KEYMAP=${KEYMAP}' > /etc/vconsole.conf
 	usermod --password ${PASSWORD} root
-	cat > /etc/sysconfig/network-scripts/ifcfg-eth0 <<HERE
+	sed -i 's:#UseDNS yes:UseDNS no:' /etc/ssh/sshd_config
+	sed -i '/^PasswordAuthentication no/d' /etc/ssh/sshd_config
+	chkconfig sshd on
+	useradd --password ${PASSWORD} --comment 'Salt User' --create-home --user-group salt
+	echo 'Defaults env_keep += "SSH_AUTH_SOCK"' > /etc/sudoers.d/10_salt
+	echo 'salt ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_salt
+	chmod 0440 /etc/sudoers.d/10_salt
+
+	echo '==> Add OpenNebula context stuff'
+	yum install -y epel-release https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm ruby cloud-disk-utils
+	chkconfig vmcontext on
+EOF
+
+echo '==> Entering chroot and configuring system'
+chmod +x "${TARGET_DIR}/${CONFIG_SCRIPT}"
+chroot ${TARGET_DIR} ${CONFIG_SCRIPT}
+rm -f "${TARGET_DIR}${CONFIG_SCRIPT}"
+
+echo '==> setup eth0'
+tee "${TARGET_DIR}/etc/sysconfig/network-scripts/ifcfg-eth0" <<HERE
 DEVICE=eth0
 BOOTPROTO=dhcp
 ONBOOT=yes
@@ -130,24 +149,32 @@ PERSISTENT_DHCLIENT=yes
 RES_OPTIONS="timeout:2 attempts:5"
 DHCP_ARP_CHECK=no
 HERE
-	sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
-	chkconfig sshd on
-	useradd --password ${PASSWORD} --comment 'Salt User' --create-home --user-group salt
-	echo 'Defaults env_keep += "SSH_AUTH_SOCK"' > /etc/sudoers.d/10_salt
-	echo 'salt ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_salt
-	chmod 0440 /etc/sudoers.d/10_salt
-	grub-install "${DISK}"
-	yum install -y kernel irqbalance
+touch "${TARGET_DIR}/etc/sysconfig/network"
 
-	echo '==> Add OpenNebula context stuff'
-	yum install -y epel-release https://github.com/OpenNebula/addon-context-linux/releases/download/v5.0.3/one-context_5.0.3.rpm ruby cloud-disk-utils
-	chkconfig vmcontext on
-EOF
+echo '==> setup grub menu.lst'
+export VERSION="$(chroot /mnt /bin/rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel)"
+tee "${TARGET_DIR}/boot/grub/menu.lst" <<HERE
+# created by imagebuilder
+default=0
+fallback=1
+timeout=0
+hiddenmenu
 
-echo '==> Entering chroot and configuring system'
-chmod +x "${TARGET_DIR}/${CONFIG_SCRIPT}"
-chroot ${TARGET_DIR} ${CONFIG_SCRIPT}
-rm -f "${TARGET_DIR}${CONFIG_SCRIPT}"
+title Amazon Linux lastest ($VERSION)
+root (hd0,0)
+kernel /vmlinuz-$VERSION root=LABEL=root console=tty1 console=ttyS0 selinux=0
+initrd /initramfs-$VERSION.img
+HERE
+ln -s menu.lst "${TARGET_DIR}/boot/grub/grub.conf"
+
+echo '==> setup grub'
+cp -a "${TARGET_DIR}/usr/share/grub/x86_64-redhat/"* "${TARGET_DIR}/boot/grub/"
+chroot /mnt sbin/grub --batch <<HERE
+root (hd0,0)
+setup (hd0)
+quit
+HERE
 
 echo '==> Installation complete!'
 /usr/bin/sleep 3
+shutdown -r now

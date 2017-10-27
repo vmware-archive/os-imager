@@ -114,9 +114,9 @@ aws-apitools-mon
 aws-apitools-elb
 ntp
 openssh-server
-cloud-init
 at
 acpid
+irqbalance
 rng-tools
 epel-release
 yum-utils
