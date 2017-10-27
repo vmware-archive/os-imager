@@ -3,7 +3,7 @@
 		"iso_url": "http://mirror.chpc.utah.edu/pub/archlinux/iso/latest/archlinux-2017.10.01-x86_64.iso",
 		"iso_checksum_url": "http://mirror.chpc.utah.edu/pub/archlinux/iso/latest/sha1sums.txt",
 		"iso_checksum_type": "sha1",
-		"ssh_timeout": "20m",
+		"ssh_timeout": "60m",
 		"headless": "True"
 	},
 	"builders": [
@@ -28,7 +28,8 @@
 			"vnc_bind_address": "0.0.0.0",
 			"qemuargs": [
 				[ "-m", "4096m" ],
-				[ "--smp", "cores=2,threads=1,sockets=1"]
+				[ "--smp", "cores=2,threads=1,sockets=1"],
+                [ "--enable-kvm"]
 			],
 			"name": "amazon.qcow2",
 			"vnc_bind_address": "0.0.0.0"
