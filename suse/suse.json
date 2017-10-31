@@ -35,6 +35,6 @@
 
     "variables": {
         "accelerator": "kvm",
-        "vm_name": "suse42"
+        "vm_name": "suse"
     }
 }
