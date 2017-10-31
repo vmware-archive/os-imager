@@ -95,6 +95,7 @@
     <packages config:type="list">
       <package>kernel-default-devel</package>
       <package>gcc</package>
+      <package>gcc-c++</package>
       <package>glibc-locale</package>
       <package>grub2</package>
       <package>make</package>
