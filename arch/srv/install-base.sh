@@ -3,12 +3,7 @@
 # stop on errors
 set -eu
 
-if [[ $PACKER_BUILDER_TYPE == "qemu" ]]; then
-	DISK='/dev/vda'
-else
-	DISK='/dev/sda'
-fi
-
+DISK='/dev/vda'
 FQDN='arch.saltstack.net'
 KEYMAP='us'
 LANGUAGE='en_US.UTF-8'
@@ -90,6 +85,7 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
     cd /context
     chown -R salt:salt .
     sudo -u salt makepkg -sic --noconfirm
+    systemctl enable -f one-context.service
 
 	# clean up
 	/usr/bin/pacman -Rcns --noconfirm gptfdisk
@@ -102,3 +98,4 @@ rm -rf "${TARGET_DIR}${CONFIG_SCRIPT}" "${TARGET_DIR}/context" "${TARGET_DIR}/mk
 echo '==> Installation complete!'
 /usr/bin/sleep 3
 /usr/bin/umount ${TARGET_DIR}
+shutdown -r now
