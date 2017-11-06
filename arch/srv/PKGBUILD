@@ -13,6 +13,15 @@ package() {
     cp -rT ${srcdir}/addon-context-linux-${pkgver}/base_arch ${pkgdir}
     cp -rT ${srcdir}/addon-context-linux-${pkgver}/base ${pkgdir}
     cp -rT ${pkgdir}/usr/sbin ${pkgdir}/usr/bin
+    tee ${pkgdir}/usr/bin/one-context-wrapper.sh <<HERE
+#!/bin/bash
+while ! test -e /dev/sr0; do
+  sleep 1
+done
+/usr/sbin/one-contextd
+HERE
+    chmod 755 ${pkgdir}/usr/bin/one-context-wrapper.sh
+    sed -i 's:one-contextd:one-context-wrapper.sh:g' ${pkgdir}/etc/systemd/system/one-context.service
     rm ${pkgdir}/usr/sbin/one-contextd
     rmdir ${pkgdir}/usr/sbin
 }
