@@ -6,7 +6,6 @@
             "ssh_wait_timeout": "{{ user `ssh_wait_timeout` }}",
             "type": "qemu",
             "format": "qcow2",
-            "accelerator": "{{ user `accelerator` }}",
             "net_device": "virtio-net",
             "disk_cache": "{{ user `disk_cache` }}",
             "disk_interface": "virtio",
