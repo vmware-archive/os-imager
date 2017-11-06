@@ -1,12 +1,11 @@
 {
 	"_comment": "Build with `packer build centos.json`",
 	"provisioners": [{
-                "type": "shell",
-                "execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-                "script": "scripts/cleanup.sh"
-       }],
+		"type": "shell",
+		"execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+		"script": "scripts/cleanup.sh"
+	}],
 	"builders": [{
-                "accelerator": "{{ user `accelerator` }}",
 		"boot_command": [
 			"<up><wait><tab> biosdevname=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart` }}<enter>"
 		],
@@ -18,27 +17,26 @@
 		"disk_size": "{{ user `disk_size` }}",
 		"headless": "{{ user `headless` }}",
 		"http_directory": "{{ user `http_directory` }}",
-                "output_directory": "output-{{ user `vm_name` }}",
+		"output_directory": "output-{{ user `vm_name` }}",
 		"ssh_password": "{{ user `ssh_password` }}",
 		"ssh_username": "{{ user `ssh_username` }}",
 		"ssh_wait_timeout": "10000s",
 		"type": "qemu",
-                "name": "{{ user `name` }}",
+		"name": "{{ user `name` }}",
 		"vm_name": "{{ user `vm_name` }}",
 		"vnc_bind_address": "0.0.0.0",
 		"qemuargs": [
 			["-m", "2048m"],
-			["--smp", "cores=2,threads=1,sockets=1"],
-			[ "--enable-kvm"]
+			["--smp", "cores=2,threads=1,sockets=1"]
 		]
 	}],
 	"variables": {
-                "accelerator": "kvm",
+		"accelerator": "kvm",
 		"headless": "True",
 		"cleanup_build_tools": "false",
-                "desktop": "false",
-                "disk_size": "10240",
-                "http_directory": "kickstart",
+		"desktop": "false",
+		"disk_size": "10240",
+		"http_directory": "kickstart",
 		"ssh_password": "salt",
 		"ssh_username": "salt",
 		"update": "true"
