@@ -66,6 +66,7 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
 	/usr/bin/ln -sf /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 	/usr/bin/ln -sf '/usr/lib/systemd/system/dhcpcd@.service' '/etc/systemd/system/multi-user.target.wants/dhcpcd@eth0.service'
 	/usr/bin/sed -i 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
+	/usr/bin/sed -i 's/#PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 	/usr/bin/systemctl enable sshd.service
     /usr/bin/useradd --password ${PASSWORD} --comment 'Salt User' --create-home --user-group salt
 	echo 'Defaults env_keep += "SSH_AUTH_SOCK"' > /etc/sudoers.d/10_salt
