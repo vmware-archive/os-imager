@@ -28,9 +28,9 @@
 		"qemuargs": [
 			["-m", "2048m"],
 			["--smp", "cores=2,threads=1,sockets=1"],
-            ["--enable-kvm"]
+			["--enable-kvm"]
 		],
-        "accelerator": "{{ user `accelerator` }}"
+		"accelerator": "{{ user `accelerator` }}"
 	}],
 	"variables": {
 		"accelerator": "kvm",
