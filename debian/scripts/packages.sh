@@ -11,7 +11,6 @@ ntp
 rsync
 slurm
 sudo
-tcpdump
 unzip
 vim
 "
