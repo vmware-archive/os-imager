@@ -12,6 +12,7 @@
 	"builders": [
 		{
 			"type": "qemu",
+			"format": "qcow2",
 			"headless": "True",
 			"iso_url": "{{ user `iso_url` }}",
 			"iso_checksum_url": "{{ user `iso_checksum_url` }}",

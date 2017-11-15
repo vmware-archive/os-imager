@@ -2,6 +2,7 @@
 	"_comment": "Build with `packer build fedora.json`",
 	"provisioners": [{
                 "type": "shell",
+		"format": "qcow2",
                 "execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
                 "script": "scripts/cleanup.sh"
        }],

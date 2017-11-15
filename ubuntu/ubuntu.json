@@ -3,6 +3,7 @@
   "builders": [
     {
       "type": "qemu",
+      "format": "qcow2",
       "boot_command": [
         "{{ user `boot_command_prefix` }}",
         "/install/vmlinuz noapic ",
