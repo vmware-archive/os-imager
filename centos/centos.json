@@ -22,6 +22,7 @@
 		"ssh_username": "{{ user `ssh_username` }}",
 		"ssh_wait_timeout": "10000s",
 		"type": "qemu",
+		"format": "qcow2",
 		"name": "{{ user `name` }}",
 		"vm_name": "{{ user `vm_name` }}",
 		"vnc_bind_address": "0.0.0.0",
