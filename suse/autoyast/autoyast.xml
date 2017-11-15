@@ -23,40 +23,16 @@
   <partitioning config:type="list">
     <drive>
       <device>/dev/vda</device>
-      <initialize config:type="boolean">true</initialize>
       <partitions config:type="list">
         <partition>
-          <label>boot</label>
           <mount>/boot</mount>
-          <mountby config:type="symbol">label</mountby>
-          <partition_type>primary</partition_type>
           <size>200M</size>
         </partition>
         <partition>
-          <label>system</label>
-          <lvm_group>system</lvm_group>
-          <partition_type>primary</partition_type>
-          <size>max</size>
-        </partition>
-      </partitions>
-      <use>all</use>
-    </drive>
-    <drive>
-      <device>/dev/system</device>
-      <initialize config:type="boolean">true</initialize>
-      <is_lvm_vg config:type="boolean">true</is_lvm_vg>
-      <partitions config:type="list">
-        <partition>
-          <label>root</label>
-          <mountby config:type="symbol">label</mountby>
-          <filesystem config:type="symbol">ext4</filesystem>
-          <lv_name>root</lv_name>
           <mount>/</mount>
           <size>max</size>
         </partition>
       </partitions>
-      <pesize>4M</pesize>
-      <type config:type="symbol">CT_LVM</type>
       <use>all</use>
     </drive>
   </partitioning>
