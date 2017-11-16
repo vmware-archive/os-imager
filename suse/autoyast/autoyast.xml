@@ -154,7 +154,7 @@
         <filename>opennebula.sh</filename>
         <source> <![CDATA[
         #!/bin/bash
-        https://github.com/OpenNebula/addon-context-linux/releases/download/v5.4.1/one-context-5.4.1-1.suse.noarch.rpm
+        curl -LO https://github.com/OpenNebula/addon-context-linux/releases/download/v5.4.1/one-context-5.4.1-1.suse.noarch.rpm
         zypper install -y one-context-5.4.1-1.suse.noarch.rpm
         systemctl enable one-context
         mkinitrd
