@@ -46,6 +46,20 @@ rm -f /home/vagrant/.bash_history
 echo "==> Purging log files"
 find /var/log -type f -delete
 
+# fix for debian 8 https://projects.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=17b104865a0653703e447275e6d2169c69040f3e
+# ***systemd issue***
+# install gawk to parse dist
+apt-get install -y gawk
+# run check to make sure its debian 8 only.
+COMMAND=$(lsb_release -d | gawk -F'\t' '{print $2}')
+
+if [ "$COMMAND" == "Debian GNU/Linux 8.9 (jessie)" ]; then
+  apt-get install -y uuid-runtime
+  uuidgen | { read; echo "${REPLY//-}">/etc/machine-id; }
+else
+  echo "Not Debian 8 exiting..."
+fi
+
 # Skipping the whiteout part from box-cutter -- which would just fill up the qcow2 image
 
 # # Whiteout root
