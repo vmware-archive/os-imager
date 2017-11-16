@@ -107,7 +107,7 @@
       </service>
       <service>
         <service_name>sshd</service_name>
-        <service_status>disable</service_status>
+        <service_status>enable</service_status>
       </service>
     </services>
   </runlevel>
@@ -159,11 +159,10 @@
         <filename>opennebula.sh</filename>
         <source> <![CDATA[
         #!/bin/bash
-        rpm -Uvh --noscripts https://github.com/OpenNebula/addon-context-linux/releases/download/v5.4.1/one-context-5.4.1-1.suse.noarch.rpm
+        rpm -Uvh https://github.com/OpenNebula/addon-context-linux/releases/download/v5.4.1/one-context-5.4.1-1.suse.noarch.rpm
         systemctl enable one-context
         mkinitrd
         sed -i '/^PasswordAuthentication no/d' /etc/ssh/sshd_config
-        systemctl enable sshd
 ]]>
         </source>
       </script>
