@@ -33,7 +33,11 @@
 	  ]
 	}
   ],
-
+	"provisioners": [{
+		"type": "shell",
+		"execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+		"script": "scripts/one-context.sh"
+	}],
 	"variables": {
 		"accelerator": "kvm",
 		"vm_name": "suse"
