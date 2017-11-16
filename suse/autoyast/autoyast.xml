@@ -155,7 +155,7 @@
         <source> <![CDATA[
         #!/bin/bash
         curl -LO https://github.com/OpenNebula/addon-context-linux/releases/download/v5.4.1/one-context-5.4.1-1.suse.noarch.rpm
-        zypper install -y one-context-5.4.1-1.suse.noarch.rpm
+        zypper install -y /one-context-5.4.1-1.suse.noarch.rpm |& tee /zypper.log
         systemctl enable one-context
         mkinitrd
         sed -i '/^PasswordAuthentication no/d' /etc/ssh/sshd_config
