@@ -109,6 +109,10 @@
         <service_name>sshd</service_name>
         <service_status>disable</service_status>
       </service>
+      <service>
+        <service_name>wicked</service_name>
+        <service_status>enable</service_status>
+      </service>
     </services>
   </runlevel>
   <groups config:type="list">
