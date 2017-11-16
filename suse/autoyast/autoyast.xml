@@ -88,6 +88,10 @@
       <package>ruby</package>
       <package>growpart</package>
       <package>util-linux</package>
+      <package>bind-utils</package>
+      <package>open-vm-tools</package>
+      <package>curl</package>
+      <package>qemu-guest-agent</package>
     </packages>
     <remove-packages config:type="list">
       <package>kernel-firmware</package>
