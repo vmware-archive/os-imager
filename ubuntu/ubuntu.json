@@ -90,7 +90,7 @@
     "iso_name": "ubuntu-16.04-server-amd64.iso",
     "iso_url": "http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso",
     "locale": "en_US",
-    "memory": "4096m",
+    "memory": "4096M",
     "no_proxy": "{{env `no_proxy`}}",
     "preseed" : "preseed.cfg",
     "rsync_proxy": "{{env `rsync_proxy`}}",
