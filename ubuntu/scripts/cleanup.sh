@@ -42,6 +42,7 @@ echo "==> Fixing up kernel parameters"
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX=""/g' /etc/default/grub
 update-grub
 # Cleanup apt cache
+apt-get remove "^dhcpcd.*"
 apt-get -y autoremove --purge
 apt-get -y clean
 apt-get -y autoclean
