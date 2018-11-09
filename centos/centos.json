@@ -2,7 +2,7 @@
 	"_comment": "Build with `packer build centos.json`",
 	"provisioners": [{
 		"type": "shell",
-		"execute_command": "echo 'salt' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+		"execute_command": "echo '{{ user `ssh_username` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
 		"script": "scripts/cleanup.sh"
 	}],
 	"builders": [{

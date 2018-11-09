@@ -1,0 +1,65 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "vpc_region": "",
+    "vpc_id": "",
+    "vpc_public_sn_id": "",
+    "source_ami": "",
+    "vpc_public_sg_id": "",
+    "instance_type": "",
+    "ssh_username": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `vpc_region`}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `vpc_public_sn_id`}}",
+      "associate_public_ip_address": false,
+      "security_group_id": "{{user `vpc_public_sg_id`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ami_name": "centos-7-buildbot-worker-ebs-ami",
+      "ami_groups": "",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_type": "gp2",
+          "volume_size": "30",
+          "delete_on_termination": true
+        }
+      ],
+      "ami_description": "Buildbot Worker AMI // SELINUX disabled // Firewalled, only SSH access // {{isotime \"2006-01-02-1504\"}}",
+      "ami_virtualization_type": "hvm",
+      "ebs_optimized": false,
+      "force_deregister": true,
+      "force_delete_snapshot": true,
+      "iam_instance_profile": "",
+      "tags": {
+        "Name": "CentOS 7 Buildbot Worker - {{isotime \"2006-01-02-1504\"}}",
+        "Role": "buildbot-worker"
+      },
+      "run_tags": {
+        "Role": "buildbot-worker"
+      },
+      "shutdown_behavior": "terminate"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/setup-buildbot-worker.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+  ]
+}
