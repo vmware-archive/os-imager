@@ -1,0 +1,8 @@
+{
+  "_comment": "Build with `packer build -var-file=fedora-29-us-west-2.json fedora.json`",
+  "ssh_username": "fedora",
+  "region": "us-west-2",
+  "ami_filter": "Fedora-Cloud-Base-29-*.x86_64-hvm-us-west-2-gp2-0",
+  "ami_owner": "125523088429",
+  "ami_name": "saltstack/base/fedora/29"
+}

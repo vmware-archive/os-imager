@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build centos7.json`",
+  "_comment": "Build with `packer build fedora.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -15,15 +15,16 @@
         ],
         "most_recent": true
       },
-      "instance_type": "t3.medium",
+      "instance_type": "t2.large",
+      "enable_t2_unlimited": "True",
       "ssh_username": "{{ user `ssh_username` }}",
-      "ami_name": "saltstack/base/centos/7.5.1805_1/{{timestamp}}",
+      "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
       "ami_users": [
         "883373499178",
         "540082622920"
       ],
       "run_tags": {
-        "Name": "Packer CentOS 7 Builder"
+        "Name": "Packer Fedora Builder"
       },
       "launch_block_device_mappings": [
         {

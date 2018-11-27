@@ -1,5 +1,5 @@
 {
-  "_comment": "Builds a packer debian 9 image in AWS",
+  "_comment": "Builds a packer debian image in AWS",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -15,32 +15,23 @@
         ],
         "most_recent": true
       },
-      "instance_type": "t3.medium",
+      "instance_type": "c5.large",
       "ssh_username": "{{ user `ssh_username` }}",
-      "ami_name": "saltstack/base/debian/strech.9/{{timestamp}}",
+      "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
       "ami_users": [
         "883373499178",
         "540082622920"
       ],
       "run_tags": {
-        "Name": "Packer Debian 9 Builder"
+        "Name": "Packer Debian Builder"
       },
       "launch_block_device_mappings": [
         {
-          "device_name": "xvda",
+          "device_name": "{{ user `device_name` }}",
           "volume_size": 20,
           "volume_type": "gp2",
           "delete_on_termination": true
         }
-      ]
-    }
-  ],
-  "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "sudo apt install git -y",
-        "sudo apt install vim -y"
       ]
     }
   ]
