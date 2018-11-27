@@ -1,0 +1,44 @@
+{
+  "_comment": "Build with `packer build ubuntu1804.json`",
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-west-2",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "679593333241"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t3.medium",
+      "ssh_username": "ubuntu",
+      "ami_name": "saltstack/base/ubuntu/18.04/{{timestamp}}",
+      "run_tags": {
+        "Name": "Packer Ubuntu 18.04 Builder"
+      },
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 20,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt install git -y",
+        "sudo apt install vim -y"
+      ]
+    }
+  ]
+}
+

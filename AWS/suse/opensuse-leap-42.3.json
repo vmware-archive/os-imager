@@ -1,0 +1,35 @@
+{
+  "_comment": "Build with `packer build opensuse-leap-42.3.json`",
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-west-2",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "openSUSE-Leap-42.3-*",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "679593333241"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t3.large",
+      "ssh_username": "ec2-user",
+      "ami_name": "saltstack/base/opensuse/leap.42.3/{{timestamp}}",
+      "run_tags": {
+	      "Name": "Packer OpenSuse Builder"
+      },
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 20,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ]
+    }
+  ]
+}
+

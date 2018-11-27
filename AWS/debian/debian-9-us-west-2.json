@@ -1,0 +1,7 @@
+{
+  "_comment": "Build with `packer build -var-file=debian-9-us-west-2.json debian9.json`",
+  "ssh_username": "admin",
+  "region": "us-west-2",
+  "ami_filter": "debian-stretch-hvm-x86_64-*",
+  "ami_owner": "679593333241"
+}
