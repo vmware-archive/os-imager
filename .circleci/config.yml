@@ -3,13 +3,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image: hasicorp/packer
+      - image: circleci/golang
 
     working_directory: ~/repo
 
     steps:
       - checkout
       - run:
-          name: lint packer 
+          name: install packer 
           command: |
-            cd $CIRCLE_WORKING_DIRECTORY/AWS/ubuntu/ && packer validate  -var-file=ubuntu-1804-us-west-2.json ubuntu.json
+            wget https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip && unzip packer_1.3.3_linux_amd64.zip - /usr/bin
+      - run:
+          name: lint packer code
+          command: |
+            cd $CIRCLE_WORKING_DIRECTORY/AWS/ubuntu/ && packer validate -var-file=ubuntu-1804-us-west-2.json ubuntu.json
