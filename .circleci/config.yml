@@ -14,7 +14,22 @@ jobs:
           command: |
             sudo wget https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip && sudo unzip packer_1.3.3_linux_amd64.zip -d /usr/bin
       - run:
-          name: lint packer code
+          name: lint centos
           command: |
-            packer validate -var-file=AWS/ubuntu/ubuntu-1804-us-west-2.json AWS/ubuntu/ubuntu.json
-            
+            sudo make build OS=centos OS_REV=6 && sudo make build OS=centos OS_REV=7
+      - run:
+          name: lint debian
+          command: |
+            sudo make build OS=debian OS_REV=8 && sudo make build OS=debian OS_REV=9
+      - run:
+          name: lint fedora
+          command: |
+            sudo make build OS=fedora OS_REV=28 && sudo make build OS=fedora OS_REV=29
+      - run:
+          name: lint suse
+          command: |
+            sudo make build OS=opensuse OS_REV=42.3
+      - run:
+          name: lint ubuntu
+          command: |
+            sudo make build OS=ubuntu OS_REV=1404 && sudo make build OS=ubuntu OS_REV=1604 && sudo make build OS=ubuntu OS_REV=1804
