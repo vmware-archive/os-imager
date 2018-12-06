@@ -15,7 +15,7 @@
         ],
         "most_recent": true
       },
-      "instance_type": "c5.large",
+      "instance_type": "m4.large",
       "ssh_username": "{{ user `ssh_username` }}",
       "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
       "ami_users": [
@@ -32,6 +32,14 @@
           "volume_type": "gp2",
           "delete_on_termination": true
         }
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo  rm -rf /etc/apt/apt.conf.d/50unattended-upgrades"
       ]
     }
   ]
