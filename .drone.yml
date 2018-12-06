@@ -1,0 +1,11 @@
+kind: pipeline
+name: packer lint
+
+steps:
+- name: lint ubuntu
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=ubuntu OS_REV=1404
+  - make build OS=ubuntu OS_REV=1604
+  - make build OS=ubuntu OS_REV=1804
