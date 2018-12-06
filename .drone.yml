@@ -2,10 +2,12 @@ kind: pipeline
 name: packer lint
 
 steps:
-- name: lint ubuntu
+- name: lint packer OS images
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
+  - make build OS=centos OS_REV=6
+  - make build OS=centos OS_REV=7
   - make build OS=ubuntu OS_REV=1404
   - make build OS=ubuntu OS_REV=1604
   - make build OS=ubuntu OS_REV=1804
