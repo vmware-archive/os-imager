@@ -39,8 +39,7 @@
     {
       "type": "shell",
       "inline": [
-        "sudo apt install git -y",
-        "sudo apt install vim -y"
+        "sudo  rm -rf /etc/apt/apt.conf.d/50unattended-upgrades"
       ]
     }
   ]

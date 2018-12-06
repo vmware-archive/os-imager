@@ -1,0 +1,15 @@
+# SaltStack Packer Lint Circle CI
+version: 2
+jobs:
+  build:
+    docker:
+      - image: hasicorp/packer
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: lint packer 
+          command: |
+            cd $CIRCLE_WORKING_DIRECTORY/AWS/ubuntu/ && packer validate  -var-file=ubuntu-1804-us-west-2.json ubuntu.json
