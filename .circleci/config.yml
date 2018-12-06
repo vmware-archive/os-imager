@@ -16,4 +16,5 @@ jobs:
       - run:
           name: lint packer code
           command: |
-            cd $CIRCLE_WORKING_DIRECTORY/AWS/ubuntu/ && packer validate -var-file=ubuntu-1804-us-west-2.json ubuntu.json
+            ls -las $CIRCLE_WORKING_DIRECTORY/
+            
