@@ -16,5 +16,5 @@ jobs:
       - run:
           name: lint packer code
           command: |
-            ls -las .
+            packer validate -var-file=AWS/ubuntu/ubuntu-1804-us-west-2.json AWS/ubuntu/ubuntu.json
             
