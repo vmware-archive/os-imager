@@ -6,13 +6,13 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
-  - make build OS=centos OS_REV=6
-  - make build OS=centos OS_REV=7
-  - make build OS=debian OS_REV=8
-  - make build OS=debian OS_REV=9
-  - make build OS=fedora OS_REV=28
-  - make build OS=fedora OS_REV=29
-  - make build OS=opensuse OS_REV=42.3
-  - make build OS=ubuntu OS_REV=1404
-  - make build OS=ubuntu OS_REV=1604
-  - make build OS=ubuntu OS_REV=1804
+  - make validate OS=centos OS_REV=6
+  - make validate OS=centos OS_REV=7
+  - make validate OS=debian OS_REV=8
+  - make validate OS=debian OS_REV=9
+  - make validate OS=fedora OS_REV=28
+  - make validate OS=fedora OS_REV=29
+  - make validate OS=opensuse OS_REV=42.3
+  - make validate OS=ubuntu OS_REV=1404
+  - make validate OS=ubuntu OS_REV=1604
+  - make validate OS=ubuntu OS_REV=1804
