@@ -1,9 +1,5 @@
 kind: pipeline
 name: packer lint
-environment:
-  - AWS_ACCESS_KEY_ID=AKIAJPDOHFYRJSAXI6SQ
-  - AWS_SECRET_ACCESS_KEY=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
-  - AWS_DEFAULT_REGION=us-west-2
 steps:
 - name: lint packer OS images
   image: hashicorp/packer
