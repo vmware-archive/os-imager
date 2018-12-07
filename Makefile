@@ -9,11 +9,15 @@ REGION  = us-west-2
 help:
 	@echo ''
 	@echo '  Targets:'
-	@echo '    build'
+	@echo '    build, validate'
 	@echo ''
 	@echo '  Usage:'
-	@echo '    make validate OS=<SOME OS> OS_REV=<SOME OS REVISION>'
+	@echo '    make <target> OS=<SOME OS> OS_REV=<SOME OS REVISION>'
 
 .PHONY: validate
 validate: 
 	@packer validate -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
+
+.PHONY: build
+build: 
+	@packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json

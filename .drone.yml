@@ -1,9 +1,13 @@
 kind: pipeline
 name: packer lint
-
+environment:
+  - AWS_ACCESS_KEY_ID=AKIAJPDOHFYRJSAXI6SQ
+  - AWS_SECRET_ACCESS_KEY=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
+  - AWS_DEFAULT_REGION=us-west-2
 steps:
 - name: lint packer OS images
   image: hashicorp/packer
+  
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=6
@@ -16,3 +20,5 @@ steps:
   - make validate OS=ubuntu OS_REV=1404
   - make validate OS=ubuntu OS_REV=1604
   - make validate OS=ubuntu OS_REV=1804
+  - packer build -var aws_access_key=AKIAJPDOHFYRJSAXI6SQ -var aws_secret_key=EVaJwxcmVwumBGNz6OSipg3g4EdhsAT9jyg9keP -var-file=AWS/debian/debian-8-us-west-2.json AWS/debian/debian.json 
+
