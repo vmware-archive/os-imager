@@ -1,9 +1,10 @@
+---
 kind: pipeline
 name: packer lint
 steps:
 - name: lint packer OS images
   image: hashicorp/packer
-  
+
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=6
@@ -16,5 +17,11 @@ steps:
   - make validate OS=ubuntu OS_REV=1404
   - make validate OS=ubuntu OS_REV=1604
   - make validate OS=ubuntu OS_REV=1804
-   
+  when:
+    event:
+    - pull_request
+---
+kind: signature
+hmac: f951a9f2c286e78261c9c2563d3650fe02d8958ed551acfbd70e91dc62722db7
 
+...
