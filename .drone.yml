@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: packer lint
+name: packer-lint
 steps:
 - name: lint packer OS images
   image: hashicorp/packer
