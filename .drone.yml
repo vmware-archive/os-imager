@@ -2,7 +2,7 @@
 kind: pipeline
 name: packer-lint
 steps:
-- name: lint_packer_OS_images
+- name: lint-packer-os-images
   image: hashicorp/packer
 
   commands:
