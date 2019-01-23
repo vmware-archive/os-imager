@@ -1,0 +1,43 @@
+{
+  "_comment": "Build with `packer build windows2016.json`",
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{ user `aws_region` }}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "{{ user `ami_filter` }}",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "801119661308"
+        ],
+        "most_recent": true
+      },
+      "ami_users": [
+        "883373499178",
+        "540082622920"
+      ],
+      "instance_type": "t3.large",
+      "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1",
+      "communicator": "winrm",
+      "winrm_username": "Administrator",
+      "winrm_use_ssl": true,
+      "winrm_insecure": true,
+      "ami_name": "saltstack/base/windows/2016/{{timestamp}}",
+      "run_tags": {
+        "Name": "Packer Windows 2016 Builder"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "inline": [
+        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/InitializeInstance.ps1 -Schedule",
+        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/SysprepInstance.ps1 -NoShutdown"
+      ]
+    }
+  ]
+}
