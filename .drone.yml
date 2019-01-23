@@ -20,6 +20,39 @@ steps:
   when:
     event:
     - pull_request
+
+- name: build-packer-os-images
+  image: hashicorp/packer
+  environment:
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  commands:
+  - apk --no-cache add make
+  - make build OS=arch OS_REV=2019-01-09
+  - make build OS=centos OS_REV=6
+  - make build OS=centos OS_REV=7
+  - make build OS=debian OS_REV=8
+  - make build OS=debian OS_REV=9
+  - make build OS=fedora OS_REV=28
+  - make build OS=fedora OS_REV=29
+  - make build OS=opensuse OS_REV=42.3
+  - make build OS=ubuntu OS_REV=1404
+  - make build OS=ubuntu OS_REV=1604
+  - make build OS=ubuntu OS_REV=1804
+  - make build OS=windows OS_REV=2016
+  when:
+    ref:
+    - refs/tags/v1.*
+---
+kind: secret
+
+data:
+  username: I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6_OK_ypQ4AfAiDjEsC2U=
+  password: ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
+
 ---
 kind: signature
 hmac: 69a43960e44576bbe7d587aeda4a170821ac47b1fb99e9321b5998fcb4e62a83

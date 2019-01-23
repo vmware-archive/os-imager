@@ -1,7 +1,7 @@
 {
   "_comment": "Build with `packer build -var-file=centos-6-us-west-2.json centos.json`",
   "ssh_username": "centos",
-  "region": "us-west-2",
+  "aws_region": "us-west-2",
   "ami_filter": "CentOS Linux 6 x86_64 HVM EBS ENA 1805_01*",
   "ami_owner": "679593333241",
   "ami_name": "saltstack/base/centos/6.9.1805_1"

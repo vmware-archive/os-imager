@@ -1,7 +1,7 @@
 {
   "_comment": "Build with `packer build -var-file=ubuntu-1604-us-west-2.json ubuntu.json`",
   "ssh_username": "ubuntu",
-  "region": "us-west-2",
+  "aws_region": "us-west-2",
   "ami_filter": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*",
   "ami_owner": "099720109477",
   "ami_name": "saltstack/base/ubuntu/xenial.1604"

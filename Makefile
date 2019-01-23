@@ -1,7 +1,7 @@
 # Minimal makefile for running packer lint
 
-OS  = 
-OS_REV  = 
+OS  =
+OS_REV  =
 PACKERDIR  = AWS
 REGION  = us-west-2
 
@@ -15,9 +15,9 @@ help:
 	@echo '    make <target> OS=<SOME OS> OS_REV=<SOME OS REVISION>'
 
 .PHONY: validate
-validate: 
+validate:
 	@packer validate -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
 
 .PHONY: build
-build: 
-	@packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
+build:
+	packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
