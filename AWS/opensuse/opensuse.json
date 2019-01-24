@@ -16,6 +16,7 @@
         "most_recent": true
       },
       "instance_type": "t3.large",
+      "enable_t2_unlimited": true,
       "ssh_username": "ec2-user",
       "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
       "ami_users": [
@@ -36,4 +37,3 @@
     }
   ]
 }
-
