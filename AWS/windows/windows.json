@@ -19,7 +19,7 @@
         "883373499178",
         "540082622920"
       ],
-      "instance_type": "t3.large",
+      "instance_type": "t2.xlarge",
       "enable_t2_unlimited": true,
       "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1",
       "communicator": "winrm",
