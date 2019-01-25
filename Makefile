@@ -20,4 +20,4 @@ validate:
 
 .PHONY: build
 build:
-	packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
+	@packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json

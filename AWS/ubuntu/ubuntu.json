@@ -16,6 +16,7 @@
         "most_recent": true
       },
       "instance_type": "t2.small",
+      "enable_t2_unlimited": true,
       "ssh_username": "{{ user `ssh_username` }}",
       "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
       "ami_users": [
@@ -44,4 +45,3 @@
     }
   ]
 }
-
