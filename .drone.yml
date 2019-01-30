@@ -39,6 +39,7 @@ steps:
   - make build OS=fedora OS_REV=28
   - make build OS=fedora OS_REV=29
   - make build OS=opensuse OS_REV=42.3
+  - make build OS=opensuse OS_REV=15
   - make build OS=ubuntu OS_REV=1404
   - make build OS=ubuntu OS_REV=1604
   - make build OS=ubuntu OS_REV=1804
