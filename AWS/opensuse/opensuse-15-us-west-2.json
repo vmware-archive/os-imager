@@ -1,0 +1,8 @@
+{
+  "_comment": "Build with `packer build -var-file=opensuse-leap-15-us-west-2.json opensuse.json`",
+  "ssh_username": "ec2-user",
+  "aws_region": "us-west-2",
+  "ami_filter": "openSUSE-Leap-15-v20181109-hvm-ssd-x86_64-*",
+  "ami_owner": "679593333241",
+  "ami_name": "saltstack/base/opensuse/leap.15"
+}
