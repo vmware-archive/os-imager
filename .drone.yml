@@ -141,15 +141,15 @@
 ---
 {
    "kind": "pipeline",
-   "name": "lint-opensuse-15.0",
+   "name": "lint-opensuse-15",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make validate OS=opensuse OS_REV=15.0"
+            "make validate OS=opensuse OS_REV=15"
          ],
          "image": "hashicorp/packer",
-         "name": "lint-opensuse-15.0",
+         "name": "lint-opensuse-15",
          "when": {
             "event": [
                "pull_request"
@@ -181,15 +181,15 @@
 ---
 {
    "kind": "pipeline",
-   "name": "lint-ubuntu-14.04",
+   "name": "lint-ubuntu-1404",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=14.04"
+            "make validate OS=ubuntu OS_REV=1404"
          ],
          "image": "hashicorp/packer",
-         "name": "lint-ubuntu-14.04",
+         "name": "lint-ubuntu-1404",
          "when": {
             "event": [
                "pull_request"
@@ -201,15 +201,15 @@
 ---
 {
    "kind": "pipeline",
-   "name": "lint-ubuntu-16.04",
+   "name": "lint-ubuntu-1604",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=16.04"
+            "make validate OS=ubuntu OS_REV=1604"
          ],
          "image": "hashicorp/packer",
-         "name": "lint-ubuntu-16.04",
+         "name": "lint-ubuntu-1604",
          "when": {
             "event": [
                "pull_request"
@@ -221,15 +221,15 @@
 ---
 {
    "kind": "pipeline",
-   "name": "lint-ubuntu-18.04",
+   "name": "lint-ubuntu-1804",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=18.04"
+            "make validate OS=ubuntu OS_REV=1804"
          ],
          "image": "hashicorp/packer",
-         "name": "lint-ubuntu-18.04",
+         "name": "lint-ubuntu-1804",
          "when": {
             "event": [
                "pull_request"
@@ -464,12 +464,12 @@
 ---
 {
    "kind": "pipeline",
-   "name": "build-opensuse-15.0",
+   "name": "build-opensuse-15",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make build OS=opensuse OS_REV=15.0"
+            "make build OS=opensuse OS_REV=15"
          ],
          "environment": {
             "AWS_ACCESS_KEY_ID": {
@@ -481,7 +481,7 @@
             }
          },
          "image": "hashicorp/packer",
-         "name": "build-opensuse-15.0",
+         "name": "build-opensuse-15",
          "when": {
             "ref": [
                "refs/tags/v1.*"
@@ -522,12 +522,12 @@
 ---
 {
    "kind": "pipeline",
-   "name": "build-ubuntu-14.04",
+   "name": "build-ubuntu-1404",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=14.04"
+            "make build OS=ubuntu OS_REV=1404"
          ],
          "environment": {
             "AWS_ACCESS_KEY_ID": {
@@ -539,7 +539,7 @@
             }
          },
          "image": "hashicorp/packer",
-         "name": "build-ubuntu-14.04",
+         "name": "build-ubuntu-1404",
          "when": {
             "ref": [
                "refs/tags/v1.*"
@@ -551,12 +551,12 @@
 ---
 {
    "kind": "pipeline",
-   "name": "build-ubuntu-16.04",
+   "name": "build-ubuntu-1604",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=16.04"
+            "make build OS=ubuntu OS_REV=1604"
          ],
          "environment": {
             "AWS_ACCESS_KEY_ID": {
@@ -568,7 +568,7 @@
             }
          },
          "image": "hashicorp/packer",
-         "name": "build-ubuntu-16.04",
+         "name": "build-ubuntu-1604",
          "when": {
             "ref": [
                "refs/tags/v1.*"
@@ -580,12 +580,12 @@
 ---
 {
    "kind": "pipeline",
-   "name": "build-ubuntu-18.04",
+   "name": "build-ubuntu-1804",
    "steps": [
       {
          "commands": [
             "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=18.04"
+            "make build OS=ubuntu OS_REV=1804"
          ],
          "environment": {
             "AWS_ACCESS_KEY_ID": {
@@ -597,7 +597,7 @@
             }
          },
          "image": "hashicorp/packer",
-         "name": "build-ubuntu-18.04",
+         "name": "build-ubuntu-1804",
          "when": {
             "ref": [
                "refs/tags/v1.*"
@@ -645,6 +645,6 @@
 }
 ---
 kind: signature
-hmac: c85360017b204cf9f5403ef0fa039e6f3f5b29fae0932a43d85aadc1795833dc
+hmac: b67a7918e786ce961fb10651309b7f3e7bf6fa4a500524e594bbff4084b9f4f6
 
 ...

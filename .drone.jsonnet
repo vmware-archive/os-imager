@@ -54,11 +54,11 @@ local distros = [
   { name: 'debian', version: '9' },
   { name: 'fedora', version: '28' },
   { name: 'fedora', version: '29' },
-  { name: 'opensuse', version: '15.0' },
+  { name: 'opensuse', version: '15' },
   { name: 'opensuse', version: '42.3' },
-  { name: 'ubuntu', version: '14.04' },
-  { name: 'ubuntu', version: '16.04' },
-  { name: 'ubuntu', version: '18.04' },
+  { name: 'ubuntu', version: '1404' },
+  { name: 'ubuntu', version: '1604' },
+  { name: 'ubuntu', version: '1804' },
   { name: 'windows', version: '2016' },
 ];
 
