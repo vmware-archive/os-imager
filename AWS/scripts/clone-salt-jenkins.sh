@@ -10,5 +10,6 @@ if [ -d .tmp/states/.git ]; then
     git -C .tmp/states reset --hard origin/$SALT_BRANCH
 else
     echo "Cloning salt-jenkins repository. Branch: ${SALT_BRANCH}"
-    git clone --branch $SALT_BRANCH https://github.com/saltstack/salt-jenkins.git .tmp/states
+    #git clone --branch $SALT_BRANCH https://github.com/saltstack/salt-jenkins.git .tmp/states
+    git clone --branch $SALT_BRANCH https://github.com/s0undt3ch/salt-jenkins.git .tmp/states
 fi
