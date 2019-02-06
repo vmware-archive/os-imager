@@ -4,5 +4,7 @@
   "aws_region": "us-west-2",
   "ami_filter": "openSUSE-Leap-42.3-v20180116-hvm-ssd-x86_64-*",
   "ami_owner": "679593333241",
-  "ami_name": "saltstack/base/opensuse/leap.42.3"
+  "ami_name": "saltstack/base/opensuse/leap.42.3",
+  "os_name": "OpenSuse",
+  "os_version": "42.3"
 }

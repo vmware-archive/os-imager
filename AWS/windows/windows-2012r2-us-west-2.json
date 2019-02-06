@@ -4,5 +4,6 @@
   "ami_filter": "Windows_Server-2012-R2_RTM-English-64Bit-Base-*",
   "ami_owner": "801119661308",
   "ami_name": "saltstack/base/windows/2012r2",
+  "os_name": "windows",
   "os_version": "2012r2"
 }

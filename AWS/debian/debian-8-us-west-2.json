@@ -5,5 +5,7 @@
   "ami_filter": "debian-jessie-amd64-hvm-2017-01-15-1221-ebs-*",
   "ami_owner": "679593333241",
   "ami_name": "saltstack/base/debian/jessie.8",
-  "device_name": "/dev/xvda"
+  "device_name": "/dev/xvda",
+  "os_name": "Debian",
+  "os_version": "8"
 }
