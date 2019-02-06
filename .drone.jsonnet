@@ -14,7 +14,8 @@ local linux_distros = [
 ];
 
 local win_distros = [
-  { name: 'windows', version: '2016' },
+  { name: 'windows', version: '2019' },
+  { name: 'windows', version: '2012r2' },
 ];
 
 local Lint(os, os_version) = {

@@ -216,18 +216,36 @@ steps:
 
 ---
 kind: pipeline
-name: lint-windows-2016
+name: lint-windows-2019
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: lint-windows-2016
+- name: lint-windows-2019
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
-  - make validate OS=windows OS_REV=2016
+  - make validate OS=windows OS_REV=2019
+  when:
+    event:
+    - pull_request
+
+---
+kind: pipeline
+name: lint-windows-2012r2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-windows-2012r2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2012r2
   when:
     event:
     - pull_request
@@ -522,7 +540,7 @@ steps:
 
 ---
 kind: pipeline
-name: build-windows-2016
+name: build-windows-2019
 
 platform:
   os: linux
@@ -533,7 +551,31 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
-  - make build OS=windows OS_REV=2016
+  - make build OS=windows OS_REV=2019
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
+---
+kind: pipeline
+name: build-windows-2012r2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=windows OS_REV=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -557,6 +599,6 @@ data:
 
 ---
 kind: signature
-hmac: 6bc1a9e6d24e248bbb5d4266c9fee83df1d8aa560048b84ddb9588eedbb01ca3
+hmac: cd6627abd62cc5b69db632b743db811a9fdf2b3a93c0634a7006cbd7ebfe2471
 
 ...
