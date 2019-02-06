@@ -34,11 +34,13 @@
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
         "Build-Type": "BASE",
-        "created-by": "packer"
+        "created-by": "packer",
+        "Owner": "SRE"
       },
       "run_tags": {
         "Name": "Packer Windows {{ user `os_version` }} Builder",
-        "created-by": "packer"
+        "created-by": "packer",
+        "Owner": "SRE"
       }
     }
   ],
