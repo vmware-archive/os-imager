@@ -4,6 +4,8 @@ OS  =
 OS_REV  =
 PACKERDIR  = AWS
 REGION  = us-west-2
+TEMPLATE = $(PACKERDIR)/$(OS)/$(OS).json
+VAR_FILE = $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json
 
 .PHONY: help
 help:
@@ -16,8 +18,16 @@ help:
 
 .PHONY: validate
 validate:
-	@packer validate -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
+	$(info OS=$(OS))
+	$(info OS_REV=$(OS_REV))
+	$(info TEMPLATE=$(TEMPLATE))
+	$(info VAR_FILE=$(VAR_FILE))
+	@packer validate -var 'os_name=$(OS)' -var 'os_version=$(OS_REV)' -var-file=$(VAR_FILE) $(TEMPLATE)
 
 .PHONY: build
 build:
-	@packer build -var-file=$(PACKERDIR)/$(OS)/$(OS)-$(OS_REV)-$(REGION).json $(PACKERDIR)/$(OS)/$(OS).json
+	$(info OS=$(OS))
+	$(info OS_REV=$(OS_REV))
+	$(info TEMPLATE=$(TEMPLATE))
+	$(info VAR_FILE=$(VAR_FILE))
+	@packer build -var  'os_name=$(OS)' -var 'os_version=$(OS_REV)' -var-file=$(VAR_FILE) $(TEMPLATE)
