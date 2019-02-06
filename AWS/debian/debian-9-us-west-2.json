@@ -5,5 +5,7 @@
   "ami_filter": "debian-stretch-hvm-x86_64-*",
   "ami_owner": "679593333241",
   "ami_name": "saltstack/base/debian/strech.9",
-  "device_name": "xvda"
+  "device_name": "xvda",
+  "os_name": "Debian",
+  "os_version": "9"
 }

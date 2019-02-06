@@ -1,0 +1,9 @@
+{
+  "_comment": "Build with `packer build -var-file=windows-2019-us-west-2.json windows.json`",
+  "aws_region": "us-west-2",
+  "ami_filter": "Windows_Server-2019-English-Full-Base-*",
+  "ami_owner": "801119661308",
+  "ami_name": "saltstack/base/windows/2019",
+  "os_name": "windows",
+  "os_version": "2019"
+}

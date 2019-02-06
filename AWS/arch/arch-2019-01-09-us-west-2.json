@@ -4,5 +4,7 @@
   "aws_region": "us-west-2",
   "ami_filter": "arch-linux-lts-hvm-*.x86_64-ebs",
   "ami_owner": "093273469852",
-  "ami_name": "saltstack/base/arch/lts"
+  "ami_name": "saltstack/base/arch/lts",
+  "os_name": "Arch",
+  "os_version": "2019-01-09"
 }

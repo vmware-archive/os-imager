@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build windows2016.json`",
+  "_comment": "Build with `packer build windows.json`",
   "builders": [
     {
       "type": "amazon-ebs",
