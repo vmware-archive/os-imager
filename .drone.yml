@@ -1,650 +1,562 @@
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-arch-2019-01-09",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=arch OS_REV=2019-01-09"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-arch-2019-01-09",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-arch-2019-01-09
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-arch-2019-01-09
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=arch OS_REV=2019-01-09
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-centos-6",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=centos OS_REV=6"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-centos-6",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-centos-6
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-centos-6
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=centos OS_REV=6
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-centos-7",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=centos OS_REV=7"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-centos-7",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-centos-7
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-centos-7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=centos OS_REV=7
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-debian-8",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=debian OS_REV=8"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-debian-8",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-debian-8
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-debian-8
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=debian OS_REV=8
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-debian-9",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=debian OS_REV=9"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-debian-9",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-debian-9
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-debian-9
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=debian OS_REV=9
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-fedora-28",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=fedora OS_REV=28"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-fedora-28",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-fedora-28
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-fedora-28
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=fedora OS_REV=28
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-fedora-29",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=fedora OS_REV=29"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-fedora-29",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-fedora-29
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-fedora-29
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=fedora OS_REV=29
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-opensuse-15",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=opensuse OS_REV=15"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-opensuse-15",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-opensuse-15
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-opensuse-15
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=opensuse OS_REV=15
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-opensuse-42.3",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=opensuse OS_REV=42.3"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-opensuse-42.3",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-opensuse-42.3
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-opensuse-42.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=opensuse OS_REV=42.3
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-ubuntu-1404",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=1404"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-ubuntu-1404",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-ubuntu-1404
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-ubuntu-1404
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1404
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-ubuntu-1604",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=1604"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-ubuntu-1604",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-ubuntu-1604
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-ubuntu-1604
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1604
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-ubuntu-1804",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=ubuntu OS_REV=1804"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-ubuntu-1804",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-ubuntu-1804
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-ubuntu-1804
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1804
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "lint-windows-2016",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make validate OS=windows OS_REV=2016"
-         ],
-         "image": "hashicorp/packer",
-         "name": "lint-windows-2016",
-         "when": {
-            "event": [
-               "pull_request"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: lint-windows-2016
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-windows-2016
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2016
+  when:
+    event:
+    - pull_request
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-arch-2019-01-09",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=arch OS_REV=2019-01-09"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-arch-2019-01-09",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-arch-2019-01-09
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=arch OS_REV=2019-01-09
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-centos-6",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=centos OS_REV=6"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-centos-6",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-centos-6
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=centos OS_REV=6
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-centos-7",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=centos OS_REV=7"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-centos-7",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-centos-7
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=centos OS_REV=7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-debian-8",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=debian OS_REV=8"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-debian-8",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-debian-8
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=debian OS_REV=8
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-debian-9",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=debian OS_REV=9"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-debian-9",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-debian-9
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=debian OS_REV=9
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-fedora-28",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=fedora OS_REV=28"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-fedora-28",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-fedora-28
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=fedora OS_REV=28
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-fedora-29",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=fedora OS_REV=29"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-fedora-29",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-fedora-29
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=fedora OS_REV=29
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-opensuse-15",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=opensuse OS_REV=15"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-opensuse-15",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-opensuse-15
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=opensuse OS_REV=15
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-opensuse-42.3",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=opensuse OS_REV=42.3"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-opensuse-42.3",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-opensuse-42.3
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=opensuse OS_REV=42.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-ubuntu-1404",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=1404"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-ubuntu-1404",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-ubuntu-1404
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=ubuntu OS_REV=1404
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-ubuntu-1604",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=1604"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-ubuntu-1604",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-ubuntu-1604
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=ubuntu OS_REV=1604
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-ubuntu-1804",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=ubuntu OS_REV=1804"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-ubuntu-1804",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-ubuntu-1804
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=ubuntu OS_REV=1804
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "kind": "pipeline",
-   "name": "build-windows-2016",
-   "steps": [
-      {
-         "commands": [
-            "apk --no-cache add make",
-            "make build OS=windows OS_REV=2016"
-         ],
-         "environment": {
-            "AWS_ACCESS_KEY_ID": {
-               "from_secret": "username"
-            },
-            "AWS_DEFAULT_REGION": "us-west-2",
-            "AWS_SECRET_ACCESS_KEY": {
-               "from_secret": "password"
-            }
-         },
-         "image": "hashicorp/packer",
-         "name": "build-windows-2016",
-         "when": {
-            "ref": [
-               "refs/tags/v1.*"
-            ]
-         }
-      }
-   ]
-}
+kind: pipeline
+name: build-windows-2016
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=windows OS_REV=2016
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 ---
-{
-   "data": {
-      "password": "ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==",
-      "username": "I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6_OK_ypQ4AfAiDjEsC2U="
-   },
-   "kind": "secret"
-}
+kind: secret
+type: general
+data:
+  password: >
+    ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
+    s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
+  username: >
+    I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6
+    _OK_ypQ4AfAiDjEsC2U=
+
 ---
 kind: signature
-hmac: b67a7918e786ce961fb10651309b7f3e7bf6fa4a500524e594bbff4084b9f4f6
+hmac: 6bc1a9e6d24e248bbb5d4266c9fee83df1d8aa560048b84ddb9588eedbb01ca3
 
 ...
