@@ -21,7 +21,7 @@
       ],
       "instance_type": "t2.xlarge",
       "enable_t2_unlimited": true,
-      "user_data_file": "./scripts/SetUpWinRM.ps1",
+      "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1",
       "communicator": "winrm",
       "winrm_username": "Administrator",
       "winrm_use_ssl": true,
