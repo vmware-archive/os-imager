@@ -1,0 +1,57 @@
+{
+	"_comment": "Build with `packer build rhel.json`",
+	"provisioners": [{
+		"type": "shell",
+		"execute_command": "echo '{{ user `ssh_username` }}' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+		"script": "scripts/cleanup.sh",
+		"environment_vars": ["RHEL_USERNAME={{ user `rhel_username` }}", "RHEL_PASSWORD={{ user `rhel_password` }}"]
+	}],
+	"builders": [{
+		"boot_command": [
+			"<up><wait><tab> net.ifnames=0 biosdevname=0 text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/{{ user `kickstart` }}<enter>"
+		],
+		"iso_urls": [
+			"{{ user `iso_url` }}"
+		],
+		"iso_checksum": "{{ user `iso_checksum` }}",
+		"iso_checksum_type": "{{ user `iso_checksum_type` }}",
+		"disk_size": "{{ user `disk_size` }}",
+		"headless": "false",
+		"http_directory": "{{ user `http_directory` }}",
+		"output_directory": "output-{{ user `vm_name` }}",
+		"vmdk_name": "{{ user `vmdk_name` }}",
+		"name": "{{ user `name` }}",
+		"ssh_password": "{{ user `ssh_password` }}",
+		"ssh_username": "{{ user `ssh_username` }}",
+		"ssh_wait_timeout": "10000s",
+		"type": "vmware-iso",
+		"remote_type": "esx5",
+		"remote_host": "esxi05.c7.saltstack.net",
+		"remote_username": "root",
+		"remote_password": "{{ user `esxi_password` }}",
+		"remote_datastore": "esxi05-ssd-raid",
+		"vm_name": "{{ user `vm_name` }}",
+		"keep_registered": true,
+		"vnc_disable_password": true,
+		"shutdown_command": "sudo -S shutdown -P now",
+		"tools_upload_flavor": "linux",
+		"guest_os_type": "rhel7-64",
+		"vmx_data": {
+			"memsize": "2048",
+			"numvcpus": "2",
+			"ethernet0.networkName": "{{ user `packer_esxi_portgroup` }}",
+			"ethernet0.virtualDev": "vmxnet3",
+			"virtualHW.version": "14"
+		}
+	}],
+	"variables": {
+		"disk_size": "10240",
+		"packer_esxi_portgroup": "VM Network",
+		"http_directory": "kickstart",
+		"ssh_password": "salt",
+		"ssh_username": "salt",
+		"esxi_password": "{{ env `ESXI_PASSWORD` }}",
+		"rhel_username": "{{ env `RHEL_USERNAME` }}",
+		"rhel_password": "{{ env `RHEL_PASSWORD` }}"
+	}
+}

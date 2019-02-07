@@ -1,0 +1,10 @@
+{
+  "_comment": "Build with `packer build -var-file=rhel7-fips.json rhel.json`",
+  "name": "rhel7-fips",
+  "vmdk_name": "rhel7-fips",
+  "vm_name": "rhel7-fips",
+  "kickstart": "rhel7-fips.cfg",
+  "iso_checksum": "60a0be5aeed1f08f2bb7599a578c89ec134b4016cd62a8604b29f15d543a469c",
+  "iso_checksum_type": "sha256",
+  "iso_url": "file:///tmp/rhel-server-7.6-x86_64-dvd.iso"
+}

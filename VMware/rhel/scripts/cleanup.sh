@@ -13,6 +13,9 @@ grub2-mkconfig -o "$(readlink -f /etc/grub2.cfg 2>/dev/null)"
 # Send host name with dhcp request
 echo "send host-name = gethostname();" >> /etc/dhcp/dhclient.conf
 
+# Regsiter with redhat
+subscription-manager register --username "${RHEL_USERNAME}" --password "${RHEL_PASSWORD}" --auto-attach
+
 echo "==> Cleaning up unneeded yum files and updating"
 sudo yum -y update
 sudo yum -y clean all
