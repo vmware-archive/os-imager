@@ -23,9 +23,9 @@
         "883373499178",
         "540082622920"
       ],
-      "ami_description": "Base Image of Ubuntu {{ user `os_version` }}",
+      "ami_description": "Base Image of {{ user `os_name` }} {{ user `os_version` }}",
       "tags": {
-        "Name":"Base // Ubuntu {{ user `os_version`}}",
+        "Name":"Base // {{ user `os_name` }} {{ user `os_version`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
@@ -34,7 +34,7 @@
         "Owner": "SRE"
       },
       "run_tags": {
-        "Name": "Packer Ubuntu {{ user `os_version` }} Builder",
+        "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
         "created-by": "packer",
         "Owner": "SRE"
       },
