@@ -216,18 +216,18 @@ steps:
 
 ---
 kind: pipeline
-name: lint-windows-2019
+name: lint-windows-2008r2
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: lint-windows-2019
+- name: lint-windows-2008r2
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
-  - make validate OS=windows OS_REV=2019
+  - make validate OS=windows OS_REV=2008r2
   when:
     event:
     - pull_request
@@ -246,6 +246,42 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2012r2
+  when:
+    event:
+    - pull_request
+
+---
+kind: pipeline
+name: lint-windows-2016
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-windows-2016
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2016
+  when:
+    event:
+    - pull_request
+
+---
+kind: pipeline
+name: lint-windows-2019
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint-windows-2019
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2019
   when:
     event:
     - pull_request
@@ -540,7 +576,7 @@ steps:
 
 ---
 kind: pipeline
-name: build-windows-2019
+name: build-windows-2008r2
 
 platform:
   os: linux
@@ -551,7 +587,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
-  - make build OS=windows OS_REV=2019
+  - make build OS=windows OS_REV=2008r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -587,6 +623,54 @@ steps:
     - "refs/tags/v1.*"
 
 ---
+kind: pipeline
+name: build-windows-2016
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=windows OS_REV=2016
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
+---
+kind: pipeline
+name: build-windows-2019
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make build OS=windows OS_REV=2019
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
+---
 kind: secret
 type: general
 data:
@@ -599,6 +683,6 @@ data:
 
 ---
 kind: signature
-hmac: 44579521e432b4f7b9c372dae0d75735dd35229a55bfe83d059d76a16c0f5538
+hmac: 258dd44e656384d5413146199f7795677e383412860c390d7aa00c1eee4c19b3
 
 ...
