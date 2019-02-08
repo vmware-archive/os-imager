@@ -20,12 +20,28 @@ local win_distros = [
   { name: 'windows', version: '2019' },
 ];
 
+local salt_branches = [
+  /*
+   * These are the salt branches, which map to salt-jenkins branches
+   */
+  '2017.7',
+  '2018.3',
+  '2019.2',
+  'develop',
+];
+
 local BuildTriggers() = {
-  ref: [
+  /*ref: [
     'refs/tags/v1.*',
   ],
   event: [
     'tag',
+  ],*/
+  branch: [
+    'ci',
+  ],
+  event: [
+    'push',
   ],
 };
 
@@ -52,9 +68,8 @@ local Lint(os, os_version) = {
   trigger: LintTriggers(),
 };
 
-
-local Step(os, os_version) = {
-  name: 'base-image',
+local Step(os, os_version, salt_branch) = {
+  name: 'ci-image',
   image: 'hashicorp/packer',
   environment: {
     AWS_DEFAULT_REGION: 'us-west-2',
@@ -66,33 +81,31 @@ local Step(os, os_version) = {
     },
   },
   commands: [
-    'apk --no-cache add make',
-    std.format('make build OS=%s OS_REV=%s', [os, os_version]),
+    'apk --no-cache add make curl grep gawk sed',
+    std.format('make build OS=%s OS_REV=%s SALT_BRANCH=%s', [os, os_version, salt_branch]),
   ],
 };
 
-
-local Build(os, os_version) = {
+local Build(os, os_version, salt_branch) = {
   kind: 'pipeline',
-  name: std.format('build-%s-%s', [os, os_version]),
+  name: std.format('build-%s-%s-%s', [os, os_version, salt_branch]),
   steps: [
     {
       name: 'throttle build',
       image: 'alpine',
       commands: [
-        "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'",
+        "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'",
       ],
     },
-    Step(os, os_version),
-  ],
+  ] + [Step(os, os_version, salt_branch)],
   trigger: BuildTriggers(),
 };
 
 
-local WindowBuild(os, os_version) = {
+local WindowsBuild(os, os_version, salt_branch) = {
   kind: 'pipeline',
-  name: std.format('build-%s-%s', [os, os_version]),
-  steps: [Step(os, os_version)],
+  name: std.format('build-%s-%s-%s', [os, os_version, salt_branch]),
+  steps: [Step(os, os_version, salt_branch)],
   trigger: BuildTriggers(),
 };
 
@@ -109,11 +122,13 @@ local Secret() = {
   Lint(distro.name, distro.version)
   for distro in linux_distros + win_distros
 ] + [
-  Build(distro.name, distro.version)
+  Build(distro.name, distro.version, salt_branch)
   for distro in linux_distros
+  for salt_branch in salt_branches
 ] + [
-  WindowBuild(distro.name, distro.version)
+  WindowsBuild(distro.name, distro.version, salt_branch)
   for distro in win_distros
+  for salt_branch in salt_branches
 ] + [
   Secret(),
 ]

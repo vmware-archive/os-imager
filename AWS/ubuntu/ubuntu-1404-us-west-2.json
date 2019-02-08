@@ -1,10 +1,10 @@
 {
-  "_comment": "Build with `packer build -var-file=ubuntu-1404-us-west-2.json ubuntu.json`",
+  "_comment": "Build with `packer build -var-file=ubuntu-1404-us-west-2.json ubuntu-1404.json`",
   "ssh_username": "ubuntu",
   "aws_region": "us-west-2",
-  "ami_filter": "ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*",
-  "ami_owner": "099720109477",
-  "ami_name": "saltstack/base/ubuntu/trusty.1404",
   "os_name": "Ubuntu",
-  "os_version": "1404"
+  "os_version": "1404",
+  "salt_branch": "develop",
+  "ami_filter": "saltstack/base/ubuntu/trusty.1404*",
+  "ami_name": "saltstack/ci/ubuntu/trusty.1404"
 }

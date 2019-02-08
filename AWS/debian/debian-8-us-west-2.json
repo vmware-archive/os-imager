@@ -2,10 +2,10 @@
   "_comment": "Build with `packer build -var-file=debian-8-us-west-2.json debian.json`",
   "ssh_username": "admin",
   "aws_region": "us-west-2",
-  "ami_filter": "debian-jessie-amd64-hvm-2017-01-15-1221-ebs-*",
-  "ami_owner": "679593333241",
-  "ami_name": "saltstack/base/debian/jessie.8",
   "device_name": "/dev/xvda",
   "os_name": "Debian",
-  "os_version": "8"
+  "os_version": "8",
+  "salt_branch": "develop",
+  "ami_filter": "saltstack/base/debian/jessie.8*",
+  "ami_name": "saltstack/ci/debian/jessie.8"
 }

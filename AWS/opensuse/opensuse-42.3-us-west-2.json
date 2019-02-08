@@ -2,9 +2,9 @@
   "_comment": "Build with `packer build -var-file=opensuse-leap-42.3-us-west-2.json opensuse.json`",
   "ssh_username": "ec2-user",
   "aws_region": "us-west-2",
-  "ami_filter": "openSUSE-Leap-42.3-v20180116-hvm-ssd-x86_64-*",
-  "ami_owner": "679593333241",
-  "ami_name": "saltstack/base/opensuse/leap.42.3",
   "os_name": "OpenSuse",
-  "os_version": "42.3"
+  "os_version": "42.3",
+  "salt_branch": "develop",
+  "ami_filter": "saltstack/base/opensuse/leap.42.3*",
+  "ami_name": "saltstack/ci/opensuse/leap.42.3"
 }

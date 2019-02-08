@@ -11,7 +11,9 @@
           "root-device-type": "ebs"
         },
         "owners": [
-          "801119661308"
+          "883373499178",
+          "540082622920",
+          "989543020150"
         ],
         "most_recent": true
       },
@@ -25,16 +27,19 @@
       "winrm_username": "Administrator",
       "winrm_use_ssl": true,
       "winrm_insecure": true,
-      "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
-      "ami_description": "Base Image of {{ user `os_name` }} {{ user `os_version` }}",
+      "ami_name": "{{ user `ami_name` }}/{{ user `salt_branch`}}/{{timestamp}}",
+      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} with salt@{{ user `salt_branch` }}",
       "tags": {
-        "Name":"Base // {{ user `os_name` }} {{ user `os_version`}}",
+        "Name":"CI // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
-        "Build-Type": "BASE",
+        "Build-Type": "CI",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Salt-Branch": "{{ user `salt_branch` }}",
+        "Python-2": true,
+        "Python-3": true
       },
       "run_tags": {
         "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -44,6 +49,72 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "shell-local",
+      "script": "AWS/scripts/prep-windows.sh",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=3"
+      ]
+    },
+    {
+      "type": "powershell",
+      "script": "AWS/scripts/prep-windows.ps1",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=3"
+      ]
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": ".tmp/states",
+      "local_pillar_roots": ".tmp/pillar",
+      "custom_state": "git.minimal",
+      "guest_os_type": "windows",
+      "disable_sudo": true,
+      "salt_bin_dir": "c:\\salt",
+      "bootstrap_args": "-pythonVersion 3 -runservice false"
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "Remove-Item C:/salt/state -Recurse -Force",
+        "Remove-Item C:/salt/pillar -Recurse -Force"
+       ]
+    },
+    {
+      "type": "shell-local",
+      "script": "AWS/scripts/prep-windows.sh",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=2"
+      ]
+    },
+    {
+      "type": "powershell",
+      "script": "AWS/scripts/prep-windows.ps1",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=2"
+      ]
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": ".tmp/states",
+      "local_pillar_roots": ".tmp/pillar",
+      "custom_state": "git.minimal",
+      "guest_os_type": "windows",
+      "disable_sudo": true,
+      "salt_bin_dir": "c:\\salt",
+      "bootstrap_args": "-pythonVersion 3 -runservice false"
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "Remove-Item C:/salt/state -Recurse -Force",
+        "Remove-Item C:/salt/pillar -Recurse -Force"
+       ]
+    },
     {
       "type": "powershell",
       "inline": [

@@ -11,27 +11,32 @@
           "root-device-type": "ebs"
         },
         "owners": [
-          "{{ user `ami_owner` }}"
+          "883373499178",
+          "540082622920",
+          "989543020150"
         ],
         "most_recent": true
       },
       "instance_type": "t2.small",
       "enable_t2_unlimited": true,
       "ssh_username": "{{ user `ssh_username` }}",
-      "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
+      "ami_name": "{{ user `ami_name` }}/{{ user `salt_branch`}}/{{timestamp}}",
       "ami_users": [
         "883373499178",
         "540082622920"
       ],
-      "ami_description": "Base Image of {{ user `os_name` }} {{ user `os_version` }}",
+      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} for salt@{{ user `salt_branch` }}",
       "tags": {
-        "Name":"Base // {{ user `os_name` }} {{ user `os_version`}}",
+        "Name":"CI // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
-        "Build-Type": "BASE",
+        "Build-Type": "CI",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Salt-Branch": "{{ user `salt_branch` }}",
+        "Python-2": true,
+        "Python-3": true
       },
       "run_tags": {
         "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -46,6 +51,48 @@
           "delete_on_termination": true
         }
       ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "script": "AWS/scripts/prep-linux.sh",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=3"
+      ]
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": ".tmp/states",
+      "local_pillar_roots": ".tmp/pillar",
+      "custom_state": "git.minimal"
+    },
+    {
+      "type": "shell",
+      "inline": [
+         "sudo rm -rf /srv/salt /srv/pillar"
+       ]
+    },
+    {
+      "type": "shell-local",
+      "script": "AWS/scripts/prep-linux.sh",
+      "environment_vars": [
+        "SALT_BRANCH={{ user `salt_branch` }}",
+        "PY_VERSION=2"
+      ]
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": ".tmp/states",
+      "local_pillar_roots": ".tmp/pillar",
+      "custom_state": "git.minimal"
+    },
+    {
+      "type": "shell",
+      "inline": [
+         "sudo rm -rf /srv/salt /srv/pillar"
+       ]
     }
   ]
 }

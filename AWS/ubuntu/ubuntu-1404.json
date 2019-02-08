@@ -36,7 +36,7 @@
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": false
       },
       "run_tags": {
         "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -54,26 +54,6 @@
     }
   ],
   "provisioners": [
-    {
-      "type": "shell-local",
-      "script": "AWS/scripts/prep-linux.sh",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
-        "PY_VERSION=3"
-      ]
-    },
-    {
-      "type": "salt-masterless",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
-    },
-    {
-      "type": "shell",
-      "inline": [
-         "sudo rm -rf /srv/salt /srv/pillar"
-       ]
-    },
     {
       "type": "shell-local",
       "script": "AWS/scripts/prep-linux.sh",

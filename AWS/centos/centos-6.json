@@ -1,9 +1,11 @@
 {
-  "_comment": "Build with `packer build ubuntu.json`",
+  "_comment": "Build with `packer build centos.json`",
   "builders": [
     {
       "type": "amazon-ebs",
       "region": "{{ user `aws_region` }}",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
@@ -25,7 +27,7 @@
         "883373499178",
         "540082622920"
       ],
-      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} with salt@{{ user `salt_branch` }}",
+      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} for salt@{{ user `salt_branch` }}",
       "tags": {
         "Name":"CI // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
         "OS-Name": "{{ user `os_name` }}",
@@ -36,7 +38,7 @@
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": false
       },
       "run_tags": {
         "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -59,31 +61,12 @@
       "script": "AWS/scripts/prep-linux.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
-        "PY_VERSION=3"
-      ]
-    },
-    {
-      "type": "salt-masterless",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
-    },
-    {
-      "type": "shell",
-      "inline": [
-         "sudo rm -rf /srv/salt /srv/pillar"
-       ]
-    },
-    {
-      "type": "shell-local",
-      "script": "AWS/scripts/prep-linux.sh",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
         "PY_VERSION=2"
       ]
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-x python27 -p python27-devel",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"

@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build ubuntu.json`",
+  "_comment": "Build with `packer build opensuse.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -17,15 +17,15 @@
         ],
         "most_recent": true
       },
-      "instance_type": "t2.small",
+      "instance_type": "t2.large",
       "enable_t2_unlimited": true,
-      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_username": "ec2-user",
       "ami_name": "{{ user `ami_name` }}/{{ user `salt_branch`}}/{{timestamp}}",
       "ami_users": [
         "883373499178",
         "540082622920"
       ],
-      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} with salt@{{ user `salt_branch` }}",
+      "ami_description": "CI Image of {{ user `os_name` }} {{ user `os_version` }} for salt@{{ user `salt_branch` }}",
       "tags": {
         "Name":"CI // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
         "OS-Name": "{{ user `os_name` }}",
@@ -64,6 +64,7 @@
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-p python-pip -p python-setuptools",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"
@@ -84,6 +85,7 @@
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-p python-pip -p python-setuptools",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"

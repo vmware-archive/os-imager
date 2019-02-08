@@ -2,9 +2,9 @@
   "_comment": "Build with `packer build -var-file=arch-2019-01-09-us-west-2.json arch.json`",
   "ssh_username": "root",
   "aws_region": "us-west-2",
-  "ami_filter": "arch-linux-lts-hvm-*.x86_64-ebs",
-  "ami_owner": "093273469852",
-  "ami_name": "saltstack/base/arch/lts",
   "os_name": "Arch",
-  "os_version": "2019-01-09"
+  "os_version": "2019-01-09",
+  "salt_branch": "develop",
+  "ami_filter": "saltstack/base/arch/lts*",
+  "ami_name": "saltstack/ci/arch/lts"
 }
