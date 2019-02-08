@@ -295,6 +295,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -319,6 +327,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -343,6 +359,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -367,6 +391,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -391,6 +423,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -415,6 +455,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -439,6 +487,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -463,6 +519,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -487,6 +551,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -511,6 +583,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -535,6 +615,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -559,6 +647,14 @@ platform:
   arch: amd64
 
 steps:
+- name: throttle build
+  image: alpine
+  commands:
+  - "sh -c 't=$(shuf -i 45-300 -n 1); echo Sleeping $t seconds; sleep $t'"
+  when:
+    ref:
+    - "refs/tags/v1.*"
+
 - name: base-image
   image: hashicorp/packer
   commands:
@@ -683,6 +779,6 @@ data:
 
 ---
 kind: signature
-hmac: a1672f5d67c27529b398721ca4a946251023edc0fcd8ec09ac7e4a5ace787564
+hmac: 14879950e48a8523abe1a855f2621fad0736e2312e076b5e3f9c8f15cc4baeba
 
 ...

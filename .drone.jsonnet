@@ -69,7 +69,21 @@ local Step(os, os_version) = {
 local Build(os, os_version) = {
   kind: 'pipeline',
   name: std.format('build-%s-%s', [os, os_version]),
-  steps: [Step(os, os_version)],
+  steps: [
+    {
+      name: 'throttle build',
+      image: 'alpine',
+      commands: [
+        "sh -c 't=$(shuf -i 45-240 -n 1); echo Sleeping $t seconds; sleep $t'",
+      ],
+      when: {
+        ref: [
+          'refs/tags/v1.*',
+        ],
+      },
+    },
+    Step(os, os_version),
+  ],
 };
 
 
