@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build windows.json`",
+  "_comment": "Build with `packer build windows_old.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -20,7 +20,6 @@
         "540082622920"
       ],
       "instance_type": "c5.large",
-      "enable_t2_unlimited": true,
       "user_data_file": "{{ user `user_data_file` }}",
       "communicator": "winrm",
       "winrm_username": "Administrator",
@@ -46,11 +45,8 @@
   ],
   "provisioners": [
     {
-      "type": "powershell",
-      "inline": [
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/InitializeInstance.ps1 -Schedule",
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/SysprepInstance.ps1 -NoShutdown"
-      ]
+      "type": "windows-shell",
+      "inline": ["\"c:\\Program Files\\Amazon\\Ec2ConfigService\\ec2config.exe\" -sysprep"]
     }
-  ]
+    ]
 }
