@@ -216,24 +216,6 @@ steps:
 
 ---
 kind: pipeline
-name: lint-windows-2008r2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-windows-2008r2
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2008r2
-  when:
-    event:
-    - pull_request
-
----
-kind: pipeline
 name: lint-windows-2012r2
 
 platform:
@@ -672,30 +654,6 @@ steps:
 
 ---
 kind: pipeline
-name: build-windows-2008r2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make
-  - make build OS=windows OS_REV=2008r2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
-
----
-kind: pipeline
 name: build-windows-2012r2
 
 platform:
@@ -779,6 +737,6 @@ data:
 
 ---
 kind: signature
-hmac: a9681b8e2368f2decb1d45a9a1c7446ae94ceb4646480416831b83f91499446c
+hmac: cb96b3fc1a17b1e6e60ca050cc1933377db870b981b9cc18aee552889eec877a
 
 ...

@@ -14,7 +14,7 @@ local linux_distros = [
 ];
 
 local win_distros = [
-  { name: 'windows', version: '2008r2' },
+#  { name: 'windows', version: '2008r2' },
   { name: 'windows', version: '2012r2' },
   { name: 'windows', version: '2016' },
   { name: 'windows', version: '2019' },
