@@ -591,14 +591,14 @@ kind: secret
 type: general
 data:
   password: >
-    ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
-    s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
+    Aazhz_Ygq86WGzCbbjUgM07opxi05uFzSx_ymHgdA8cQPxm0dK3MUehJH8e_
+    nLMBJspfPVJ68YDBibQ1ZW9G2VGBXZUdHZzF34N69exdEA==
   username: >
-    I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6
-    _OK_ypQ4AfAiDjEsC2U=
+    lX3OCQrobO2Qtj4y29iF5kwFWQxutX27rOBzFehcoOqCqRdScn-p99l04WZR
+    nNLuFqP25_qJiet_sHg=
 
 ---
 kind: signature
-hmac: cd6627abd62cc5b69db632b743db811a9fdf2b3a93c0634a7006cbd7ebfe2471
+hmac: 44579521e432b4f7b9c372dae0d75735dd35229a55bfe83d059d76a16c0f5538
 
 ...
