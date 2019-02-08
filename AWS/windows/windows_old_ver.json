@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build windows.json`",
+  "_comment": "Build with `packer build windows_old.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -45,11 +45,8 @@
   ],
   "provisioners": [
     {
-      "type": "powershell",
-      "inline": [
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/InitializeInstance.ps1 -Schedule",
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/SysprepInstance.ps1 -NoShutdown"
-      ]
+      "type": "windows-shell",
+      "inline": ["\"c:\\Program Files\\Amazon\\Ec2ConfigService\\ec2config.exe\" -sysprep"]
     }
-  ]
+    ]
 }

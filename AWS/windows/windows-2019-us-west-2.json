@@ -5,5 +5,5 @@
   "ami_owner": "801119661308",
   "ami_name": "saltstack/base/windows/2019",
   "os_name": "Windows",
-  "os_version": "2019"
+  "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1"
 }

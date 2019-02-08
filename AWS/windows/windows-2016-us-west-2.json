@@ -5,5 +5,7 @@
   "ami_owner": "801119661308",
   "ami_name": "saltstack/base/windows/2016",
   "os_name": "Windows",
-  "os_version": "2016"
+  "os_version": "2016",
+  "user_data_file": "./scripts/SetUpWinRM.ps1",
+  "provisioner_type": "powershell"
 }
