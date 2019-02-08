@@ -74,7 +74,7 @@ local Build(os, os_version) = {
       name: 'throttle build',
       image: 'alpine',
       commands: [
-        "sh -c 't=$(shuf -i 45-240 -n 1); echo Sleeping $t seconds; sleep $t'",
+        "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'",
       ],
       when: {
         ref: [
@@ -96,8 +96,8 @@ local WindowBuild(os, os_version) = {
 local Secret() = {
   kind: 'secret',
   data: {
-    username: '86-e1HihDpl6JaC-vfT4ZFhU_8jCHePPWd2vJF3Om_D0jDJiUuddZTh-Pe8Srl7lRzRCZm2wb9FS_KbYbA==',
-    password: 'FqEWzOvpsRpu4hJrFOnHao0tbG0CrlJtTy5tEdyzNOhllbVrkKRHJYZcTA8U-8D922YShVihYjqhzJc59iRquFVsUGyzgP0uC4JnxuVUYg==',
+    username: 'I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6_OK_ypQ4AfAiDjEsC2U=',
+    password: 'ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==',
   },
 };
 
