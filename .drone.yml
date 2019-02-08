@@ -675,14 +675,14 @@ kind: secret
 type: general
 data:
   password: >
-    Aazhz_Ygq86WGzCbbjUgM07opxi05uFzSx_ymHgdA8cQPxm0dK3MUehJH8e_
-    nLMBJspfPVJ68YDBibQ1ZW9G2VGBXZUdHZzF34N69exdEA==
+    FqEWzOvpsRpu4hJrFOnHao0tbG0CrlJtTy5tEdyzNOhllbVrkKRHJYZcTA8U
+    -8D922YShVihYjqhzJc59iRquFVsUGyzgP0uC4JnxuVUYg==
   username: >
-    lX3OCQrobO2Qtj4y29iF5kwFWQxutX27rOBzFehcoOqCqRdScn-p99l04WZR
-    nNLuFqP25_qJiet_sHg=
+    86-e1HihDpl6JaC-vfT4ZFhU_8jCHePPWd2vJF3Om_D0jDJiUuddZTh-Pe8S
+    rl7lRzRCZm2wb9FS_KbYbA==
 
 ---
 kind: signature
-hmac: 258dd44e656384d5413146199f7795677e383412860c390d7aa00c1eee4c19b3
+hmac: a1672f5d67c27529b398721ca4a946251023edc0fcd8ec09ac7e4a5ace787564
 
 ...

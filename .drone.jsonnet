@@ -82,8 +82,8 @@ local WindowBuild(os, os_version) = {
 local Secret() = {
   kind: 'secret',
   data: {
-    username: 'lX3OCQrobO2Qtj4y29iF5kwFWQxutX27rOBzFehcoOqCqRdScn-p99l04WZRnNLuFqP25_qJiet_sHg=',
-    password: 'Aazhz_Ygq86WGzCbbjUgM07opxi05uFzSx_ymHgdA8cQPxm0dK3MUehJH8e_nLMBJspfPVJ68YDBibQ1ZW9G2VGBXZUdHZzF34N69exdEA==',
+    username: '86-e1HihDpl6JaC-vfT4ZFhU_8jCHePPWd2vJF3Om_D0jDJiUuddZTh-Pe8Srl7lRzRCZm2wb9FS_KbYbA==',
+    password: 'FqEWzOvpsRpu4hJrFOnHao0tbG0CrlJtTy5tEdyzNOhllbVrkKRHJYZcTA8U-8D922YShVihYjqhzJc59iRquFVsUGyzgP0uC4JnxuVUYg==',
   },
 };
 
