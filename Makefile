@@ -16,8 +16,14 @@ help:
 	@echo '  Usage:'
 	@echo '    make <target> OS=<SOME OS> OS_REV=<SOME OS REVISION>'
 
+check-paths:
+	$(info Checking paths...)
+ifeq ($(shell [ -e $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json ] && echo 1 || echo 0), 1)
+	$(eval TEMPLATE = $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json)
+endif
+
 .PHONY: validate
-validate:
+validate: check-paths
 	$(info OS=$(OS))
 	$(info OS_REV=$(OS_REV))
 	$(info TEMPLATE=$(TEMPLATE))
@@ -25,7 +31,7 @@ validate:
 	@packer validate -var-file=$(VAR_FILE) $(TEMPLATE)
 
 .PHONY: build
-build:
+build: check-paths
 	$(info OS=$(OS))
 	$(info OS_REV=$(OS_REV))
 	$(info TEMPLATE=$(TEMPLATE))
