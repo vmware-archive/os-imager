@@ -36,3 +36,4 @@ cmd.exe /c sc config winrm start= auto
 cmd.exe /c net start winrm
 
 </powershell>
+<persist>true</persist>
