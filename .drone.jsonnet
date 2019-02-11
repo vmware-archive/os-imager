@@ -14,11 +14,26 @@ local linux_distros = [
 ];
 
 local win_distros = [
-#  { name: 'windows', version: '2008r2' },
+  //  { name: 'windows', version: '2008r2' },
   { name: 'windows', version: '2012r2' },
   { name: 'windows', version: '2016' },
   { name: 'windows', version: '2019' },
 ];
+
+local BuildTriggers() = {
+  ref: [
+    'refs/tags/v1.*',
+  ],
+  event: [
+    'tag',
+  ],
+};
+
+local LintTriggers() = {
+  event: [
+    'pull_request',
+  ],
+};
 
 local Lint(os, os_version) = {
 
@@ -32,13 +47,9 @@ local Lint(os, os_version) = {
         'apk --no-cache add make',
         std.format('make validate OS=%s OS_REV=%s', [os, os_version]),
       ],
-      when: {
-        event: [
-          'pull_request',
-        ],
-      },
     },
   ],
+  trigger: LintTriggers(),
 };
 
 
@@ -58,11 +69,6 @@ local Step(os, os_version) = {
     'apk --no-cache add make',
     std.format('make build OS=%s OS_REV=%s', [os, os_version]),
   ],
-  when: {
-    ref: [
-      'refs/tags/v1.*',
-    ],
-  },
 };
 
 
@@ -76,14 +82,10 @@ local Build(os, os_version) = {
       commands: [
         "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'",
       ],
-      when: {
-        ref: [
-          'refs/tags/v1.*',
-        ],
-      },
     },
     Step(os, os_version),
   ],
+  trigger: BuildTriggers(),
 };
 
 
@@ -91,6 +93,7 @@ local WindowBuild(os, os_version) = {
   kind: 'pipeline',
   name: std.format('build-%s-%s', [os, os_version]),
   steps: [Step(os, os_version)],
+  trigger: BuildTriggers(),
 };
 
 local Secret() = {
