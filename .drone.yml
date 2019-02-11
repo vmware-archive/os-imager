@@ -12,9 +12,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=arch OS_REV=2019-01-09
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -30,9 +31,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=6
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -48,9 +50,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=7
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -66,9 +69,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=debian OS_REV=8
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -84,9 +88,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=debian OS_REV=9
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -102,9 +107,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=fedora OS_REV=28
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -120,9 +126,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=fedora OS_REV=29
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -138,9 +145,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=opensuse OS_REV=15
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -156,9 +164,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=opensuse OS_REV=42.3
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -174,9 +183,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1404
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -192,9 +202,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1604
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -210,9 +221,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1804
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -228,9 +240,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2012r2
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -246,9 +259,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2016
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -264,9 +278,10 @@ steps:
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2019
-  when:
-    event:
-    - pull_request
+
+trigger:
+  event:
+  - pull_request
 
 ---
 kind: pipeline
@@ -281,9 +296,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -296,9 +308,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -313,9 +328,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -328,9 +340,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -345,9 +360,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -360,9 +372,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -377,9 +392,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -392,9 +404,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -409,9 +424,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -424,9 +436,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -441,9 +456,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -456,9 +468,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -473,9 +488,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -488,9 +500,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -505,9 +520,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -520,9 +532,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -537,9 +552,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -552,9 +564,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -569,9 +584,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -584,9 +596,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -601,9 +616,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -616,9 +628,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -633,9 +648,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
-  when:
-    ref:
-    - "refs/tags/v1.*"
 
 - name: base-image
   image: hashicorp/packer
@@ -648,9 +660,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -672,9 +687,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -696,9 +714,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: pipeline
@@ -720,9 +741,12 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-  when:
-    ref:
-    - "refs/tags/v1.*"
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
 
 ---
 kind: secret
@@ -737,6 +761,6 @@ data:
 
 ---
 kind: signature
-hmac: cb96b3fc1a17b1e6e60ca050cc1933377db870b981b9cc18aee552889eec877a
+hmac: 64cedacef369a211568d348bfbee2e0256a337ced7257c57ed63cd41f134a8ce
 
 ...
