@@ -55,6 +55,12 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+         "sudo zypper -n remove aws-cli"
+       ]
+    },
+    {
       "type": "shell-local",
       "script": "AWS/scripts/prep-linux.sh",
       "environment_vars": [
@@ -93,7 +99,8 @@
     {
       "type": "shell",
       "inline": [
-         "sudo rm -rf /srv/salt /srv/pillar"
+         "sudo rm -rf /srv/salt /srv/pillar",
+         "sudo pip install awscli"
        ]
     }
   ]
