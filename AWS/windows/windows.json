@@ -79,7 +79,8 @@
       "type": "powershell",
       "inline": [
         "Remove-Item C:/salt/state -Recurse -Force",
-        "Remove-Item C:/salt/pillar -Recurse -Force"
+        "Remove-Item C:/salt/pillar -Recurse -Force",
+        "Start-Sleep -Seconds 10"
        ]
     },
     {
@@ -112,7 +113,8 @@
       "type": "powershell",
       "inline": [
         "Remove-Item C:/salt/state -Recurse -Force",
-        "Remove-Item C:/salt/pillar -Recurse -Force"
+        "Remove-Item C:/salt/pillar -Recurse -Force",
+        "Start-Sleep -Seconds 5"
        ]
     },
     {
