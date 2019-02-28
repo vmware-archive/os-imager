@@ -34,6 +34,7 @@
         "created-by": "packer",
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
+        "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
         "Python-3": true
@@ -77,7 +78,7 @@
     },
     {
       "type": "salt-masterless",
-      "bootstrap_args": "-X -p python2-pip -p python2-setuptools git v{{ user `bootstrap_version` }}",
+      "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "gitpython"

@@ -5,6 +5,7 @@
   "device_name": "/dev/xvda",
   "os_name": "Debian",
   "os_version": "8",
+  "bootstrap_args": "-X -U",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_name_prefix": "saltstack",
