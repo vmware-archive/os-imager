@@ -107,7 +107,7 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local  state.sls git.minimal --retcode-passthrough -l debug",
+        "salt-call --local  state.sls git.minimal --retcode-passthrough",
         "Remove-Item C:\\salt\\srv\\pillar -Recurse -Force"
        ]
     },
@@ -128,7 +128,7 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local  state.sls git.minimal --retcode-passthrough -l debug"
+        "salt-call --local  state.sls git.minimal --retcode-passthrough"
        ]
     },
     {

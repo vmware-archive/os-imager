@@ -96,7 +96,7 @@
       "inline": [
         "sudo rm -rf /srv/pillar /srv/salt/*",
         "sudo mv /tmp/pillar /srv",
-        "sudo salt-call --local  state.sls git.minimal --retcode-passthrough -l debug",
+        "sudo salt-call --local  state.sls git.minimal --retcode-passthrough",
         "sudo rm -rf /srv/pillar/* /srv/salt/* /tmp/salt /tmp/pillar"
        ]
     }
