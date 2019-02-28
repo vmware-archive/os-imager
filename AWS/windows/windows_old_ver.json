@@ -81,13 +81,13 @@
     {
       "type": "salt-masterless",
       "log_level": "debug",
-      "local_state_tree": ".tmp/win_states",
+      "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "windows.repo",
       "guest_os_type": "windows",
       "disable_sudo": true,
       "salt_bin_dir": "c:\\salt",
-      "bootstrap_args": "-pythonVersion 3 -runservice false -version {{ user `bootstrap_version` }}"
+      "bootstrap_args": "-pythonVersion 2 -runservice false -version {{ user `bootstrap_version` }}"
     },
     {
       "type":"file",
