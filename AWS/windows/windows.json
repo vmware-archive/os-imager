@@ -38,6 +38,7 @@
         "created-by": "packer",
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
+        "Provision-State-Name": "{{ user `state_name` }}",
         "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
@@ -107,7 +108,7 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local  state.sls git.minimal --retcode-passthrough",
+        "salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "Remove-Item C:\\salt\\srv\\pillar -Recurse -Force"
        ]
     },
@@ -128,7 +129,7 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local  state.sls git.minimal --retcode-passthrough"
+        "salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough"
        ]
     },
     {

@@ -7,6 +7,7 @@
   "bootstrap_args": "-X",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
+  "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "centos/7",
   "instance_type": "c5.large",
