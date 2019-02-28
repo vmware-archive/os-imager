@@ -58,23 +58,45 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "script": "AWS/scripts/prep-linux.sh",
+      "script": "AWS/files/prep-linux.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "PY_VERSION=2"
       ]
     },
     {
-      "type": "salt-masterless",
-      "bootstrap_args": "-X -x python27 -p python27-devel git v{{ user `bootstrap_version` }}",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
+      "type":"file",
+      "source": ".tmp/conf/minion",
+      "destination": "/tmp/gitfs.conf",
+      "direction": "upload"
     },
     {
       "type": "shell",
       "inline": [
-         "sudo rm -rf /srv/salt /srv/pillar"
+         "sudo mkdir -p /etc/salt/minion.d",
+         "sudo mv /tmp/gitfs.conf /etc/salt/minion.d/"
+       ]
+    },
+    {
+      "type": "salt-masterless",
+      "bootstrap_args": "-X -x python27 -p python27-devel git v{{ user `bootstrap_version` }}",
+      "local_state_tree": ".tmp/states",
+      "local_pillar_roots": ".tmp/pillar",
+      "custom_state": "gitpython"
+    },
+    {
+      "type":"file",
+      "source": ".tmp/pillar",
+      "destination": "/tmp/pillar",
+      "direction": "upload"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo rm -rf /srv/pillar /srv/salt/*",
+        "sudo mv /tmp/pillar /srv",
+        "sudo salt-call --local  state.sls git.minimal --retcode-passthrough -l debug",
+        "sudo rm -rf /srv/pillar/* /srv/salt/* /tmp/salt /tmp/pillar"
        ]
     }
   ]
