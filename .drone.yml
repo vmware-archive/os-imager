@@ -295,7 +295,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -327,7 +327,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -359,7 +359,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -391,7 +391,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -423,7 +423,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -455,7 +455,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -487,7 +487,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -519,7 +519,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -551,7 +551,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -583,7 +583,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -615,7 +615,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -647,7 +647,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -679,7 +679,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -711,7 +711,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -743,7 +743,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -775,7 +775,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -807,7 +807,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -839,7 +839,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -871,7 +871,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -903,7 +903,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -935,7 +935,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -967,7 +967,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -999,7 +999,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1031,7 +1031,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1063,7 +1063,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1095,7 +1095,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1127,7 +1127,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1159,7 +1159,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1191,7 +1191,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1223,7 +1223,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1255,7 +1255,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1287,7 +1287,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1319,7 +1319,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1351,7 +1351,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1383,7 +1383,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1415,7 +1415,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1447,7 +1447,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1479,7 +1479,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1511,7 +1511,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1543,7 +1543,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1575,7 +1575,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1607,7 +1607,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1639,7 +1639,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1671,7 +1671,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1703,7 +1703,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1735,7 +1735,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1767,7 +1767,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -1799,7 +1799,7 @@ steps:
 - name: throttle build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'"
 
 - name: ci-image
   image: hashicorp/packer
@@ -2156,6 +2156,6 @@ data:
 
 ---
 kind: signature
-hmac: f930c6eda4cce1dfaf74df580652e5104afeedb63908bf572cd2a5e0a5155c95
+hmac: e7855d170eeb61c25e12f747a74300735353389ed3fe382ddda39e141a3dcc45
 
 ...

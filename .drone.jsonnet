@@ -94,7 +94,7 @@ local Build(os, os_version, salt_branch) = {
       name: 'throttle build',
       image: 'alpine',
       commands: [
-        "sh -c 't=$(shuf -i 20-120 -n 1); echo Sleeping $t seconds; sleep $t'",
+        "sh -c 't=$(shuf -i 20-60 -n 1); echo Sleeping $t seconds; sleep $t'",
       ],
     },
   ] + [Step(os, os_version, salt_branch)],
