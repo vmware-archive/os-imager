@@ -36,6 +36,7 @@
         "created-by": "packer",
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
+        "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
         "Python-3": false
       },
@@ -65,7 +66,7 @@
     },
     {
       "type": "salt-masterless",
-      "bootstrap_args": "-x python27 -p python27-devel",
+      "bootstrap_args": "-X -x python27 -p python27-devel git v{{ user `bootstrap_version` }}",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"

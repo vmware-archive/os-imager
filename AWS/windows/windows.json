@@ -38,6 +38,7 @@
         "created-by": "packer",
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
+        "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
         "Python-3": true
       },
@@ -82,7 +83,7 @@
       "guest_os_type": "windows",
       "disable_sudo": true,
       "salt_bin_dir": "c:\\salt",
-      "bootstrap_args": "-pythonVersion 3 -runservice false"
+      "bootstrap_args": "-pythonVersion 3 -runservice false -version {{ user `bootstrap_version` }}"
     },
     {
       "type": "powershell",
@@ -115,7 +116,7 @@
       "guest_os_type": "windows",
       "disable_sudo": true,
       "salt_bin_dir": "c:\\salt",
-      "bootstrap_args": "-pythonVersion 3 -runservice false"
+      "bootstrap_args": "-pythonVersion 3 -runservice false -version {{ user `bootstrap_version` }}"
     },
     {
       "type": "powershell",

@@ -4,6 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "Ubuntu",
   "os_version": "1404",
+  "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "ubuntu/trusty.1404",

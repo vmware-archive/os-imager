@@ -36,6 +36,7 @@
         "created-by": "packer",
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
+        "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
         "Python-3": true
       },
@@ -67,7 +68,8 @@
       "type": "salt-masterless",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
+      "custom_state": "git.minimal",
+      "bootstrap_args": "-X git v{{ user `bootstrap_version` }}"
     },
     {
       "type": "shell",
@@ -87,7 +89,8 @@
       "type": "salt-masterless",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
+      "custom_state": "git.minimal",
+      "bootstrap_args": "-X git v{{ user `bootstrap_version` }}"
     },
     {
       "type": "shell",
