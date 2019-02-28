@@ -60,28 +60,46 @@
     },
     {
       "type": "powershell",
-      "script": "AWS/scripts/prep-windows.ps1",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
-        "PY_VERSION=3"
-      ]
+      "script": ".tmp/scripts/Install-Git.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "AWS/scripts/update-git-path.ps1"
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "New-Item -Path C:\\salt\\conf\\minion.d -ItemType directory"
+       ]
+    },
+    {
+      "type":"file",
+      "source": ".tmp/conf/minion",
+      "destination": "C:\\salt\\conf\\minion.d\\gitfs.conf",
+      "direction": "upload"
     },
     {
       "type": "salt-masterless",
-      "local_state_tree": ".tmp/states",
+      "log_level": "debug",
+      "local_state_tree": ".tmp/win_states",
       "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal",
+      "custom_state": "windows.repo",
       "guest_os_type": "windows",
       "disable_sudo": true,
       "salt_bin_dir": "c:\\salt",
       "bootstrap_args": "-pythonVersion 3 -runservice false -version {{ user `bootstrap_version` }}"
     },
     {
+      "type":"file",
+      "source": ".tmp/pillar/",
+      "destination": "c:\\salt\\srv\\pillar\\",
+      "direction": "upload"
+    },
+    {
       "type": "powershell",
       "inline": [
-        "Remove-Item C:/salt/state -Recurse -Force",
-        "Remove-Item C:/salt/pillar -Recurse -Force",
-        "Start-Sleep -Seconds 10"
+        "salt-call --local  state.sls git.minimal --retcode-passthrough -l debug",
+        "Remove-Item C:\\salt\\srv\\pillar -Recurse -Force"
        ]
     },
     {
@@ -93,29 +111,24 @@
       ]
     },
     {
-      "type": "powershell",
-      "script": "AWS/scripts/prep-windows.ps1",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
-        "PY_VERSION=2"
-      ]
-    },
-    {
-      "type": "salt-masterless",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal",
-      "guest_os_type": "windows",
-      "disable_sudo": true,
-      "salt_bin_dir": "c:\\salt",
-      "bootstrap_args": "-pythonVersion 3 -runservice false -version {{ user `bootstrap_version` }}"
+      "type":"file",
+      "source": ".tmp/pillar/",
+      "destination": "c:\\salt\\srv\\pillar\\",
+      "direction": "upload"
     },
     {
       "type": "powershell",
       "inline": [
-        "Remove-Item C:/salt/state -Recurse -Force",
-        "Remove-Item C:/salt/pillar -Recurse -Force",
-        "Start-Sleep -Seconds 5"
+        "salt-call --local  state.sls git.minimal --retcode-passthrough -l debug"
+       ]
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "Remove-Item C:\\salt\\state -Recurse -Force",
+        "Remove-Item C:\\salt\\pillar -Recurse -Force",
+        "Remove-Item C:\\salt\\srv\\salt -Recurse -Force",
+        "Remove-Item C:\\salt\\srv\\pillar -Recurse -Force"
        ]
     },
     {
