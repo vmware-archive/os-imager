@@ -61,7 +61,7 @@
     },
     {
       "type": "shell-local",
-      "script": "AWS/scripts/prep-windows.sh",
+      "script": "AWS/files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "PY_VERSION=3"
@@ -73,7 +73,7 @@
     },
     {
       "type": "powershell",
-      "script": "AWS/scripts/update-git-path.ps1"
+      "script": "AWS/files/update-git-path.ps1"
     },
     {
       "type": "powershell",
@@ -113,7 +113,7 @@
     },
     {
       "type": "shell-local",
-      "script": "AWS/scripts/prep-windows.sh",
+      "script": "AWS/files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "PY_VERSION=2"
