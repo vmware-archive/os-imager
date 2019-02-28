@@ -4,6 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "Ubuntu",
   "os_version": "1804",
+  "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_filter": "saltstack/base/ubuntu/bionic.1804*",
   "ami_name": "saltstack/ci/ubuntu/bionic.1804"

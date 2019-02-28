@@ -5,6 +5,7 @@
   "device_name": "xvda",
   "os_name": "Debian",
   "os_version": "9",
+  "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_filter": "saltstack/base/debian/strech.9*",
   "ami_name": "saltstack/ci/debian/strech.9"

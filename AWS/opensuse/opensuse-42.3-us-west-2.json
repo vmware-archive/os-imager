@@ -4,6 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "OpenSuse",
   "os_version": "42.3",
+  "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_filter": "saltstack/base/opensuse/leap.42.3*",
   "ami_name": "saltstack/ci/opensuse/leap.42.3"

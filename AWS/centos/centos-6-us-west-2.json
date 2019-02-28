@@ -4,6 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "CentOS",
   "os_version": "6",
+  "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "ami_filter": "saltstack/base/centos/6*",
   "ami_name": "saltstack/ci/centos/6"
