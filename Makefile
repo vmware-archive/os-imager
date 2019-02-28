@@ -49,3 +49,12 @@ build-staging: check-paths
 	$(info TEMPLATE=$(TEMPLATE))
 	$(info VAR_FILE=$(VAR_FILE))
 	@packer build -var-file=$(VAR_FILE) -var 'build_type=ci-staging' -var 'source_build_type=base-staging' -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
+
+.PHONY: build-debug
+build-debug: check-paths
+	$(info OS=$(OS))
+	$(info OS_REV=$(OS_REV))
+	$(info SALT_BRANCH=$(SALT_BRANCH))
+	$(info TEMPLATE=$(TEMPLATE))
+	$(info VAR_FILE=$(VAR_FILE))
+	@packer build -on-error=ask -debug -var-file=$(VAR_FILE) -var 'build_type=ci-staging' -var 'source_build_type=base-staging' -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
