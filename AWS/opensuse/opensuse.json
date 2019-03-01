@@ -52,9 +52,10 @@
     {
       "type": "shell",
       "inline": [
-        "sudo zypper update -y",
-        "sudo zypper install -y git vim",
-        "sudo rm -rf /tmp/* && sudo zypper clean -a"
+        "sudo zypper --non-interactive --gpg-auto-import-keys refresh",
+        "sudo zypper --non-interactive --gpg-auto-import-keys update",
+        "sudo zypper --non-interactive install --auto-agree-with-licenses git vim",
+        "sudo rm -rf /tmp/* && sudo zypper --non-interactive clean -a"
       ]
     }
   ]
