@@ -4,7 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "Arch",
   "os_version": "2019-01-09",
-  "bootstrap_args": "-X -U",
+  "bootstrap_args": "-qXU",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "state_name": "git.minimal",
