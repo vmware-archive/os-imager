@@ -53,7 +53,8 @@
       "type": "shell",
       "inline": [
         "sudo yum update -y",
-        "sudo yum install git vim -y"
+        "sudo yum install git vim -y",
+        "sudo rm -rf /tmp/* && sudo yum clean all"
       ]
     }
   ]

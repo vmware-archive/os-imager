@@ -52,8 +52,9 @@
     {
       "type": "shell",
       "inline": [
-        "sudo pacman -Syu --noconfirm",
-        "sudo pacman -Sy --needed --noconfirm git vim"
+        "sudo pacman -Syyu --noconfirm",
+        "sudo pacman -Sy --needed --noconfirm git vim",
+        "sudo rm -rf /tmp/* /var/cache/pacman/pkg/* && sudo pacman -Scc"
       ]
     }
   ]

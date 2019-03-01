@@ -53,7 +53,8 @@
       "type": "shell",
       "inline": [
         "sudo zypper update -y",
-        "sudo zypper install -y git vim"
+        "sudo zypper install -y git vim",
+        "sudo rm -rf /tmp/* && sudo zypper clean -a"
       ]
     }
   ]
