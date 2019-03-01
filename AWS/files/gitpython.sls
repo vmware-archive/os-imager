@@ -13,7 +13,7 @@ pip-install:
     - cwd: /
     - reload_modules: True
     - onlyif:
-      - '[ "$(which pip 2>/dev/null)" = "" ]'
+      - '[ "$(which pip{{ grains['pythonversion'][0] }} 2>/dev/null)" = "" ]'
     - require:
       - download-get-pip
 
