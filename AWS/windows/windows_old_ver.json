@@ -108,7 +108,26 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
+        "salt-call --local --retcode-passthrough  state.single module.run winrepo.update_git_repos clean=True",
+        "salt-call --local --retcode-passthrough  state.single module.run winrepo.genrepo"
+       ]
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "salt-call --local --retcode-passthrough  state.single module.run pkg.refresh_db verbose=True failhard=True"
+       ]
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "salt-call --local --retcode-passthrough state.sls windows.compiler"
+       ]
+    },
+    {
+      "type": "powershell",
+      "inline": [
+        "salt-call --local --retcode-passthrough state.sls {{ user `state_name` }}",
         "Remove-Item C:\\salt\\srv\\pillar -Recurse -Force"
        ]
     },
