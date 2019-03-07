@@ -46,10 +46,13 @@
   "provisioners": [
     {
       "type": "powershell",
-      "inline": [
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/InitializeInstance.ps1 -Schedule",
-        "C:/ProgramData/Amazon/EC2-Windows/Launch/Scripts/SysprepInstance.ps1 -NoShutdown"
-      ]
+      "script": "AWS/windows/scripts/InstallAndConfigureOpenSSH.ps1",
+      "elevated_user": "SYSTEM",
+      "elevated_password": ""
+    },
+    {
+      "type": "powershell",
+      "script": "AWS/windows/scripts/SysPrep.ps1"
     }
   ]
 }

@@ -45,8 +45,14 @@
   ],
   "provisioners": [
     {
-      "type": "windows-shell",
-      "inline": ["\"c:\\Program Files\\Amazon\\Ec2ConfigService\\ec2config.exe\" -sysprep"]
+      "type": "powershell",
+      "script": "AWS/windows/scripts/InstallAndConfigureOpenSSH.ps1",
+      "elevated_user": "SYSTEM",
+      "elevated_password": ""
+    },
+    {
+      "type": "powershell",
+      "script": "AWS/windows/scripts/SysPrep.ps1"
     }
   ]
 }
