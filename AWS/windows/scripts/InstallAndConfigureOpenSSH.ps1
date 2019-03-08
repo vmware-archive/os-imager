@@ -129,8 +129,12 @@ if ($LASTEXITCODE -ne 0) {
 
 $SSHD_CONFIG = [io.path]::combine($DATA_DIR, 'sshd_config')
 $SSHD_CONFIG_EXTRA = @'
+Match All
+# We need the above line to terminate the default match block above
 
+# Log to %PROGRAMDATA%\ssh\logs
 SyslogFacility LOCAL0
+# Very verbose logging
 LogLevel DEBUG3
 '@
 # Un-comment below for debug logs
@@ -206,6 +210,13 @@ Disable-ScheduledTask -TaskName $taskName
 & Powershell.exe -ExecutionPolicy Bypass -File $DOWNLOAD_KEYS_SCRIPT
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to download key pair"
+    exit 1
+}
+
+# Make sure sshd starts after all the changes we did
+Start-Service sshd -ErrorAction Stop
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "FAILED: Start-Service sshd (after our changes to perms and config)"
     exit 1
 }
 
