@@ -238,9 +238,24 @@ End {}
 
 if (!($IsLinux -or $IsOSX))
 {
+  $MaxMemoryPerShell = [int](Get-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB).value
+  $MaxConcurrentCommandsPerShell = [int](Get-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell).value
   Write-Host "Current PowerShell Memory Settings:"
-  Write-Host " * Memory for Machine wide: $((Get-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB).value) MB"
-  Write-Host " * Memory for Plugin is : $((Get-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell).value) MB"
+  Write-Host " * Memory for Machine wide: $MaxMemoryPerShell MB"
+  Write-Host " * Memory for Plugin is : $MaxConcurrentCommandsPerShell MB"
+  if (($MaxMemoryPerShell -ne 7500 -and $MaxMemoryPerShell -lt 7500) -or ($MaxConcurrentCommandsPerShell -ne 7500 -and $MaxConcurrentCommandsPerShell -lt 7500)) {
+    if ($MaxMemoryPerShell -ne 7500 -and $MaxMemoryPerShell -lt 7500) {
+      Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB 7500
+    }
+    if ($MaxConcurrentCommandsPerShell -ne 7500 -and $MaxConcurrentCommandsPerShell -lt 7500) {
+      Set-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell 7500
+    }
+    $MaxMemoryPerShell = [int](Get-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB).value
+    $MaxConcurrentCommandsPerShell = [int](Get-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell).value
+    Write-Host "Updated PowerShell Memory Settings:"
+    Write-Host " * Memory for Machine wide: $MaxMemoryPerShell MB"
+    Write-Host " * Memory for Plugin is : $MaxConcurrentCommandsPerShell MB"
+  }
   Write-Host ""
   Write-Host ""
   Write-Host "Current Page file(s):"
