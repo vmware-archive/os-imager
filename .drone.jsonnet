@@ -21,7 +21,7 @@ local distros = [
 
 local BuildTrigger() = {
   ref: [
-    'refs/tags/v1.*',
+    'refs/tags/v2.*',
   ],
   event: [
     'tag',
@@ -33,12 +33,22 @@ local StagingBuildTrigger() = {
     'push',
   ],
   branch: [
-    'master',
+    'ci',
   ],
 };
 
-local Lint() = {
+local salt_branches = [
+  /*
+   * These are the salt branches, which map to salt-jenkins branches
+   */
+  '2017.7',
+  '2018.3',
+  '2019.2',
+  'develop',
+];
 
+
+local Lint() = {
   kind: 'pipeline',
   name: 'Lint',
   steps: [
@@ -67,13 +77,13 @@ local Build(distro, staging) = {
       commands: [
         std.format(
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
-          { offset: 7 * distro.multiplier }
+          { offset: 7 * std.length(salt_branches) * distro.multiplier }
         ),
       ],
     },
   ] + [
     {
-      name: 'base-image',
+      name: salt_branch,
       image: 'hashicorp/packer',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -86,23 +96,24 @@ local Build(distro, staging) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-        std.format('make build%s OS=%s OS_REV=%s', [
+        std.format('make build%s OS=%s OS_REV=%s SALT_BRANCH=%s', [
           if staging then '-staging' else '',
           distro.name,
           distro.version,
+          salt_branch,
         ]),
       ],
       depends_on: [
         'throttle-build',
       ],
-    },
+    }
+    for salt_branch in salt_branches
   ],
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
     'Lint',
   ],
 };
-
 
 local Secret() = {
   kind: 'secret',

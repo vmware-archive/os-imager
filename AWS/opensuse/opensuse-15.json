@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build arch.json`",
+  "_comment": "Build with `packer build opensuse.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -38,7 +38,7 @@
         "Python-3": true
       },
       "run_tags": {
-        "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
+        "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
         "created-by": "packer",
         "Owner": "SRE"
       },
@@ -63,6 +63,7 @@
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-p python2-pip -p python2-setuptools",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"
@@ -83,6 +84,7 @@
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-p python2-pip -p python2-setuptools",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"

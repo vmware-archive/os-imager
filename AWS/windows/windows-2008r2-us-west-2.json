@@ -1,13 +1,13 @@
 {
-  "_comment": "Build with `packer build -var-file=windows-2012r2-us-west-2.json windows_old_ver.json`",
+  "_comment": "Build with `packer build -var-file=windows-2008r2-us-west-2.json windows_old_ver.json`",
   "aws_region": "us-west-2",
-  "ami_filter": "Windows_Server-2008-R2_SP1-English-64Bit-Base-*",
-  "ami_owner": "801119661308",
+  "os_name": "Windows",
+  "os_version": "2008r2",
+  "salt_branch": "develop",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "windows/2008r2",
   "instance_type": "c5.large",
-  "build_type": "base",
-  "os_name": "Windows",
-  "os_version": "2008r2",
+  "build_type": "ci",
+  "source_build_type": "base",
   "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1"
 }

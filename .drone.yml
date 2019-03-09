@@ -139,13 +139,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09
+  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -159,7 +201,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -176,13 +218,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6
+  - make build OS=centos OS_REV=6 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=6 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=6 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=6 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -196,7 +280,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -213,13 +297,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7
+  - make build OS=centos OS_REV=7 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=7 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=7 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=centos OS_REV=7 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -233,7 +359,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -250,13 +376,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8
+  - make build OS=debian OS_REV=8 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=8 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=8 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=8 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -270,7 +438,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -287,13 +455,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9
+  - make build OS=debian OS_REV=9 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=9 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=9 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=debian OS_REV=9 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -307,7 +517,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -324,13 +534,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
+  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28
+  - make build OS=fedora OS_REV=28 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=28 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=28 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=28 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -344,7 +596,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -361,13 +613,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29
+  - make build OS=fedora OS_REV=29 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=29 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=29 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=fedora OS_REV=29 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -381,7 +675,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -398,13 +692,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15
+  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=15 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -418,7 +754,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -435,13 +771,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3
+  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -455,7 +833,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -472,13 +850,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404
+  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -492,7 +912,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -509,13 +929,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604
+  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -529,7 +991,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -546,13 +1008,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 336 seconds; sleep 336'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804
+  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -566,7 +1070,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -585,11 +1089,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2
+  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -603,7 +1149,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -622,11 +1168,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016
+  - make build OS=windows OS_REV=2016 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2016 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2016 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2016 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -640,7 +1228,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -659,11 +1247,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019
+  - make build OS=windows OS_REV=2019 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2019 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2019 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=windows OS_REV=2019 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -677,7 +1307,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/v2.*"
 
 depends_on:
 - Lint
@@ -694,13 +1324,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09
+  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -712,7 +1384,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -731,13 +1403,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6
+  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -749,7 +1463,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -768,13 +1482,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7
+  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -786,7 +1542,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -805,13 +1561,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8
+  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -823,7 +1621,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -842,13 +1640,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9
+  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -860,7 +1700,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -879,13 +1719,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
+  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28
+  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -897,7 +1779,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -916,13 +1798,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29
+  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -934,7 +1858,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -953,13 +1877,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15
+  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -971,7 +1937,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -990,13 +1956,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3
+  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1008,7 +2016,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1027,13 +2035,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404
+  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1045,7 +2095,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1064,13 +2114,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604
+  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1082,7 +2174,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1101,13 +2193,55 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 336 seconds; sleep 336'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804
+  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1119,7 +2253,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1140,11 +2274,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2
+  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1156,7 +2332,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1177,11 +2353,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016
+  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1193,7 +2411,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1214,11 +2432,53 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019
+  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1230,7 +2490,7 @@ steps:
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1250,6 +2510,6 @@ data:
 
 ---
 kind: signature
-hmac: 1ce9099e7e519be0d535f148762a0b0c2e3ed50b5769d67c661306772b60b81b
+hmac: 073fe2e1a64843de02ac74718a1ecc23df65806fd018613b4b8d44e3edb87bcd
 
 ...

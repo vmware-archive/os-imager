@@ -2,12 +2,12 @@
   "_comment": "Build with `packer build -var-file=ubuntu-1604-us-west-2.json ubuntu.json`",
   "ssh_username": "ubuntu",
   "aws_region": "us-west-2",
-  "ami_filter": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*",
-  "ami_owner": "099720109477",
+  "os_name": "Ubuntu",
+  "os_version": "1604",
+  "salt_branch": "develop",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "ubuntu/xenial.1604",
   "instance_type": "c5.large",
-  "build_type": "base",
-  "os_name": "Ubuntu",
-  "os_version": "1604"
+  "build_type": "ci",
+  "source_build_type": "base"
 }

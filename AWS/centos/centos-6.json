@@ -1,9 +1,11 @@
 {
-  "_comment": "Build with `packer build arch.json`",
+  "_comment": "Build with `packer build centos.json`",
   "builders": [
     {
       "type": "amazon-ebs",
       "region": "{{ user `aws_region` }}",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
@@ -35,10 +37,10 @@
         "Owner": "SRE",
         "Salt-Branch": "{{ user `salt_branch` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": false
       },
       "run_tags": {
-        "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
+        "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
         "created-by": "packer",
         "Owner": "SRE"
       },
@@ -58,31 +60,12 @@
       "script": "AWS/scripts/prep-linux.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
-        "PY_VERSION=3"
-      ]
-    },
-    {
-      "type": "salt-masterless",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
-      "custom_state": "git.minimal"
-    },
-    {
-      "type": "shell",
-      "inline": [
-         "sudo rm -rf /srv/salt /srv/pillar"
-       ]
-    },
-    {
-      "type": "shell-local",
-      "script": "AWS/scripts/prep-linux.sh",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
         "PY_VERSION=2"
       ]
     },
     {
       "type": "salt-masterless",
+      "bootstrap_args": "-x python27 -p python27-devel",
       "local_state_tree": ".tmp/states",
       "local_pillar_roots": ".tmp/pillar",
       "custom_state": "git.minimal"
