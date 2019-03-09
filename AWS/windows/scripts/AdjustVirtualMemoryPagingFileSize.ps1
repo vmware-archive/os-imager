@@ -238,6 +238,17 @@ End {}
 
 if (!($IsLinux -or $IsOSX))
 {
+  Write-Host "Current Page file(s):"
+  try {
+      Get-CimInstance -ClassName Win32_PageFileSetting -ErrorAction Stop |Select-Object Name,
+        @{Name="InitialSize(MB)";Expression={if($_.InitialSize -eq 0){"System Managed"}else{$_.InitialSize}}},
+        @{Name="MaximumSize(MB)";Expression={if($_.MaximumSize -eq 0){"System Managed"}else{$_.MaximumSize}}}|
+        Format-Table -AutoSize
+  } catch {
+      Write-Warning -Message "Failed to query Win32_PageFileSetting class because $($_.Exception.Message)"
+  }
+  Write-Host ""
+  Write-Host ""
 
   $drive_letter = $Env:DRIVE_LETTER
   $initial_size = $Env:INITIAL_SIZE
@@ -247,6 +258,16 @@ if (!($IsLinux -or $IsOSX))
   Write-Host "Running: Set-PageFile -DriveLetter $drive_letter -InitialSize $initial_size -MaximumSize $maximum_size"
   Set-PageFile -DriveLetter $drive_letter -InitialSize $initial_size -MaximumSize $maximum_size
   Write-Host "Done."
+  Write-Host ""
+  Write-Host "Final Page file(s):"
+  try {
+      Get-CimInstance -ClassName Win32_PageFileSetting -ErrorAction Stop |Select-Object Name,
+        @{Name="InitialSize(MB)";Expression={if($_.InitialSize -eq 0){"System Managed"}else{$_.InitialSize}}},
+        @{Name="MaximumSize(MB)";Expression={if($_.MaximumSize -eq 0){"System Managed"}else{$_.MaximumSize}}}|
+        Format-Table -AutoSize
+  } catch {
+      Write-Warning -Message "Failed to query Win32_PageFileSetting class because $($_.Exception.Message)"
+  }
 }
 else
 {
