@@ -22,7 +22,16 @@ write-host "(host) setting up WinRM"
 
 cmd.exe /c winrm quickconfig -q
 cmd.exe /c winrm set "winrm/config" '@{MaxTimeoutms="1800000"}'
-cmd.exe /c winrm set "winrm/config/winrs" '@{MaxMemoryPerShellMB="1024"}'
+#cmd.exe /c winrm set "winrm/config/winrs" '@{MaxMemoryPerShellMB="1024"}'
+$PowershellMemory = 5000
+$MaxMemoryPerShell = [int](Get-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB).value
+if ($MaxMemoryPerShell -ne $PowershellMemory -And $MaxMemoryPerShell -lt $PowershellMemory) {
+  Set-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB $PowershellMemory
+}
+$MaxConcurrentCommandsPerShell = [int](Get-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell).value
+if ($MaxConcurrentCommandsPerShell -ne $PowershellMemory -and  $MaxConcurrentCommandsPerShell -lt PowershellMemory ) {
+  Set-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell $PowershellMemory
+}
 cmd.exe /c winrm set "winrm/config/service" '@{AllowUnencrypted="true"}'
 cmd.exe /c winrm set "winrm/config/client" '@{AllowUnencrypted="true"}'
 cmd.exe /c winrm set "winrm/config/service/auth" '@{Basic="true"}'
