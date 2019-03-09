@@ -46,18 +46,11 @@
   "provisioners": [
     {
       "type": "powershell",
-      "script": "AWS/windows/scripts/AdjustVirtualMemoryPagingFileSize.ps1",
+      "script": "AWS/windows/scripts/AdjustMemory.ps1",
       "environment_vars": [
         "INITIAL_SIZE=4096",
         "MAXIMUM_SIZE=8912",
         "DRIVE_LETTER=C"
-      ]
-    },
-    {
-      "type": "powershell",
-      "script": "AWS/windows/scripts/Set-PowerShellMemoryTuning.ps1",
-      "environment_vars": [
-        "MEMORY_VALUE=5000"
       ]
     },
     {

@@ -238,6 +238,11 @@ End {}
 
 if (!($IsLinux -or $IsOSX))
 {
+  Write-Host "Current PowerShell Memory Settings:"
+  Write-Host " * Memory for Machine wide: $((Get-Item WSMan:\localhost\Shell\MaxMemoryPerShellMB).value) MB"
+  Write-Host " * Memory for Plugin is : $((Get-Item WSMan:localhost\Plugin\microsoft.powershell\Quotas\MaxConcurrentCommandsPerShell).value) MB"
+  Write-Host ""
+  Write-Host ""
   Write-Host "Current Page file(s):"
   try {
       Get-CimInstance -ClassName Win32_PageFileSetting -ErrorAction Stop |Select-Object Name,
