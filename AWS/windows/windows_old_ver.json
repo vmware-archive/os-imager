@@ -55,6 +55,15 @@
     },
     {
       "type": "powershell",
+      "script": "AWS/windows/scripts/AdjustMemory.ps1",
+      "environment_vars": [
+        "INITIAL_SIZE=4096",
+        "MAXIMUM_SIZE=8912",
+        "DRIVE_LETTER=Z"
+      ]
+    },
+    {
+      "type": "powershell",
       "script": "AWS/windows/scripts/InstallAndConfigureOpenSSH.ps1",
       "elevated_user": "SYSTEM",
       "elevated_password": ""
