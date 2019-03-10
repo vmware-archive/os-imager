@@ -115,7 +115,7 @@
     {
       "type": "powershell",
       "inline": [
-        "salt-call --local --retcode-passthrough  state.single module.run pkg.refresh_db verbose=True failhard=True"
+        "salt-call --local --retcode-passthrough  state.single module.run pkg.refresh_db failhard=True"
        ]
     },
     {
