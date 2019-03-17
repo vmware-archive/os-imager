@@ -25,14 +25,14 @@
       "winrm_username": "Administrator",
       "winrm_use_ssl": true,
       "winrm_insecure": true,
-      "ami_name": "{{ user `ami_name` }}/{{timestamp}}",
-      "ami_description": "Base Image of {{ user `os_name` }} {{ user `os_version` }}",
+      "ami_name": "{{ user `ami_name_prefix` }}/{{ user `build_type` }}/{{ user `ami_name_suffix` }}/{{timestamp}}",
+      "ami_description": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}",
       "tags": {
-        "Name":"Base // {{ user `os_name` }} {{ user `os_version`}}",
+        "Name":"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
-        "Build-Type": "BASE",
+        "Build-Type": "{{ user `build_type` | upper }}",
         "created-by": "packer",
         "Owner": "SRE"
       },

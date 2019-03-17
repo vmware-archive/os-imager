@@ -4,7 +4,9 @@
   "aws_region": "us-west-2",
   "ami_filter": "Fedora-Cloud-Base-29-1.2.x86_64-hvm-us-west-2-gp2-0",
   "ami_owner": "125523088429",
-  "ami_name": "saltstack/base/fedora/29",
+  "ami_name_prefix": "saltstack",
+  "ami_name_suffix": "fedora/29",
+  "build_type": "base",
   "os_name": "Fedora",
   "os_version": "29"
 }

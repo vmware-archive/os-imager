@@ -4,7 +4,9 @@
   "aws_region": "us-west-2",
   "ami_filter": "debian-stretch-hvm-x86_64-*",
   "ami_owner": "679593333241",
-  "ami_name": "saltstack/base/debian/strech.9",
+  "ami_name_prefix": "saltstack",
+  "ami_name_suffix": "debian/strech.9",
+  "build_type": "base",
   "device_name": "xvda",
   "os_name": "Debian",
   "os_version": "9"

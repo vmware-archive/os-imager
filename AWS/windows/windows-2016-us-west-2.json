@@ -3,7 +3,9 @@
   "aws_region": "us-west-2",
   "ami_filter": "Windows_Server-2016-English-Full-Base-*",
   "ami_owner": "801119661308",
-  "ami_name": "saltstack/base/windows/2016",
+  "ami_name_prefix": "saltstack",
+  "ami_name_suffix": "windows/2016",
+  "build_type": "base",
   "os_name": "Windows",
   "os_version": "2016",
   "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1"
