@@ -48,9 +48,9 @@
       "type": "powershell",
       "script": "AWS/windows/scripts/AdjustMemory.ps1",
       "environment_vars": [
-        "INITIAL_SIZE=4096",
+        "INITIAL_SIZE=8912",
         "MAXIMUM_SIZE=8912",
-        "DRIVE_LETTER=C"
+        "DRIVE_LETTER=D"
       ]
     },
     {
