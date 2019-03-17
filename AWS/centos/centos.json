@@ -36,7 +36,7 @@
         "Owner": "SRE"
       },
       "run_tags": {
-        "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
+        "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
         "created-by": "packer",
         "Owner": "SRE"
       },
