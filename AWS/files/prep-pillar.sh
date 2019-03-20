@@ -8,4 +8,5 @@ mkdir -p .tmp/pillar
 printf "base:\n  '*':\n    - base\n" > .tmp/pillar/top.sls
 printf "py$PY_VERSION: true\n" > .tmp/pillar/base.sls
 printf "packer_build: true\n" >> .tmp/pillar/base.sls
+printf "packer_golden_images_build: true\n" >> .tmp/pillar/base.sls
 printf "create_testing_dir: false\n" >> .tmp/pillar/base.sls
