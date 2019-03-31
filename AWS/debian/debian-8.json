@@ -49,12 +49,18 @@
   ],
   "provisioners": [
     {
+      "type":"file",
+      "source": "AWS/debian/files/sources.list",
+      "destination": "/tmp/sources.list",
+      "direction": "upload"
+    },
+    {
       "type": "shell",
       "inline": [
         "sudo  rm -rf /etc/apt/apt.conf.d/50unattended-upgrades",
         "echo 'Acquire::Check-Valid-Until false;' | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid",
-        "sudo sed -i s/jessie-updates/jessie-backports/g /etc/apt/sources.list",
-        "sudo sed -i s/deb\\.debian/archive\\.debian/g /etc/apt/sources.list",
+        "sudo rm -rf /etc/apt/sources.list.d/*",
+        "sudo mv /tmp/sources.list /etc/apt/sources.list",
         "sudo apt-get install -y debian-archive-keyring",
         "sudo apt-get update -y && sudo apt-get upgrade -y",
         "sudo apt-get install -y git vim ",
