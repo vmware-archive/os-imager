@@ -19,8 +19,8 @@ help:
 
 check-paths:
 	$(info Checking paths...)
-	@mkdir -p .tmp/states .tmp/win_states .tmp/pillar .tmp/scripts .tmp/conf
-	@touch .tmp/conf/minion .tmp/scripts/Install-Git.ps1
+	@mkdir -p .tmp/$(SALT_BRANCH)/states .tmp/$(SALT_BRANCH)/win_states .tmp/$(SALT_BRANCH)/pillar .tmp/scripts .tmp/$(SALT_BRANCH)/conf
+	@touch .tmp/scripts/Install-Git.ps1
 ifeq ($(shell [ -e $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json ] && echo 1 || echo 0), 1)
 	$(eval TEMPLATE = $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json)
 endif

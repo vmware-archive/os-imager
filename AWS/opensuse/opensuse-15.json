@@ -65,8 +65,9 @@
       ]
     },
     {
-      "type":"file",
-      "source": ".tmp/conf/minion",
+      "type": "file",
+      "generated": true,
+      "source": ".tmp/{{ user `salt_branch` }}/conf/minion",
       "destination": "/tmp/gitfs.conf",
       "direction": "upload"
     },
@@ -80,13 +81,14 @@
     {
       "type": "salt-masterless",
       "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}",
-      "local_state_tree": ".tmp/states",
-      "local_pillar_roots": ".tmp/pillar",
+      "local_state_tree": ".tmp/{{ user `salt_branch` }}/states",
+      "local_pillar_roots": ".tmp/{{ user `salt_branch` }}/pillar",
       "custom_state": "gitpython"
     },
     {
-      "type":"file",
-      "source": ".tmp/pillar",
+      "type": "file",
+      "generated": true,
+      "source": ".tmp/{{ user `salt_branch` }}/pillar",
       "destination": "/tmp/pillar",
       "direction": "upload"
     },
@@ -108,8 +110,9 @@
       ]
     },
     {
-      "type":"file",
-      "source": ".tmp/pillar",
+      "type": "file",
+      "generated": true,
+      "source": ".tmp/{{ user `salt_branch` }}/pillar",
       "destination": "/tmp/pillar",
       "direction": "upload"
     },
