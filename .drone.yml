@@ -145,7 +145,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09
+  - make build OS=arch OS_REV=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -182,7 +182,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6
+  - make build OS=centos OS_REV=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -219,7 +219,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7
+  - make build OS=centos OS_REV=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -256,7 +256,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8
+  - make build OS=debian OS_REV=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -293,7 +293,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9
+  - make build OS=debian OS_REV=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -330,7 +330,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28
+  - make build OS=fedora OS_REV=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -367,7 +367,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29
+  - make build OS=fedora OS_REV=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -404,7 +404,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15
+  - make build OS=opensuse OS_REV=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -441,7 +441,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3
+  - make build OS=opensuse OS_REV=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -478,7 +478,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404
+  - make build OS=ubuntu OS_REV=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -515,7 +515,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604
+  - make build OS=ubuntu OS_REV=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -552,7 +552,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804
+  - make build OS=ubuntu OS_REV=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -589,7 +589,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2
+  - make build OS=windows OS_REV=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -626,7 +626,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016
+  - make build OS=windows OS_REV=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -663,7 +663,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019
+  - make build OS=windows OS_REV=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -695,6 +695,6 @@ data:
 
 ---
 kind: signature
-hmac: 35afa8523a8a7a21ea8cdfa24c106a0306f0dc0dea90dd89f78122705642e08f
+hmac: 28bee22b4d712ba6edfbeb011a05e7d5f373c6cd15a1bd41b49bb06a5bccf030
 
 ...

@@ -68,7 +68,7 @@ local Build(distro) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-        std.format('make build-staging OS=%s OS_REV=%s', [distro.name, distro.version]),
+        std.format('make build OS=%s OS_REV=%s', [distro.name, distro.version]),
       ],
       depends_on: [
         'throttle-build',
