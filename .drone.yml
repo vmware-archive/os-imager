@@ -1,313 +1,159 @@
 ---
 kind: pipeline
-name: lint-arch-2019-01-09
+name: Lint
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: lint-arch-2019-01-09
+- name: Arch
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=arch OS_REV=2019-01-09
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-centos-6
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-centos-6
+- name: CentOS 6
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=6
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-centos-7
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-centos-7
+- name: CentOS 7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=centos OS_REV=7
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-debian-8
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-debian-8
+- name: Debian 8
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=debian OS_REV=8
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-debian-9
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-debian-9
+- name: Debian 9
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=debian OS_REV=9
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-fedora-28
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-fedora-28
+- name: Fedora 28
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=fedora OS_REV=28
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-fedora-29
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-fedora-29
+- name: Fedora 29
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=fedora OS_REV=29
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-opensuse-15
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-opensuse-15
+- name: Opensuse 15
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=opensuse OS_REV=15
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-opensuse-42.3
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-opensuse-42.3
+- name: Opensuse 42.3
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=opensuse OS_REV=42.3
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-ubuntu-1404
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-ubuntu-1404
+- name: Ubuntu 1404
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1404
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-ubuntu-1604
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-ubuntu-1604
+- name: Ubuntu 1604
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1604
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-ubuntu-1804
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-ubuntu-1804
+- name: Ubuntu 1804
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=ubuntu OS_REV=1804
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-windows-2012r2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-windows-2012r2
+- name: Windows 2012r2
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2012r2
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-windows-2016
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-windows-2016
+- name: Windows 2016
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2016
+  depends_on:
+  - clone
 
-trigger:
-  event:
-  - pull_request
-
----
-kind: pipeline
-name: lint-windows-2019
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: lint-windows-2019
+- name: Windows 2019
   image: hashicorp/packer
   commands:
   - apk --no-cache add make
   - make validate OS=windows OS_REV=2019
-
-trigger:
-  event:
-  - pull_request
+  depends_on:
+  - clone
 
 ---
 kind: pipeline
-name: build-arch-2019-01-09
+name: Arch
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=arch OS_REV=2019-01-09
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=arch OS_REV=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -315,31 +161,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-centos-6
+name: CentOS 6
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=centos OS_REV=6
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -347,31 +198,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-centos-7
+name: CentOS 7
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=centos OS_REV=7
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=centos OS_REV=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -379,31 +235,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-debian-8
+name: Debian 8
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=debian OS_REV=8
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -411,31 +272,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-debian-9
+name: Debian 9
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=debian OS_REV=9
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=debian OS_REV=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -443,31 +309,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-fedora-28
+name: Fedora 28
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=fedora OS_REV=28
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -475,31 +346,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-fedora-29
+name: Fedora 29
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=fedora OS_REV=29
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=fedora OS_REV=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -507,31 +383,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-opensuse-15
+name: Opensuse 15
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=opensuse OS_REV=15
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -539,31 +420,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-opensuse-42.3
+name: Opensuse 42.3
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=opensuse OS_REV=42.3
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=opensuse OS_REV=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -571,31 +457,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-ubuntu-1404
+name: Ubuntu 1404
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=ubuntu OS_REV=1404
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -603,31 +494,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-ubuntu-1604
+name: Ubuntu 1604
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=ubuntu OS_REV=1604
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -635,31 +531,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-ubuntu-1804
+name: Ubuntu 1804
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: throttle build
+- name: throttle-build
   image: alpine
   commands:
-  - "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'"
+  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=ubuntu OS_REV=1804
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=ubuntu OS_REV=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -667,26 +568,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-windows-2012r2
+name: Windows 2012r2
 
 platform:
   os: linux
   arch: amd64
 
 steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=windows OS_REV=2012r2
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -694,26 +605,36 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-windows-2016
+name: Windows 2016
 
 platform:
   os: linux
   arch: amd64
 
 steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=windows OS_REV=2016
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
@@ -721,32 +642,45 @@ trigger:
   ref:
   - "refs/tags/v1.*"
 
+depends_on:
+- Lint
+
 ---
 kind: pipeline
-name: build-windows-2019
+name: Windows 2019
 
 platform:
   os: linux
   arch: amd64
 
 steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make build OS=windows OS_REV=2019
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=windows OS_REV=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+  depends_on:
+  - throttle-build
 
 trigger:
   event:
   - tag
   ref:
   - "refs/tags/v1.*"
+
+depends_on:
+- Lint
 
 ---
 kind: secret
@@ -761,6 +695,6 @@ data:
 
 ---
 kind: signature
-hmac: 64cedacef369a211568d348bfbee2e0256a337ced7257c57ed63cd41f134a8ce
+hmac: 35afa8523a8a7a21ea8cdfa24c106a0306f0dc0dea90dd89f78122705642e08f
 
 ...

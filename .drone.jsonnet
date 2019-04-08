@@ -1,100 +1,93 @@
-local linux_distros = [
-  { name: 'arch', version: '2019-01-09' },
-  { name: 'centos', version: '6' },
-  { name: 'centos', version: '7' },
-  { name: 'debian', version: '8' },
-  { name: 'debian', version: '9' },
-  { name: 'fedora', version: '28' },
-  { name: 'fedora', version: '29' },
-  { name: 'opensuse', version: '15' },
-  { name: 'opensuse', version: '42.3' },
-  { name: 'ubuntu', version: '1404' },
-  { name: 'ubuntu', version: '1604' },
-  { name: 'ubuntu', version: '1804' },
+local distros = [
+  // Multiprier is way to throttle API requests in order not to hit the limits
+  { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
+  { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 2 },
+  { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 3 },
+  { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 4 },
+  { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 5 },
+  { display_name: 'Fedora 28', name: 'fedora', version: '28', multiplier: 6 },
+  { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 7 },
+  { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 8 },
+  { display_name: 'Opensuse 42.3', name: 'opensuse', version: '42.3', multiplier: 9 },
+  { display_name: 'Ubuntu 1404', name: 'ubuntu', version: '1404', multiplier: 10 },
+  { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 11 },
+  { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 12 },
+  // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
+  //  { display_name: 'Windows 2008r2', name: 'windows', version: '2008r2', multiplier: 0 },
+  { display_name: 'Windows 2012r2', name: 'windows', version: '2012r2', multiplier: 0 },
+  { display_name: 'Windows 2016', name: 'windows', version: '2016', multiplier: 0 },
+  { display_name: 'Windows 2019', name: 'windows', version: '2019', multiplier: 0 },
 ];
 
-local win_distros = [
-  //  { name: 'windows', version: '2008r2' },
-  { name: 'windows', version: '2012r2' },
-  { name: 'windows', version: '2016' },
-  { name: 'windows', version: '2019' },
-];
-
-local BuildTriggers() = {
-  ref: [
-    'refs/tags/v1.*',
-  ],
-  event: [
-    'tag',
-  ],
-};
-
-local LintTriggers() = {
-  event: [
-    'pull_request',
-  ],
-};
-
-local Lint(os, os_version) = {
+local Lint() = {
 
   kind: 'pipeline',
-  name: std.format('lint-%s-%s', [os, os_version]),
+  name: 'Lint',
   steps: [
     {
-      name: std.format('lint-%s-%s', [os, os_version]),
+      name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
         'apk --no-cache add make',
-        std.format('make validate OS=%s OS_REV=%s', [os, os_version]),
+        std.format('make validate OS=%s OS_REV=%s', [distro.name, distro.version]),
       ],
-    },
-  ],
-  trigger: LintTriggers(),
-};
-
-
-local Step(os, os_version) = {
-  name: 'base-image',
-  image: 'hashicorp/packer',
-  environment: {
-    AWS_DEFAULT_REGION: 'us-west-2',
-    AWS_ACCESS_KEY_ID: {
-      from_secret: 'username',
-    },
-    AWS_SECRET_ACCESS_KEY: {
-      from_secret: 'password',
-    },
-  },
-  commands: [
-    'apk --no-cache add make',
-    std.format('make build OS=%s OS_REV=%s', [os, os_version]),
+      depends_on: [
+        'clone',
+      ],
+    }
+    for distro in distros
   ],
 };
 
-
-local Build(os, os_version) = {
+local Build(distro) = {
   kind: 'pipeline',
-  name: std.format('build-%s-%s', [os, os_version]),
+  name: distro.display_name,
   steps: [
     {
-      name: 'throttle build',
+      name: 'throttle-build',
       image: 'alpine',
       commands: [
-        "sh -c 't=$(shuf -i 30-180 -n 1); echo Sleeping $t seconds; sleep $t'",
+        std.format(
+          "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
+          { offset: 5 * distro.multiplier }
+        ),
       ],
     },
-    Step(os, os_version),
+  ] + [
+    {
+      name: 'base-image',
+      image: 'hashicorp/packer',
+      environment: {
+        AWS_DEFAULT_REGION: 'us-west-2',
+        AWS_ACCESS_KEY_ID: {
+          from_secret: 'username',
+        },
+        AWS_SECRET_ACCESS_KEY: {
+          from_secret: 'password',
+        },
+      },
+      commands: [
+        'apk --no-cache add make curl grep gawk sed',
+        std.format('make build-staging OS=%s OS_REV=%s', [distro.name, distro.version]),
+      ],
+      depends_on: [
+        'throttle-build',
+      ],
+    },
   ],
-  trigger: BuildTriggers(),
+  trigger: {
+    ref: [
+      'refs/tags/v1.*',
+    ],
+    event: [
+      'tag',
+    ],
+  },
+  depends_on: [
+    'Lint',
+  ],
 };
 
-
-local WindowBuild(os, os_version) = {
-  kind: 'pipeline',
-  name: std.format('build-%s-%s', [os, os_version]),
-  steps: [Step(os, os_version)],
-  trigger: BuildTriggers(),
-};
 
 local Secret() = {
   kind: 'secret',
@@ -104,16 +97,11 @@ local Secret() = {
   },
 };
 
-
 [
-  Lint(distro.name, distro.version)
-  for distro in linux_distros + win_distros
+  Lint(),
 ] + [
-  Build(distro.name, distro.version)
-  for distro in linux_distros
-] + [
-  WindowBuild(distro.name, distro.version)
-  for distro in win_distros
+  Build(distro)
+  for distro in distros
 ] + [
   Secret(),
 ]
