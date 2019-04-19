@@ -5,6 +5,7 @@
   "ami_owner": "801119661308",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "windows/2016",
+  "instance_type": "c5.large",
   "build_type": "base",
   "os_name": "Windows",
   "os_version": "2016",

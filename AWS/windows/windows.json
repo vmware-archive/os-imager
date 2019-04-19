@@ -19,7 +19,7 @@
         "883373499178",
         "540082622920"
       ],
-      "instance_type": "c5.large",
+      "instance_type": "{{ user `instance_type` }}",
       "user_data_file": "{{ user `user_data_file` }}",
       "communicator": "winrm",
       "winrm_username": "Administrator",
