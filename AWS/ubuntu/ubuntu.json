@@ -15,8 +15,7 @@
         ],
         "most_recent": true
       },
-      "instance_type": "t2.small",
-      "enable_t2_unlimited": true,
+      "instance_type": "c5.large",
       "ssh_username": "{{ user `ssh_username` }}",
       "ami_name": "{{ user `ami_name_prefix` }}/{{ user `build_type` }}/{{ user `ami_name_suffix` }}/{{timestamp}}",
       "ami_users": [

@@ -19,6 +19,24 @@ local distros = [
   { display_name: 'Windows 2019', name: 'windows', version: '2019', multiplier: 0 },
 ];
 
+local BuildTrigger() = {
+  ref: [
+    'refs/tags/v1.*',
+  ],
+  event: [
+    'tag',
+  ],
+};
+
+local StagingBuildTrigger() = {
+  event: [
+    'push',
+  ],
+  branch: [
+    'master',
+  ],
+};
+
 local Lint() = {
 
   kind: 'pipeline',
@@ -39,9 +57,9 @@ local Lint() = {
   ],
 };
 
-local Build(distro) = {
+local Build(distro, staging) = {
   kind: 'pipeline',
-  name: distro.display_name,
+  name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
   steps: [
     {
       name: 'throttle-build',
@@ -68,21 +86,18 @@ local Build(distro) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-        std.format('make build OS=%s OS_REV=%s', [distro.name, distro.version]),
+        std.format('make build%s OS=%s OS_REV=%s', [
+          if staging then '-staging' else '',
+          distro.name,
+          distro.version,
+        ]),
       ],
       depends_on: [
         'throttle-build',
       ],
     },
   ],
-  trigger: {
-    ref: [
-      'refs/tags/v1.*',
-    ],
-    event: [
-      'tag',
-    ],
-  },
+  trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
     'Lint',
   ],
@@ -100,7 +115,10 @@ local Secret() = {
 [
   Lint(),
 ] + [
-  Build(distro)
+  Build(distro, false)
+  for distro in distros
+] + [
+  Build(distro, true)
   for distro in distros
 ] + [
   Secret(),
