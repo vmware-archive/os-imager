@@ -67,7 +67,7 @@ local Build(distro, staging) = {
       commands: [
         std.format(
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
-          { offset: 5 * distro.multiplier }
+          { offset: 7 * distro.multiplier }
         ),
       ],
     },
