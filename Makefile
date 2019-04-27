@@ -17,31 +17,19 @@ help:
 	@echo '    make <target> OS=<SOME OS> OS_REV=<SOME OS REVISION>'
 
 check-paths:
-	$(info Checking paths...)
-ifeq ($(shell [ -e $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json ] && echo 1 || echo 0), 1)
-	$(eval TEMPLATE = $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json)
-endif
+	$(warning Makefile support was dropped for invoke, please 'pip install invoke'.)
 
 .PHONY: validate
 validate: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer validate -var-file=$(VAR_FILE) $(TEMPLATE)
+	$(warning Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --validate' instead.)
+	@exit 1
 
 .PHONY: build
 build: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer build -var-file=$(VAR_FILE) $(TEMPLATE)
+	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV)' instead.)
+	@exit 1
 
 .PHONY: build-staging
 build-staging: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer build -var-file=$(VAR_FILE) -var 'build_type=base-staging' $(TEMPLATE)
+	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --staging' instead.)
+	@exit 1

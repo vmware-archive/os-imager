@@ -57,7 +57,7 @@
   "variables": {
     "boot_command_prefix": "<wait><tab><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
     "disk_size": "10240",
-    "preseed" : "preseed.cfg",
+    "preseed": "preseed.cfg",
     "hostname": "debian",
     "ssh_password": "salt",
     "ssh_username": "salt",

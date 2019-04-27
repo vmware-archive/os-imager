@@ -1,0 +1,65 @@
+{
+  "_comment": "Builds a packer debian image in AWS",
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{ user `docker_image` }}",
+      "pull": true,
+      "commit": true,
+      "privileged": true,
+      "run_command": [
+        "-d",
+        "-i",
+        "-t",
+        "--cap-add=sys-admin",
+        "{{.Image}}",
+        "{{ user `run_command` }}"
+      ],
+      "changes": [
+        "CMD [\"{{ user `run_command` }}\"]",
+        "LABEL Name=\"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}\"",
+        "LABEL OS-Name={{ user `os_name` }}",
+        "LABEL OS-Version={{ user `os_version` }}",
+        "LABEL BuildDate={{ isotime }}",
+        "LABEL BuildType={{ user `build_type` | upper }}",
+        "LABEL CreatedBy=packer",
+        "LABEL Owner=SRE",
+        "LABEL Description=\"{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}\""
+      ],
+      "message": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }} on {{ isotime }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "AWS/debian/files/sources.list",
+      "destination": "/tmp/sources.list",
+      "direction": "upload"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "rm -rf /etc/apt/apt.conf.d/50unattended-upgrades",
+        "echo 'Acquire::Check-Valid-Until false;' | tee -a /etc/apt/apt.conf.d/10-nocheckvalid",
+        "rm -rf /etc/apt/sources.list.d/*",
+        "mv /tmp/sources.list /etc/apt/sources.list",
+        "apt-get install -y debian-archive-keyring",
+        "apt-get update -y && apt-get upgrade -y",
+        "apt-get install -y sudo openssh-server curl lsb-release",
+        "apt-get install -y dbus",
+        "apt-get install -y git vim ",
+        "rm -rf /tmp/* /var/lib/apt/lists/* && apt-get clean"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `docker_repository` }}/{{ user `docker_image_prefix` }}-{{ user `os_name` | lower }}-{{ user `os_version` }}",
+        "tag": "{{ user `build_type` | lower }}"
+      },
+      "docker-push"
+    ]
+  ]
+}

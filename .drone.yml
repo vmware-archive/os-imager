@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: Lint
+name: Lint AWS
 
 platform:
   os: linux
@@ -10,126 +10,258 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=arch OS_REV=2019-01-09
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
   depends_on:
   - clone
 
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=6
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=centos --distro-version=6
   depends_on:
   - clone
 
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=7
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
   - clone
 
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=8
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=debian --distro-version=8
   depends_on:
   - clone
 
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=9
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=debian --distro-version=9
   depends_on:
   - clone
 
 - name: Fedora 28
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=28
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=28
   depends_on:
   - clone
 
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=29
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=29
   depends_on:
   - clone
 
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=15
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=15
   depends_on:
   - clone
 
 - name: Opensuse 42.3
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=42.3
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=42.3
   depends_on:
   - clone
 
 - name: Ubuntu 1404
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1404
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1404
   depends_on:
   - clone
 
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1604
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1604
   depends_on:
   - clone
 
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1804
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1804
   depends_on:
   - clone
 
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2012r2
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2012r2
   depends_on:
   - clone
 
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2016
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2016
   depends_on:
   - clone
 
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2019
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2019
   depends_on:
   - clone
 
 ---
 kind: pipeline
-name: Arch
+name: Lint Docker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: Arch
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=arch --distro-version=2019-01-09
+  depends_on:
+  - clone
+
+- name: CentOS 6
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=centos --distro-version=6
+  depends_on:
+  - clone
+
+- name: CentOS 7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=centos --distro-version=7
+  depends_on:
+  - clone
+
+- name: Debian 8
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=debian --distro-version=8
+  depends_on:
+  - clone
+
+- name: Debian 9
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=debian --distro-version=9
+  depends_on:
+  - clone
+
+- name: Fedora 28
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=fedora --distro-version=28
+  depends_on:
+  - clone
+
+- name: Fedora 29
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=fedora --distro-version=29
+  depends_on:
+  - clone
+
+- name: Opensuse 15
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=opensuse --distro-version=15
+  depends_on:
+  - clone
+
+- name: Opensuse 42.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=opensuse --distro-version=42.3
+  depends_on:
+  - clone
+
+- name: Ubuntu 1404
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=ubuntu --distro-version=1404
+  depends_on:
+  - clone
+
+- name: Ubuntu 1604
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=ubuntu --distro-version=1604
+  depends_on:
+  - clone
+
+- name: Ubuntu 1804
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-docker --validate --distro=ubuntu --distro-version=1804
+  depends_on:
+  - clone
+
+---
+kind: pipeline
+name: AWS Arch
 
 platform:
   os: linux
@@ -139,13 +271,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -159,14 +292,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: CentOS 6
+name: AWS CentOS 6
 
 platform:
   os: linux
@@ -176,13 +309,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -196,14 +330,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: CentOS 7
+name: AWS CentOS 7
 
 platform:
   os: linux
@@ -213,13 +347,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -233,14 +368,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Debian 8
+name: AWS Debian 8
 
 platform:
   os: linux
@@ -250,13 +385,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -270,88 +406,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Debian 9
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/v1.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 28
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/v1.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 29
+name: AWS Debian 9
 
 platform:
   os: linux
@@ -366,8 +428,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -381,14 +444,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Opensuse 15
+name: AWS Fedora 28
 
 platform:
   os: linux
@@ -398,13 +461,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -418,14 +482,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Opensuse 42.3
+name: AWS Fedora 29
 
 platform:
   os: linux
@@ -435,13 +499,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -455,14 +520,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Ubuntu 1404
+name: AWS Opensuse 15
 
 platform:
   os: linux
@@ -472,13 +537,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -492,14 +558,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Ubuntu 1604
+name: AWS Opensuse 42.3
 
 platform:
   os: linux
@@ -509,13 +575,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -529,14 +596,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Ubuntu 1804
+name: AWS Ubuntu 1404
 
 platform:
   os: linux
@@ -546,13 +613,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -566,14 +634,90 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2012r2
+name: AWS Ubuntu 1604
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-base-v1.*"
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Ubuntu 1804
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-base-v1.*"
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Windows 2012r2
 
 platform:
   os: linux
@@ -588,8 +732,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -603,14 +748,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2016
+name: AWS Windows 2016
 
 platform:
   os: linux
@@ -625,8 +770,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -640,14 +786,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2019
+name: AWS Windows 2019
 
 platform:
   os: linux
@@ -662,8 +808,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -677,14 +824,14 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Arch (Staging)
+name: Docker Arch
 
 platform:
   os: linux
@@ -694,34 +841,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=arch --distro-version=2019-01-09
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: CentOS 6 (Staging)
+name: Docker CentOS 6
 
 platform:
   os: linux
@@ -731,34 +887,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=centos --distro-version=6
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: CentOS 7 (Staging)
+name: Docker CentOS 7
 
 platform:
   os: linux
@@ -768,34 +933,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=centos --distro-version=7
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Debian 8 (Staging)
+name: Docker Debian 8
 
 platform:
   os: linux
@@ -805,108 +979,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=debian --distro-version=8
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Debian 9 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 28 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 29 (Staging)
+name: Docker Debian 9
 
 platform:
   os: linux
@@ -921,29 +1030,38 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=debian --distro-version=9
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Opensuse 15 (Staging)
+name: Docker Fedora 28
 
 platform:
   os: linux
@@ -953,34 +1071,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=fedora --distro-version=28
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Opensuse 42.3 (Staging)
+name: Docker Fedora 29
 
 platform:
   os: linux
@@ -990,34 +1117,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=fedora --distro-version=29
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Ubuntu 1404 (Staging)
+name: Docker Opensuse 15
 
 platform:
   os: linux
@@ -1027,34 +1163,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=opensuse --distro-version=15
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Ubuntu 1604 (Staging)
+name: Docker Opensuse 42.3
 
 platform:
   os: linux
@@ -1064,34 +1209,43 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=opensuse --distro-version=42.3
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
   depends_on:
   - throttle-build
 
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
 trigger:
-  branch:
-  - master
   event:
-  - push
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
 
 depends_on:
-- Lint
+- Lint Docker
 
 ---
 kind: pipeline
-name: Ubuntu 1804 (Staging)
+name: Docker Ubuntu 1404
 
 platform:
   os: linux
@@ -1101,13 +1255,152 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=ubuntu --distro-version=1404
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Ubuntu 1604
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=ubuntu --distro-version=1604
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Ubuntu 1804
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --distro=ubuntu --distro-version=1804
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/docker-base-v1.*"
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: AWS Arch (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1122,13 +1415,443 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2012r2 (Staging)
+name: AWS CentOS 6 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS CentOS 7 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Debian 8 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Debian 9 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Fedora 28 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Fedora 29 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Opensuse 15 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Opensuse 42.3 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Ubuntu 1404 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1404
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Ubuntu 1604 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Ubuntu 1804 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint AWS
+
+---
+kind: pipeline
+name: AWS Windows 2012r2 (Staging)
 
 platform:
   os: linux
@@ -1143,8 +1866,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1159,13 +1883,14 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2016 (Staging)
+name: AWS Windows 2016 (Staging)
 
 platform:
   os: linux
@@ -1180,8 +1905,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1196,13 +1922,14 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
-- Lint
+- Lint AWS
 
 ---
 kind: pipeline
-name: Windows 2019 (Staging)
+name: AWS Windows 2019 (Staging)
 
 platform:
   os: linux
@@ -1217,8 +1944,9 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1233,14 +1961,583 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
-- Lint
+- Lint AWS
+
+---
+kind: pipeline
+name: Docker Arch (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=arch --distro-version=2019-01-09
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker CentOS 6 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=centos --distro-version=6
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker CentOS 7 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=centos --distro-version=7
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Debian 8 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=debian --distro-version=8
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Debian 9 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=debian --distro-version=9
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Fedora 28 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=fedora --distro-version=28
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Fedora 29 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=fedora --distro-version=29
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Opensuse 15 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=opensuse --distro-version=15
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Opensuse 42.3 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=opensuse --distro-version=42.3
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Ubuntu 1404 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=ubuntu --distro-version=1404
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Ubuntu 1604 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=ubuntu --distro-version=1604
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
+
+---
+kind: pipeline
+name: Docker Ubuntu 1804 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip make curl grep gawk sed
+  - apk --no-cache add --update docker
+  - pip install invoke
+  - inv build-docker --staging --distro=ubuntu --distro-version=1804
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+    DOCKER_USERNAME:
+      from_secret: docker_username
+  depends_on:
+  - throttle-build
+
+services:
+- name: docker
+  image: docker:edge-dind
+  command:
+  - --storage-driver=overlay2
+  privileged: true
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint Docker
 
 ---
 kind: secret
 type: general
 data:
+  docker_password: >
+    dockerpassword
+  docker_username: >
+    dockerusername
   password: >
     ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
     s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
@@ -1250,6 +2547,6 @@ data:
 
 ---
 kind: signature
-hmac: 1ce9099e7e519be0d535f148762a0b0c2e3ed50b5769d67c661306772b60b81b
+hmac: d37fafada027fb50e647c412f9ea1c4491fd845b80f4faa26328b3ccf161739c
 
 ...

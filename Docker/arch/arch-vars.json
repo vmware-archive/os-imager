@@ -1,0 +1,10 @@
+{
+  "_comment": "Build with `packer build -var-file=arch-vars.json arch.json`",
+  "docker_image": "archlinux/base",
+  "docker_repository": "saltstack",
+  "docker_image_prefix": "ci",
+  "build_type": "base",
+  "os_name": "Arch",
+  "os_version": "latest",
+  "run_command": "/usr/lib/systemd/systemd"
+}

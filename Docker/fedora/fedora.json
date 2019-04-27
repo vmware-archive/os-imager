@@ -1,0 +1,46 @@
+{
+  "_comment": "Build with `packer build fedora.json`",
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{ user `docker_image` }}",
+      "pull": true,
+      "commit": true,
+      "changes": [
+        "CMD [\"{{ user `run_command` }}\"]",
+        "LABEL Name=\"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}\"",
+        "LABEL OS-Name={{ user `os_name` }}",
+        "LABEL OS-Version={{ user `os_version` }}",
+        "LABEL BuildDate={{ isotime }}",
+        "LABEL BuildType={{ user `build_type` | upper }}",
+        "LABEL CreatedBy=packer",
+        "LABEL Owner=SRE",
+        "LABEL Description=\"{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}\""
+      ],
+      "message": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }} on {{ isotime }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "yum update -y",
+        "yum install -y sudo openssh-server openssh-clients which curl",
+        "[ -f \"/etc/ssh/ssh_host_rsa_key\" ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''",
+        "[ -f \"/etc/ssh/ssh_host_dsa_key\" ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''",
+        "yum install git vim -y",
+        "rm -rf /tmp/* && yum clean all"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `docker_repository` }}/{{ user `docker_image_prefix` }}-{{ user `os_name` | lower }}-{{ user `os_version` }}",
+        "tag": "{{ user `build_type` | lower }}"
+      },
+      "docker-push"
+    ]
+  ]
+}

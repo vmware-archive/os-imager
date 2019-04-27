@@ -1,0 +1,10 @@
+{
+  "_comment": "Build with `packer build -var-file=debian-8-vars.json debian-8.json`",
+  "docker_image": "debian:8",
+  "docker_repository": "saltstack",
+  "docker_image_prefix": "ci",
+  "build_type": "base",
+  "os_name": "Debian",
+  "os_version": "8",
+  "run_command": "/lib/systemd/systemd"
+}

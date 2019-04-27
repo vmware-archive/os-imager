@@ -41,9 +41,17 @@
       "name": "{{ user `name` }}",
       "vnc_bind_address": "{{ user `vnc_bind_address` }}",
       "qemuargs": [
-        ["-enable-kvm"],
-        ["-m", "{{ user `memory` }}"],
-        ["--smp", "cores={{ user `cpus` }},threads={{ user `threads` }},sockets={{ user `sockets` }}"]
+        [
+          "-enable-kvm"
+        ],
+        [
+          "-m",
+          "{{ user `memory` }}"
+        ],
+        [
+          "--smp",
+          "cores={{ user `cpus` }},threads={{ user `threads` }},sockets={{ user `sockets` }}"
+        ]
       ]
     }
   ],
@@ -92,7 +100,7 @@
     "locale": "en_US",
     "memory": "4096M",
     "no_proxy": "{{env `no_proxy`}}",
-    "preseed" : "preseed.cfg",
+    "preseed": "preseed.cfg",
     "rsync_proxy": "{{env `rsync_proxy`}}",
     "hostname": "ubuntu",
     "ssh_fullname": "salt",
