@@ -11,6 +11,12 @@
     - id: check-merge-conflict    # Check for files that contain merge conflict strings.
     - id: detect-aws-credentials  # Detect AWS Credentials
       args: [--allow-missing-credentials]
+    - id: check-json
+    - id: pretty-format-json
+      args:
+        - --autofix
+        - --indent=2
+        - --no-sort-keys
 - repo: local
   hooks:
     - id: check-aws-credentials
