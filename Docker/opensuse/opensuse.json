@@ -7,7 +7,8 @@
       "pull": true,
       "commit": true,
       "changes": [
-        "CMD [\"{{ user `run_command` }}\"]",
+        "Entrypoint [\"/bin/sh\", \"-c\"]",
+        "CMD [\"/bin/bash\"]",
         "LABEL Name=\"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}\"",
         "LABEL OS-Name={{ user `os_name` }}",
         "LABEL OS-Version={{ user `os_version` }}",
@@ -26,12 +27,7 @@
       "inline": [
         "zypper --non-interactive --gpg-auto-import-keys refresh",
         "zypper --non-interactive --gpg-auto-import-keys update",
-        "zypper --non-interactive install --auto-agree-with-licenses openssh which curl",
-        "[ -f \"/etc/ssh/ssh_host_rsa_key\" ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''",
-        "[ -f \"/etc/ssh/ssh_host_dsa_key\" ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''",
-        "zypper --non-interactive install --auto-agree-with-licenses dbus-1",
-        "systemctl enable sshd.service",
-        "zypper --non-interactive install --auto-agree-with-licenses systemd git vim",
+        "zypper --non-interactive install --auto-agree-with-licenses dbus-1 systemd git vim",
         "rm -rf /tmp/* && zypper --non-interactive clean -a"
       ]
     }

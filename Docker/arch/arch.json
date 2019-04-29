@@ -7,7 +7,8 @@
       "pull": true,
       "commit": true,
       "changes": [
-        "CMD [\"{{ user `run_command` }}\"]",
+        "Entrypoint [\"/bin/sh\", \"-c\"]",
+        "CMD [\"/bin/bash\"]",
         "LABEL Name=\"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}\"",
         "LABEL OS-Name={{ user `os_name` }}",
         "LABEL OS-Version={{ user `os_version` }}",
@@ -27,10 +28,6 @@
         "pacman -Sy --noconfirm archlinux-keyring",
         "pacman-db-upgrade",
         "pacman -Syyu --noconfirm",
-        "pacman -Syu --noconfirm openssl openssh sudo curl",
-        "[ -f \"/etc/ssh/ssh_host_rsa_key\" ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''",
-        "[ -f \"/etc/ssh/ssh_host_dsa_key\" ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''",
-        "systemctl enable sshd",
         "pacman -Sy --needed --noconfirm git vim",
         "rm -rf /tmp/* /var/cache/pacman/pkg/* && pacman -Scc --noconfirm"
       ]
