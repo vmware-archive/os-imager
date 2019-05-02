@@ -10,120 +10,135 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=arch OS_REV=2019-01-09
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
   depends_on:
   - clone
 
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=6
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=centos --distro-version=6
   depends_on:
   - clone
 
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=7
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
   - clone
 
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=8
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=debian --distro-version=8
   depends_on:
   - clone
 
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=9
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=debian --distro-version=9
   depends_on:
   - clone
 
 - name: Fedora 28
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=28
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=28
   depends_on:
   - clone
 
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=29
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=29
   depends_on:
   - clone
 
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=15
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=15
   depends_on:
   - clone
 
 - name: Opensuse 42.3
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=42.3
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=42.3
   depends_on:
   - clone
 
 - name: Ubuntu 1404
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1404
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1404
   depends_on:
   - clone
 
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1604
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1604
   depends_on:
   - clone
 
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1804
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1804
   depends_on:
   - clone
 
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2012r2
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2012r2
   depends_on:
   - clone
 
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2016
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2016
   depends_on:
   - clone
 
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2019
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2019
   depends_on:
   - clone
 
@@ -139,13 +154,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09
+  - pip install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -176,13 +192,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6
+  - pip install invoke
+  - inv build-aws --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -213,13 +230,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7
+  - pip install invoke
+  - inv build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -250,13 +268,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8
+  - pip install invoke
+  - inv build-aws --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -287,13 +306,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9
+  - pip install invoke
+  - inv build-aws --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -324,13 +344,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28
+  - pip install invoke
+  - inv build-aws --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -361,13 +382,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29
+  - pip install invoke
+  - inv build-aws --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -398,13 +420,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15
+  - pip install invoke
+  - inv build-aws --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -435,13 +458,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3
+  - pip install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -472,13 +496,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -509,13 +534,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -546,13 +572,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804
+  - pip install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -589,7 +616,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -626,7 +654,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -663,7 +692,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019
+  - pip install invoke
+  - inv build-aws --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -694,13 +724,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 5 seconds; sleep 5'"
+  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09
+  - pip install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -731,13 +762,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 10 seconds; sleep 10'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6
+  - pip install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -768,13 +800,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 15 seconds; sleep 15'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7
+  - pip install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -805,13 +838,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 20 seconds; sleep 20'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8
+  - pip install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -842,13 +876,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 25 seconds; sleep 25'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9
+  - pip install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -879,13 +914,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 30 seconds; sleep 30'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28
+  - pip install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -916,13 +952,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29
+  - pip install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -953,13 +990,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 40 seconds; sleep 40'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15
+  - pip install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -990,13 +1028,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 45 seconds; sleep 45'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3
+  - pip install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1027,13 +1066,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 50 seconds; sleep 50'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1064,13 +1104,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 55 seconds; sleep 55'"
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1101,13 +1142,14 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 60 seconds; sleep 60'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
 
 - name: base-image
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804
+  - pip install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1144,7 +1186,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1181,7 +1224,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1218,7 +1262,8 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019
+  - pip install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1250,6 +1295,6 @@ data:
 
 ---
 kind: signature
-hmac: 1ce9099e7e519be0d535f148762a0b0c2e3ed50b5769d67c661306772b60b81b
+hmac: 7ec01c8d5fe232162b4fc57fecf3ff9e8156da377fa0affdc44229a65131f96d
 
 ...

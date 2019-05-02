@@ -9,7 +9,7 @@ import argparse
 def check_for_credentials(data, disallowed_keys_with_values):
     errors = set()
     for key, value in data.items():
-        if key in disallowed_keys_with_values:
+        if key in disallowed_keys_with_values and value:
             errors.add(key)
         if isinstance(value, dict):
             for error in check_for_credentials(value, disallowed_keys_with_values):
