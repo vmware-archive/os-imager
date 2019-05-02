@@ -15,6 +15,22 @@ steps:
   depends_on:
   - clone
 
+- name: Amazon 1
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=amazon OS_REV=1
+  depends_on:
+  - clone
+
+- name: Amazon 2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make
+  - make validate OS=amazon OS_REV=2
+  depends_on:
+  - clone
+
 - name: CentOS 6
   image: hashicorp/packer
   commands:
@@ -146,6 +162,80 @@ steps:
   commands:
   - apk --no-cache add make curl grep gawk sed
   - make build OS=arch OS_REV=2019-01-09
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 1
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=amazon OS_REV=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build OS=amazon OS_REV=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -722,6 +812,82 @@ depends_on:
 
 ---
 kind: pipeline
+name: Amazon 1 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=amazon OS_REV=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - make build-staging OS=amazon OS_REV=2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
 name: CentOS 6 (Staging)
 
 platform:
@@ -1265,6 +1431,6 @@ data:
 
 ---
 kind: signature
-hmac: cbbcbce3aa3213dc105ce15425c9a183050a912cc72924624c7dd61487e89b68
+hmac: 62fc9f50e90130c440d3e29e18841b348e18cc7603b138972dee8cbd7d95e81a
 
 ...
