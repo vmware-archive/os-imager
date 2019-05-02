@@ -26,7 +26,7 @@
       ],
       "ami_description": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}",
       "tags": {
-        "Name":"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}",
+        "Name": "{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
