@@ -1,6 +1,8 @@
 local distros = [
   // Multiprier is way to throttle API requests in order not to hit the limits
   { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
+  { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 13 },
+  { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 14 },
   { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 2 },
   { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 3 },
   { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 4 },
