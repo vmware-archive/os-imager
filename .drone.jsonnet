@@ -46,8 +46,12 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add make',
-        std.format('make validate OS=%s OS_REV=%s', [distro.name, distro.version]),
+        'apk --no-cache add --update py-pip',
+        'pip install invoke',
+        std.format('inv build-aws --validate --distro=%s --distro-version=%s', [
+          distro.name,
+          distro.version,
+        ]),
       ],
       depends_on: [
         'clone',
@@ -86,8 +90,10 @@ local Build(distro, staging) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-        std.format('make build%s OS=%s OS_REV=%s', [
-          if staging then '-staging' else '',
+      ] + [
+        'pip install invoke',
+        std.format('inv build-aws%s --distro=%s --distro-version=%s', [
+          if staging then ' --staging' else '',
           distro.name,
           distro.version,
         ]),
