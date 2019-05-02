@@ -10,135 +10,120 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
+  - apk --no-cache add make
+  - make validate OS=arch OS_REV=2019-01-09
   depends_on:
   - clone
 
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=centos --distro-version=6
+  - apk --no-cache add make
+  - make validate OS=centos OS_REV=6
   depends_on:
   - clone
 
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=centos --distro-version=7
+  - apk --no-cache add make
+  - make validate OS=centos OS_REV=7
   depends_on:
   - clone
 
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=debian --distro-version=8
+  - apk --no-cache add make
+  - make validate OS=debian OS_REV=8
   depends_on:
   - clone
 
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=debian --distro-version=9
+  - apk --no-cache add make
+  - make validate OS=debian OS_REV=9
   depends_on:
   - clone
 
 - name: Fedora 28
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=fedora --distro-version=28
+  - apk --no-cache add make
+  - make validate OS=fedora OS_REV=28
   depends_on:
   - clone
 
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=fedora --distro-version=29
+  - apk --no-cache add make
+  - make validate OS=fedora OS_REV=29
   depends_on:
   - clone
 
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=opensuse --distro-version=15
+  - apk --no-cache add make
+  - make validate OS=opensuse OS_REV=15
   depends_on:
   - clone
 
 - name: Opensuse 42.3
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=opensuse --distro-version=42.3
+  - apk --no-cache add make
+  - make validate OS=opensuse OS_REV=42.3
   depends_on:
   - clone
 
 - name: Ubuntu 1404
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=ubuntu --distro-version=1404
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1404
   depends_on:
   - clone
 
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=ubuntu --distro-version=1604
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1604
   depends_on:
   - clone
 
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=ubuntu --distro-version=1804
+  - apk --no-cache add make
+  - make validate OS=ubuntu OS_REV=1804
   depends_on:
   - clone
 
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=windows --distro-version=2012r2
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2012r2
   depends_on:
   - clone
 
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=windows --distro-version=2016
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2016
   depends_on:
   - clone
 
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
-  - inv build-aws --validate --distro=windows --distro-version=2019
+  - apk --no-cache add make
+  - make validate OS=windows OS_REV=2019
   depends_on:
   - clone
 
@@ -160,8 +145,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=arch --distro-version=2019-01-09
+  - make build OS=arch OS_REV=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -198,8 +182,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=centos --distro-version=6
+  - make build OS=centos OS_REV=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -236,8 +219,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=centos --distro-version=7
+  - make build OS=centos OS_REV=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -274,8 +256,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=debian --distro-version=8
+  - make build OS=debian OS_REV=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -312,8 +293,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=debian --distro-version=9
+  - make build OS=debian OS_REV=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -350,8 +330,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=fedora --distro-version=28
+  - make build OS=fedora OS_REV=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -388,8 +367,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=fedora --distro-version=29
+  - make build OS=fedora OS_REV=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -426,8 +404,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=opensuse --distro-version=15
+  - make build OS=opensuse OS_REV=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -464,8 +441,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=opensuse --distro-version=42.3
+  - make build OS=opensuse OS_REV=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -502,8 +478,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1404
+  - make build OS=ubuntu OS_REV=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -540,8 +515,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1604
+  - make build OS=ubuntu OS_REV=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -578,8 +552,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1804
+  - make build OS=ubuntu OS_REV=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -616,8 +589,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2012r2
+  - make build OS=windows OS_REV=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -654,8 +626,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2016
+  - make build OS=windows OS_REV=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -692,8 +663,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2019
+  - make build OS=windows OS_REV=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -730,8 +700,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
+  - make build-staging OS=arch OS_REV=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -746,6 +715,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -768,8 +738,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=centos --distro-version=6
+  - make build-staging OS=centos OS_REV=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -784,6 +753,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -806,8 +776,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=centos --distro-version=7
+  - make build-staging OS=centos OS_REV=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -822,6 +791,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -844,8 +814,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8
+  - make build-staging OS=debian OS_REV=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -860,6 +829,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -882,8 +852,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=debian --distro-version=9
+  - make build-staging OS=debian OS_REV=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -898,6 +867,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -920,8 +890,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=28
+  - make build-staging OS=fedora OS_REV=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -936,6 +905,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -958,8 +928,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29
+  - make build-staging OS=fedora OS_REV=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -974,6 +943,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -996,8 +966,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=15
+  - make build-staging OS=opensuse OS_REV=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1012,6 +981,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1034,8 +1004,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=42.3
+  - make build-staging OS=opensuse OS_REV=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1050,6 +1019,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1072,8 +1042,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1404
+  - make build-staging OS=ubuntu OS_REV=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1088,6 +1057,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1110,8 +1080,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1604
+  - make build-staging OS=ubuntu OS_REV=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1126,6 +1095,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1148,8 +1118,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1804
+  - make build-staging OS=ubuntu OS_REV=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1164,6 +1133,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1186,8 +1156,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2012r2
+  - make build-staging OS=windows OS_REV=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1202,6 +1171,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1224,8 +1194,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2016
+  - make build-staging OS=windows OS_REV=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1240,6 +1209,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1262,8 +1232,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2019
+  - make build-staging OS=windows OS_REV=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1278,6 +1247,7 @@ trigger:
   - master
   event:
   - push
+  - pull_request
 
 depends_on:
 - Lint
@@ -1295,6 +1265,6 @@ data:
 
 ---
 kind: signature
-hmac: 7ec01c8d5fe232162b4fc57fecf3ff9e8156da377fa0affdc44229a65131f96d
+hmac: cbbcbce3aa3213dc105ce15425c9a183050a912cc72924624c7dd61487e89b68
 
 ...
