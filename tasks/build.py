@@ -79,7 +79,7 @@ def build_aws(ctx,
         cmd += ' build'
         if debug is True:
             cmd += ' -debug -on-error=ask'
-    cmd += TIMESTAMP_UI
+        cmd += TIMESTAMP_UI
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
         cmd += ' -var build_type=base-staging'
@@ -141,7 +141,7 @@ def build_docker(ctx,
         cmd += ' build'
         if debug is True:
             cmd += ' -debug -on-error=ask'
-    cmd += TIMESTAMP_UI
+        cmd += TIMESTAMP_UI
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
         cmd += ' -var build_type=base-staging'
