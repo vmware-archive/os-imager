@@ -16,6 +16,24 @@ steps:
   depends_on:
   - clone
 
+- name: Amazon 1
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=amazon --distro-version=1
+  depends_on:
+  - clone
+
+- name: Amazon 2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --validate --distro=amazon --distro-version=2
+  depends_on:
+  - clone
+
 - name: CentOS 6
   image: hashicorp/packer
   commands:
@@ -160,6 +178,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
@@ -175,7 +194,85 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 1
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --distro=amazon --distro-version=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --distro=amazon --distro-version=2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -198,6 +295,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=centos --distro-version=6
   environment:
@@ -213,7 +311,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -236,6 +334,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=centos --distro-version=7
   environment:
@@ -251,7 +350,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -274,6 +373,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=debian --distro-version=8
   environment:
@@ -289,7 +389,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -312,6 +412,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=debian --distro-version=9
   environment:
@@ -327,7 +428,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -350,6 +451,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=fedora --distro-version=28
   environment:
@@ -365,7 +467,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -388,6 +490,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=fedora --distro-version=29
   environment:
@@ -403,7 +506,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -426,6 +529,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=opensuse --distro-version=15
   environment:
@@ -441,7 +545,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -464,6 +568,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
@@ -479,7 +584,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -502,6 +607,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
@@ -517,7 +623,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -540,6 +646,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604
   environment:
@@ -555,7 +662,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -578,6 +685,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804
   environment:
@@ -593,7 +701,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -616,6 +724,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2012r2
   environment:
@@ -631,7 +740,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -654,6 +763,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2016
   environment:
@@ -669,7 +779,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -692,6 +802,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2019
   environment:
@@ -707,7 +818,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v1.*"
+  - "refs/tags/aws-v1.*"
 
 depends_on:
 - Lint
@@ -730,8 +841,87 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 1 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
+  - pip install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -768,6 +958,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=centos --distro-version=6
   environment:
@@ -806,6 +997,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=centos --distro-version=7
   environment:
@@ -844,6 +1036,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=debian --distro-version=8
   environment:
@@ -882,6 +1075,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=debian --distro-version=9
   environment:
@@ -920,6 +1114,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=fedora --distro-version=28
   environment:
@@ -958,6 +1153,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29
   environment:
@@ -996,6 +1192,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15
   environment:
@@ -1034,6 +1231,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
@@ -1072,6 +1270,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
@@ -1110,6 +1309,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
@@ -1148,6 +1348,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
@@ -1186,6 +1387,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
@@ -1224,6 +1426,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
@@ -1262,6 +1465,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
@@ -1283,18 +1487,7 @@ depends_on:
 - Lint
 
 ---
-kind: secret
-type: general
-data:
-  password: >
-    ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
-    s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
-  username: >
-    I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6
-    _OK_ypQ4AfAiDjEsC2U=
-
----
 kind: signature
-hmac: 7ec01c8d5fe232162b4fc57fecf3ff9e8156da377fa0affdc44229a65131f96d
+hmac: 62c89753c50406a8f8a4256e194b5ad2a943c16215298454162fa0d9c937d8b5
 
 ...

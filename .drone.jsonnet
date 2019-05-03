@@ -1,6 +1,8 @@
 local distros = [
   // Multiprier is way to throttle API requests in order not to hit the limits
   { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
+  { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 13 },
+  { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 14 },
   { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 2 },
   { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 3 },
   { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 4 },
@@ -21,7 +23,7 @@ local distros = [
 
 local BuildTrigger() = {
   ref: [
-    'refs/tags/v1.*',
+    'refs/tags/aws-v1.*',
   ],
   event: [
     'tag',
@@ -90,7 +92,7 @@ local Build(distro, staging) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-      ] + [
+        'apk --no-cache add --update py-pip',
         'pip install invoke',
         std.format('inv build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
@@ -110,14 +112,6 @@ local Build(distro, staging) = {
 };
 
 
-local Secret() = {
-  kind: 'secret',
-  data: {
-    username: 'I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6_OK_ypQ4AfAiDjEsC2U=',
-    password: 'ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==',
-  },
-};
-
 [
   Lint(),
 ] + [
@@ -126,6 +120,4 @@ local Secret() = {
 ] + [
   Build(distro, true)
   for distro in distros
-] + [
-  Secret(),
 ]
