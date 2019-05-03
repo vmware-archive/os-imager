@@ -160,6 +160,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
@@ -198,6 +199,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=centos --distro-version=6
   environment:
@@ -236,6 +238,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=centos --distro-version=7
   environment:
@@ -274,6 +277,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=debian --distro-version=8
   environment:
@@ -312,6 +316,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=debian --distro-version=9
   environment:
@@ -350,6 +355,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=fedora --distro-version=28
   environment:
@@ -388,6 +394,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=fedora --distro-version=29
   environment:
@@ -426,6 +433,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=opensuse --distro-version=15
   environment:
@@ -464,6 +472,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
@@ -502,6 +511,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
@@ -540,6 +550,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604
   environment:
@@ -578,6 +589,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804
   environment:
@@ -616,6 +628,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2012r2
   environment:
@@ -654,6 +667,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2016
   environment:
@@ -692,6 +706,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --distro=windows --distro-version=2019
   environment:
@@ -730,6 +745,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
@@ -768,6 +784,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=centos --distro-version=6
   environment:
@@ -806,6 +823,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=centos --distro-version=7
   environment:
@@ -844,6 +862,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=debian --distro-version=8
   environment:
@@ -882,6 +901,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=debian --distro-version=9
   environment:
@@ -920,6 +940,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=fedora --distro-version=28
   environment:
@@ -958,6 +979,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29
   environment:
@@ -996,6 +1018,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15
   environment:
@@ -1034,6 +1057,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
@@ -1072,6 +1096,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
@@ -1110,6 +1135,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
@@ -1148,6 +1174,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
@@ -1186,6 +1213,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
@@ -1224,6 +1252,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
@@ -1262,6 +1291,7 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update py-pip
   - pip install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
@@ -1295,6 +1325,6 @@ data:
 
 ---
 kind: signature
-hmac: 7ec01c8d5fe232162b4fc57fecf3ff9e8156da377fa0affdc44229a65131f96d
+hmac: 809be2cc399a1072d6c19bf70d5a6525255780fa23309d064df668a227be87c7
 
 ...
