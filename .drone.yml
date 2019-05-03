@@ -1487,18 +1487,7 @@ depends_on:
 - Lint
 
 ---
-kind: secret
-type: general
-data:
-  password: >
-    ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
-    s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
-  username: >
-    I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6
-    _OK_ypQ4AfAiDjEsC2U=
-
----
 kind: signature
-hmac: 9c3e7d8d40b9708ac91364c324e4bf8340a574af1c1b19b63574ec53c5077ea4
+hmac: 62c89753c50406a8f8a4256e194b5ad2a943c16215298454162fa0d9c937d8b5
 
 ...
