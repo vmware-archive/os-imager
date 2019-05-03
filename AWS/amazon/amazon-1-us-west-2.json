@@ -1,6 +1,6 @@
 {
   "_comment": "Build with `packer build -var-file=amazon-1-us-west-2.json centos.json`",
-  "ssh_username": "centos",
+  "ssh_username": "ec2-user",
   "aws_region": "us-west-2",
   "ami_filter": "amzn-ami-hvm-2018.03.0.*-x86_64-gp2",
   "ami_owner": "137112412989",
