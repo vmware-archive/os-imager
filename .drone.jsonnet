@@ -70,6 +70,10 @@ local Build(distro, staging) = {
     {
       name: 'throttle-build',
       image: 'alpine',
+      environment: {
+        PYTHONUNBUFFERED: '1',
+        PYTHONIOENCODING: 'UTF-8',
+      },
       commands: [
         std.format(
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
@@ -82,6 +86,8 @@ local Build(distro, staging) = {
       name: 'base-image',
       image: 'hashicorp/packer',
       environment: {
+        PYTHONUNBUFFERED: '1',
+        PYTHONIOENCODING: 'UTF-8',
         AWS_DEFAULT_REGION: 'us-west-2',
         AWS_ACCESS_KEY_ID: {
           from_secret: 'username',

@@ -173,6 +173,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -187,6 +190,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -211,7 +216,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -226,6 +234,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -250,7 +260,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -265,6 +278,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -289,7 +304,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -304,6 +322,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -328,7 +348,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -343,6 +366,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -367,7 +392,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -382,6 +410,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -406,7 +436,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -421,6 +454,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -445,7 +480,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -460,6 +498,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -484,7 +524,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -499,6 +542,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -523,7 +568,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -538,6 +586,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -562,7 +612,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -577,6 +630,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -601,7 +656,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -616,6 +674,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -640,7 +700,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -655,6 +718,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -679,7 +744,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -694,6 +762,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -719,6 +789,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -733,6 +806,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -758,6 +833,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -772,6 +850,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -797,6 +877,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -811,6 +894,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -836,6 +921,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -850,6 +938,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -874,7 +964,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -889,6 +982,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -913,7 +1008,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -928,6 +1026,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -952,7 +1052,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -967,6 +1070,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -991,7 +1096,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1006,6 +1114,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1030,7 +1140,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1045,6 +1158,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1069,7 +1184,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1084,6 +1202,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1108,7 +1228,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1123,6 +1246,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1147,7 +1272,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1162,6 +1290,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1186,7 +1316,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1201,6 +1334,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1225,7 +1360,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1240,6 +1378,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1264,7 +1404,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1279,6 +1422,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1303,7 +1448,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
+  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1318,6 +1466,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1342,7 +1492,10 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1357,6 +1510,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1382,6 +1537,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1396,6 +1554,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1421,6 +1581,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1435,6 +1598,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1460,6 +1625,9 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  environment:
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1474,6 +1642,8 @@ steps:
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
+    PYTHONIOENCODING: UTF-8
+    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1488,6 +1658,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 62c89753c50406a8f8a4256e194b5ad2a943c16215298454162fa0d9c937d8b5
+hmac: 76961dad9d4109d48a666757b96c2dfca8b7ef09c0361c6cf28a0c8e5f79b6e4
 
 ...
