@@ -9,5 +9,5 @@
   "instance_type": "c4.large",
   "build_type": "base",
   "os_name": "Amazon Linux",
-  "os_version": "6"
+  "os_version": "1"
 }
