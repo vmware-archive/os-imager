@@ -22,7 +22,7 @@ local distros = [
 
 local BuildTrigger() = {
   ref: [
-    'refs/tags/aws-v1.*',
+    'refs/tags/aws-base-v1.*',
   ],
   event: [
     'tag',

@@ -236,7 +236,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -278,7 +278,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -320,7 +320,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -362,7 +362,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -404,7 +404,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -446,7 +446,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -488,7 +488,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -530,7 +530,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -572,7 +572,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -614,7 +614,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -656,7 +656,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -698,7 +698,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -740,7 +740,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -782,7 +782,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -824,7 +824,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -866,7 +866,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-v1.*"
+  - "refs/tags/aws-base-v1.*"
 
 depends_on:
 - Lint
@@ -1545,6 +1545,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 16145924bac4001e4838736161861305473e310bc4eb29b05eca11310162d230
+hmac: ca9a5ee0e240867b7ec8a708cc1dcbb7dbb00f77e4e27b6cd69a8ef69a5e904a
 
 ...
