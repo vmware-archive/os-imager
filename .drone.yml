@@ -10,8 +10,11 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=arch --distro-version=2019-01-09
   depends_on:
   - clone
@@ -19,8 +22,11 @@ steps:
 - name: Amazon 1
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=1
   depends_on:
   - clone
@@ -28,8 +34,11 @@ steps:
 - name: Amazon 2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=2
   depends_on:
   - clone
@@ -37,8 +46,11 @@ steps:
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=6
   depends_on:
   - clone
@@ -46,8 +58,11 @@ steps:
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
   - clone
@@ -55,8 +70,11 @@ steps:
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=8
   depends_on:
   - clone
@@ -64,8 +82,11 @@ steps:
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=9
   depends_on:
   - clone
@@ -73,8 +94,11 @@ steps:
 - name: Fedora 28
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=28
   depends_on:
   - clone
@@ -82,8 +106,11 @@ steps:
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=29
   depends_on:
   - clone
@@ -91,8 +118,11 @@ steps:
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=15
   depends_on:
   - clone
@@ -100,8 +130,11 @@ steps:
 - name: Opensuse 42.3
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=42.3
   depends_on:
   - clone
@@ -109,8 +142,11 @@ steps:
 - name: Ubuntu 1404
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1404
   depends_on:
   - clone
@@ -118,8 +154,11 @@ steps:
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1604
   depends_on:
   - clone
@@ -127,8 +166,11 @@ steps:
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1804
   depends_on:
   - clone
@@ -136,8 +178,11 @@ steps:
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2012r2
   depends_on:
   - clone
@@ -145,8 +190,11 @@ steps:
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2016
   depends_on:
   - clone
@@ -154,8 +202,11 @@ steps:
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2019
   depends_on:
   - clone
@@ -181,8 +232,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
@@ -225,8 +279,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
@@ -269,8 +326,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
@@ -313,8 +373,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
@@ -357,8 +420,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
@@ -401,8 +467,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
@@ -445,8 +514,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
@@ -489,8 +561,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
@@ -533,8 +608,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
@@ -577,8 +655,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
@@ -621,8 +702,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
@@ -665,8 +749,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
@@ -709,8 +796,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
@@ -753,8 +843,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
@@ -797,8 +890,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
@@ -841,8 +937,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
@@ -885,8 +984,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
@@ -929,8 +1031,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
@@ -973,8 +1078,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1017,8 +1125,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1061,8 +1172,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1105,8 +1219,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1149,8 +1266,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1193,8 +1313,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1237,8 +1360,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1281,8 +1407,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1325,8 +1454,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1369,8 +1501,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1413,8 +1548,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1457,8 +1595,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1501,8 +1642,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1545,8 +1689,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1589,8 +1736,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1633,8 +1783,11 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py-pip
-  - pip install invoke
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
   - inv --pty build-aws --staging --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
@@ -1658,6 +1811,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 00f8f4df32ca30f4817ce8837ea82dd2d982d64390d26fcb227bcc71911992ce
+hmac: 86f13bf971e0a2a690c76b317944c9aebf504b4a0fb210d061638cce1d69b505
 
 ...

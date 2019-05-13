@@ -48,8 +48,11 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add --update py-pip',
-        'pip install invoke',
+        'apk --no-cache add --update python3',
+        'python3 -m ensurepip',
+        'rm -r /usr/lib/python*/ensurepip',
+        'pip3 install --upgrade pip setuptools',
+        'pip3 install invoke',
         std.format('inv build-aws --validate --distro=%s --distro-version=%s', [
           distro.name,
           distro.version,
@@ -98,8 +101,11 @@ local Build(distro, staging) = {
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
-        'apk --no-cache add --update py-pip',
-        'pip install invoke',
+        'apk --no-cache add --update python3',
+        'python3 -m ensurepip',
+        'rm -r /usr/lib/python*/ensurepip',
+        'pip3 install --upgrade pip setuptools',
+        'pip3 install invoke',
         std.format('inv --pty build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
           distro.name,
