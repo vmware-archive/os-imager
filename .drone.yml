@@ -139,18 +139,6 @@ steps:
   depends_on:
   - clone
 
-- name: Ubuntu 1404
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --validate --distro=ubuntu --distro-version=1404
-  depends_on:
-  - clone
-
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
@@ -655,48 +643,6 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=42.3
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/aws-v1.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Ubuntu 1404
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1389,48 +1335,6 @@ depends_on:
 
 ---
 kind: pipeline
-name: Ubuntu 1404 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1404
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
 name: Ubuntu 1604 (Staging)
 
 platform:
@@ -1641,6 +1545,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 677bbc8840e9a66ee9fbe0578a7ba5546b12e18c01ab4d55049c0d7db2c5193d
+hmac: 16145924bac4001e4838736161861305473e310bc4eb29b05eca11310162d230
 
 ...

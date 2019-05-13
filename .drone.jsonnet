@@ -11,7 +11,6 @@ local distros = [
   { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 9 },
   { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 10 },
   { display_name: 'Opensuse 42.3', name: 'opensuse', version: '42.3', multiplier: 11 },
-  { display_name: 'Ubuntu 1404', name: 'ubuntu', version: '1404', multiplier: 12 },
   { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 13 },
   { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 14 },
   // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
