@@ -100,7 +100,7 @@ local Build(distro, staging) = {
         'apk --no-cache add make curl grep gawk sed',
         'apk --no-cache add --update py-pip',
         'pip install invoke',
-        std.format('inv build-aws%s --distro=%s --distro-version=%s', [
+        std.format('inv --pty build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
           distro.name,
           distro.version,

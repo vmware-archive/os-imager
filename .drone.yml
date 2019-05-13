@@ -183,7 +183,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=arch --distro-version=2019-01-09
+  - inv --pty build-aws --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -227,7 +227,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=amazon --distro-version=1
+  - inv --pty build-aws --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -271,7 +271,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=amazon --distro-version=2
+  - inv --pty build-aws --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -315,7 +315,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=centos --distro-version=6
+  - inv --pty build-aws --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -359,7 +359,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=centos --distro-version=7
+  - inv --pty build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -403,7 +403,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=debian --distro-version=8
+  - inv --pty build-aws --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -447,7 +447,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=debian --distro-version=9
+  - inv --pty build-aws --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -491,7 +491,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=fedora --distro-version=28
+  - inv --pty build-aws --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -535,7 +535,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=fedora --distro-version=29
+  - inv --pty build-aws --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -579,7 +579,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=opensuse --distro-version=15
+  - inv --pty build-aws --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -623,7 +623,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=opensuse --distro-version=42.3
+  - inv --pty build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -667,7 +667,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1404
+  - inv --pty build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -711,7 +711,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1604
+  - inv --pty build-aws --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -755,7 +755,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1804
+  - inv --pty build-aws --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -799,7 +799,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2012r2
+  - inv --pty build-aws --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -843,7 +843,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2016
+  - inv --pty build-aws --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -887,7 +887,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --distro=windows --distro-version=2019
+  - inv --pty build-aws --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -931,7 +931,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
+  - inv --pty build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -975,7 +975,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=1
+  - inv --pty build-aws --staging --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1019,7 +1019,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=2
+  - inv --pty build-aws --staging --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1063,7 +1063,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=centos --distro-version=6
+  - inv --pty build-aws --staging --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1107,7 +1107,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=centos --distro-version=7
+  - inv --pty build-aws --staging --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1151,7 +1151,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8
+  - inv --pty build-aws --staging --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1195,7 +1195,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=debian --distro-version=9
+  - inv --pty build-aws --staging --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1239,7 +1239,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=28
+  - inv --pty build-aws --staging --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1283,7 +1283,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29
+  - inv --pty build-aws --staging --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1327,7 +1327,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=15
+  - inv --pty build-aws --staging --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1371,7 +1371,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=42.3
+  - inv --pty build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1415,7 +1415,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1404
+  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1459,7 +1459,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1604
+  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1503,7 +1503,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1804
+  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1547,7 +1547,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2012r2
+  - inv --pty build-aws --staging --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1591,7 +1591,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2016
+  - inv --pty build-aws --staging --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1635,7 +1635,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed
   - apk --no-cache add --update py-pip
   - pip install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2019
+  - inv --pty build-aws --staging --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1658,6 +1658,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 76961dad9d4109d48a666757b96c2dfca8b7ef09c0361c6cf28a0c8e5f79b6e4
+hmac: 00f8f4df32ca30f4817ce8837ea82dd2d982d64390d26fcb227bcc71911992ce
 
 ...
