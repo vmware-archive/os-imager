@@ -224,9 +224,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -237,15 +234,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=arch --distro-version=2019-01-09
+  - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -271,9 +266,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -284,15 +276,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=amazon --distro-version=1
+  - inv build-aws --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -318,9 +308,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -331,15 +318,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=amazon --distro-version=2
+  - inv build-aws --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -365,9 +350,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -378,15 +360,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=centos --distro-version=6
+  - inv build-aws --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -412,9 +392,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -425,15 +402,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=centos --distro-version=7
+  - inv build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -459,9 +434,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -472,15 +444,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=debian --distro-version=8
+  - inv build-aws --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -506,9 +476,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -519,15 +486,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=debian --distro-version=9
+  - inv build-aws --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -553,9 +518,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -566,15 +528,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=fedora --distro-version=28
+  - inv build-aws --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -600,9 +560,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -613,15 +570,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=fedora --distro-version=29
+  - inv build-aws --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -647,9 +602,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -660,15 +612,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=opensuse --distro-version=15
+  - inv build-aws --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -694,9 +644,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -707,15 +654,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=opensuse --distro-version=42.3
+  - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -741,9 +686,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -754,15 +696,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=ubuntu --distro-version=1404
+  - inv build-aws --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -788,9 +728,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -801,15 +738,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=ubuntu --distro-version=1604
+  - inv build-aws --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -835,9 +770,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -848,15 +780,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=ubuntu --distro-version=1804
+  - inv build-aws --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -882,9 +812,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -895,15 +822,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=windows --distro-version=2012r2
+  - inv build-aws --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -929,9 +854,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -942,15 +864,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=windows --distro-version=2016
+  - inv build-aws --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -976,9 +896,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -989,15 +906,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --distro=windows --distro-version=2019
+  - inv build-aws --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1023,9 +938,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1036,15 +948,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=arch --distro-version=2019-01-09
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1070,9 +980,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1083,15 +990,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=amazon --distro-version=1
+  - inv build-aws --staging --distro=amazon --distro-version=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1117,9 +1022,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1130,15 +1032,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=amazon --distro-version=2
+  - inv build-aws --staging --distro=amazon --distro-version=2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1164,9 +1064,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1177,15 +1074,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=centos --distro-version=6
+  - inv build-aws --staging --distro=centos --distro-version=6
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1211,9 +1106,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1224,15 +1116,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=centos --distro-version=7
+  - inv build-aws --staging --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1258,9 +1148,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1271,15 +1158,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=debian --distro-version=8
+  - inv build-aws --staging --distro=debian --distro-version=8
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1305,9 +1190,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1318,15 +1200,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=debian --distro-version=9
+  - inv build-aws --staging --distro=debian --distro-version=9
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1352,9 +1232,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1365,15 +1242,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=fedora --distro-version=28
+  - inv build-aws --staging --distro=fedora --distro-version=28
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1399,9 +1274,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1412,15 +1284,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=fedora --distro-version=29
+  - inv build-aws --staging --distro=fedora --distro-version=29
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1446,9 +1316,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1459,15 +1326,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=opensuse --distro-version=15
+  - inv build-aws --staging --distro=opensuse --distro-version=15
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1493,9 +1358,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1506,15 +1368,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=opensuse --distro-version=42.3
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1540,9 +1400,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1553,15 +1410,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1404
+  - inv build-aws --staging --distro=ubuntu --distro-version=1404
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1587,9 +1442,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1600,15 +1452,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1604
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1634,9 +1484,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1647,15 +1494,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=ubuntu --distro-version=1804
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1681,9 +1526,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1694,15 +1536,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=windows --distro-version=2012r2
+  - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1728,9 +1568,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1741,15 +1578,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=windows --distro-version=2016
+  - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1775,9 +1610,6 @@ steps:
   image: alpine
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
-  environment:
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
 
 - name: base-image
   image: hashicorp/packer
@@ -1788,15 +1620,13 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - inv --pty build-aws --staging --distro=windows --distro-version=2019
+  - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
     AWS_DEFAULT_REGION: us-west-2
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
-    PYTHONIOENCODING: UTF-8
-    PYTHONUNBUFFERED: 1
   depends_on:
   - throttle-build
 
@@ -1811,6 +1641,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 86f13bf971e0a2a690c76b317944c9aebf504b4a0fb210d061638cce1d69b505
+hmac: 677bbc8840e9a66ee9fbe0578a7ba5546b12e18c01ab4d55049c0d7db2c5193d
 
 ...

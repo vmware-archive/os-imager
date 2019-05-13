@@ -73,10 +73,6 @@ local Build(distro, staging) = {
     {
       name: 'throttle-build',
       image: 'alpine',
-      environment: {
-        PYTHONUNBUFFERED: '1',
-        PYTHONIOENCODING: 'UTF-8',
-      },
       commands: [
         std.format(
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
@@ -89,8 +85,6 @@ local Build(distro, staging) = {
       name: 'base-image',
       image: 'hashicorp/packer',
       environment: {
-        PYTHONUNBUFFERED: '1',
-        PYTHONIOENCODING: 'UTF-8',
         AWS_DEFAULT_REGION: 'us-west-2',
         AWS_ACCESS_KEY_ID: {
           from_secret: 'username',
@@ -106,7 +100,7 @@ local Build(distro, staging) = {
         'rm -r /usr/lib/python*/ensurepip',
         'pip3 install --upgrade pip setuptools',
         'pip3 install invoke',
-        std.format('inv --pty build-aws%s --distro=%s --distro-version=%s', [
+        std.format('inv build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
           distro.name,
           distro.version,
