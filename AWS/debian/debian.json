@@ -51,14 +51,6 @@
     {
       "type": "shell",
       "inline": [
-        "sudo locale-gen --purge en_US.UTF-8",
-        "echo 'LANG=\"en_US.UTF-8\"' | sudo tee -a /etc/default/locale",
-        "echo 'LANGUAGE=\"en_US:en\"' | sudo tee -a /etc/default/locale"
-      ]
-    },
-    {
-      "type": "shell",
-      "inline": [
         "sudo  rm -rf /etc/apt/apt.conf.d/50unattended-upgrades",
         "sudo apt-get update -y && sudo apt-get upgrade -y",
         "sudo apt-get install -y git vim ",
