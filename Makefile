@@ -18,44 +18,19 @@ help:
 	@echo '    make <target> OS=<SOME OS> OS_REV=<SOME OS REVISION>'
 
 check-paths:
-	$(info Checking paths...)
-	@mkdir -p .tmp/$(SALT_BRANCH)/states .tmp/$(SALT_BRANCH)/win_states .tmp/$(SALT_BRANCH)/pillar .tmp/scripts .tmp/$(SALT_BRANCH)/conf
-	@touch .tmp/scripts/Install-Git.ps1
-ifeq ($(shell [ -e $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json ] && echo 1 || echo 0), 1)
-	$(eval TEMPLATE = $(PACKERDIR)/$(OS)/$(OS)-$(OS_REV).json)
-endif
+	$(warning Makefile support was dropped for invoke, please 'pip install invoke'.)
 
 .PHONY: validate
 validate: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info SALT_BRANCH=$(SALT_BRANCH))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer validate -var-file=$(VAR_FILE) -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
+	$(warning Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --validate' instead.)
++	@exit 1
 
 .PHONY: build
 build: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info SALT_BRANCH=$(SALT_BRANCH))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer build -var-file=$(VAR_FILE) -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
+	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --salt-branch=$(SALT_BRANCH)' instead.)
++	@exit 1
 
 .PHONY: build-staging
 build-staging: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer build -var-file=$(VAR_FILE) -var 'build_type=ci-staging' -var 'source_build_type=base-staging' -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
-
-.PHONY: build-debug
-build-debug: check-paths
-	$(info OS=$(OS))
-	$(info OS_REV=$(OS_REV))
-	$(info SALT_BRANCH=$(SALT_BRANCH))
-	$(info TEMPLATE=$(TEMPLATE))
-	$(info VAR_FILE=$(VAR_FILE))
-	@packer build -on-error=ask -debug -var-file=$(VAR_FILE) -var 'build_type=ci-staging' -var 'source_build_type=base-staging' -var 'salt_branch=$(SALT_BRANCH)' $(TEMPLATE)
+	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --salt-branch=$(SALT_BRANCH) --staging' instead.)
++	@exit 1

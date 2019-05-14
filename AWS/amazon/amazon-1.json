@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build centos.json`",
+  "_comment": "Build with `packer build amazon-1.json`",
   "builders": [
     {
       "type": "amazon-ebs",
