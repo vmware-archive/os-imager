@@ -43,24 +43,6 @@ def build_aws(ctx,
     if distro_version:
         distro_slug += '-{}'.format(distro_version)
 
-    packer_tmp_dir = PACKER_TMP_DIR.format(distro_slug)
-    if not os.path.exists(packer_tmp_dir):
-        os.makedirs(packer_tmp_dir)
-    os.chmod(os.path.dirname(packer_tmp_dir), 0o777)
-    os.chmod(packer_tmp_dir, 0o777)
-    if distro_slug.startswith('windows'):
-        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
-        if not os.path.exists(scripts_path):
-            os.makedirs(scripts_path)
-        os.chmod(scripts_path, 0o777)
-        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
-            wfh.write('')
-    for name in ('states', 'win_states', 'pillar', 'conf'):
-        path = os.path.join(packer_tmp_dir, salt_branch, name)
-        if not os.path.exists(path):
-            os.makedirs(path)
-        os.chmod(path, 0o777)
-
     template_variations = [
         os.path.join(distro_dir, '{}.json'.format(distro_slug)),
         os.path.join(distro_dir, '{}.json'.format(distro))
@@ -84,6 +66,24 @@ def build_aws(ctx,
     else:
         exit_invoke(1, 'Could not find the distribution build vars file. Tried: {}',
                     ', '.join(vars_variations))
+
+    packer_tmp_dir = PACKER_TMP_DIR.format(distro_slug)
+    if not os.path.exists(packer_tmp_dir):
+        os.makedirs(packer_tmp_dir)
+    os.chmod(os.path.dirname(packer_tmp_dir), 0o755)
+    os.chmod(packer_tmp_dir, 0o755)
+    if distro_slug.startswith('windows'):
+        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
+        if not os.path.exists(scripts_path):
+            os.makedirs(scripts_path)
+        os.chmod(scripts_path, 0o755)
+        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
+            wfh.write('')
+    for name in ('states', 'win_states', 'pillar', 'conf'):
+        path = os.path.join(packer_tmp_dir, salt_branch, name)
+        if not os.path.exists(path):
+            os.makedirs(path)
+        os.chmod(path, 0o755)
 
     cmd = 'packer'
     if validate is True:
@@ -120,24 +120,6 @@ def build_docker(ctx,
     if distro_version:
         distro_slug += '-{}'.format(distro_version)
 
-    packer_tmp_dir = PACKER_TMP_DIR.format(distro_slug)
-    if not os.path.exists(packer_tmp_dir):
-        os.makedirs(packer_tmp_dir)
-    os.chmod(os.path.dirname(packer_tmp_dir), 0o777)
-    os.chmod(packer_tmp_dir, 0o777)
-    if distro_slug.startswith('windows'):
-        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
-        if not os.path.exists(scripts_path):
-            os.makedirs(scripts_path)
-        os.chmod(scripts_path, 0o777)
-        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
-            wfh.write('')
-    for name in ('states', 'win_states', 'pillar', 'conf'):
-        path = os.path.join(packer_tmp_dir, salt_branch, name)
-        if not os.path.exists(path):
-            os.makedirs(path)
-        os.chmod(path, 0o777)
-
     template_variations = [
         os.path.join(distro_dir, '{}.json'.format(distro_slug)),
         os.path.join(distro_dir, '{}.json'.format(distro))
@@ -161,6 +143,24 @@ def build_docker(ctx,
     else:
         exit_invoke(1, 'Could not find the distribution build vars file. Tried: {}',
                     ', '.join(vars_variations))
+
+    packer_tmp_dir = PACKER_TMP_DIR.format(distro_slug)
+    if not os.path.exists(packer_tmp_dir):
+        os.makedirs(packer_tmp_dir)
+    os.chmod(os.path.dirname(packer_tmp_dir), 0o755)
+    os.chmod(packer_tmp_dir, 0o755)
+    if distro_slug.startswith('windows'):
+        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
+        if not os.path.exists(scripts_path):
+            os.makedirs(scripts_path)
+        os.chmod(scripts_path, 0o755)
+        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
+            wfh.write('')
+    for name in ('states', 'win_states', 'pillar', 'conf'):
+        path = os.path.join(packer_tmp_dir, salt_branch, name)
+        if not os.path.exists(path):
+            os.makedirs(path)
+        os.chmod(path, 0o755)
 
     cmd = 'packer'
     if validate is True:
