@@ -48,10 +48,13 @@ def build_aws(ctx,
         os.makedirs(packer_tmp_dir)
     os.chmod(os.path.dirname(packer_tmp_dir), 0o777)
     os.chmod(packer_tmp_dir, 0o777)
-    scripts_path = os.path.join(packer_tmp_dir, 'scripts')
-    if not os.path.exists(scripts_path):
-        os.makedirs(scripts_path)
-    os.chmod(scripts_path, 0o777)
+    if distro_slug.startswith('windows'):
+        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
+        if not os.path.exists(scripts_path):
+            os.makedirs(scripts_path)
+        os.chmod(scripts_path, 0o777)
+        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
+            wfh.write('')
     for name in ('states', 'win_states', 'pillar', 'conf'):
         path = os.path.join(packer_tmp_dir, salt_branch, name)
         if not os.path.exists(path):
@@ -122,10 +125,13 @@ def build_docker(ctx,
         os.makedirs(packer_tmp_dir)
     os.chmod(os.path.dirname(packer_tmp_dir), 0o777)
     os.chmod(packer_tmp_dir, 0o777)
-    scripts_path = os.path.join(packer_tmp_dir, 'scripts')
-    if not os.path.exists(scripts_path):
-        os.makedirs(scripts_path)
-    os.chmod(scripts_path, 0o777)
+    if distro_slug.startswith('windows'):
+        scripts_path = os.path.join(packer_tmp_dir, 'scripts')
+        if not os.path.exists(scripts_path):
+            os.makedirs(scripts_path)
+        os.chmod(scripts_path, 0o777)
+        with open(os.path.join(scripts_path, 'Install-Git.ps1'), 'w') as wfh:
+            wfh.write('')
     for name in ('states', 'win_states', 'pillar', 'conf'):
         path = os.path.join(packer_tmp_dir, salt_branch, name)
         if not os.path.exists(path):
