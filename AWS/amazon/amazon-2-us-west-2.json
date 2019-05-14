@@ -2,12 +2,15 @@
   "_comment": "Build with `packer build -var-file=amazon-2-us-west-2.json amazon.json`",
   "ssh_username": "ec2-user",
   "aws_region": "us-west-2",
-  "ami_filter": "amzn2-ami-hvm-2.*-x86_64-gp2",
-  "ami_owner": "137112412989",
-  "ami_name_prefix": "saltstack",
-  "ami_name_suffix": "amazon/2",
-  "instance_type": "c5.large",
-  "build_type": "base",
   "os_name": "Amazon Linux",
-  "os_version": "2"
+  "os_version": "2",
+  "bootstrap_args": "-qXU",
+  "bootstrap_version": "2018.3.4",
+  "salt_branch": "develop",
+  "state_name": "git.minimal",
+  "ami_name_prefix": "saltstack",
+  "ami_name_suffix": "arch/lts",
+  "instance_type": "c5.large",
+  "build_type": "ci",
+  "source_build_type": "base"
 }
