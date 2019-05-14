@@ -1,11 +1,11 @@
 {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "vpc_region": "us-west-2",
-    "vpc_id": "",
-    "vpc_public_sn_id": "",
-    "source_ami": "ami-3ecc8f46",
-    "vpc_public_sg_id": "",
-    "instance_type": "t2.small",
-    "ssh_username": "centos"
+  "aws_access_key": "",
+  "aws_secret_key": "",
+  "vpc_region": "us-west-2",
+  "vpc_id": "",
+  "vpc_public_sn_id": "",
+  "source_ami": "ami-3ecc8f46",
+  "vpc_public_sg_id": "",
+  "instance_type": "t2.small",
+  "ssh_username": "centos"
 }

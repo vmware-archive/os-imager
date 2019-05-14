@@ -15,7 +15,7 @@ fi
 # Ubuntu 12.04 & 14.04
 if [ -d "/var/lib/dhcp" ]; then
     rm /var/lib/dhcp/*
-fi 
+fi
 
 UBUNTU_VERSION=$(lsb_release -sr)
 if [[ ${UBUNTU_VERSION} == 16.04 ]] || [[ ${UBUNTU_VERSION} == 16.10 ]]; then

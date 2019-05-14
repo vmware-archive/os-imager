@@ -10,120 +10,192 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=arch OS_REV=2019-01-09
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
+  depends_on:
+  - clone
+
+- name: Amazon 1
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=amazon --distro-version=1
+  depends_on:
+  - clone
+
+- name: Amazon 2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=amazon --distro-version=2
   depends_on:
   - clone
 
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=6
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=centos --distro-version=6
   depends_on:
   - clone
 
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=centos OS_REV=7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
   - clone
 
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=8
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=debian --distro-version=8
   depends_on:
   - clone
 
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=debian OS_REV=9
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=debian --distro-version=9
   depends_on:
   - clone
 
 - name: Fedora 28
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=28
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=28
   depends_on:
   - clone
 
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=fedora OS_REV=29
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=29
   depends_on:
   - clone
 
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=15
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=15
   depends_on:
   - clone
 
 - name: Opensuse 42.3
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=opensuse OS_REV=42.3
-  depends_on:
-  - clone
-
-- name: Ubuntu 1404
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1404
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=opensuse --distro-version=42.3
   depends_on:
   - clone
 
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1604
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1604
   depends_on:
   - clone
 
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=ubuntu OS_REV=1804
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=ubuntu --distro-version=1804
   depends_on:
   - clone
 
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2012r2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2012r2
   depends_on:
   - clone
 
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2016
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2016
   depends_on:
   - clone
 
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make
-  - make validate OS=windows OS_REV=2019
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=windows --distro-version=2019
   depends_on:
   - clone
 
@@ -145,7 +217,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -159,7 +236,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -173,7 +255,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -187,7 +274,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=arch OS_REV=2019-01-09 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -201,7 +293,205 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 1
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=1 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-ci-v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=2 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -218,13 +508,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=6 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -238,7 +533,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=6 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -252,7 +552,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=6 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -266,7 +571,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=6 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=6 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -280,7 +590,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -297,13 +607,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=7 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -317,7 +632,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=7 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -331,7 +651,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=7 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -345,7 +670,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=centos OS_REV=7 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=7 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -359,7 +689,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -376,13 +706,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
+  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=8 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -396,7 +731,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=8 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -410,7 +750,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=8 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -424,7 +769,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=8 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=8 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -438,7 +788,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -455,13 +805,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
+  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=9 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -475,7 +830,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=9 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -489,7 +849,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=9 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -503,7 +868,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=debian OS_REV=9 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=9 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -517,7 +887,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -534,13 +904,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=28 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -554,7 +929,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=28 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -568,7 +948,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=28 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -582,7 +967,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=28 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=28 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -596,7 +986,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -613,13 +1003,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -633,7 +1028,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -647,7 +1047,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -661,7 +1066,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=fedora OS_REV=29 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=29 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -675,7 +1085,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -692,13 +1102,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -712,7 +1127,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -726,7 +1146,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -740,7 +1165,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=15 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -754,7 +1184,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -771,13 +1201,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -791,7 +1226,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -805,7 +1245,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -819,7 +1264,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=opensuse OS_REV=42.3 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=42.3 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -833,86 +1283,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Ubuntu 1404
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
-
-- name: 2017.7
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2017.7
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: 2018.3
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2018.3
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: develop
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1404 SALT_BRANCH=develop
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -929,13 +1300,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
+  - "sh -c 'echo Sleeping 364 seconds; sleep 364'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -949,7 +1325,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -963,7 +1344,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -977,7 +1363,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1604 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -991,7 +1382,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -1008,13 +1399,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 336 seconds; sleep 336'"
+  - "sh -c 'echo Sleeping 392 seconds; sleep 392'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1028,7 +1424,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1042,7 +1443,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1056,7 +1462,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=ubuntu OS_REV=1804 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1070,7 +1481,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -1093,7 +1504,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1107,7 +1523,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1121,7 +1542,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1135,7 +1561,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2012r2 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1149,7 +1580,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -1172,7 +1603,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1186,7 +1622,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1200,7 +1641,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1214,7 +1660,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2016 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2016 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1228,7 +1679,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -1251,7 +1702,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1265,7 +1721,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1279,7 +1740,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1293,7 +1759,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build OS=windows OS_REV=2019 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2019 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1307,7 +1778,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/v2.*"
+  - "refs/tags/aws-ci-v1.*"
 
 depends_on:
 - Lint
@@ -1330,7 +1801,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1344,7 +1820,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1358,7 +1839,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1372,7 +1858,210 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=arch OS_REV=2019-01-09 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - ci
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 1 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - ci
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Amazon 2 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1403,13 +2092,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1423,7 +2117,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1437,7 +2136,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1451,7 +2155,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=6 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1482,13 +2191,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1502,7 +2216,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1516,7 +2235,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1530,7 +2254,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=centos OS_REV=7 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1561,13 +2290,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
+  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1581,7 +2315,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1595,7 +2334,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1609,7 +2353,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=8 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1640,13 +2389,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
+  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1660,7 +2414,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1674,7 +2433,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1688,7 +2452,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=debian OS_REV=9 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1719,13 +2488,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1739,7 +2513,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1753,7 +2532,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1767,7 +2551,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=28 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=28 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1798,13 +2587,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1818,7 +2612,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1832,7 +2631,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1846,7 +2650,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=fedora OS_REV=29 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1877,13 +2686,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1897,7 +2711,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1911,7 +2730,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1925,7 +2749,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=15 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1956,13 +2785,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1976,7 +2810,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1990,7 +2829,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2004,86 +2848,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=opensuse OS_REV=42.3 SALT_BRANCH=develop
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - ci
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Ubuntu 1404 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
-
-- name: 2017.7
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2017.7
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: 2018.3
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2018.3
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: develop
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1404 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=42.3 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2114,13 +2884,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 308 seconds; sleep 308'"
+  - "sh -c 'echo Sleeping 364 seconds; sleep 364'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2134,7 +2909,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2148,7 +2928,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2162,7 +2947,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1604 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2193,13 +2983,18 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 336 seconds; sleep 336'"
+  - "sh -c 'echo Sleeping 392 seconds; sleep 392'"
 
 - name: 2017.7
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2213,7 +3008,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2227,7 +3027,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2241,7 +3046,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=ubuntu OS_REV=1804 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2278,7 +3088,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2292,7 +3107,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2306,7 +3126,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2320,7 +3145,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2012r2 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2357,7 +3187,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2371,7 +3206,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2385,7 +3225,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2399,7 +3244,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2016 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2436,7 +3286,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2017.7
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2450,7 +3305,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2018.3
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2464,7 +3324,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=2019.2
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2478,7 +3343,12 @@ steps:
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed
-  - make build-staging OS=windows OS_REV=2019 SALT_BRANCH=develop
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2498,18 +3368,7 @@ depends_on:
 - Lint
 
 ---
-kind: secret
-type: general
-data:
-  password: >
-    ood6DhiPeWBKZfSOqhsq-iJPmkfnrbdIonynU7Hdd_gTk4eeii_l4cbit9O3
-    s5P-iX3CWa_v6RwKtKz9vQd6V0MuphwGxRAcSC1z4O3R0g==
-  username: >
-    I0tTPep0OuH_qwx5v5-cr4gONWEDbccbJ4yShpI369wV5WYYRuq1Gckx40A6
-    _OK_ypQ4AfAiDjEsC2U=
-
----
 kind: signature
-hmac: 073fe2e1a64843de02ac74718a1ecc23df65806fd018613b4b8d44e3edb87bcd
+hmac: 0ec70c7cc52f206a6cf586edb3dc29f11d3172ed19f00851a9ea75a2f58979a2
 
 ...

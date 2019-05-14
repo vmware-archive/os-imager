@@ -26,7 +26,7 @@
       ],
       "ami_description": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }} for salt@{{ user `salt_branch` }}",
       "tags": {
-        "Name":"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
+        "Name": "{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}} // salt@{{ user `salt_branch`}}",
         "OS-Name": "{{ user `os_name` }}",
         "OS-Version": "{{ user `os_version` }}",
         "Build-Date": "{{ isotime }}",
@@ -41,7 +41,7 @@
         "Python-3": true
       },
       "run_tags": {
-        "Name": "Packer {{ user `os_name` }} {{ user `os_version` }} Builder",
+        "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} salt@{{ user `salt_branch`}} Builder",
         "created-by": "packer",
         "Owner": "SRE"
       },
@@ -59,42 +59,43 @@
     {
       "type": "shell",
       "inline": [
-         "sudo zypper -n remove aws-cli"
-       ]
+        "sudo zypper -n remove aws-cli"
+      ]
     },
     {
       "type": "shell-local",
       "script": "AWS/files/prep-linux.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
+        "DISTRO_SLUG={{ user `distro_slug` }}",
         "PY_VERSION=3"
       ]
     },
     {
       "type": "file",
       "generated": true,
-      "source": ".tmp/{{ user `salt_branch` }}/conf/minion",
+      "source": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/conf/minion",
       "destination": "/tmp/gitfs.conf",
       "direction": "upload"
     },
     {
       "type": "shell",
       "inline": [
-         "sudo mkdir -p /etc/salt/minion.d",
-         "sudo mv /tmp/gitfs.conf /etc/salt/minion.d/"
-       ]
+        "sudo mkdir -p /etc/salt/minion.d",
+        "sudo mv /tmp/gitfs.conf /etc/salt/minion.d/"
+      ]
     },
     {
       "type": "salt-masterless",
       "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}",
-      "local_state_tree": ".tmp/{{ user `salt_branch` }}/states",
-      "local_pillar_roots": ".tmp/{{ user `salt_branch` }}/pillar",
+      "local_state_tree": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states",
+      "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
       "custom_state": "gitpython"
     },
     {
       "type": "file",
       "generated": true,
-      "source": ".tmp/{{ user `salt_branch` }}/pillar",
+      "source": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
       "destination": "/tmp/pillar",
       "direction": "upload"
     },
@@ -105,20 +106,21 @@
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "sudo rm -rf /srv/pillar/* /srv/salt/* /tmp/salt /tmp/pillar"
-       ]
+      ]
     },
     {
       "type": "shell-local",
       "script": "AWS/files/prep-linux.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
+        "DISTRO_SLUG={{ user `distro_slug` }}",
         "PY_VERSION=2"
       ]
     },
     {
       "type": "file",
       "generated": true,
-      "source": ".tmp/{{ user `salt_branch` }}/pillar",
+      "source": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
       "destination": "/tmp/pillar",
       "direction": "upload"
     },
@@ -129,7 +131,7 @@
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "sudo rm -rf /srv/pillar /srv/salt /tmp/salt /tmp/pillar"
-       ]
+      ]
     }
   ]
 }
