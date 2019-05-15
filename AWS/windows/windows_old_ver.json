@@ -20,7 +20,9 @@
       },
       "ami_users": [
         "883373499178",
-        "540082622920"
+        "540082622920",
+        "989543020150",
+        "178480506716"
       ],
       "instance_type": "{{ user `instance_type` }}",
       "user_data_file": "{{ user `user_data_file` }}",
