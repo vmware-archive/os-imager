@@ -10,7 +10,8 @@
         "filters": {
           "virtualization-type": "hvm",
           "name": "{{ user `ami_name_prefix` }}/{{ user `source_build_type` }}/{{ user `ami_name_suffix` }}*",
-          "root-device-type": "ebs"
+          "root-device-type": "ebs",
+          "state": "available"
         },
         "owners": [
           "883373499178",
