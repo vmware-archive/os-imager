@@ -1,9 +1,0 @@
-{
-  "_comment": "Build with `packer build -var-file=ubuntu1804.json ubuntu.json`",
-  "vm_name": "ubuntu1804",
-  "name": "ubuntu1804",
-  "vmdk_name": "ubuntu1804",
-  "iso_checksum": "bed8a55ae2a657f8349fe3271097cff3a5b8c3d1048cf258568f1601976fa30d",
-  "iso_checksum_type": "sha256",
-  "iso_url": "http://us.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/current/images/netboot/mini.iso"
-}
