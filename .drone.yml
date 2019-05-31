@@ -46,6 +46,8 @@ steps:
   - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
   - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
+  - mkdir ~/.ssh
+  - chmod 700 ~/.ssh
   - "ssh-keyscan -H github.com >> ~/.ssh/known_hosts"
   - inv build-aws --distro=centos --distro-version=7
   environment:
@@ -97,6 +99,8 @@ steps:
   - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
   - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
+  - mkdir ~/.ssh
+  - chmod 700 ~/.ssh
   - "ssh-keyscan -H github.com >> ~/.ssh/known_hosts"
   - inv build-aws --staging --distro=centos --distro-version=7
   environment:
@@ -123,6 +127,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 3d8ca12dbccf1d81c7ad71b215c80a889968f29b7693ba5ced78ea4dfca413ce
+hmac: d153f3c7e5c2a93adcce81ba061c34976411661d7215300339c1c36126161524
 
 ...

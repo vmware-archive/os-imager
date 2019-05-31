@@ -91,6 +91,8 @@ local Build(distro, staging) = {
         'echo $GPGKEY > gpgkey.asc',
         'chmod 600 sre-jenkins-key gpgkey.asc',
         'ssh-keyscan -t rsa github.com | ssh-keygen -lf -',
+        'mkdir ~/.ssh',
+        'chmod 700 ~/.ssh',
         'ssh-keyscan -H github.com >> ~/.ssh/known_hosts',
         std.format('inv build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
