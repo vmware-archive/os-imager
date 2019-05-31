@@ -61,6 +61,16 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update -y && sudo apt-get upgrade -yq",
+        "sudo rm -rf /tmp/* /var/lib/apt/lists/* && sudo apt-get clean"
+      ],
+      "environment_vars": [
+        "DEBIAN_FRONTEND=noninteractive"
+      ]
+    },
+    {
       "type": "shell-local",
       "script": "AWS/files/prep-linux.sh",
       "environment_vars": [

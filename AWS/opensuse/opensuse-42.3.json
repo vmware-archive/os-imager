@@ -63,6 +63,14 @@
     {
       "type": "shell",
       "inline": [
+        "sudo zypper --non-interactive --gpg-auto-import-keys refresh",
+        "sudo zypper --non-interactive --gpg-auto-import-keys update",
+        "sudo rm -rf /tmp/* && sudo zypper --non-interactive clean -a"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
         "sudo zypper -n remove aws-cli"
       ]
     },

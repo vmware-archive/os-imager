@@ -61,6 +61,13 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
+      "inline": [
+        "sudo pacman -Syyu --noconfirm",
+        "sudo rm -rf /tmp/* /var/cache/pacman/pkg/* && sudo pacman -Scc"
+      ]
+    },
+    {
       "type": "shell-local",
       "script": "AWS/files/prep-linux.sh",
       "environment_vars": [
