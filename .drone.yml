@@ -33,10 +33,10 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: slave-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed openssh-client
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
@@ -82,10 +82,10 @@ steps:
   commands:
   - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
 
-- name: base-image
+- name: slave-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed openssh-client
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
@@ -119,6 +119,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: cc7b0b4a0b27d7cb0784f7266b552b89e9a924874b5fe776565d4fc1a8420c9d
+hmac: 0c11128ac02a27185e337e6f8527a3f5e7c1a6c353f2e6e3d3a517acb7923d2a
 
 ...

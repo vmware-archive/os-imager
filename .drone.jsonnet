@@ -63,7 +63,7 @@ local Build(distro, staging) = {
     },
   ] + [
     {
-      name: 'base-image',
+      name: 'slave-image',
       image: 'hashicorp/packer',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -81,7 +81,7 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add make curl grep gawk sed',
+        'apk --no-cache add make curl grep gawk sed openssh-client',
         'apk --no-cache add --update python3',
         'python3 -m ensurepip',
         'rm -r /usr/lib/python*/ensurepip',
