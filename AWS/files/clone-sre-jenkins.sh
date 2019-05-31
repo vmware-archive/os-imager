@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 
 GPG_KEY="$(cd ${dir}; cd ../..; echo $(pwd)/gpgkey.asc)"
