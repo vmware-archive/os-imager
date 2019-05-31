@@ -45,6 +45,8 @@ steps:
   - "echo $SSHKEY > sre-jenkins-key"
   - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
+  - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
+  - "ssh-keyscan -H github.com >> ~/.ssh/known_hosts"
   - inv build-aws --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
@@ -94,6 +96,8 @@ steps:
   - "echo $SSHKEY > sre-jenkins-key"
   - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
+  - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
+  - "ssh-keyscan -H github.com >> ~/.ssh/known_hosts"
   - inv build-aws --staging --distro=centos --distro-version=7
   environment:
     AWS_ACCESS_KEY_ID:
@@ -119,6 +123,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 0c11128ac02a27185e337e6f8527a3f5e7c1a6c353f2e6e3d3a517acb7923d2a
+hmac: 3d8ca12dbccf1d81c7ad71b215c80a889968f29b7693ba5ced78ea4dfca413ce
 
 ...
