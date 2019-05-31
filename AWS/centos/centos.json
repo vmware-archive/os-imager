@@ -55,13 +55,6 @@
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "inline": [
-        "sudo yum update -y",
-        "sudo rm -rf /tmp/* && sudo yum clean all"
-      ]
-    },
-    {
       "type": "shell-local",
       "script": "AWS/files/clone-sre-jenkins.sh",
       "environment_vars": [
