@@ -1,3 +1,6 @@
 packer_cache
 output-*
 *.idea*
+sre-jenkins-key*
+gpgkey.asc
+.tmp

@@ -48,6 +48,12 @@ def build_aws(ctx,
     os.chmod(os.path.dirname(packer_tmp_dir), 0o777)
     os.chmod(packer_tmp_dir, 0o777)
 
+    for name in ('states', 'pillar'):
+        path = os.path.join(packer_tmp_dir, 'sre-jenkins', name)
+        if not os.path.exists(path):
+            os.makedirs(path)
+        os.chmod(path, 0o755)
+
     template_variations = [
         os.path.join(distro_dir, '{}.json'.format(distro_slug)),
         os.path.join(distro_dir, '{}.json'.format(distro))
@@ -82,6 +88,6 @@ def build_aws(ctx,
         cmd += TIMESTAMP_UI
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
-        cmd += ' -var build_type=base-staging'
-    cmd += ' {}'.format(build_template)
+        cmd += ' -var build_type=jenkins-slave-staging'
+    cmd += ' -var distro_slug={} {}'.format(distro_slug, build_template)
     ctx.run(cmd, echo=True, env={'PACKER_TMP_DIR': packer_tmp_dir})

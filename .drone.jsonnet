@@ -1,28 +1,10 @@
 local distros = [
-  // Multiprier is way to throttle API requests in order not to hit the limits
-  { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
-  { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 2 },
-  { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
-  { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 4 },
-  { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 5 },
-  { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 6 },
-  { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 7 },
-  { display_name: 'Fedora 28', name: 'fedora', version: '28', multiplier: 8 },
-  { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 9 },
-  { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 10 },
-  { display_name: 'Opensuse 42.3', name: 'opensuse', version: '42.3', multiplier: 11 },
-  { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 13 },
-  { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 14 },
-  // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
-  //  { display_name: 'Windows 2008r2', name: 'windows', version: '2008r2', multiplier: 0 },
-  { display_name: 'Windows 2012r2', name: 'windows', version: '2012r2', multiplier: 0 },
-  { display_name: 'Windows 2016', name: 'windows', version: '2016', multiplier: 0 },
-  { display_name: 'Windows 2019', name: 'windows', version: '2019', multiplier: 0 },
+  { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 0 },
 ];
 
 local BuildTrigger() = {
   ref: [
-    'refs/tags/aws-base-v1.*',
+    'refs/tags/aws-jenkins-slave-v1.*',
   ],
   event: [
     'tag',
@@ -34,7 +16,7 @@ local StagingBuildTrigger() = {
     'push',
   ],
   branch: [
-    'master',
+    'jenkins-slaves',
   ],
 };
 
@@ -91,6 +73,12 @@ local Build(distro, staging) = {
         AWS_SECRET_ACCESS_KEY: {
           from_secret: 'password',
         },
+        GPGKEY: {
+          from_secret: 'gpgkey',
+        },
+        SSHKEY: {
+          from_secret: 'sshkey',
+        },
       },
       commands: [
         'apk --no-cache add make curl grep gawk sed',
@@ -99,6 +87,9 @@ local Build(distro, staging) = {
         'rm -r /usr/lib/python*/ensurepip',
         'pip3 install --upgrade pip setuptools',
         'pip3 install invoke',
+        'echo $SSHKEY > sre-jenkins-key',
+        'echo $GPGKEY > gpgkey.asc',
+        'chmod 600 sre-jenkins-key gpgkey.asc',
         std.format('inv build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
           distro.name,

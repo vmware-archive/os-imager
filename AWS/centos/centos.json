@@ -22,7 +22,9 @@
       "ami_name": "{{ user `ami_name_prefix` }}/{{ user `build_type` }}/{{ user `ami_name_suffix` }}/{{timestamp}}",
       "ami_users": [
         "883373499178",
-        "540082622920"
+        "540082622920",
+        "989543020150",
+        "178480506716"
       ],
       "ami_description": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}",
       "tags": {
@@ -32,7 +34,9 @@
         "Build-Date": "{{ isotime }}",
         "Build-Type": "{{ user `build_type` | upper }}",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
+        "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}"
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -54,8 +58,50 @@
       "type": "shell",
       "inline": [
         "sudo yum update -y",
-        "sudo yum install git vim -y",
         "sudo rm -rf /tmp/* && sudo yum clean all"
+      ]
+    },
+    {
+      "type": "shell-local",
+      "script": "AWS/files/clone-sre-jenkins.sh",
+      "environment_vars": [
+        "DISTRO_SLUG={{ user `distro_slug` }}"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mkdir -p /etc/salt/gpgkeys"
+      ]
+    },
+    {
+      "type": "file",
+      "generated": true,
+      "source": "gpgkey.asc",
+      "destination": "/tmp/gpgkey.asc",
+      "direction": "upload"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mkdir -p /etc/salt/gpgkeys",
+        "sudo chmod 700 /etc/salt/gpgkeys",
+        "sudo bash -c 'export GNUPGHOME=/etc/salt/gpgkeys; gpg --import /tmp/gpgkey.asc'",
+        "sudo rm -f /tmp/gpgkey.asc"
+      ]
+    },
+    {
+      "type": "salt-masterless",
+      "local_state_tree": ".tmp/{{ user `distro_slug` }}/sre-jenkins/states",
+      "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/sre-jenkins/pillar",
+      "custom_state": "services.jenkins-node.ec2-latent-slave",
+      "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo rm -rf /etc/salt/gpgkeys /srv/pillar /srv/salt /tmp/salt /tmp/pillar",
+        "sleep 3"
       ]
     }
   ]
