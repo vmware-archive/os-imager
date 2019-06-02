@@ -91,6 +91,7 @@
       "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}"
     },
     {
+      "pause_before": "5s",
       "type": "shell",
       "inline": [
         "sudo rm -rf /etc/salt/gpgkeys /srv/pillar /srv/salt /tmp/salt /tmp/pillar",
