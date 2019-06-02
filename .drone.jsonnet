@@ -87,7 +87,9 @@ local Build(distro, staging) = {
         'rm -r /usr/lib/python*/ensurepip',
         'pip3 install --upgrade pip setuptools',
         'pip3 install invoke',
-        'printf "$SSHKEY" > sre-jenkins-key',
+        |||
+          printf "$SSHKEY" | tr -d '\n' > sre-jenkins-key
+        |||,
         'echo ---',
         'head -c 150 sre-jenkins-key',
         'echo ---',
