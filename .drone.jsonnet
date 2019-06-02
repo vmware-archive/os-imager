@@ -88,7 +88,7 @@ local Build(distro, staging) = {
         'pip3 install --upgrade pip setuptools',
         'pip3 install invoke',
         |||
-          printf "$SSHKEY" | tr -d '\n' > sre-jenkins-key
+          printf "$SSHKEY" | tr -d '\r' > sre-jenkins-key
         |||,
         'echo ---',
         'head -c 150 sre-jenkins-key',

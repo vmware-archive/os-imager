@@ -42,7 +42,7 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - "printf \"$SSHKEY\" | tr -d '\\n' > sre-jenkins-key\n"
+  - "printf \"$SSHKEY\" | tr -d '\\r' > sre-jenkins-key\n"
   - echo ---
   - head -c 150 sre-jenkins-key
   - echo ---
@@ -101,7 +101,7 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - "printf \"$SSHKEY\" | tr -d '\\n' > sre-jenkins-key\n"
+  - "printf \"$SSHKEY\" | tr -d '\\r' > sre-jenkins-key\n"
   - echo ---
   - head -c 150 sre-jenkins-key
   - echo ---
@@ -139,6 +139,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ef5b3332c43254131663c43dd622c573d27dc9c5d7845b4c7cb71da6baefa275
+hmac: 161ed677ca1834e12ab8ae86c72234dd413f16cf7e0a1567f2bc20f6b6ce3385
 
 ...
