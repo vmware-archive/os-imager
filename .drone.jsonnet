@@ -87,16 +87,8 @@ local Build(distro, staging) = {
         'rm -r /usr/lib/python*/ensurepip',
         'pip3 install --upgrade pip setuptools',
         'pip3 install invoke',
-        |||
-          printf "$SSHKEY" | tr -d '\r' > sre-jenkins-key
-        |||,
-        'echo ---',
-        'head -c 150 sre-jenkins-key',
-        'echo ---',
-        'printf "$GPGKEY" > gpgkey.asc',
-        'echo ---',
-        'head -c 150 gpgkey.asc',
-        'echo ---',
+        'echo $SSHKEY > sre-jenkins-key',
+        'echo $GPGKEY > gpgkey.asc',
         'chmod 600 sre-jenkins-key gpgkey.asc',
         'ssh-keyscan -t rsa github.com | ssh-keygen -lf -',
         'mkdir ~/.ssh',

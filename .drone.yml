@@ -42,14 +42,8 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - "printf \"$SSHKEY\" | tr -d '\\r' > sre-jenkins-key\n"
-  - echo ---
-  - head -c 150 sre-jenkins-key
-  - echo ---
-  - "printf \"$GPGKEY\" > gpgkey.asc"
-  - echo ---
-  - head -c 150 gpgkey.asc
-  - echo ---
+  - "echo $SSHKEY > sre-jenkins-key"
+  - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
   - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
   - mkdir ~/.ssh
@@ -101,14 +95,8 @@ steps:
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
-  - "printf \"$SSHKEY\" | tr -d '\\r' > sre-jenkins-key\n"
-  - echo ---
-  - head -c 150 sre-jenkins-key
-  - echo ---
-  - "printf \"$GPGKEY\" > gpgkey.asc"
-  - echo ---
-  - head -c 150 gpgkey.asc
-  - echo ---
+  - "echo $SSHKEY > sre-jenkins-key"
+  - "echo $GPGKEY > gpgkey.asc"
   - chmod 600 sre-jenkins-key gpgkey.asc
   - "ssh-keyscan -t rsa github.com | ssh-keygen -lf -"
   - mkdir ~/.ssh
@@ -139,6 +127,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 161ed677ca1834e12ab8ae86c72234dd413f16cf7e0a1567f2bc20f6b6ce3385
+hmac: d153f3c7e5c2a93adcce81ba061c34976411661d7215300339c1c36126161524
 
 ...
