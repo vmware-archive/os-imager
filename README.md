@@ -3,6 +3,12 @@ Packer image templates for the Salt test suite
 
 [![Build Status](https://drone.saltstack.com/api/badges/saltstack/os-imager/status.svg)](https://drone.saltstack.com/saltstack/os-imager)
 
+## Branches
+These are intended to always be kept separate
+
+* master - base golden images ( just updates and vim, used by ci branch )
+* ci - golden images used jenkins for the vm's that kitchen-salt spins up
+* jenkins-slaves - images used by jenkins ec2 plugin that kitchen-salt is run from
 
 ## Pre Commit Hook
 
