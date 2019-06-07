@@ -57,15 +57,6 @@
   ],
   "provisioners": [
     {
-      "type": "powershell",
-      "script": "AWS/windows/scripts/AdjustMemory.ps1",
-      "environment_vars": [
-        "INITIAL_SIZE=8912",
-        "MAXIMUM_SIZE=8912",
-        "DRIVE_LETTER=D"
-      ]
-    },
-    {
       "type": "shell-local",
       "script": "AWS/files/prep-windows.sh",
       "environment_vars": [
