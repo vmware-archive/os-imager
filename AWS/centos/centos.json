@@ -88,13 +88,15 @@
       "local_state_tree": ".tmp/{{ user `distro_slug` }}/sre-jenkins/states",
       "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/sre-jenkins/pillar",
       "custom_state": "services.jenkins-node.ec2-latent-slave",
-      "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}"
+      "bootstrap_args": "{{ user `bootstrap_args` }} stable {{ user `bootstrap_version` }}"
     },
     {
       "pause_before": "5s",
       "type": "shell",
       "inline": [
-        "sudo rm -rf /etc/salt/gpgkeys /srv/pillar /srv/salt /tmp/salt /tmp/pillar",
+        "sudo yum autoremove salt salt-minion",
+        "sudo rm -rf /etc/salt/gpgkeys /etc/salt /srv/pillar /srv/salt /tmp/salt /tmp/pillar /var/cache/salt /var/log/salt /tmp/bootstrap-salt.log /tmp/install_salt.sh /etc/yum.repos.d/saltstack.repo",
+        "sync",
         "sleep 3"
       ]
     }
