@@ -91,18 +91,6 @@ steps:
   depends_on:
   - clone
 
-- name: Fedora 28
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --validate --distro=fedora --distro-version=28
-  depends_on:
-  - clone
-
 - name: Fedora 29
   image: hashicorp/packer
   commands:
@@ -124,18 +112,6 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=15
-  depends_on:
-  - clone
-
-- name: Opensuse 42.3
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --validate --distro=opensuse --distro-version=42.3
   depends_on:
   - clone
 
@@ -495,48 +471,6 @@ depends_on:
 
 ---
 kind: pipeline
-name: Fedora 28
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --distro=fedora --distro-version=28
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/aws-base-v1.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
 name: Fedora 29
 
 platform:
@@ -601,48 +535,6 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  event:
-  - tag
-  ref:
-  - "refs/tags/aws-base-v1.*"
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Opensuse 42.3
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1167,48 +1059,6 @@ depends_on:
 
 ---
 kind: pipeline
-name: Fedora 28 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=28
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
 name: Fedora 29 (Staging)
 
 platform:
@@ -1273,48 +1123,6 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-trigger:
-  branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Opensuse 42.3 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - "sh -c 'echo Sleeping 77 seconds; sleep 77'"
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=42.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1545,6 +1353,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ca9a5ee0e240867b7ec8a708cc1dcbb7dbb00f77e4e27b6cd69a8ef69a5e904a
+hmac: b0f0b8911707ee0b50f2b75a80ad71c52e1b41f1e4e5458ffafaea62111ff22f
 
 ...
