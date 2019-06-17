@@ -44,6 +44,7 @@ local salt_branches = [
   '2017.7',
   '2018.3',
   '2019.2',
+  'neon',
   'develop',
 ];
 

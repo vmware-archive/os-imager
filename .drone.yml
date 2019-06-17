@@ -199,7 +199,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -258,6 +258,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -298,7 +317,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -357,6 +376,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=1 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -397,7 +435,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 105 seconds; sleep 105'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -456,6 +494,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=amazon --distro-version=2 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -496,7 +553,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -555,6 +612,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=6 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -595,7 +671,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
+  - "sh -c 'echo Sleeping 175 seconds; sleep 175'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -654,6 +730,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=7 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -694,7 +789,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
+  - "sh -c 'echo Sleeping 210 seconds; sleep 210'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -753,6 +848,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=8 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -793,7 +907,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
+  - "sh -c 'echo Sleeping 245 seconds; sleep 245'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -852,6 +966,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=9 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -892,7 +1025,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -951,6 +1084,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=29 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -991,7 +1143,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1050,6 +1202,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=30 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1090,7 +1261,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
+  - "sh -c 'echo Sleeping 350 seconds; sleep 350'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1149,6 +1320,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1189,7 +1379,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 364 seconds; sleep 364'"
+  - "sh -c 'echo Sleeping 455 seconds; sleep 455'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1248,6 +1438,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1288,7 +1497,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 392 seconds; sleep 392'"
+  - "sh -c 'echo Sleeping 490 seconds; sleep 490'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1338,6 +1547,25 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1446,6 +1674,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1536,6 +1783,25 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2016 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1644,6 +1910,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=windows --distro-version=2019 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1684,7 +1969,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1743,6 +2028,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1783,7 +2087,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1842,6 +2146,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1882,7 +2205,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 84 seconds; sleep 84'"
+  - "sh -c 'echo Sleeping 105 seconds; sleep 105'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -1941,6 +2264,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -1981,7 +2323,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 112 seconds; sleep 112'"
+  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2040,6 +2382,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2080,7 +2441,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 140 seconds; sleep 140'"
+  - "sh -c 'echo Sleeping 175 seconds; sleep 175'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2139,6 +2500,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2179,7 +2559,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 168 seconds; sleep 168'"
+  - "sh -c 'echo Sleeping 210 seconds; sleep 210'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2238,6 +2618,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2278,7 +2677,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 196 seconds; sleep 196'"
+  - "sh -c 'echo Sleeping 245 seconds; sleep 245'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2337,6 +2736,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2377,7 +2795,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
+  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2436,6 +2854,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2476,7 +2913,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2535,6 +2972,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2575,7 +3031,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 280 seconds; sleep 280'"
+  - "sh -c 'echo Sleeping 350 seconds; sleep 350'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2634,6 +3090,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2674,7 +3149,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 364 seconds; sleep 364'"
+  - "sh -c 'echo Sleeping 455 seconds; sleep 455'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2733,6 +3208,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -2773,7 +3267,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 392 seconds; sleep 392'"
+  - "sh -c 'echo Sleeping 490 seconds; sleep 490'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2823,6 +3317,25 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2931,6 +3444,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -3021,6 +3553,25 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3129,6 +3680,25 @@ steps:
   depends_on:
   - throttle-build
 
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
 - name: develop
   image: hashicorp/packer
   commands:
@@ -3159,6 +3729,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 87290091dd18d51143f90845e8ecbd60f8772c5564f9cd18c0162182049d9f1b
+hmac: c2eb270f433f0d2fbfda09e5aea14442c8f90d50d475e036da8b59b32e6e894c
 
 ...
