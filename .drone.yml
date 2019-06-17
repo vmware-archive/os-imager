@@ -103,6 +103,18 @@ steps:
   depends_on:
   - clone
 
+- name: Fedora 30
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=30
+  depends_on:
+  - clone
+
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
@@ -880,7 +892,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -949,6 +961,105 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  event:
+  - tag
+  ref:
+  - "refs/tags/aws-ci-v1.*"
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Fedora 30
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --distro=fedora --distro-version=30 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2266,7 +2377,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+  - "sh -c 'echo Sleeping 224 seconds; sleep 224'"
 
 - name: 2017.7
   image: hashicorp/packer
@@ -2335,6 +2446,105 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+trigger:
+  branch:
+  - ci
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Fedora 30 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - "sh -c 'echo Sleeping 252 seconds; sleep 252'"
+
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add --update python3
+  - python3 -m ensurepip
+  - "rm -r /usr/lib/python*/ensurepip"
+  - pip3 install --upgrade pip setuptools
+  - pip3 install invoke
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2949,6 +3159,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: db1cec8ceeb28d98684c208696c5ec96804735ad06fa9457d4b8fa55a19131d2
+hmac: 87290091dd18d51143f90845e8ecbd60f8772c5564f9cd18c0162182049d9f1b
 
 ...
