@@ -204,13 +204,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=arch --distro-version=2019-01-09
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -246,13 +248,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=amazon --distro-version=1
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -288,13 +292,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=amazon --distro-version=2
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -330,13 +336,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=centos --distro-version=6
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -372,13 +380,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=centos --distro-version=7
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -414,13 +424,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=debian --distro-version=8
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -456,13 +468,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=debian --distro-version=9
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -498,13 +512,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=fedora --distro-version=29
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -540,13 +556,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=fedora --distro-version=30
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -582,13 +600,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=opensuse --distro-version=15
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -624,13 +644,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=ubuntu --distro-version=1604
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -666,13 +688,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=ubuntu --distro-version=1804
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -708,13 +732,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=windows --distro-version=2012r2
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -750,13 +776,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=windows --distro-version=2016
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -792,13 +820,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --distro=windows --distro-version=2019
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -2 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -834,13 +864,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -876,13 +908,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=amazon --distro-version=1
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -918,13 +952,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=amazon --distro-version=2
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -960,13 +996,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=centos --distro-version=6
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1002,13 +1040,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=centos --distro-version=7
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1044,13 +1084,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=debian --distro-version=8
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1086,13 +1128,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=debian --distro-version=9
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1128,13 +1172,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=fedora --distro-version=29
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1170,13 +1216,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=fedora --distro-version=30
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1212,13 +1260,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=opensuse --distro-version=15
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1254,13 +1304,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=ubuntu --distro-version=1604
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1296,13 +1348,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=ubuntu --distro-version=1804
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1338,13 +1392,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=windows --distro-version=2012r2
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1380,13 +1436,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=windows --distro-version=2016
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1422,13 +1480,15 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
+  - apk --no-cache add make curl grep gawk sed jq
   - apk --no-cache add --update python3
   - python3 -m ensurepip
   - "rm -r /usr/lib/python*/ensurepip"
   - pip3 install --upgrade pip setuptools
-  - pip3 install invoke
+  - pip3 install invoke awscli
   - inv build-aws --staging --distro=windows --distro-version=2019
+  - "ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Value=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1449,6 +1509,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7c28e19aeb76963eeea0fbc8578d4d1a1d2548a332b77818db1a2768045b4825
+hmac: 0a799b409cd60c7fd166e9dcd1d98e4c1d8f1dad8ab95eefda0317631216ac5b
 
 ...

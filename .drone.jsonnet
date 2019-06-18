@@ -92,17 +92,32 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add make curl grep gawk sed',
+        'apk --no-cache add make curl grep gawk sed jq',
         'apk --no-cache add --update python3',
         'python3 -m ensurepip',
         'rm -r /usr/lib/python*/ensurepip',
         'pip3 install --upgrade pip setuptools',
-        'pip3 install invoke',
+        'pip3 install invoke awscli',
         std.format('inv build-aws%s --distro=%s --distro-version=%s', [
           if staging then ' --staging' else '',
           distro.name,
           distro.version,
         ]),
+        |||
+          ami_filter=$(cat manifest.json | jq '.builds[].custom_data.ami_name')
+          echo "AMI FILTER: $ami_filter"
+          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Value=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq -r ".[]" > amis.txt
+          cat amis.txt
+        |||,
+        std.format(
+          |||
+            for ami in $(head -n -%s amis.txt); do
+              echo "Deleting AMI $ami"
+              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami
+            done
+          |||,
+          [if staging then 1 else 2]
+        ),
       ],
       depends_on: [
         'throttle-build',
