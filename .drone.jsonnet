@@ -133,7 +133,7 @@ local Build(distro, staging) = {
           |||
             for ami in $(head -n -%s amis.txt); do
               echo "Deleting AMI $ami"
-              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami
+              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times

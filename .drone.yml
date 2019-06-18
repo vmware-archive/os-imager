@@ -225,7 +225,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -282,7 +282,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -339,7 +339,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -396,7 +396,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -453,7 +453,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -510,7 +510,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -567,7 +567,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -624,7 +624,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -681,7 +681,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -738,7 +738,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -795,7 +795,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -852,7 +852,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -909,7 +909,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -966,7 +966,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1023,7 +1023,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1080,7 +1080,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1137,7 +1137,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1194,7 +1194,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1251,7 +1251,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1308,7 +1308,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1365,7 +1365,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1422,7 +1422,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1479,7 +1479,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1536,7 +1536,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1593,7 +1593,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1650,7 +1650,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1707,7 +1707,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1764,7 +1764,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1821,7 +1821,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1878,7 +1878,7 @@ steps:
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
   - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)[].ImageId\" | jq 'del(.[-1])' | jq -r \".[]\" > amis.txt\ncat amis.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami\ndone\n"
+  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1899,6 +1899,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 64da00de7dbfe293dba2a63b40da0ca54f5130a322bc5e9e02707569e555252b
+hmac: e8fecc43880f1645a683d05f3c7a4c75dcf472d0383f370667d4c9ae2c4eaf65
 
 ...
