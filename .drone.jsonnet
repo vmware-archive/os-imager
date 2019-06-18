@@ -80,17 +80,6 @@ local Build(distro, staging) = {
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
   steps: [
     {
-      name: 'throttle-build',
-      image: 'alpine',
-      commands: [
-        std.format(
-          "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
-          { offset: 7 * std.length(salt_branches) * distro.multiplier }
-        ),
-      ],
-    },
-  ] + [
-    {
       name: salt_branch,
       image: 'hashicorp/packer',
       environment: {
@@ -103,6 +92,10 @@ local Build(distro, staging) = {
         },
       },
       commands: [
+        std.format(
+          "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
+          { offset: 7 * std.length(salt_branches) * distro.multiplier }
+        ),
         'apk --no-cache add make curl grep gawk sed',
         'apk --no-cache add --update py3-pip',
         'pip3 install --upgrade pip setuptools',
@@ -115,7 +108,7 @@ local Build(distro, staging) = {
         ]),
       ],
       depends_on: [
-        'throttle-build',
+        'clone',
       ],
     }
     for salt_branch in salt_branches
