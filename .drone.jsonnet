@@ -41,11 +41,11 @@ local salt_branches = [
   /*
    * These are the salt branches, which map to salt-jenkins branches
    */
-  '2017.7',
-  '2018.3',
-  '2019.2',
-  'neon',
-  'develop',
+  { multiplier: 1, name: '2017.7' },
+  { multiplier: 3, name: '2018.3' },
+  { multiplier: 5, name: '2019.2' },
+  { multiplier: 7, name: 'neon' },
+  { multiplier: 9, name: 'develop' },
 ];
 
 
@@ -80,7 +80,7 @@ local Build(distro, staging) = {
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
   steps: [
     {
-      name: salt_branch,
+      name: salt_branch.name,
       image: 'hashicorp/packer',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -94,7 +94,7 @@ local Build(distro, staging) = {
       commands: [
         std.format(
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
-          { offset: 7 * std.length(salt_branches) * distro.multiplier }
+          { offset: (2 * salt_branch.multiplier * std.length(salt_branches) * distro.multiplier) + (salt_branch.multiplier * 13) }
         ),
         'apk --no-cache add make curl grep gawk sed',
         'apk --no-cache add --update py3-pip',
@@ -104,7 +104,7 @@ local Build(distro, staging) = {
           if staging then ' --staging' else '',
           distro.name,
           distro.version,
-          salt_branch,
+          salt_branch.name,
         ]),
       ],
       depends_on: [
@@ -114,7 +114,7 @@ local Build(distro, staging) = {
     for salt_branch in salt_branches
   ] + [
     {
-      name: std.format('delete-old-%s-amis', [salt_branch]),
+      name: std.format('delete-old-%s-amis', [salt_branch.name]),
       image: 'alpine',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -136,7 +136,7 @@ local Build(distro, staging) = {
             aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq 'del(.[-1])' | jq -r ".[]" > %(salt_branch)s-amis.txt
             cat %(salt_branch)s-amis.txt
           |||,
-          { salt_branch: salt_branch }
+          { salt_branch: salt_branch.name }
         ),
         std.format(
           |||
@@ -147,11 +147,11 @@ local Build(distro, staging) = {
           |||,
           // Keep 1 staging build and 2 regular builds at all times
           // The values below are 0 and 1 because the AMI built on this run is never part of the listing
-          { tail: if staging then 0 else 1, salt_branch: salt_branch }
+          { tail: if staging then 0 else 1, salt_branch: salt_branch.name }
         ),
       ],
       depends_on: [
-        salt_branch,
+        salt_branch.name,
       ],
     }
     for salt_branch in salt_branches
