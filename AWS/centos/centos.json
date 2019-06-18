@@ -100,5 +100,15 @@
         "sleep 3"
       ]
     }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true,
+      "custom_data": {
+        "ami_name": "{{ user `ami_name_prefix` }}/{{ user `build_type` }}/{{ user `ami_name_suffix` }}"
+      }
+    }
   ]
 }
