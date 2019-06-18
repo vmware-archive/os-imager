@@ -134,6 +134,7 @@ local Build(distro, staging) = {
             for ami in $(head -n -%(count)s amis-to-delete.txt); do
               echo "Deleting AMI $ami"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
+            done
             for ami_snapshot in $(head -n -%(count)s snapshots-to-delete.txt); do
               echo "Deleting snapshot $ami_snapshot"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
