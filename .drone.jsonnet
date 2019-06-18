@@ -121,7 +121,7 @@ local Build(distro, staging) = {
     for salt_branch in salt_branches
   ] + [
     {
-      name: 'delete-old-amis',
+      name: std.format('delete-old-%s-amis', [salt_branch]),
       image: 'alpine',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',

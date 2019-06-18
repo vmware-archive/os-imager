@@ -286,7 +286,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -303,7 +303,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -320,7 +320,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -337,7 +337,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -354,7 +354,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -479,7 +479,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -496,7 +496,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -513,7 +513,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -530,7 +530,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -547,7 +547,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -672,7 +672,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -689,7 +689,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -706,7 +706,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -723,7 +723,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -740,7 +740,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -865,7 +865,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -882,7 +882,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -899,7 +899,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -916,7 +916,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -933,7 +933,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1058,7 +1058,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1075,7 +1075,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1092,7 +1092,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1109,7 +1109,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1126,7 +1126,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1251,7 +1251,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1268,7 +1268,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1285,7 +1285,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1302,7 +1302,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1319,7 +1319,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1444,7 +1444,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1461,7 +1461,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1478,7 +1478,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1495,7 +1495,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1512,7 +1512,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1637,7 +1637,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1654,7 +1654,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1671,7 +1671,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1688,7 +1688,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1705,7 +1705,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1830,7 +1830,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1847,7 +1847,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1864,7 +1864,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1881,7 +1881,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -1898,7 +1898,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2023,7 +2023,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2040,7 +2040,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2057,7 +2057,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2074,7 +2074,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2091,7 +2091,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2216,7 +2216,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2233,7 +2233,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2250,7 +2250,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2267,7 +2267,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2284,7 +2284,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2409,7 +2409,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2426,7 +2426,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2443,7 +2443,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2460,7 +2460,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2477,7 +2477,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2602,7 +2602,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2619,7 +2619,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2636,7 +2636,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2653,7 +2653,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2670,7 +2670,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2795,7 +2795,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2812,7 +2812,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2829,7 +2829,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2846,7 +2846,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2863,7 +2863,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -2988,7 +2988,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3005,7 +3005,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3022,7 +3022,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3039,7 +3039,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3056,7 +3056,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3181,7 +3181,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3198,7 +3198,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3215,7 +3215,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3232,7 +3232,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3249,7 +3249,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3374,7 +3374,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3391,7 +3391,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3408,7 +3408,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3425,7 +3425,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3442,7 +3442,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3567,7 +3567,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3584,7 +3584,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3601,7 +3601,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3618,7 +3618,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3635,7 +3635,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3760,7 +3760,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3777,7 +3777,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3794,7 +3794,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3811,7 +3811,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3828,7 +3828,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3953,7 +3953,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3970,7 +3970,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -3987,7 +3987,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4004,7 +4004,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4021,7 +4021,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4146,7 +4146,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4163,7 +4163,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4180,7 +4180,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4197,7 +4197,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4214,7 +4214,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4339,7 +4339,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4356,7 +4356,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4373,7 +4373,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4390,7 +4390,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4407,7 +4407,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4532,7 +4532,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4549,7 +4549,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4566,7 +4566,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4583,7 +4583,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4600,7 +4600,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4725,7 +4725,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4742,7 +4742,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4759,7 +4759,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4776,7 +4776,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4793,7 +4793,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4918,7 +4918,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4935,7 +4935,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4952,7 +4952,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4969,7 +4969,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -4986,7 +4986,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5111,7 +5111,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5128,7 +5128,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5145,7 +5145,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5162,7 +5162,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5179,7 +5179,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5304,7 +5304,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5321,7 +5321,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5338,7 +5338,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5355,7 +5355,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5372,7 +5372,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5497,7 +5497,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5514,7 +5514,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5531,7 +5531,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5548,7 +5548,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5565,7 +5565,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5690,7 +5690,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5707,7 +5707,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5724,7 +5724,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5741,7 +5741,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5758,7 +5758,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5883,7 +5883,7 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
+- name: delete-old-2017.7-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5900,7 +5900,7 @@ steps:
   depends_on:
   - 2017.7
 
-- name: delete-old-amis
+- name: delete-old-2018.3-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5917,7 +5917,7 @@ steps:
   depends_on:
   - 2018.3
 
-- name: delete-old-amis
+- name: delete-old-2019.2-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5934,7 +5934,7 @@ steps:
   depends_on:
   - 2019.2
 
-- name: delete-old-amis
+- name: delete-old-neon-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5951,7 +5951,7 @@ steps:
   depends_on:
   - neon
 
-- name: delete-old-amis
+- name: delete-old-develop-amis
   image: alpine
   commands:
   - apk --no-cache add --update py3-pip jq
@@ -5979,6 +5979,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ae6dd7265c1a7fdb5fd2ea1b938fa7869f5271275b2d13bf543018de1a745f67
+hmac: eeb29aa557becbdd0e66ea35d0e68d6b42724fafe05b812bfd064085fcbfe882
 
 ...
