@@ -155,9 +155,10 @@ local Build(distro, staging) = {
         ),
       ],
       depends_on: [
-        'base-image',
+        salt_branch,
       ],
-    },
+    }
+    for salt_branch in salt_branches
   ],
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
