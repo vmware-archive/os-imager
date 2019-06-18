@@ -137,7 +137,7 @@ local Build(distro, staging) = {
             done
             for ami_snapshot in $(head -n -%(count)s snapshots-to-delete.txt); do
               echo "Deleting snapshot $ami_snapshot"
-              aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
+              aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times
