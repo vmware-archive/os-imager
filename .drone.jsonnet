@@ -57,10 +57,8 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add --update python3',
-        'python3 -m ensurepip',
-        'rm -r /usr/lib/python*/ensurepip',
-        'pip3 install --upgrade pip setuptools',
+        'apk --no-cache add --update py3-pip',
+        'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws --validate --distro=%s --distro-version=%s', [
           distro.name,
@@ -96,9 +94,8 @@ local Build(distro, staging) = {
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
           { offset: (2 * salt_branch.multiplier * std.length(salt_branches) * distro.multiplier) + (salt_branch.multiplier * 13) }
         ),
-        'apk --no-cache add make curl grep gawk sed',
-        'apk --no-cache add --update py3-pip',
-        'pip3 install --upgrade pip setuptools',
+        'apk --no-cache add make curl grep gawk sed py3-pip',
+        'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws%s --distro=%s --distro-version=%s --salt-branch=%s', [
           if staging then ' --staging' else '',
@@ -133,21 +130,28 @@ local Build(distro, staging) = {
           |||
             ami_filter=$(cat %(salt_branch)s-manifest.json | jq -r '.builds[].custom_data.ami_name')
             echo "AMI FILTER: $ami_filter"
-            aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq 'del(.[-1])' | jq -r ".[]" > %(salt_branch)s-amis.txt
-            cat %(salt_branch)s-amis.txt
+            aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)" | jq 'del(.[-1])' > %(salt_branch)s-ami-details.txt
+            cat %(salt_branch)s-ami-details.txt | jq -r '.[].ImageId' > %(salt_branch)s-amis-to-delete.txt
+            cat %(salt_branch)s-ami-details.txt | jq -r ".[].BlockDeviceMappings[].Ebs.SnapshotId" > %(salt_branch)s-snapshots-to-delete.txt
+            cat %(salt_branch)s-amis-to-delete.txt
+            cat %(salt_branch)s-snapshots-to-delete.txt
           |||,
           { salt_branch: salt_branch.name }
         ),
         std.format(
           |||
-            for ami in $(head -n -%(tail)s %(salt_branch)s-amis.txt); do
+            for ami in $(head -n -%(count)s %(salt_branch)s-amis-to-delete.txt); do
               echo "Deleting AMI $ami"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
+            done
+            for ami_snapshot in $(head -n -%(count)s %(salt_branch)s-snapshots-to-delete.txt); do
+              echo "Deleting snapshot $ami_snapshot"
+              aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times
           // The values below are 0 and 1 because the AMI built on this run is never part of the listing
-          { tail: if staging then 0 else 1, salt_branch: salt_branch.name }
+          { count: if staging then 0 else 1, salt_branch: salt_branch.name }
         ),
       ],
       depends_on: [
