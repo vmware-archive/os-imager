@@ -10,10 +10,8 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=arch --distro-version=2019-01-09
   depends_on:
@@ -22,10 +20,8 @@ steps:
 - name: Amazon 1
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=1
   depends_on:
@@ -34,10 +30,8 @@ steps:
 - name: Amazon 2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=2
   depends_on:
@@ -46,10 +40,8 @@ steps:
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=6
   depends_on:
@@ -58,10 +50,8 @@ steps:
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
@@ -70,10 +60,8 @@ steps:
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=8
   depends_on:
@@ -82,10 +70,8 @@ steps:
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=9
   depends_on:
@@ -94,10 +80,8 @@ steps:
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=29
   depends_on:
@@ -106,10 +90,8 @@ steps:
 - name: Fedora 30
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=30
   depends_on:
@@ -118,10 +100,8 @@ steps:
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=15
   depends_on:
@@ -130,10 +110,8 @@ steps:
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1604
   depends_on:
@@ -142,10 +120,8 @@ steps:
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1804
   depends_on:
@@ -154,10 +130,8 @@ steps:
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2012r2
   depends_on:
@@ -166,10 +140,8 @@ steps:
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2016
   depends_on:
@@ -178,10 +150,8 @@ steps:
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update python3
-  - python3 -m ensurepip
-  - "rm -r /usr/lib/python*/ensurepip"
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2019
   depends_on:
@@ -204,9 +174,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09
   environment:
@@ -261,9 +230,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1
   environment:
@@ -318,9 +286,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2
   environment:
@@ -375,9 +342,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6
   environment:
@@ -432,9 +398,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7
   environment:
@@ -489,9 +454,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8
   environment:
@@ -546,9 +510,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9
   environment:
@@ -603,9 +566,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29
   environment:
@@ -660,9 +622,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30
   environment:
@@ -717,9 +678,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15
   environment:
@@ -774,9 +734,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604
   environment:
@@ -831,9 +790,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804
   environment:
@@ -888,9 +846,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2
   environment:
@@ -945,9 +902,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016
   environment:
@@ -1002,9 +958,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019
   environment:
@@ -1059,9 +1014,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09
   environment:
@@ -1116,9 +1070,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1
   environment:
@@ -1173,9 +1126,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2
   environment:
@@ -1230,9 +1182,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6
   environment:
@@ -1287,9 +1238,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7
   environment:
@@ -1344,9 +1294,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8
   environment:
@@ -1401,9 +1350,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9
   environment:
@@ -1458,9 +1406,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29
   environment:
@@ -1515,9 +1462,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30
   environment:
@@ -1572,9 +1518,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15
   environment:
@@ -1629,9 +1574,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604
   environment:
@@ -1686,9 +1630,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804
   environment:
@@ -1743,9 +1686,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2
   environment:
@@ -1800,9 +1742,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016
   environment:
@@ -1857,9 +1798,8 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed py3-pip
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019
   environment:
@@ -1899,6 +1839,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 38b273cbd9604496845a86cf82e04377417af1f1dc10176afcade2617efd4261
+hmac: 634808c941c099418b5ff8ec49c2a9703319d6639b913b9b0d437bc89f45b826
 
 ...
