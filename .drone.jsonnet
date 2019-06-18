@@ -129,22 +129,25 @@ local Build(distro, staging) = {
         'apk --no-cache add --update py3-pip jq',
         'pip3 install --upgrade pip setuptools',
         'pip3 install awscli',
-        |||
-          ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
-          echo "AMI FILTER: $ami_filter"
-          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq 'del(.[-1])' | jq -r ".[]" > amis.txt
-          cat amis.txt
-        |||,
         std.format(
           |||
-            for ami in $(head -n -%s amis.txt); do
+            ami_filter=$(cat %(salt_branch)s-manifest.json | jq -r '.builds[].custom_data.ami_name')
+            echo "AMI FILTER: $ami_filter"
+            aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq 'del(.[-1])' | jq -r ".[]" > %(salt_branch)s-amis.txt
+            cat %(salt_branch)s-amis.txt
+          |||,
+          { salt_branch: salt_branch }
+        ),
+        std.format(
+          |||
+            for ami in $(head -n -%(tail)s %(salt_branch)s-amis.txt); do
               echo "Deleting AMI $ami"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times
           // The values below are 0 and 1 because the AMI built on this run is never part of the listing
-          [if staging then 0 else 1]
+          { tail: if staging then 0 else 1, salt_branch: salt_branch }
         ),
       ],
       depends_on: [
