@@ -126,7 +126,7 @@ local Build(distro, staging) = {
         |||
           ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
           echo "AMI FILTER: $ami_filter"
-          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq -r ".[]" > amis.txt
+          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq 'del(.[-1])' | jq -r ".[]" > amis.txt
           cat amis.txt
         |||,
         std.format(
@@ -137,7 +137,8 @@ local Build(distro, staging) = {
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times
-          [if staging then 1 else 2]
+          // The values below are 0 and 1 because the AMI built on this run is never part of the listing
+          [if staging then 0 else 1]
         ),
       ],
       depends_on: [
