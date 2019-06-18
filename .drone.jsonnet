@@ -125,21 +125,23 @@ local Build(distro, staging) = {
           echo "AMI FILTER: $ami_filter"
           aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)" | jq 'del(.[-1])' > ami-details.txt
           cat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt
+          cat ami-details.txt | jq -r ".[].BlockDeviceMappings[].Ebs.SnapshotId" > snapshots-to-delete.txt
           cat amis-to-delete.txt
+          cat snapshots-to-delete.txt
         |||,
         std.format(
           |||
-            for ami in $(head -n -%s amis.txt); do
+            for ami in $(head -n -%(count)s amis-to-delete.txt); do
               echo "Deleting AMI $ami"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
-              ami_snapshot=$(cat ami-details.txt | jq -r ".[] | select(.ImageId==\"$ami\") | .BlockDeviceMappings[].Ebs.SnapshotId")
-              echo "Deleting snapshot $ami_snapshot for AMI $ami"
+            for ami_snapshot in $(head -n -%(count)s snapshots-to-delete.txt); do
+              echo "Deleting snapshot $ami_snapshot"
               aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
             done
           |||,
           // Keep 1 staging build and 2 regular builds at all times
           // The values below are 0 and 1 because the AMI built on this run is never part of the listing
-          [if staging then 0 else 1]
+          { count: if staging then 0 else 1 }
         ),
       ],
       depends_on: [

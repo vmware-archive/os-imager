@@ -193,8 +193,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -249,8 +249,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -305,8 +305,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -361,8 +361,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -417,8 +417,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -473,8 +473,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -529,8 +529,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -585,8 +585,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -641,8 +641,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -697,8 +697,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -753,8 +753,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -809,8 +809,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -865,8 +865,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -921,8 +921,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -977,8 +977,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1033,8 +1033,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1089,8 +1089,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1145,8 +1145,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1201,8 +1201,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1257,8 +1257,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1313,8 +1313,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1369,8 +1369,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1425,8 +1425,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1481,8 +1481,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1537,8 +1537,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1593,8 +1593,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1649,8 +1649,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1705,8 +1705,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1761,8 +1761,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1817,8 +1817,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip setuptools
   - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat amis-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\n  ami_snapshot=$(cat ami-details.txt | jq -r \".[] | select(.ImageId==\\\"$ami\\\") | .BlockDeviceMappings[].Ebs.SnapshotId\")\n  echo \"Deleting snapshot $ami_snapshot for AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
+  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
+  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1839,6 +1839,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 634808c941c099418b5ff8ec49c2a9703319d6639b913b9b0d437bc89f45b826
+hmac: d9e2872a2886d09b9fb726533c3247ee47843a0732f6b325e617036a2154cd21
 
 ...
