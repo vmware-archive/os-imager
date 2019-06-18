@@ -123,6 +123,42 @@ local Build(distro, staging) = {
         'throttle-build',
       ],
     },
+  ] + [
+    {
+      name: 'delete-old-amis',
+      image: 'alpine',
+      environment: {
+        AWS_DEFAULT_REGION: 'us-west-2',
+        AWS_ACCESS_KEY_ID: {
+          from_secret: 'username',
+        },
+        AWS_SECRET_ACCESS_KEY: {
+          from_secret: 'password',
+        },
+      },
+      commands: [
+        'apk --no-cache add --update py3-pip jq',
+        'pip3 install awscli',
+        |||
+          ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
+          echo "AMI FILTER: $ami_filter"
+          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Value=$ami_filter/*" --query "sort_by(Images, &CreationDate)[].ImageId" | jq -r ".[]" > amis.txt
+          cat amis.txt
+        |||,
+        std.format(
+          |||
+            for ami in $(head -n -%s amis.txt); do
+              echo "Deleting AMI $ami"
+              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami
+            done
+          |||,
+          [if staging then 1 else 2]
+        ),
+      ],
+      depends_on: [
+        'base-image',
+      ],
+    },
   ],
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
