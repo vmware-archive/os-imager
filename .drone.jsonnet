@@ -110,6 +110,7 @@ local Build(distro, staging) = {
     }
     for salt_branch in salt_branches
   ] + [
+    /*
     {
       name: std.format('delete-old-%s-amis', [salt_branch.name]),
       image: 'alpine',
@@ -159,7 +160,9 @@ local Build(distro, staging) = {
       ],
     }
     for salt_branch in salt_branches
-  ],
+    */
+  ]
+  ,
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
     'Lint',
