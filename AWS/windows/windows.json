@@ -36,7 +36,8 @@
         "Build-Date": "{{ isotime }}",
         "Build-Type": "{{ user `build_type` | upper }}",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -54,7 +55,8 @@
     },
     {
       "type": "powershell",
-      "script": "AWS/windows/scripts/SysPrep.ps1"
+      "script": "AWS/windows/scripts/SysPrep.ps1",
+      "pause_after": 5
     }
   ],
   "post-processors": [

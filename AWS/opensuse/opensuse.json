@@ -32,7 +32,8 @@
         "Build-Date": "{{ isotime }}",
         "Build-Type": "{{ user `build_type` | upper }}",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -57,7 +58,8 @@
         "sudo zypper --non-interactive --gpg-auto-import-keys update",
         "sudo zypper --non-interactive install --auto-agree-with-licenses git vim",
         "sudo rm -rf /tmp/* && sudo zypper --non-interactive clean -a"
-      ]
+      ],
+      "pause_after": 5
     }
   ],
   "post-processors": [

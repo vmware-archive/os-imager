@@ -32,7 +32,8 @@
         "Build-Date": "{{ isotime }}",
         "Build-Type": "{{ user `build_type` | upper }}",
         "created-by": "packer",
-        "Owner": "SRE"
+        "Owner": "SRE",
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} Builder",
@@ -56,7 +57,8 @@
         "sudo yum update -y",
         "sudo yum install git vim -y",
         "sudo rm -rf /tmp/* && sudo yum clean all"
-      ]
+      ],
+      "pause_after": 5
     }
   ],
   "post-processors": [
