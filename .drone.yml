@@ -195,8 +195,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -253,8 +253,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -311,8 +311,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -369,8 +369,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -427,8 +427,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -485,8 +485,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -543,8 +543,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -601,8 +601,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -659,8 +659,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -717,8 +717,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -775,8 +775,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -833,8 +833,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -891,8 +891,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -949,8 +949,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1007,8 +1007,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1065,8 +1065,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1123,8 +1123,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1181,8 +1181,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1239,8 +1239,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1297,8 +1297,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1355,8 +1355,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1413,8 +1413,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1471,8 +1471,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1529,8 +1529,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1587,8 +1587,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1645,8 +1645,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1703,8 +1703,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1761,8 +1761,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1819,8 +1819,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1877,8 +1877,8 @@ steps:
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: ${name_filter}\""
-  - "inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1899,6 +1899,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: e5dc91f514afb643e870202528b03f6382559a3d61cbd8e2e42c4dfd5a60c0a6
+hmac: e0953c50e7bc8bd090b97196cd10805d234b03093a188695854a684349b1d9a9
 
 ...
