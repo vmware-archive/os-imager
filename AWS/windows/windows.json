@@ -58,10 +58,8 @@
       "script": "AWS/windows/scripts/SysPrep.ps1"
     },
     {
-      "type": "powershell",
-      "inline": [
-        "Write-Host \"Done\""
-      ],
+      "type": "shell-local",
+      "command": "echo Done",
       "pause_before": "5s"
     }
   ],
