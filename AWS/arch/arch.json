@@ -58,7 +58,7 @@
         "sudo pacman -Sy --needed --noconfirm git vim",
         "sudo rm -rf /tmp/* /var/cache/pacman/pkg/* && sudo pacman -Scc"
       ],
-      "pause_after": 5
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

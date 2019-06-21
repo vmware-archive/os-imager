@@ -56,7 +56,7 @@
     {
       "type": "powershell",
       "script": "AWS/windows/scripts/SysPrep.ps1",
-      "pause_after": 5
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

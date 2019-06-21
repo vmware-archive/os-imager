@@ -72,7 +72,7 @@
       "environment_vars": [
         "DEBIAN_FRONTEND=noninteractive"
       ],
-      "pause_after": 5
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

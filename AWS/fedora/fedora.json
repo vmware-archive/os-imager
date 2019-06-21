@@ -58,7 +58,7 @@
         "sudo yum install git vim -y",
         "sudo rm -rf /tmp/* && sudo yum clean all"
       ],
-      "pause_after": 5
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

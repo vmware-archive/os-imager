@@ -59,7 +59,7 @@
         "sudo zypper --non-interactive install --auto-agree-with-licenses git vim",
         "sudo rm -rf /tmp/* && sudo zypper --non-interactive clean -a"
       ],
-      "pause_after": 5
+      "pause_after": "5s"
     }
   ],
   "post-processors": [
