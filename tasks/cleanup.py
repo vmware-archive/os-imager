@@ -40,6 +40,7 @@ def exit_invoke(exitcode, message=None, *args, **kwargs):
 def cleanup_aws(ctx,
                 distro=None,
                 distro_version=None,
+                salt_branch=None,
                 region='us-west-2',
                 name_filter=None,
                 staging=False,
@@ -57,12 +58,14 @@ def cleanup_aws(ctx,
     if name_filter is None:
         if distro is None:
             exit_invoke(1, 'You need to provide at least either \'distro\' or \'name_filter\'')
-        name_filter = 'saltstack/base'
+        name_filter = 'saltstack/ci'
         if staging is True:
             name_filter += '-staging'
         name_filter += '/{}'.format(distro.lower())
         if distro_version:
             name_filter += '/{}'.format(distro_version)
+        if salt_branch:
+            name_filter += '/{}'.format(salt_branch)
 
     client = boto3.client('ec2', region_name=region)
     filters = [
