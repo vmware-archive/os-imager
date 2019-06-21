@@ -187,23 +187,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -242,23 +225,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -299,23 +265,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -354,23 +303,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -411,23 +343,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -466,23 +381,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -523,23 +421,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -578,23 +459,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -635,23 +499,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -690,23 +537,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -747,23 +577,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -802,23 +615,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -859,23 +655,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -914,23 +693,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   event:
@@ -971,23 +733,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -1 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -1 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   event:
   - tag
@@ -1026,23 +771,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1083,23 +811,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1138,23 +849,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1195,23 +889,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1250,23 +927,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1307,23 +967,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1362,23 +1005,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1419,23 +1045,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1474,23 +1083,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1531,23 +1123,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1586,23 +1161,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1643,23 +1201,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1698,23 +1239,6 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
 
 trigger:
   branch:
@@ -1755,23 +1279,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1811,23 +1318,6 @@ steps:
   depends_on:
   - throttle-build
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
 trigger:
   branch:
   - master
@@ -1839,6 +1329,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: f26c5ad7ce9797385447c0b9a1dc8812ee30fbdb998d83ce09b23ed7bb05a972
+hmac: 354b6fffaa5247e136f9a6c4b2726ff53a060e5e53faf17206d9aca305c304c5
 
 ...
