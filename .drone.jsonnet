@@ -123,7 +123,7 @@ local Build(distro, staging) = {
         'cat manifest.json | jq',
         'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
         'echo "Name Filter: $name_filter"',
-        'inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1',
+        'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1',
       ],
       depends_on: [
         'base-image',
