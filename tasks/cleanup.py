@@ -95,6 +95,9 @@ def cleanup_aws(ctx,
     images_listing = sorted(response['Images'], key=itemgetter('Name'))
     images_to_delete = images_listing[:num_to_keep * -1]
 
+    if not images_to_delete:
+        exit_invoke(0, 'Not going to delete {} image(s) that should be kept'.format(num_to_keep))
+
     ec2 = boto3.resource('ec2', region_name=region)
     for image_details in images_to_delete:
         image = ec2.Image(image_details['ImageId'])
