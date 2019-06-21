@@ -117,14 +117,13 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add --update py3-pip',
+        'apk --no-cache add --update py3-pip jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
-        std.format('inv cleanup-aws%s --distro=%s --distro-version=%s --assume-yes --num-to-keep=1', [
-          if staging then ' --staging' else '',
-          distro.name,
-          distro.version,
-        ]),
+        |||
+          name_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
+          inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1
+        |||,
       ],
       depends_on: [
         'base-image',
