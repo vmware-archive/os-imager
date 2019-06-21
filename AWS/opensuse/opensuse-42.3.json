@@ -42,7 +42,8 @@
         "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": true,
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} salt@{{ user `salt_branch`}} Builder",
@@ -60,14 +61,6 @@
     }
   ],
   "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "sudo zypper --non-interactive --gpg-auto-import-keys refresh",
-        "sudo zypper --non-interactive --gpg-auto-import-keys update",
-        "sudo rm -rf /tmp/* && sudo zypper --non-interactive clean -a"
-      ]
-    },
     {
       "type": "shell",
       "inline": [
@@ -143,7 +136,8 @@
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "sudo rm -rf /srv/pillar /srv/salt /tmp/salt /tmp/pillar"
-      ]
+      ],
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

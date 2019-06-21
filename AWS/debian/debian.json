@@ -42,7 +42,8 @@
         "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": true,
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} salt@{{ user `salt_branch`}} Builder",
@@ -60,16 +61,6 @@
     }
   ],
   "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "sudo apt-get update -y && sudo apt-get upgrade -yq",
-        "sudo rm -rf /tmp/* /var/lib/apt/lists/* && sudo apt-get clean"
-      ],
-      "environment_vars": [
-        "DEBIAN_FRONTEND=noninteractive"
-      ]
-    },
     {
       "type": "shell-local",
       "script": "AWS/files/prep-linux.sh",
@@ -139,7 +130,8 @@
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "sudo rm -rf /srv/pillar /srv/salt /tmp/salt /tmp/pillar"
-      ]
+      ],
+      "pause_after": "5s"
     }
   ],
   "post-processors": [

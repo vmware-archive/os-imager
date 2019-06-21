@@ -110,7 +110,6 @@ local Build(distro, staging) = {
     }
     for salt_branch in salt_branches
   ] + [
-    /*
     {
       name: std.format('delete-old-%s-amis', [salt_branch.name]),
       image: 'alpine',
@@ -125,42 +124,18 @@ local Build(distro, staging) = {
       },
       commands: [
         'apk --no-cache add --update py3-pip jq',
-        'pip3 install --upgrade pip setuptools',
-        'pip3 install awscli',
-        std.format(
-          |||
-            ami_filter=$(cat %(salt_branch)s-manifest.json | jq -r '.builds[].custom_data.ami_name')
-            echo "AMI FILTER: $ami_filter"
-            aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)" | jq 'del(.[-1])' > %(salt_branch)s-ami-details.txt
-            cat %(salt_branch)s-ami-details.txt | jq -r '.[].ImageId' > %(salt_branch)s-amis-to-delete.txt
-            cat %(salt_branch)s-ami-details.txt | jq -r ".[].BlockDeviceMappings[].Ebs.SnapshotId" > %(salt_branch)s-snapshots-to-delete.txt
-            cat %(salt_branch)s-amis-to-delete.txt
-            cat %(salt_branch)s-snapshots-to-delete.txt
-          |||,
-          { salt_branch: salt_branch.name }
-        ),
-        std.format(
-          |||
-            for ami in $(head -n -%(count)s %(salt_branch)s-amis-to-delete.txt); do
-              echo "Deleting AMI $ami"
-              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
-            done
-            for ami_snapshot in $(head -n -%(count)s %(salt_branch)s-snapshots-to-delete.txt); do
-              echo "Deleting snapshot $ami_snapshot"
-              aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
-            done
-          |||,
-          // Keep 1 staging build and 2 regular builds at all times
-          // The values below are 0 and 1 because the AMI built on this run is never part of the listing
-          { count: if staging then 0 else 1, salt_branch: salt_branch.name }
-        ),
+        'pip3 install --upgrade pip',
+        'pip3 install -r requirements/py3.5/base.txt',
+        'cat %(salt_branch)s-manifest.json | jq',
+        'export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r ".builds[].custom_data.ami_name")',
+        'echo "Name Filter: $name_filter"',
+        'inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1',
       ],
       depends_on: [
         salt_branch.name,
       ],
     }
     for salt_branch in salt_branches
-    */
   ]
   ,
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),

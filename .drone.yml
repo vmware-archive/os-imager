@@ -251,6 +251,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -353,6 +448,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -457,6 +647,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -559,6 +844,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -663,6 +1043,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -765,6 +1240,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -869,6 +1439,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -971,6 +1636,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -1075,6 +1835,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -1177,6 +2032,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -1281,6 +2231,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -1383,6 +2428,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -1487,6 +2627,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -1589,6 +2824,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   event:
@@ -1693,6 +3023,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   event:
   - tag
@@ -1795,6 +3220,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -1899,6 +3419,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -2001,6 +3616,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -2105,6 +3815,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -2207,6 +4012,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -2311,6 +4211,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -2413,6 +4408,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -2517,6 +4607,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -2619,6 +4804,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -2723,6 +5003,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -2825,6 +5200,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -2929,6 +5399,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -3031,6 +5596,101 @@ steps:
       from_secret: password
   depends_on:
   - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
 
 trigger:
   branch:
@@ -3135,6 +5795,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -3238,6 +5993,101 @@ steps:
   depends_on:
   - clone
 
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat %(salt_branch)s-manifest.json | jq"
+  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
 trigger:
   branch:
   - ci
@@ -3249,6 +6099,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 77a7fbeac0f6ebf51a57c0cd9d096e8af65f4086f6f3f9e647fbb7f53d605f71
+hmac: 82479ebf55272f1a6936fd6c88fb52dbecf019d64e61e50b353a78e9da6864e3
 
 ...

@@ -1,4 +1,8 @@
 packer_cache
 output-*
 *.idea*
+<<<<<<< HEAD
 .tmp/
+=======
+*manifest.json
+>>>>>>> upstream/master

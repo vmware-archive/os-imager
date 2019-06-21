@@ -46,7 +46,8 @@
         "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
         "Python-2": true,
-        "Python-3": true
+        "Python-3": true,
+        "Promoted": false
       },
       "run_tags": {
         "Name": "Packer {{ user `build_type` | upper }} {{ user `os_name` }} {{ user `os_version` }} salt@{{ user `salt_branch`}} Builder",
@@ -163,6 +164,11 @@
     {
       "type": "powershell",
       "script": "AWS/windows/scripts/SysPrep.ps1"
+    },
+    {
+      "type": "shell-local",
+      "command": "echo Done",
+      "pause_before": "5s"
     }
   ],
   "post-processors": [
