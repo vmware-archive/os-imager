@@ -120,14 +120,10 @@ local Build(distro, staging) = {
         'apk --no-cache add --update py3-pip jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
-        |||
-          cat manifest.json | jq
-          echo
-          name_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
-          echo "Name Filter: ${name_filter}"
-          echo
-          inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1
-        |||,
+        'cat manifest.json | jq',
+        'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
+        'echo "Name Filter: ${name_filter}"',
+        'inv cleanup-aws --name-filter=${name_filter} --assume-yes --num-to-keep=1',
       ],
       depends_on: [
         'base-image',
