@@ -115,6 +115,9 @@ def cleanup_aws(ctx,
                 raise exc from none
             print(exc)
         for block_device in block_devices:
+            if 'Ebs' not in block_device:
+                print('Skipping non EBS block device with details:\n{}'.format(pprint.pformat(block_device), 5 * ' '))
+                continue
             snapshot_id = block_device['Ebs']['SnapshotId']
             print('  Deleting snapshot {} of {}'.format(snapshot_id, image.id))
             print('  Details:\n{}'.format(textwrap.indent(pprint.pformat(block_device), 5 * ' ')))
