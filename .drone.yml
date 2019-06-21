@@ -187,6 +187,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=arch --distro-version=2019-01-09 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -225,6 +241,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=amazon --distro-version=1 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -265,6 +297,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=amazon --distro-version=2 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -303,6 +351,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=centos --distro-version=6 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -343,6 +407,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=centos --distro-version=7 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -381,6 +461,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=debian --distro-version=8 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -421,6 +517,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=debian --distro-version=9 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -459,6 +571,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=fedora --distro-version=29 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -499,6 +627,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=fedora --distro-version=30 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -537,6 +681,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=opensuse --distro-version=15 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -577,6 +737,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=ubuntu --distro-version=1604 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -615,6 +791,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=ubuntu --distro-version=1804 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -655,6 +847,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=windows --distro-version=2012r2 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -693,6 +901,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=windows --distro-version=2016 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   event:
@@ -733,6 +957,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --distro=windows --distro-version=2019 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -771,6 +1011,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=arch --distro-version=2019-01-09 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -811,6 +1067,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=amazon --distro-version=1 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -849,6 +1121,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=amazon --distro-version=2 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -889,6 +1177,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=centos --distro-version=6 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -927,6 +1231,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=centos --distro-version=7 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -967,6 +1287,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=debian --distro-version=8 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1005,6 +1341,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=debian --distro-version=9 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -1045,6 +1397,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=fedora --distro-version=29 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1083,6 +1451,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=fedora --distro-version=30 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -1123,6 +1507,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=opensuse --distro-version=15 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1161,6 +1561,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=ubuntu --distro-version=1604 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -1201,6 +1617,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=ubuntu --distro-version=1804 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1239,6 +1671,22 @@ steps:
       from_secret: password
   depends_on:
   - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=windows --distro-version=2012r2 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
 
 trigger:
   branch:
@@ -1279,6 +1727,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=windows --distro-version=2016 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1318,6 +1782,22 @@ steps:
   depends_on:
   - throttle-build
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update py3-pip
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - inv cleanup-aws --staging --distro=windows --distro-version=2019 --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - master
@@ -1329,6 +1809,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 354b6fffaa5247e136f9a6c4b2726ff53a060e5e53faf17206d9aca305c304c5
+hmac: ef501d157f0fd726fac899fef2f62aa8a7a0fb7feff9794134ef69224ad55029
 
 ...
