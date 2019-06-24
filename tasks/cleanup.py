@@ -46,6 +46,8 @@ def exit_invoke(exitcode, message=None, *args, **kwargs):
 
 
 def info(message, *args, **kwargs):
+    if not isinstance(message, str):
+        message = str(message)
     message = message.format(*args, **kwargs)
     if terminal:
         message = terminal.bold(terminal.green(message))
@@ -53,6 +55,8 @@ def info(message, *args, **kwargs):
 
 
 def warn(message, *args, **kwargs):
+    if not isinstance(message, str):
+        message = str(message)
     message = message.format(*args, **kwargs)
     if terminal:
         message = terminal.bold(terminal.yellow(message))
@@ -60,6 +64,8 @@ def warn(message, *args, **kwargs):
 
 
 def error(message, *args, **kwargs):
+    if not isinstance(message, str):
+        message = str(message)
     message = message.format(*args, **kwargs)
     if terminal:
         message = terminal.bold(terminal.red(message))
@@ -141,6 +147,8 @@ def cleanup_aws(ctx,
     if not images_to_delete:
         exit_invoke(0, 'Not going to delete {} image(s) that should be kept'.format(num_to_keep))
 
+    exitcode = 0
+
     ec2 = boto3.resource('ec2', region_name=region)
     for image_details in images_to_delete:
         image = ec2.Image(image_details['ImageId'])
@@ -155,12 +163,17 @@ def cleanup_aws(ctx,
                     answer = input('Proceed? [N/y] ')
                 if not answer or not answer.lower().startswith('y'):
                     exit_invoke(0, 'Not proceeding.')
-            response = image.deregister(DryRun=dry_run, delete_snapshot=True)
+            response = image.deregister(DryRun=dry_run)
         except botocore.exceptions.ClientError as exc:
             if 'DryRunOperation' not in str(exc):
-                raise exc from None
-            error(exc)
+                error(exc)
+                exitcode = 1
+            else:
+                warn(exc)
         for block_device in block_devices:
+            if 'VirtualName' in block_device:
+                # Just ignore virtual devices
+                continue
             if 'Ebs' not in block_device:
                 warn('Skipping non EBS block device with details:\n{}', pprint.pformat(block_device), 5 * ' ')
                 continue
@@ -178,5 +191,9 @@ def cleanup_aws(ctx,
                 response = client.delete_snapshot(SnapshotId=snapshot_id, DryRun=dry_run)
             except botocore.exceptions.ClientError as exc:
                 if 'DryRunOperation' not in str(exc):
-                    raise exc from None
-                error(exc)
+                    error(exc)
+                    exitcode = 1
+                else:
+                    warn(exc)
+
+    exit_invoke(exitcode)
