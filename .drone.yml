@@ -3230,7 +3230,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3249,7 +3249,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3268,7 +3268,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3287,7 +3287,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3306,7 +3306,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3428,7 +3428,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3447,7 +3447,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3466,7 +3466,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3485,7 +3485,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3504,7 +3504,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3626,7 +3626,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3645,7 +3645,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3664,7 +3664,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3683,7 +3683,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3702,7 +3702,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3824,7 +3824,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3843,7 +3843,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3862,7 +3862,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3881,7 +3881,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3900,7 +3900,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4022,7 +4022,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4041,7 +4041,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4060,7 +4060,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4079,7 +4079,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4098,7 +4098,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4220,7 +4220,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4239,7 +4239,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4258,7 +4258,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4277,7 +4277,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4296,7 +4296,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4418,7 +4418,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4437,7 +4437,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4456,7 +4456,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4475,7 +4475,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4494,7 +4494,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4616,7 +4616,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4635,7 +4635,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4654,7 +4654,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4673,7 +4673,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4692,7 +4692,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4814,7 +4814,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4833,7 +4833,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4852,7 +4852,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4871,7 +4871,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -4890,7 +4890,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5012,7 +5012,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5031,7 +5031,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5050,7 +5050,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5069,7 +5069,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5088,7 +5088,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5210,7 +5210,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5229,7 +5229,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5248,7 +5248,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5267,7 +5267,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5286,7 +5286,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5408,7 +5408,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5427,7 +5427,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5446,7 +5446,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5465,7 +5465,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5484,7 +5484,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5606,7 +5606,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5625,7 +5625,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5644,7 +5644,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5663,7 +5663,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5682,7 +5682,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5804,7 +5804,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5823,7 +5823,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5842,7 +5842,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5861,7 +5861,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -5880,7 +5880,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6002,7 +6002,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6021,7 +6021,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6040,7 +6040,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6059,7 +6059,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6078,7 +6078,7 @@ steps:
   - "cat %(salt_branch)s-manifest.json | jq"
   - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -6099,6 +6099,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 9c39854ca18e05b7f37a6957ed445df5505ae83e6e13b7b5a7fedd66b8683ae3
+hmac: ca74b1a42574081d0eb313526e71c45a43088ca6c5772d5bd3cdd625a6da9851
 
 ...

@@ -129,7 +129,11 @@ local Build(distro, staging) = {
         'cat %(salt_branch)s-manifest.json | jq',
         'export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r ".builds[].custom_data.ami_name")',
         'echo "Name Filter: $name_filter"',
-        'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1',
+        std.format(
+          'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
+          // Don't keep any staging images around
+          [if staging then 0 else 1]
+        ),
       ],
       depends_on: [
         salt_branch.name,
