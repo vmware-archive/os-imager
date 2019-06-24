@@ -25,7 +25,7 @@ if HAS_BOTO:
     import botocore.exceptions
 try:
     from blessings import Terminal
-    terminal = Terminal()
+    terminal = Terminal(force_styling='DRONE' in os.environ)
     HAS_BLESSINGS = True
 except ImportError:
     terminal = None
@@ -73,7 +73,8 @@ def error(message, *args, **kwargs):
 
 
 def write_message(message):
-    sys.stderr.write(message)
+    # Replace white-space with the empty unicode char. Drop strips leading and trailing white-space
+    sys.stderr.write(message.replace(' ', '\u2800'))
     if not message.endswith('\n'):
         sys.stderr.write('\n')
     sys.stderr.flush()
