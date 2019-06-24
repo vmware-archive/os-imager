@@ -1066,7 +1066,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1124,7 +1124,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1182,7 +1182,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1240,7 +1240,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1298,7 +1298,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1356,7 +1356,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1414,7 +1414,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1472,7 +1472,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1530,7 +1530,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1588,7 +1588,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1646,7 +1646,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1704,7 +1704,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1762,7 +1762,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1820,7 +1820,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1878,7 +1878,7 @@ steps:
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1899,6 +1899,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: b209567534a062acc841c0ed4c5f2d0c1cdf3a1676900e17b3f94d396e6f5c3d
+hmac: 0ef57ad1d81bee14de85b8b9d0d05bf73a36ae34ab9e9e8c75a4333e36f0f644
 
 ...

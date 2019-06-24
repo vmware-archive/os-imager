@@ -133,7 +133,10 @@ def cleanup_aws(ctx,
         exit_invoke(1, 'No images were returned. Full response:\n{}', pprint.pformat(response))
 
     images_listing = sorted(response['Images'], key=itemgetter('Name'))
-    images_to_delete = images_listing[:num_to_keep * -1]
+    if num_to_keep:
+        images_to_delete = images_listing[:num_to_keep * -1]
+    else:
+        images_to_delete = images_listing
 
     if not images_to_delete:
         exit_invoke(0, 'Not going to delete {} image(s) that should be kept'.format(num_to_keep))
