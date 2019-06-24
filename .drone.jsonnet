@@ -126,8 +126,14 @@ local Build(distro, staging) = {
         'apk --no-cache add --update py3-pip jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
-        'cat %(salt_branch)s-manifest.json | jq',
-        'export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r ".builds[].custom_data.ami_name")',
+        std.format(
+          'cat %s-manifest.json | jq',
+          [salt_branch.name]
+        ),
+        std.format(
+          'export name_filter=$(cat %s-manifest.json | jq -r ".builds[].custom_data.ami_name")',
+          [salt_branch.name]
+        ),
         'echo "Name Filter: $name_filter"',
         std.format(
           'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',

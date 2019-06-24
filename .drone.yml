@@ -257,8 +257,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -276,8 +276,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -295,8 +295,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -314,8 +314,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -333,8 +333,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -455,8 +455,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -474,8 +474,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -493,8 +493,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -512,8 +512,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -531,8 +531,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -653,8 +653,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -672,8 +672,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -691,8 +691,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -710,8 +710,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -729,8 +729,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -851,8 +851,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -870,8 +870,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -889,8 +889,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -908,8 +908,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -927,8 +927,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1049,8 +1049,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1068,8 +1068,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1087,8 +1087,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1106,8 +1106,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1125,8 +1125,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1247,8 +1247,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1266,8 +1266,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1285,8 +1285,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1304,8 +1304,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1323,8 +1323,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1445,8 +1445,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1464,8 +1464,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1483,8 +1483,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1502,8 +1502,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1521,8 +1521,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1643,8 +1643,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1662,8 +1662,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1681,8 +1681,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1700,8 +1700,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1719,8 +1719,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1841,8 +1841,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1860,8 +1860,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1879,8 +1879,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1898,8 +1898,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1917,8 +1917,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2039,8 +2039,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2058,8 +2058,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2077,8 +2077,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2096,8 +2096,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2115,8 +2115,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2237,8 +2237,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2256,8 +2256,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2275,8 +2275,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2294,8 +2294,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2313,8 +2313,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2435,8 +2435,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2454,8 +2454,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2473,8 +2473,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2492,8 +2492,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2511,8 +2511,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2633,8 +2633,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2652,8 +2652,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2671,8 +2671,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2690,8 +2690,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2709,8 +2709,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2831,8 +2831,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2850,8 +2850,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2869,8 +2869,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2888,8 +2888,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2907,8 +2907,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3029,8 +3029,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3048,8 +3048,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3067,8 +3067,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3086,8 +3086,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3105,8 +3105,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -3227,8 +3227,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3246,8 +3246,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3265,8 +3265,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3284,8 +3284,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3303,8 +3303,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3425,8 +3425,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3444,8 +3444,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3463,8 +3463,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3482,8 +3482,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3501,8 +3501,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3623,8 +3623,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3642,8 +3642,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3661,8 +3661,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3680,8 +3680,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3699,8 +3699,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3821,8 +3821,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3840,8 +3840,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3859,8 +3859,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3878,8 +3878,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -3897,8 +3897,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4019,8 +4019,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4038,8 +4038,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4057,8 +4057,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4076,8 +4076,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4095,8 +4095,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4217,8 +4217,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4236,8 +4236,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4255,8 +4255,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4274,8 +4274,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4293,8 +4293,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4415,8 +4415,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4434,8 +4434,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4453,8 +4453,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4472,8 +4472,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4491,8 +4491,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4613,8 +4613,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4632,8 +4632,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4651,8 +4651,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4670,8 +4670,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4689,8 +4689,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4811,8 +4811,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4830,8 +4830,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4849,8 +4849,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4868,8 +4868,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -4887,8 +4887,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5009,8 +5009,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5028,8 +5028,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5047,8 +5047,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5066,8 +5066,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5085,8 +5085,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5207,8 +5207,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5226,8 +5226,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5245,8 +5245,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5264,8 +5264,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5283,8 +5283,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5405,8 +5405,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5424,8 +5424,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5443,8 +5443,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5462,8 +5462,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5481,8 +5481,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5603,8 +5603,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5622,8 +5622,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5641,8 +5641,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5660,8 +5660,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5679,8 +5679,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5801,8 +5801,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5820,8 +5820,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5839,8 +5839,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5858,8 +5858,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5877,8 +5877,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -5999,8 +5999,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2017.7-manifest.json | jq"
+  - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -6018,8 +6018,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2018.3-manifest.json | jq"
+  - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -6037,8 +6037,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat 2019.2-manifest.json | jq"
+  - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -6056,8 +6056,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat neon-manifest.json | jq"
+  - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -6075,8 +6075,8 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat %(salt_branch)s-manifest.json | jq"
-  - "export name_filter=$(cat %(salt_branch)s-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "cat develop-manifest.json | jq"
+  - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -6099,6 +6099,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ca74b1a42574081d0eb313526e71c45a43088ca6c5772d5bd3cdd625a6da9851
+hmac: 1bc4354b6553308689103c13daf4643712ac8ed9a9ea97399b9ba3f99cb65e42
 
 ...
