@@ -25,7 +25,7 @@ if HAS_BOTO:
     import botocore.exceptions
 try:
     from blessings import Terminal
-    terminal = Terminal(force_styling='DRONE' in os.environ)
+    terminal = Terminal()
     HAS_BLESSINGS = True
 except ImportError:
     terminal = None
