@@ -144,8 +144,8 @@ def cleanup_aws(ctx,
     ec2 = boto3.resource('ec2', region_name=region)
     for image_details in images_to_delete:
         image = ec2.Image(image_details['ImageId'])
-        warn('Unregistering {}'.format(image.id))
-        info('Details:\n{}'.format(textwrap.indent(pprint.pformat(image_details), 3 * ' ')))
+        warn('Unregistering {}', image.id)
+        info('Details:\n{}', textwrap.indent(pprint.pformat(image_details), 3 * ' '))
         block_devices = image.block_device_mappings
         try:
             if assume_yes is False:
@@ -162,11 +162,11 @@ def cleanup_aws(ctx,
             error(exc)
         for block_device in block_devices:
             if 'Ebs' not in block_device:
-                warn('Skipping non EBS block device with details:\n{}'.format(pprint.pformat(block_device), 5 * ' '))
+                warn('Skipping non EBS block device with details:\n{}', pprint.pformat(block_device), 5 * ' ')
                 continue
             snapshot_id = block_device['Ebs']['SnapshotId']
-            warn('  Deleting snapshot {} of {}'.format(snapshot_id, image.id))
-            info('  Details:\n{}'.format(textwrap.indent(pprint.pformat(block_device), 5 * ' ')))
+            warn('  Deleting snapshot {} of {}', snapshot_id, image.id)
+            info('  Details:\n{}', textwrap.indent(pprint.pformat(block_device), 5 * ' '))
             try:
                 if assume_yes is False:
                     if terminal is not None:
