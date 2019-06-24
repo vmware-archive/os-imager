@@ -73,7 +73,7 @@ def error(message, *args, **kwargs):
 
 
 def write_message(message):
-    sys.stderr.write(message))
+    sys.stderr.write(message)
     if not message.endswith('\n'):
         sys.stderr.write('\n')
     sys.stderr.flush()
