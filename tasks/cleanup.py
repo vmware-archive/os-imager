@@ -73,8 +73,7 @@ def error(message, *args, **kwargs):
 
 
 def write_message(message):
-    # Replace white-space with the empty unicode char. Drop strips leading and trailing white-space
-    sys.stderr.write(message.replace(' ', '\u2800'))
+    sys.stderr.write(message))
     if not message.endswith('\n'):
         sys.stderr.write('\n')
     sys.stderr.flush()
