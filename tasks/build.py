@@ -95,7 +95,7 @@ def build_aws(ctx,
         cmd += TIMESTAMP_UI
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
-        cmd += ' -var source_build_type=base-staging -var build_type=ci-staging'
+        cmd += ' -var build_type=ci-staging'
     cmd += ' -var distro_slug={} -var salt_branch={} {}'.format(distro_slug,
                                                                 salt_branch,
                                                                 build_template)
@@ -172,7 +172,7 @@ def build_docker(ctx,
         cmd += TIMESTAMP_UI
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
-        cmd += ' -var source_build_type=base-staging -var build_type=ci-staging'
+        cmd += ' -var build_type=ci-staging'
     cmd += ' -var distro_slug={} -var salt_branch={} {}'.format(distro_slug,
                                                                 salt_branch,
                                                                 build_template)
