@@ -46,7 +46,7 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add --update py3-pip',
+        'apk --no-cache add --update python3',
         'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws --validate --distro=%s --distro-version=%s', [

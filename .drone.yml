@@ -10,7 +10,7 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=arch --distro-version=2019-01-09
@@ -20,7 +20,7 @@ steps:
 - name: Amazon 1
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=1
@@ -30,7 +30,7 @@ steps:
 - name: Amazon 2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=2
@@ -40,7 +40,7 @@ steps:
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=6
@@ -50,7 +50,7 @@ steps:
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=7
@@ -60,7 +60,7 @@ steps:
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=8
@@ -70,7 +70,7 @@ steps:
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=9
@@ -80,7 +80,7 @@ steps:
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=29
@@ -90,7 +90,7 @@ steps:
 - name: Fedora 30
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=30
@@ -100,7 +100,7 @@ steps:
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=15
@@ -110,7 +110,7 @@ steps:
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1604
@@ -120,7 +120,7 @@ steps:
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1804
@@ -130,7 +130,7 @@ steps:
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2012r2
@@ -140,7 +140,7 @@ steps:
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2016
@@ -150,7 +150,7 @@ steps:
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2019
@@ -193,7 +193,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -251,7 +251,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -309,7 +309,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -367,7 +367,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -425,7 +425,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -483,7 +483,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -541,7 +541,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -599,7 +599,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -657,7 +657,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -715,7 +715,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -773,7 +773,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -831,7 +831,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -889,7 +889,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -947,7 +947,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1005,7 +1005,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1063,7 +1063,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1121,7 +1121,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1179,7 +1179,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1237,7 +1237,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1295,7 +1295,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1353,7 +1353,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1411,7 +1411,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1469,7 +1469,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1527,7 +1527,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1585,7 +1585,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1643,7 +1643,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1701,7 +1701,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1759,7 +1759,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1817,7 +1817,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1875,7 +1875,7 @@ steps:
   - apk --no-cache add --update py3-pip jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
+  - cat manifest.json | jq
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1899,6 +1899,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 0ef57ad1d81bee14de85b8b9d0d05bf73a36ae34ab9e9e8c75a4333e36f0f644
+hmac: c45a3be10ca2310bdf1b9c603b3f4b22afba58d9aab04577563cc89ec33ab406
 
 ...
