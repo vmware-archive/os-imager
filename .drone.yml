@@ -174,7 +174,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09
@@ -190,7 +190,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -232,7 +232,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1
@@ -248,7 +248,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -290,7 +290,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2
@@ -306,7 +306,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -348,7 +348,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6
@@ -364,7 +364,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -406,7 +406,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7
@@ -422,7 +422,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -464,7 +464,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8
@@ -480,7 +480,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -522,7 +522,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9
@@ -538,7 +538,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -580,7 +580,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29
@@ -596,7 +596,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -638,7 +638,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30
@@ -654,7 +654,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -696,7 +696,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15
@@ -712,7 +712,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -754,7 +754,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604
@@ -770,7 +770,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -812,7 +812,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804
@@ -828,7 +828,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -870,7 +870,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2
@@ -886,7 +886,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -928,7 +928,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016
@@ -944,7 +944,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -986,7 +986,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019
@@ -1002,7 +1002,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1044,7 +1044,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09
@@ -1060,7 +1060,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1102,7 +1102,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1
@@ -1118,7 +1118,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1160,7 +1160,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2
@@ -1176,7 +1176,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1218,7 +1218,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6
@@ -1234,7 +1234,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1276,7 +1276,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7
@@ -1292,7 +1292,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1334,7 +1334,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8
@@ -1350,7 +1350,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1392,7 +1392,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9
@@ -1408,7 +1408,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1450,7 +1450,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29
@@ -1466,7 +1466,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1508,7 +1508,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30
@@ -1524,7 +1524,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1566,7 +1566,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15
@@ -1582,7 +1582,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1624,7 +1624,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604
@@ -1640,7 +1640,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1682,7 +1682,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804
@@ -1698,7 +1698,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1740,7 +1740,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2
@@ -1756,7 +1756,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1798,7 +1798,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016
@@ -1814,7 +1814,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1856,7 +1856,7 @@ steps:
 - name: base-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019
@@ -1872,7 +1872,7 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - cat manifest.json | jq
@@ -1899,6 +1899,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: c45a3be10ca2310bdf1b9c603b3f4b22afba58d9aab04577563cc89ec33ab406
+hmac: 4046da2a75261c88fdb088a2f5670ce7e0cfd09d7cd33e5cf70583fc5d5c1e55
 
 ...

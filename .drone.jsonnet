@@ -90,7 +90,7 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add make curl grep gawk sed py3-pip',
+        'apk --no-cache add make curl grep gawk sed python3',
         'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws%s --distro=%s --distro-version=%s', [
@@ -117,7 +117,7 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add --update py3-pip jq',
+        'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
         'cat manifest.json | jq',
