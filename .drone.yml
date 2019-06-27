@@ -10,7 +10,7 @@ steps:
 - name: Arch
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=arch --distro-version=2019-01-09
@@ -20,7 +20,7 @@ steps:
 - name: Amazon 1
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=1
@@ -30,7 +30,7 @@ steps:
 - name: Amazon 2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=amazon --distro-version=2
@@ -40,7 +40,7 @@ steps:
 - name: CentOS 6
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=6
@@ -50,7 +50,7 @@ steps:
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=7
@@ -60,7 +60,7 @@ steps:
 - name: Debian 8
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=8
@@ -70,7 +70,7 @@ steps:
 - name: Debian 9
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=debian --distro-version=9
@@ -80,7 +80,7 @@ steps:
 - name: Fedora 29
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=29
@@ -90,7 +90,7 @@ steps:
 - name: Fedora 30
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=30
@@ -100,7 +100,7 @@ steps:
 - name: Opensuse 15
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=opensuse --distro-version=15
@@ -110,7 +110,7 @@ steps:
 - name: Ubuntu 1604
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1604
@@ -120,7 +120,7 @@ steps:
 - name: Ubuntu 1804
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=ubuntu --distro-version=1804
@@ -130,7 +130,7 @@ steps:
 - name: Windows 2012r2
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2012r2
@@ -140,7 +140,7 @@ steps:
 - name: Windows 2016
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2016
@@ -150,7 +150,7 @@ steps:
 - name: Windows 2019
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
+  - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=windows --distro-version=2019
@@ -170,7 +170,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 23 seconds; sleep 23'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2017.7
@@ -187,7 +187,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 69 seconds; sleep 69'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2018.3
@@ -204,7 +204,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 115 seconds; sleep 115'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=2019.2
@@ -221,7 +221,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 161 seconds; sleep 161'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=neon
@@ -238,7 +238,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 207 seconds; sleep 207'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=arch --distro-version=2019-01-09 --salt-branch=develop
@@ -254,10 +254,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -273,10 +273,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -292,10 +292,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -311,10 +311,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -330,10 +330,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -368,7 +368,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 33 seconds; sleep 33'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2017.7
@@ -385,7 +385,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 99 seconds; sleep 99'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2018.3
@@ -402,7 +402,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 165 seconds; sleep 165'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1 --salt-branch=2019.2
@@ -419,7 +419,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 231 seconds; sleep 231'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1 --salt-branch=neon
@@ -436,7 +436,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 297 seconds; sleep 297'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=1 --salt-branch=develop
@@ -452,10 +452,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -471,10 +471,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -490,10 +490,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -509,10 +509,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -528,10 +528,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -566,7 +566,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 43 seconds; sleep 43'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2017.7
@@ -583,7 +583,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 129 seconds; sleep 129'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2018.3
@@ -600,7 +600,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 215 seconds; sleep 215'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2 --salt-branch=2019.2
@@ -617,7 +617,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 301 seconds; sleep 301'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2 --salt-branch=neon
@@ -634,7 +634,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 387 seconds; sleep 387'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=amazon --distro-version=2 --salt-branch=develop
@@ -650,10 +650,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -669,10 +669,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -688,10 +688,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -707,10 +707,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -726,10 +726,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -764,7 +764,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 53 seconds; sleep 53'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6 --salt-branch=2017.7
@@ -781,7 +781,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 159 seconds; sleep 159'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6 --salt-branch=2018.3
@@ -798,7 +798,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 265 seconds; sleep 265'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6 --salt-branch=2019.2
@@ -815,7 +815,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 371 seconds; sleep 371'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6 --salt-branch=neon
@@ -832,7 +832,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 477 seconds; sleep 477'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=6 --salt-branch=develop
@@ -848,10 +848,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -867,10 +867,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -886,10 +886,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -905,10 +905,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -924,10 +924,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -962,7 +962,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7 --salt-branch=2017.7
@@ -979,7 +979,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 189 seconds; sleep 189'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7 --salt-branch=2018.3
@@ -996,7 +996,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7 --salt-branch=2019.2
@@ -1013,7 +1013,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 441 seconds; sleep 441'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7 --salt-branch=neon
@@ -1030,7 +1030,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 567 seconds; sleep 567'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=centos --distro-version=7 --salt-branch=develop
@@ -1046,10 +1046,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1065,10 +1065,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1084,10 +1084,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1103,10 +1103,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1122,10 +1122,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1160,7 +1160,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 73 seconds; sleep 73'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8 --salt-branch=2017.7
@@ -1177,7 +1177,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 219 seconds; sleep 219'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8 --salt-branch=2018.3
@@ -1194,7 +1194,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 365 seconds; sleep 365'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8 --salt-branch=2019.2
@@ -1211,7 +1211,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 511 seconds; sleep 511'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8 --salt-branch=neon
@@ -1228,7 +1228,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 657 seconds; sleep 657'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=8 --salt-branch=develop
@@ -1244,10 +1244,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1263,10 +1263,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1282,10 +1282,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1301,10 +1301,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1320,10 +1320,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1358,7 +1358,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 73 seconds; sleep 73'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9 --salt-branch=2017.7
@@ -1375,7 +1375,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 219 seconds; sleep 219'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9 --salt-branch=2018.3
@@ -1392,7 +1392,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 365 seconds; sleep 365'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9 --salt-branch=2019.2
@@ -1409,7 +1409,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 511 seconds; sleep 511'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9 --salt-branch=neon
@@ -1426,7 +1426,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 657 seconds; sleep 657'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=debian --distro-version=9 --salt-branch=develop
@@ -1442,10 +1442,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1461,10 +1461,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1480,10 +1480,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1499,10 +1499,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1518,10 +1518,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1556,7 +1556,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2017.7
@@ -1573,7 +1573,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 189 seconds; sleep 189'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2018.3
@@ -1590,7 +1590,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=2019.2
@@ -1607,7 +1607,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 441 seconds; sleep 441'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=neon
@@ -1624,7 +1624,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 567 seconds; sleep 567'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=29 --salt-branch=develop
@@ -1640,10 +1640,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1659,10 +1659,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1678,10 +1678,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1697,10 +1697,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1716,10 +1716,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1754,7 +1754,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 53 seconds; sleep 53'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2017.7
@@ -1771,7 +1771,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 159 seconds; sleep 159'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2018.3
@@ -1788,7 +1788,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 265 seconds; sleep 265'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30 --salt-branch=2019.2
@@ -1805,7 +1805,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 371 seconds; sleep 371'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30 --salt-branch=neon
@@ -1822,7 +1822,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 477 seconds; sleep 477'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=fedora --distro-version=30 --salt-branch=develop
@@ -1838,10 +1838,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1857,10 +1857,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1876,10 +1876,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1895,10 +1895,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1914,10 +1914,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1952,7 +1952,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 43 seconds; sleep 43'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2017.7
@@ -1969,7 +1969,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 129 seconds; sleep 129'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2018.3
@@ -1986,7 +1986,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 215 seconds; sleep 215'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=2019.2
@@ -2003,7 +2003,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 301 seconds; sleep 301'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=neon
@@ -2020,7 +2020,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 387 seconds; sleep 387'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=opensuse --distro-version=15 --salt-branch=develop
@@ -2036,10 +2036,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2055,10 +2055,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2074,10 +2074,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2093,10 +2093,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2112,10 +2112,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2150,7 +2150,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 33 seconds; sleep 33'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2017.7
@@ -2167,7 +2167,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 99 seconds; sleep 99'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2018.3
@@ -2184,7 +2184,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 165 seconds; sleep 165'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=2019.2
@@ -2201,7 +2201,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 231 seconds; sleep 231'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=neon
@@ -2218,7 +2218,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 297 seconds; sleep 297'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1604 --salt-branch=develop
@@ -2234,10 +2234,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2253,10 +2253,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2272,10 +2272,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2291,10 +2291,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2310,10 +2310,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2348,7 +2348,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 23 seconds; sleep 23'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2017.7
@@ -2365,7 +2365,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 69 seconds; sleep 69'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2018.3
@@ -2382,7 +2382,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 115 seconds; sleep 115'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
@@ -2399,7 +2399,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 161 seconds; sleep 161'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=neon
@@ -2416,7 +2416,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 207 seconds; sleep 207'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=ubuntu --distro-version=1804 --salt-branch=develop
@@ -2432,10 +2432,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2451,10 +2451,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2470,10 +2470,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2489,10 +2489,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2508,10 +2508,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2546,7 +2546,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2017.7
@@ -2563,7 +2563,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2018.3
@@ -2580,7 +2580,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=2019.2
@@ -2597,7 +2597,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=neon
@@ -2614,7 +2614,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2012r2 --salt-branch=develop
@@ -2630,10 +2630,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2649,10 +2649,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2668,10 +2668,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2687,10 +2687,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2706,10 +2706,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2744,7 +2744,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2017.7
@@ -2761,7 +2761,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2018.3
@@ -2778,7 +2778,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=2019.2
@@ -2795,7 +2795,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=neon
@@ -2812,7 +2812,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2016 --salt-branch=develop
@@ -2828,10 +2828,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2847,10 +2847,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2866,10 +2866,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2885,10 +2885,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2904,10 +2904,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -2942,7 +2942,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2017.7
@@ -2959,7 +2959,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2018.3
@@ -2976,7 +2976,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019 --salt-branch=2019.2
@@ -2993,7 +2993,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019 --salt-branch=neon
@@ -3010,7 +3010,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --distro=windows --distro-version=2019 --salt-branch=develop
@@ -3026,10 +3026,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -3045,10 +3045,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -3064,10 +3064,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -3083,10 +3083,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -3102,10 +3102,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -3140,7 +3140,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 23 seconds; sleep 23'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2017.7
@@ -3157,7 +3157,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 69 seconds; sleep 69'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2018.3
@@ -3174,7 +3174,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 115 seconds; sleep 115'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2019.2
@@ -3191,7 +3191,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 161 seconds; sleep 161'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=neon
@@ -3208,7 +3208,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 207 seconds; sleep 207'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=develop
@@ -3224,10 +3224,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3243,10 +3243,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3262,10 +3262,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3281,10 +3281,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3300,10 +3300,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3338,7 +3338,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 33 seconds; sleep 33'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2017.7
@@ -3355,7 +3355,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 99 seconds; sleep 99'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2018.3
@@ -3372,7 +3372,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 165 seconds; sleep 165'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2019.2
@@ -3389,7 +3389,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 231 seconds; sleep 231'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=neon
@@ -3406,7 +3406,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 297 seconds; sleep 297'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=develop
@@ -3422,10 +3422,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3441,10 +3441,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3460,10 +3460,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3479,10 +3479,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3498,10 +3498,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3536,7 +3536,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 43 seconds; sleep 43'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2017.7
@@ -3553,7 +3553,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 129 seconds; sleep 129'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2018.3
@@ -3570,7 +3570,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 215 seconds; sleep 215'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2019.2
@@ -3587,7 +3587,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 301 seconds; sleep 301'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=neon
@@ -3604,7 +3604,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 387 seconds; sleep 387'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=develop
@@ -3620,10 +3620,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3639,10 +3639,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3658,10 +3658,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3677,10 +3677,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3696,10 +3696,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3734,7 +3734,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 53 seconds; sleep 53'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2017.7
@@ -3751,7 +3751,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 159 seconds; sleep 159'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2018.3
@@ -3768,7 +3768,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 265 seconds; sleep 265'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2019.2
@@ -3785,7 +3785,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 371 seconds; sleep 371'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=neon
@@ -3802,7 +3802,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 477 seconds; sleep 477'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=develop
@@ -3818,10 +3818,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3837,10 +3837,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3856,10 +3856,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3875,10 +3875,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3894,10 +3894,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -3932,7 +3932,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2017.7
@@ -3949,7 +3949,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 189 seconds; sleep 189'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2018.3
@@ -3966,7 +3966,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2019.2
@@ -3983,7 +3983,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 441 seconds; sleep 441'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=neon
@@ -4000,7 +4000,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 567 seconds; sleep 567'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=develop
@@ -4016,10 +4016,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4035,10 +4035,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4054,10 +4054,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4073,10 +4073,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4092,10 +4092,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4130,7 +4130,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 73 seconds; sleep 73'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2017.7
@@ -4147,7 +4147,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 219 seconds; sleep 219'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2018.3
@@ -4164,7 +4164,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 365 seconds; sleep 365'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
@@ -4181,7 +4181,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 511 seconds; sleep 511'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=neon
@@ -4198,7 +4198,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 657 seconds; sleep 657'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=develop
@@ -4214,10 +4214,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4233,10 +4233,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4252,10 +4252,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4271,10 +4271,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4290,10 +4290,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4328,7 +4328,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 73 seconds; sleep 73'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2017.7
@@ -4345,7 +4345,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 219 seconds; sleep 219'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2018.3
@@ -4362,7 +4362,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 365 seconds; sleep 365'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2019.2
@@ -4379,7 +4379,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 511 seconds; sleep 511'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=neon
@@ -4396,7 +4396,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 657 seconds; sleep 657'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=develop
@@ -4412,10 +4412,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4431,10 +4431,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4450,10 +4450,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4469,10 +4469,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4488,10 +4488,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4526,7 +4526,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2017.7
@@ -4543,7 +4543,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 189 seconds; sleep 189'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2018.3
@@ -4560,7 +4560,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 315 seconds; sleep 315'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2019.2
@@ -4577,7 +4577,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 441 seconds; sleep 441'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=neon
@@ -4594,7 +4594,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 567 seconds; sleep 567'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=develop
@@ -4610,10 +4610,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4629,10 +4629,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4648,10 +4648,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4667,10 +4667,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4686,10 +4686,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4724,7 +4724,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 53 seconds; sleep 53'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2017.7
@@ -4741,7 +4741,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 159 seconds; sleep 159'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2018.3
@@ -4758,7 +4758,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 265 seconds; sleep 265'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2019.2
@@ -4775,7 +4775,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 371 seconds; sleep 371'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=neon
@@ -4792,7 +4792,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 477 seconds; sleep 477'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=develop
@@ -4808,10 +4808,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4827,10 +4827,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4846,10 +4846,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4865,10 +4865,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4884,10 +4884,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -4922,7 +4922,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 43 seconds; sleep 43'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2017.7
@@ -4939,7 +4939,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 129 seconds; sleep 129'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2018.3
@@ -4956,7 +4956,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 215 seconds; sleep 215'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2019.2
@@ -4973,7 +4973,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 301 seconds; sleep 301'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=neon
@@ -4990,7 +4990,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 387 seconds; sleep 387'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=develop
@@ -5006,10 +5006,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5025,10 +5025,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5044,10 +5044,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5063,10 +5063,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5082,10 +5082,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5120,7 +5120,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 33 seconds; sleep 33'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2017.7
@@ -5137,7 +5137,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 99 seconds; sleep 99'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2018.3
@@ -5154,7 +5154,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 165 seconds; sleep 165'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2019.2
@@ -5171,7 +5171,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 231 seconds; sleep 231'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=neon
@@ -5188,7 +5188,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 297 seconds; sleep 297'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=develop
@@ -5204,10 +5204,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5223,10 +5223,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5242,10 +5242,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5261,10 +5261,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5280,10 +5280,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5318,7 +5318,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 23 seconds; sleep 23'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2017.7
@@ -5335,7 +5335,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 69 seconds; sleep 69'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2018.3
@@ -5352,7 +5352,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 115 seconds; sleep 115'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
@@ -5369,7 +5369,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 161 seconds; sleep 161'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=neon
@@ -5386,7 +5386,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 207 seconds; sleep 207'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=develop
@@ -5402,10 +5402,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5421,10 +5421,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5440,10 +5440,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5459,10 +5459,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5478,10 +5478,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5516,7 +5516,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2017.7
@@ -5533,7 +5533,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2018.3
@@ -5550,7 +5550,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=2019.2
@@ -5567,7 +5567,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=neon
@@ -5584,7 +5584,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2012r2 --salt-branch=develop
@@ -5600,10 +5600,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5619,10 +5619,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5638,10 +5638,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5657,10 +5657,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5676,10 +5676,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5714,7 +5714,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2017.7
@@ -5731,7 +5731,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2018.3
@@ -5748,7 +5748,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2019.2
@@ -5765,7 +5765,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=neon
@@ -5782,7 +5782,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=develop
@@ -5798,10 +5798,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5817,10 +5817,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5836,10 +5836,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5855,10 +5855,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5874,10 +5874,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -5912,7 +5912,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 13 seconds; sleep 13'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2017.7
@@ -5929,7 +5929,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 39 seconds; sleep 39'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2018.3
@@ -5946,7 +5946,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 65 seconds; sleep 65'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2019.2
@@ -5963,7 +5963,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=neon
@@ -5980,7 +5980,7 @@ steps:
   image: hashicorp/packer
   commands:
   - "sh -c 'echo Sleeping 117 seconds; sleep 117'"
-  - apk --no-cache add make curl grep gawk sed py3-pip
+  - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=develop
@@ -5996,10 +5996,10 @@ steps:
 - name: delete-old-2017.7-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2017.7-manifest.json | jq"
+  - cat 2017.7-manifest.json | jq
   - "export name_filter=$(cat 2017.7-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -6015,10 +6015,10 @@ steps:
 - name: delete-old-2018.3-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2018.3-manifest.json | jq"
+  - cat 2018.3-manifest.json | jq
   - "export name_filter=$(cat 2018.3-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -6034,10 +6034,10 @@ steps:
 - name: delete-old-2019.2-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat 2019.2-manifest.json | jq"
+  - cat 2019.2-manifest.json | jq
   - "export name_filter=$(cat 2019.2-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -6053,10 +6053,10 @@ steps:
 - name: delete-old-neon-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat neon-manifest.json | jq"
+  - cat neon-manifest.json | jq
   - "export name_filter=$(cat neon-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -6072,10 +6072,10 @@ steps:
 - name: delete-old-develop-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
+  - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - "cat develop-manifest.json | jq"
+  - cat develop-manifest.json | jq
   - "export name_filter=$(cat develop-manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -6099,6 +6099,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 1bc4354b6553308689103c13daf4643712ac8ed9a9ea97399b9ba3f99cb65e42
+hmac: cb7703fead5c9067ad4cfd28d00a20af203e00b4d5712ddbdb7c750dac9130b9
 
 ...
