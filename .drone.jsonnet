@@ -57,7 +57,7 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add --update py3-pip',
+        'apk --no-cache add --update python3',
         'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws --validate --distro=%s --distro-version=%s', [
@@ -94,7 +94,7 @@ local Build(distro, staging) = {
           "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
           { offset: (2 * salt_branch.multiplier * std.length(salt_branches) * distro.multiplier) + (salt_branch.multiplier * 13) }
         ),
-        'apk --no-cache add make curl grep gawk sed py3-pip',
+        'apk --no-cache add make curl grep gawk sed python3',
         'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws%s --distro=%s --distro-version=%s --salt-branch=%s', [
@@ -123,7 +123,7 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add --update py3-pip jq',
+        'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
         std.format(
