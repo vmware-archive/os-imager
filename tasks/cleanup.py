@@ -110,8 +110,8 @@ def cleanup_aws(ctx,
         if distro_version:
             name_filter += '/{}'.format(distro_version)
 
-    if not name_filter.endswith('/*'):
-        name_filter += '/*'
+    if not name_filter.endswith('*'):
+        name_filter += '*'
 
     client = boto3.client('ec2', region_name=region)
     filters = [
