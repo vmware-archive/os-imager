@@ -132,7 +132,8 @@ def promote_ami(ctx,
             warn(exc)
 
     try:
-        ami.modify_attribute(Attribute="description", Value="PROMOTED " + ami.description, DryRun=dry_run)
+        if not ami.description.startswith('PROMOTED '):
+            ami.modify_attribute(Attribute='description', Value='PROMOTED ' + ami.description, DryRun=dry_run)
     except botocore.exceptions.ClientError as exc:
         if 'DryRunOperation' not in str(exc):
             error(exc)
