@@ -2,3 +2,4 @@
 
 from .build import *
 from .cleanup import *
+from .promote import *

@@ -113,12 +113,15 @@ def cleanup_aws(ctx,
         if salt_branch:
             name_filter += '/{}'.format(salt_branch)
 
+    if not name_filter.endswith('/*'):
+        name_filter += '/*'
+
     client = boto3.client('ec2', region_name=region)
     filters = [
         {
             'Name': 'name',
             'Values': [
-                '{}/*'.format(name_filter)
+                name_filter
             ]
         },
         {
