@@ -50,7 +50,7 @@ local Build(distro, staging) = {
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
   steps: [
     {
-      name: 'slave-image',
+      name: 'Build',
       image: 'hashicorp/packer',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -102,52 +102,6 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add --update py3-pip jq',
-        'pip3 install --upgrade pip setuptools',
-        'pip3 install awscli',
-        |||
-          ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')
-          echo "AMI FILTER: $ami_filter"
-          aws ec2 --region $AWS_DEFAULT_REGION describe-images --filters "Name=name,Values=$ami_filter/*" --query "sort_by(Images, &CreationDate)" | jq 'del(.[-1])' > ami-details.txt
-          cat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt
-          cat ami-details.txt | jq -r ".[].BlockDeviceMappings[].Ebs.SnapshotId" > snapshots-to-delete.txt
-          cat amis-to-delete.txt
-          cat snapshots-to-delete.txt
-        |||,
-        std.format(
-          |||
-            for ami in $(head -n -%(count)s amis-to-delete.txt); do
-              echo "Deleting AMI $ami"
-              aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo "Failed to delete AMI $ami"
-            done
-            for ami_snapshot in $(head -n -%(count)s snapshots-to-delete.txt); do
-              echo "Deleting snapshot $ami_snapshot"
-              aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo "Failed to delete AMI snapshot $ami_snapshot"
-            done
-          |||,
-          // Keep 1 staging build and 3 regular builds at all times
-          // The values below are 0 and 2 because the AMI built on this run is never part of the listing
-          { count: if staging then 0 else 2 }
-        ),
-      ],
-      depends_on: [
-        'slave-image',
-      ],
-    },
-  ] + [
-    {
-      name: 'delete-old-amis',
-      image: 'alpine',
-      environment: {
-        AWS_DEFAULT_REGION: 'us-west-2',
-        AWS_ACCESS_KEY_ID: {
-          from_secret: 'username',
-        },
-        AWS_SECRET_ACCESS_KEY: {
-          from_secret: 'password',
-        },
-      },
-      commands: [
         'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.5/base.txt',
@@ -157,11 +111,11 @@ local Build(distro, staging) = {
         std.format(
           'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
           // Don't keep any staging images around
-          [if staging then 0 else 1]
+          [if staging then 0 else 3]
         ),
       ],
       depends_on: [
-        'base-image',
+        'Build',
       ],
     },
   ],

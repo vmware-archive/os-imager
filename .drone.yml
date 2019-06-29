@@ -26,7 +26,7 @@ platform:
   arch: amd64
 
 steps:
-- name: slave-image
+- name: Build
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed openssh-client python3
@@ -56,30 +56,13 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -2 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -2 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - slave-image
-
-- name: delete-old-amis
-  image: alpine
-  commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
   - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -87,7 +70,7 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - Build
 
 trigger:
   event:
@@ -107,7 +90,7 @@ platform:
   arch: amd64
 
 steps:
-- name: slave-image
+- name: Build
   image: hashicorp/packer
   commands:
   - apk --no-cache add make curl grep gawk sed openssh-client python3
@@ -137,23 +120,6 @@ steps:
 - name: delete-old-amis
   image: alpine
   commands:
-  - apk --no-cache add --update py3-pip jq
-  - pip3 install --upgrade pip setuptools
-  - pip3 install awscli
-  - "ami_filter=$(cat manifest.json | jq -r '.builds[].custom_data.ami_name')\necho \"AMI FILTER: $ami_filter\"\naws ec2 --region $AWS_DEFAULT_REGION describe-images --filters \"Name=name,Values=$ami_filter/*\" --query \"sort_by(Images, &CreationDate)\" | jq 'del(.[-1])' > ami-details.txt\ncat ami-details.txt | jq -r '.[].ImageId' > amis-to-delete.txt\ncat ami-details.txt | jq -r \".[].BlockDeviceMappings[].Ebs.SnapshotId\" > snapshots-to-delete.txt\ncat amis-to-delete.txt\ncat snapshots-to-delete.txt\n"
-  - "for ami in $(head -n -0 amis-to-delete.txt); do\n  echo \"Deleting AMI $ami\"\n  aws ec2 --region $AWS_DEFAULT_REGION deregister-image --image-id $ami || echo \"Failed to delete AMI $ami\"\ndone\nfor ami_snapshot in $(head -n -0 snapshots-to-delete.txt); do\n  echo \"Deleting snapshot $ami_snapshot\"\n  aws ec2 --region $AWS_DEFAULT_REGION delete-snapshot --snapshot-id $ami_snapshot || echo \"Failed to delete AMI snapshot $ami_snapshot\"\ndone\n"
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - slave-image
-
-- name: delete-old-amis
-  image: alpine
-  commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
@@ -168,7 +134,7 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - Build
 
 trigger:
   branch:
@@ -181,6 +147,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: bdbdc5eac1fc297d11c867cc9751922ab1e2c4921b383e32c91998d005106fd9
+hmac: 3127b6f27e9b2b52edb46d752beb528470ae1ee03f361ba45d10c3916bf09eeb
 
 ...
