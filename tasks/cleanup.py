@@ -153,7 +153,7 @@ def cleanup_aws(ctx,
     if not images_to_delete:
         exit_invoke(
             0, 'Not going to delete {} image(s) that should be kept'.format(
-                min(images_listing, num_to_keep)
+                min(len(images_listing), num_to_keep)
             )
         )
 
