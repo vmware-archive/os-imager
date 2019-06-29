@@ -10,8 +10,8 @@ steps:
 - name: CentOS 7
   image: hashicorp/packer
   commands:
-  - apk --no-cache add --update py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add --update python3
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=centos --distro-version=7
   depends_on:
@@ -29,8 +29,8 @@ steps:
 - name: slave-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed openssh-client py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed openssh-client python3
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - "echo \"$SSHKEY\" > sre-jenkins-key"
   - "echo \"$GPGKEY\" > gpgkey.asc"
@@ -70,6 +70,25 @@ steps:
   depends_on:
   - slave-image
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat manifest.json | jq"
+  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   event:
   - tag
@@ -91,8 +110,8 @@ steps:
 - name: slave-image
   image: hashicorp/packer
   commands:
-  - apk --no-cache add make curl grep gawk sed openssh-client py3-pip
-  - pip3 install --upgrade pip setuptools
+  - apk --no-cache add make curl grep gawk sed openssh-client python3
+  - pip3 install --upgrade pip
   - pip3 install invoke
   - "echo \"$SSHKEY\" > sre-jenkins-key"
   - "echo \"$GPGKEY\" > gpgkey.asc"
@@ -132,6 +151,25 @@ steps:
   depends_on:
   - slave-image
 
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.5/base.txt
+  - "cat manifest.json | jq"
+  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
 trigger:
   branch:
   - jenkins-slaves
@@ -143,6 +181,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: dfc590a360e2ec1b1d836cca5f38b756b643066c20d3ab26a9c20b9c593ac89f
+hmac: bdbdc5eac1fc297d11c867cc9751922ab1e2c4921b383e32c91998d005106fd9
 
 ...

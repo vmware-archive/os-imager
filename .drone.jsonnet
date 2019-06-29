@@ -29,8 +29,8 @@ local Lint() = {
       name: distro.display_name,
       image: 'hashicorp/packer',
       commands: [
-        'apk --no-cache add --update py3-pip',
-        'pip3 install --upgrade pip setuptools',
+        'apk --no-cache add --update python3',
+        'pip3 install --upgrade pip',
         'pip3 install invoke',
         std.format('inv build-aws --validate --distro=%s --distro-version=%s', [
           distro.name,
@@ -68,8 +68,8 @@ local Build(distro, staging) = {
         },
       },
       commands: [
-        'apk --no-cache add make curl grep gawk sed openssh-client py3-pip',
-        'pip3 install --upgrade pip setuptools',
+        'apk --no-cache add make curl grep gawk sed openssh-client python3',
+        'pip3 install --upgrade pip',
         'pip3 install invoke',
         'echo "$SSHKEY" > sre-jenkins-key',
         'echo "$GPGKEY" > gpgkey.asc',
@@ -132,6 +132,36 @@ local Build(distro, staging) = {
       ],
       depends_on: [
         'slave-image',
+      ],
+    },
+  ] + [
+    {
+      name: 'delete-old-amis',
+      image: 'alpine',
+      environment: {
+        AWS_DEFAULT_REGION: 'us-west-2',
+        AWS_ACCESS_KEY_ID: {
+          from_secret: 'username',
+        },
+        AWS_SECRET_ACCESS_KEY: {
+          from_secret: 'password',
+        },
+      },
+      commands: [
+        'apk --no-cache add --update python3 jq',
+        'pip3 install --upgrade pip',
+        'pip3 install -r requirements/py3.5/base.txt',
+        'cat manifest.json | jq',
+        'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
+        'echo "Name Filter: $name_filter"',
+        std.format(
+          'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
+          // Don't keep any staging images around
+          [if staging then 0 else 1]
+        ),
+      ],
+      depends_on: [
+        'base-image',
       ],
     },
   ],

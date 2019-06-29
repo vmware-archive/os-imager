@@ -4,3 +4,4 @@ output-*
 sre-jenkins-key*
 gpgkey.asc
 .tmp
+*manifest.json
