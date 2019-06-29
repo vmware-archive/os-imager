@@ -86,7 +86,6 @@ def cleanup_aws(ctx,
                 region='us-west-2',
                 name_filter=None,
                 staging=False,
-                promoted=False,
                 num_to_keep=1,
                 dry_run=False,
                 assume_yes=False):
@@ -127,12 +126,6 @@ def cleanup_aws(ctx,
                 'available'
             ]
         },
-        {
-            'Name': 'tag:Promoted',
-            'Values': [
-                '1' if promoted else '0'
-            ]
-        }
     ]
     response = client.describe_images(Filters=filters)
     if response['ResponseMetadata']['HTTPStatusCode'] != 200:
