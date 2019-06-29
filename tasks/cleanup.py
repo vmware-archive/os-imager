@@ -113,8 +113,8 @@ def cleanup_aws(ctx,
         if salt_branch:
             name_filter += '/{}'.format(salt_branch)
 
-    if not name_filter.endswith('/*'):
-        name_filter += '/*'
+    if not name_filter.endswith('*'):
+        name_filter += '*'
 
     client = boto3.client('ec2', region_name=region)
     filters = [
@@ -151,7 +151,11 @@ def cleanup_aws(ctx,
         images_to_delete = images_listing
 
     if not images_to_delete:
-        exit_invoke(0, 'Not going to delete {} image(s) that should be kept'.format(num_to_keep))
+        exit_invoke(
+            0, 'Not going to delete {} image(s) that should be kept'.format(
+                min(images_listing, num_to_keep)
+            )
+        )
 
     exitcode = 0
 
