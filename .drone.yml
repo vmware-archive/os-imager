@@ -53,25 +53,6 @@ steps:
   depends_on:
   - clone
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=3
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - Build
-
 trigger:
   event:
   - tag
@@ -117,25 +98,6 @@ steps:
   depends_on:
   - clone
 
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - Build
-
 trigger:
   branch:
   - jenkins-slaves
@@ -147,6 +109,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 3127b6f27e9b2b52edb46d752beb528470ae1ee03f361ba45d10c3916bf09eeb
+hmac: 50894dbbb321def80aeac6832415c6a407bf0302e0ddda6655976a88ad1b91a3
 
 ...

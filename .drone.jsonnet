@@ -88,36 +88,6 @@ local Build(distro, staging) = {
         'clone',
       ],
     },
-  ] + [
-    {
-      name: 'delete-old-amis',
-      image: 'alpine',
-      environment: {
-        AWS_DEFAULT_REGION: 'us-west-2',
-        AWS_ACCESS_KEY_ID: {
-          from_secret: 'username',
-        },
-        AWS_SECRET_ACCESS_KEY: {
-          from_secret: 'password',
-        },
-      },
-      commands: [
-        'apk --no-cache add --update python3 jq',
-        'pip3 install --upgrade pip',
-        'pip3 install -r requirements/py3.5/base.txt',
-        'cat manifest.json | jq',
-        'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
-        'echo "Name Filter: $name_filter"',
-        std.format(
-          'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
-          // Don't keep any staging images around
-          [if staging then 0 else 3]
-        ),
-      ],
-      depends_on: [
-        'Build',
-      ],
-    },
   ],
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
