@@ -65,6 +65,9 @@ local Lint() = {
 local Build(distro, staging) = {
   kind: 'pipeline',
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
+  node: {
+    project: 'open',
+  },
   steps: [
     {
       name: 'throttle-build',
