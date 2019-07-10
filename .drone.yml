@@ -193,7 +193,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -205,6 +205,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -251,7 +254,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -263,6 +266,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -309,7 +315,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -321,6 +327,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -367,7 +376,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -379,6 +388,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -425,7 +437,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -437,6 +449,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -483,7 +498,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -495,6 +510,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -541,7 +559,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -553,6 +571,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -599,7 +620,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -611,6 +632,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -657,7 +681,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -669,6 +693,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -715,7 +742,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -727,6 +754,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -773,7 +803,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -785,6 +815,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -831,7 +864,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -843,6 +876,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -889,7 +925,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -901,6 +937,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -947,7 +986,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -959,6 +998,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -1005,7 +1047,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
@@ -1017,6 +1059,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   event:
@@ -1063,7 +1108,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1075,6 +1120,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1121,7 +1169,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1133,6 +1181,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1179,7 +1230,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1191,6 +1242,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1237,7 +1291,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1249,6 +1303,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1295,7 +1352,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1307,6 +1364,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1353,7 +1413,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1365,6 +1425,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1411,7 +1474,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1423,6 +1486,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1469,7 +1535,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1481,6 +1547,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1527,7 +1596,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1539,6 +1608,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1585,7 +1657,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1597,6 +1669,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1643,7 +1718,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1655,6 +1730,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1701,7 +1779,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1713,6 +1791,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1759,7 +1840,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1771,6 +1852,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1817,7 +1901,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1829,6 +1913,9 @@ steps:
       from_secret: password
   depends_on:
   - base-image
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1875,7 +1962,7 @@ steps:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.5/base.txt
-  - cat manifest.json | jq
+  - "cat manifest.json | jq"
   - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
@@ -1888,6 +1975,9 @@ steps:
   depends_on:
   - base-image
 
+node:
+  project: open
+
 trigger:
   branch:
   - master
@@ -1899,6 +1989,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 4046da2a75261c88fdb088a2f5670ce7e0cfd09d7cd33e5cf70583fc5d5c1e55
+hmac: c4f37abd917de4a1b65b29dc86c08fbe41c7345dd929504a1974474866909d89
 
 ...
