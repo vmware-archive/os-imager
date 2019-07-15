@@ -113,7 +113,7 @@
     },
     {
       "type": "shell",
-      "script": "AWS/files/cleanup-linux.sh",
+      "script": "AWS/files/cleanup-linux.sh"
     }
   ],
   "post-processors": [
