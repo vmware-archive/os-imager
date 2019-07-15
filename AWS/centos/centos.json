@@ -135,6 +135,10 @@
         "sudo rm -rf /srv/pillar /srv/salt /tmp/salt /tmp/pillar"
       ],
       "pause_after": "5s"
+    },
+    {
+      "type": "shell",
+      "script": "AWS/files/cleanup-linux.sh",
     }
   ],
   "post-processors": [
