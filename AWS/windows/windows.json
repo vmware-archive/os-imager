@@ -106,6 +106,13 @@
       "direction": "upload"
     },
     {
+      "type": "file",
+      "generated": true,
+      "source": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states/",
+      "destination": "c:\\salt\\srv\\salt\\",
+      "direction": "upload"
+    },
+    {
       "type": "powershell",
       "inline": [
         "salt-call --local --retcode-passthrough  state.single module.run winrepo.update_git_repos clean=True",

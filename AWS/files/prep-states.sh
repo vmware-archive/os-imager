@@ -6,6 +6,8 @@ if [ -d .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ]; then
 fi
 mkdir -p .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
 git clone https://github.com/saltstack/salt-jenkins.git -b ${SALT_BRANCH} .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
+echo -n "Current git HEAD: "
+git -C .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states rev-parse HEAD
 rm -rf .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states/.git
 
 printf "noop:\n  test.succeed_without_changes" > .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states/empty.sls
