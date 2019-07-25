@@ -138,7 +138,9 @@ local Build(distro, staging) = {
         std.format(
           'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
           // Don't keep any staging images around
-          [if staging then 0 else 1]
+          // [if staging then 0 else 1]
+          // We want to be able to checkout staging images now
+          1
         ),
       ],
       depends_on: [
