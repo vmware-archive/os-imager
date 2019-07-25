@@ -104,10 +104,10 @@
     {
       "type": "shell",
       "inline": [
-        "sudo rm -rf /srv/pillar /srv/salt/*",
+        "sudo rm -rf /srv/pillar",
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
-        "sudo rm -rf /srv/pillar/* /srv/salt/* /tmp/salt /tmp/pillar"
+        "sudo rm -rf /srv/pillar/* /tmp/pillar"
       ]
     },
     {
@@ -129,7 +129,7 @@
     {
       "type": "shell",
       "inline": [
-        "sudo rm -rf /srv/pillar /srv/salt/*",
+        "sudo rm -rf /srv/pillar",
         "sudo mv /tmp/pillar /srv",
         "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
         "sudo rm -rf /srv/pillar /srv/salt /tmp/salt /tmp/pillar"
