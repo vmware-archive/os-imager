@@ -159,9 +159,6 @@ local Build(distro, staging) = {
 [
   Lint(),
 ] + [
-  Build(distro, false)
-  for distro in distros
-] + [
   Build(distro, true)
   for distro in distros
 ]
