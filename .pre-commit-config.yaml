@@ -37,4 +37,4 @@ repos:
         files: ^requirements/base\.in$
         args:
           - -v
-          - --py-version=3.5
+          - --py-version=3.6

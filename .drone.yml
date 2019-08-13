@@ -169,7 +169,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+  - sh -c 'echo Sleeping 7 seconds; sleep 7'
 
 - name: base-image
   image: hashicorp/packer
@@ -192,9 +192,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -213,7 +213,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -230,7 +230,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  - sh -c 'echo Sleeping 14 seconds; sleep 14'
 
 - name: base-image
   image: hashicorp/packer
@@ -253,9 +253,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -274,7 +274,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -291,7 +291,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  - sh -c 'echo Sleeping 21 seconds; sleep 21'
 
 - name: base-image
   image: hashicorp/packer
@@ -314,9 +314,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -335,7 +335,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -352,7 +352,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - sh -c 'echo Sleeping 28 seconds; sleep 28'
 
 - name: base-image
   image: hashicorp/packer
@@ -375,9 +375,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -396,7 +396,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -413,7 +413,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - sh -c 'echo Sleeping 35 seconds; sleep 35'
 
 - name: base-image
   image: hashicorp/packer
@@ -436,9 +436,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -457,7 +457,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -474,7 +474,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  - sh -c 'echo Sleeping 42 seconds; sleep 42'
 
 - name: base-image
   image: hashicorp/packer
@@ -497,9 +497,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -518,7 +518,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -535,7 +535,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  - sh -c 'echo Sleeping 49 seconds; sleep 49'
 
 - name: base-image
   image: hashicorp/packer
@@ -558,9 +558,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -579,7 +579,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -596,7 +596,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - sh -c 'echo Sleeping 56 seconds; sleep 56'
 
 - name: base-image
   image: hashicorp/packer
@@ -619,9 +619,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -640,7 +640,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -657,7 +657,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -680,9 +680,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -701,7 +701,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -718,7 +718,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -741,9 +741,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -762,7 +762,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -779,7 +779,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  - sh -c 'echo Sleeping 91 seconds; sleep 91'
 
 - name: base-image
   image: hashicorp/packer
@@ -802,9 +802,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -823,7 +823,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -840,7 +840,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  - sh -c 'echo Sleeping 98 seconds; sleep 98'
 
 - name: base-image
   image: hashicorp/packer
@@ -863,9 +863,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -884,7 +884,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -901,7 +901,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -924,9 +924,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -945,7 +945,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -962,7 +962,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -985,9 +985,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1006,7 +1006,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -1023,7 +1023,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -1046,9 +1046,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1067,7 +1067,7 @@ trigger:
   event:
   - tag
   ref:
-  - "refs/tags/aws-base-v1.*"
+  - refs/tags/aws-base-v1.*
 
 depends_on:
 - Lint
@@ -1084,7 +1084,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 7 seconds; sleep 7'"
+  - sh -c 'echo Sleeping 7 seconds; sleep 7'
 
 - name: base-image
   image: hashicorp/packer
@@ -1107,9 +1107,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1145,7 +1145,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 14 seconds; sleep 14'"
+  - sh -c 'echo Sleeping 14 seconds; sleep 14'
 
 - name: base-image
   image: hashicorp/packer
@@ -1168,9 +1168,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1206,7 +1206,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 21 seconds; sleep 21'"
+  - sh -c 'echo Sleeping 21 seconds; sleep 21'
 
 - name: base-image
   image: hashicorp/packer
@@ -1229,9 +1229,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1267,7 +1267,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 28 seconds; sleep 28'"
+  - sh -c 'echo Sleeping 28 seconds; sleep 28'
 
 - name: base-image
   image: hashicorp/packer
@@ -1290,9 +1290,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1328,7 +1328,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 35 seconds; sleep 35'"
+  - sh -c 'echo Sleeping 35 seconds; sleep 35'
 
 - name: base-image
   image: hashicorp/packer
@@ -1351,9 +1351,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1389,7 +1389,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 42 seconds; sleep 42'"
+  - sh -c 'echo Sleeping 42 seconds; sleep 42'
 
 - name: base-image
   image: hashicorp/packer
@@ -1412,9 +1412,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1450,7 +1450,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 49 seconds; sleep 49'"
+  - sh -c 'echo Sleeping 49 seconds; sleep 49'
 
 - name: base-image
   image: hashicorp/packer
@@ -1473,9 +1473,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1511,7 +1511,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 56 seconds; sleep 56'"
+  - sh -c 'echo Sleeping 56 seconds; sleep 56'
 
 - name: base-image
   image: hashicorp/packer
@@ -1534,9 +1534,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1572,7 +1572,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 63 seconds; sleep 63'"
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -1595,9 +1595,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1633,7 +1633,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 70 seconds; sleep 70'"
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -1656,9 +1656,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1694,7 +1694,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 91 seconds; sleep 91'"
+  - sh -c 'echo Sleeping 91 seconds; sleep 91'
 
 - name: base-image
   image: hashicorp/packer
@@ -1717,9 +1717,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1755,7 +1755,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 98 seconds; sleep 98'"
+  - sh -c 'echo Sleeping 98 seconds; sleep 98'
 
 - name: base-image
   image: hashicorp/packer
@@ -1778,9 +1778,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1816,7 +1816,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -1839,9 +1839,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1877,7 +1877,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -1900,9 +1900,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1938,7 +1938,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - "sh -c 'echo Sleeping 0 seconds; sleep 0'"
+  - sh -c 'echo Sleeping 0 seconds; sleep 0'
 
 - name: base-image
   image: hashicorp/packer
@@ -1961,9 +1961,9 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
-  - "cat manifest.json | jq"
-  - "export name_filter=$(cat manifest.json | jq -r \".builds[].custom_data.ami_name\")"
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
   environment:
@@ -1989,6 +1989,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: c4f37abd917de4a1b65b29dc86c08fbe41c7345dd929504a1974474866909d89
+hmac: ddc439a6ff00c8caa927bb61d44c7181f8c2214de19e54b716b1a02f81cd421a
 
 ...
