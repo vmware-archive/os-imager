@@ -122,7 +122,7 @@ local Build(distro, staging) = {
       commands: [
         'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
-        'pip3 install -r requirements/py3.5/base.txt',
+        'pip3 install -r requirements/py3.6/base.txt',
         'cat manifest.json | jq',
         'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
         'echo "Name Filter: $name_filter"',
