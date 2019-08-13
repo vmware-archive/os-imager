@@ -102,7 +102,7 @@ def cleanup_aws(ctx,
     if name_filter is None:
         if distro is None:
             exit_invoke(1, 'You need to provide at least either \'distro\' or \'name_filter\'')
-        name_filter = 'saltstack/base'
+        name_filter = 'saltstack/jenkins-slave'
         if staging is True:
             name_filter += '-staging'
         name_filter += '/{}'.format(distro.lower())
@@ -132,7 +132,10 @@ def cleanup_aws(ctx,
         exit_invoke(1, 'Failed to get images. Full response:\n{}'.format(pprint.pformat(response)))
 
     if not response['Images']:
-        exit_invoke(1, 'No images were returned. Full response:\n{}', pprint.pformat(response))
+        if num_to_keep == 0:
+            exit_invoke(0, 'No images were returned. Full response:\n{}', pprint.pformat(response))
+        else:
+            exit_invoke(2, 'No images were returned. Full response:\n{}', pprint.pformat(response))
 
     images_listing = sorted(response['Images'], key=itemgetter('Name'))
     if num_to_keep:
