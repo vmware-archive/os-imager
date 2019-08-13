@@ -102,7 +102,7 @@ def cleanup_aws(ctx,
     if name_filter is None:
         if distro is None:
             exit_invoke(1, 'You need to provide at least either \'distro\' or \'name_filter\'')
-        name_filter = 'saltstack/base'
+        name_filter = 'saltstack/jenkins-slave'
         if staging is True:
             name_filter += '-staging'
         name_filter += '/{}'.format(distro.lower())
