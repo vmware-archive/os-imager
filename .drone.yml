@@ -246,7 +246,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -265,7 +265,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -284,7 +284,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -303,7 +303,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -322,7 +322,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -444,7 +444,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -463,7 +463,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -482,7 +482,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -501,7 +501,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -520,7 +520,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -642,7 +642,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -661,7 +661,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -680,7 +680,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -699,7 +699,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -718,7 +718,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -840,7 +840,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -859,7 +859,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -878,7 +878,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -897,7 +897,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -916,7 +916,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1038,7 +1038,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1057,7 +1057,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1076,7 +1076,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1095,7 +1095,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1114,7 +1114,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1236,7 +1236,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1255,7 +1255,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1274,7 +1274,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1293,7 +1293,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1312,7 +1312,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1434,7 +1434,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1453,7 +1453,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1472,7 +1472,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1491,7 +1491,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1510,7 +1510,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1632,7 +1632,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1651,7 +1651,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1670,7 +1670,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1689,7 +1689,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1708,7 +1708,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1830,7 +1830,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1849,7 +1849,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1868,7 +1868,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1887,7 +1887,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -1906,7 +1906,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2028,7 +2028,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2047,7 +2047,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2066,7 +2066,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2085,7 +2085,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2104,7 +2104,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2226,7 +2226,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2245,7 +2245,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2264,7 +2264,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2283,7 +2283,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2302,7 +2302,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2424,7 +2424,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2443,7 +2443,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2462,7 +2462,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2481,7 +2481,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2500,7 +2500,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2622,7 +2622,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2641,7 +2641,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2660,7 +2660,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2679,7 +2679,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2698,7 +2698,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2820,7 +2820,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2017.7-manifest.json | jq
   - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2839,7 +2839,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2018.3-manifest.json | jq
   - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2858,7 +2858,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat 2019.2-manifest.json | jq
   - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2877,7 +2877,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat neon-manifest.json | jq
   - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2896,7 +2896,7 @@ steps:
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.5/base.txt
+  - pip3 install -r requirements/py3.6/base.txt
   - cat develop-manifest.json | jq
   - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
@@ -2921,6 +2921,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7784caf0b84fa18e635fd86bf8d0a0b990e1deee782ae8870b86ed5ede0ec32a
+hmac: 648ab1fffc086e41c6a7abaab542ab9cbbd8fe46976c2adc28c51bf044b72674
 
 ...
