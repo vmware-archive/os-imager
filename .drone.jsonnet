@@ -125,7 +125,7 @@ local Build(distro, staging) = {
       commands: [
         'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
-        'pip3 install -r requirements/py3.5/base.txt',
+        'pip3 install -r requirements/py3.6/base.txt',
         std.format(
           'cat %s-manifest.json | jq',
           [salt_branch.name]
