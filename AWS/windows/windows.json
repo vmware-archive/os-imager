@@ -63,6 +63,7 @@
       "script": "AWS/files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
+        "SALT_PR={{ user `salt_pr` }}",
         "DISTRO_SLUG={{ user `distro_slug` }}",
         "PY_VERSION=3"
       ]
@@ -143,6 +144,7 @@
       "script": "AWS/files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
+        "SALT_PR={{ user `salt_pr` }}",
         "DISTRO_SLUG={{ user `distro_slug` }}",
         "PY_VERSION=2"
       ]

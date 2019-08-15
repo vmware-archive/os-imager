@@ -32,7 +32,8 @@ def build_aws(ctx,
               salt_branch='develop',
               debug=False,
               staging=False,
-              validate=False):
+              validate=False,
+              salt_pr=None):
     distro = distro.lower()
     ctx.cd(REPO_ROOT)
     distro_dir = os.path.join('AWS', distro)
@@ -96,6 +97,8 @@ def build_aws(ctx,
     cmd += ' -var-file={}'.format(build_vars)
     if staging is True:
         cmd += ' -var build_type=ci-staging'
+    if salt_pr:
+        cmd += ' -var salt_pr={}'.format(salt_pr)
     cmd += ' -var distro_slug={} -var salt_branch={} {}'.format(distro_slug,
                                                                 salt_branch,
                                                                 build_template)
