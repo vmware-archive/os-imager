@@ -11,8 +11,7 @@ then
     (cd .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ; git fetch origin "pull/${SALT_PR}/head")
     (cd .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ; git checkout FETCH_HEAD)
 fi
-echo -n "Current git HEAD: "
-(cd .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ; git rev-parse HEAD ; echo ; git log -1 --pretty=%B ; echo)
+(cd .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ; git log -1)
 rm -rf .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states/.git
 
 printf "noop:\n  test.succeed_without_changes" > .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states/empty.sls
