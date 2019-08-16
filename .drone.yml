@@ -13,7 +13,7 @@ steps:
   - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
+  - inv build-aws --validate --distro=arch --distro-version=lts
   depends_on:
   - clone
 
@@ -163,7 +163,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2017.7
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -180,7 +180,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2018.3
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -197,7 +197,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=2019.2
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -214,7 +214,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=neon
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -231,7 +231,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09 --salt-branch=develop
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2921,6 +2921,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 648ab1fffc086e41c6a7abaab542ab9cbbd8fe46976c2adc28c51bf044b72674
+hmac: e96f3d54e9e2593ade191e2203631c3853a8e039301e4e7a040e75568ac49c0d
 
 ...
