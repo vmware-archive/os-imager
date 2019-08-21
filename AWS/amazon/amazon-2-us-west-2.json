@@ -4,7 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "Amazon Linux",
   "os_version": "2",
-  "bootstrap_args": "-qXU",
+  "bootstrap_args": "-qX",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "state_name": "git.minimal",
