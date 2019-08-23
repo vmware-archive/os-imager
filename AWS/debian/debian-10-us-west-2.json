@@ -1,0 +1,14 @@
+{
+  "_comment": "Build with `packer build -var-file=debian-10-us-west-2.json debian.json`",
+  "ssh_username": "admin",
+  "aws_region": "us-west-2",
+  "ami_filter": "saltstack-debian-buster-hvm-x86_64-*",
+  "ami_owner": "540082622920",
+  "ami_name_prefix": "saltstack",
+  "ami_name_suffix": "debian/buster.10",
+  "instance_type": "m5.large",
+  "build_type": "base",
+  "device_name": "xvda",
+  "os_name": "Debian",
+  "os_version": "10"
+}

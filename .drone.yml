@@ -77,6 +77,16 @@ steps:
   depends_on:
   - clone
 
+- name: Debian 10
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --validate --distro=debian --distro-version=10
+  depends_on:
+  - clone
+
 - name: Fedora 29
   image: hashicorp/packer
   commands:
@@ -586,7 +596,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Fedora 29
+name: Debian 10
 
 platform:
   os: linux
@@ -597,6 +607,67 @@ steps:
   image: alpine
   commands:
   - sh -c 'echo Sleeping 56 seconds; sleep 56'
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --distro=debian --distro-version=10
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
+node:
+  project: open
+
+trigger:
+  event:
+  - tag
+  ref:
+  - refs/tags/aws-base-v1.*
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Fedora 29
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -657,7 +728,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -718,7 +789,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
+  - sh -c 'echo Sleeping 77 seconds; sleep 77'
 
 - name: base-image
   image: hashicorp/packer
@@ -1111,7 +1182,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1172,7 +1243,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1233,7 +1304,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1294,7 +1365,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1355,7 +1426,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1416,7 +1487,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1477,7 +1548,68 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
+node:
+  project: open
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Debian 10 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - sh -c 'echo Sleeping 56 seconds; sleep 56'
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=10
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1511,7 +1643,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 56 seconds; sleep 56'
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -1538,7 +1670,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1572,7 +1704,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -1599,7 +1731,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1633,7 +1765,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
+  - sh -c 'echo Sleeping 77 seconds; sleep 77'
 
 - name: base-image
   image: hashicorp/packer
@@ -1660,7 +1792,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1721,7 +1853,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1782,7 +1914,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1843,7 +1975,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1904,7 +2036,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1965,7 +2097,7 @@ steps:
   - cat manifest.json | jq
   - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=0
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1989,6 +2121,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ddc439a6ff00c8caa927bb61d44c7181f8c2214de19e54b716b1a02f81cd421a
+hmac: b972438fa80998ebc30524cc027d898aa186ae5478008a6f432af1bafe7dc3b1
 
 ...

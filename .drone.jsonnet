@@ -7,9 +7,10 @@ local distros = [
   { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 5 },
   { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 6 },
   { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 7 },
-  { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 8 },
-  { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 9 },
-  { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 10 },
+  { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 8 },
+  { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 9 },
+  { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 10 },
+  { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 11 },
   { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 13 },
   { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 14 },
   // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
@@ -129,7 +130,9 @@ local Build(distro, staging) = {
         std.format(
           'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
           // Don't keep any staging images around
-          [if staging then 0 else 1]
+          // [if staging then 0 else 1]
+          // We want to be able to checkout staging images now
+          1
         ),
       ],
       depends_on: [
