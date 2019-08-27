@@ -21,8 +21,8 @@
       ],
       "expect_disconnect": true,
       "scripts": [
-        "../scripts/setup-base.sh",
-        "../scripts/cleanup.sh"
+        "../files/setup-base.sh",
+        "../files/cleanup.sh"
       ],
       "start_retry_timeout": "10000s",
       "type": "shell"
