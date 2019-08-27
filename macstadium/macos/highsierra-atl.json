@@ -1,0 +1,4 @@
+{
+  "_comment": "Build with `packer build -var-file=highsierra-atl.json macos.json`",
+  "box_name": "highsierra-clean"
+}
