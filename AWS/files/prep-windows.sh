@@ -16,10 +16,3 @@ else
 fi
 printf "python_install_dir: ${PYTHON_DIR}\n" > .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/windows.sls
 printf "virtualenv_path: ${PYTHON_DIR}\\Scripts\\pip.exe\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/windows.sls
-
-# Download the powershell script that installs Git on windows
-if [ ! -f .tmp/${DISTRO_SLUG}/scripts/Install-Git.ps1 ] || [ ! -s .tmp/${DISTRO_SLUG}/scripts/Install-Git.ps1 ]; then
-    URL="https://github.com/tomlarse/Install-Git/raw/master/Install-Git/Install-Git.ps1"
-    echo "Downloading ${URL}"
-    curl -L $URL --output .tmp/${DISTRO_SLUG}/scripts/Install-Git.ps1
-fi
