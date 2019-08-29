@@ -70,7 +70,7 @@
     },
     {
       "type": "powershell",
-      "script": ".tmp/{{ user `distro_slug` }}/scripts/Install-Git.ps1"
+      "script": "AWS/windows/scripts/Install-Git.ps1"
     },
     {
       "type": "powershell",
