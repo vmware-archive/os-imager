@@ -10,3 +10,5 @@ printf "py$PY_VERSION: true\n" > .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.
 printf "packer_build: true\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.sls
 printf "packer_golden_images_build: true\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.sls
 printf "create_testing_dir: false\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.sls
+printf "install_metrics: false\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.sls
+printf "extra-swap: false\n" >> .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/pillar/base.sls
