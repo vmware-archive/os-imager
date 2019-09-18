@@ -1,0 +1,14 @@
+{
+  "_comment": "Build with `packer build -var-file=arch-vars.json arch.json`",
+  "docker_image": "saltstack/ci-arch:base",
+  "docker_repository": "saltstack",
+  "docker_image_prefix": "ci",
+  "build_type": "ci",
+  "os_name": "Arch",
+  "os_version": "latest",
+  "bootstrap_args": "-qXU -x python2",
+  "bootstrap_version": "2018.3.4",
+  "salt_branch": "develop",
+  "state_name": "git.minimal",
+  "run_command": "/usr/lib/systemd/systemd"
+}
