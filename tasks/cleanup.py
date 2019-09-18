@@ -10,6 +10,7 @@ import os
 import sys
 import pprint
 import textwrap
+import time
 from operator import itemgetter
 
 # Import invoke libs
@@ -180,6 +181,7 @@ def cleanup_aws(ctx,
                 exitcode = 1
             else:
                 warn(exc)
+        time.sleep(10)
         for block_device in block_devices:
             if 'VirtualName' in block_device:
                 # Just ignore virtual devices
