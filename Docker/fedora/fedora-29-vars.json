@@ -1,0 +1,14 @@
+{
+  "_comment": "Build with `packer build -var-file=fedora-29-vars.json fedora.json`",
+  "docker_image": "saltstack/ci-fedora-29:base",
+  "docker_repository": "saltstack",
+  "docker_image_prefix": "ci",
+  "build_type": "ci",
+  "os_name": "Fedora",
+  "os_version": "29",
+  "bootstrap_args": "-qXU -x python2",
+  "bootstrap_version": "2018.3.4",
+  "salt_branch": "develop",
+  "state_name": "git.minimal",
+  "run_command": "/usr/lib/systemd/systemd"
+}
