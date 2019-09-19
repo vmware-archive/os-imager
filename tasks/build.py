@@ -12,9 +12,19 @@ import sys
 # Import invoke libs
 from invoke import task
 
+# Additional libs
+from shutil import which
+
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TIMESTAMP_UI = ' -timestamp-ui' if 'DRONE' in os.environ else ''
 PACKER_TMP_DIR = os.path.join(REPO_ROOT, '.tmp', '{}')
+
+
+def _binary_install_check(binary):
+    '''Checks if the given binary is installed. Otherwise we exit with return code 10.'''
+    if not which(binary):
+        print("Couldn't find {}. Please install it to proceed.".format(binary))
+        sys.exit(10)
 
 
 def exit_invoke(exitcode, message=None, *args, **kwargs):
@@ -73,6 +83,7 @@ def build_aws(ctx,
                     ', '.join(vars_variations))
 
     cmd = 'packer'
+    _binary_install_check(cmd)
     if validate is True:
         cmd += ' validate'
     else:
@@ -135,6 +146,7 @@ def build_docker(ctx,
                     ', '.join(vars_variations))
 
     cmd = 'packer'
+    _binary_install_check(cmd)
     if validate is True:
         cmd += ' validate'
     else:
