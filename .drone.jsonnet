@@ -5,7 +5,6 @@ local distros = [
   { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
   { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 4 },
   { display_name: 'CentOS 7', name: 'centos', version: '7', multiplier: 5 },
-  { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 6 },
   { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 6 },
   { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 7 },
   { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 5 },
@@ -77,6 +76,9 @@ local Lint() = {
 local Build(distro, staging) = {
   kind: 'pipeline',
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
+  node: {
+    project: 'open',
+  },
   steps: [
     {
       name: salt_branch.name,

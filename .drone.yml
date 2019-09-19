@@ -57,16 +57,6 @@ steps:
   depends_on:
   - clone
 
-- name: Debian 8
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --validate --distro=debian --distro-version=8
-  depends_on:
-  - clone
-
 - name: Debian 9
   image: hashicorp/packer
   commands:
@@ -346,6 +336,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -543,6 +536,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -742,6 +738,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -939,6 +938,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1138,203 +1140,8 @@ steps:
   depends_on:
   - develop
 
-trigger:
-  branch:
-  - ci
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Debian 8 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: 2017.7
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 73 seconds; sleep 73'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2017.7
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
-- name: 2018.3
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 219 seconds; sleep 219'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2018.3
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 365 seconds; sleep 365'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
-- name: neon
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 511 seconds; sleep 511'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=neon
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
-- name: develop
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 657 seconds; sleep 657'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=develop
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
-- name: delete-old-2017.7-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2017.7-manifest.json | jq
-  - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2017.7
-
-- name: delete-old-2018.3-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2018.3-manifest.json | jq
-  - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2018.3
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
-
-- name: delete-old-neon-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat neon-manifest.json | jq
-  - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - neon
-
-- name: delete-old-develop-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat develop-manifest.json | jq
-  - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - develop
+node:
+  project: open
 
 trigger:
   branch:
@@ -1534,6 +1341,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -1731,6 +1541,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1930,6 +1743,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -2127,6 +1943,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -2326,6 +2145,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -2523,6 +2345,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -2722,6 +2547,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -2919,6 +2747,9 @@ steps:
       from_secret: password
   depends_on:
   - develop
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -3118,6 +2949,9 @@ steps:
   depends_on:
   - develop
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -3129,6 +2963,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 545e3ed27c08340ada71c6e054f22b2867c050ba70d1edd4680bed734641d11a
+hmac: 23ff36baf585e0ade1fa999c66c0a9ba204a344d8d68a7d3b03247b674f96bfb
 
 ...

@@ -6,7 +6,6 @@
       "image": "{{ user `docker_image` }}",
       "pull": true,
       "commit": true,
-      "privileged": true,
       "changes": [
         "Entrypoint [\"/bin/sh\", \"-c\"]",
         "CMD [\"/bin/bash\"]",
