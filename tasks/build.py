@@ -23,8 +23,7 @@ PACKER_TMP_DIR = os.path.join(REPO_ROOT, '.tmp', '{}')
 def _binary_install_check(binary):
     '''Checks if the given binary is installed. Otherwise we exit with return code 10.'''
     if not which(binary):
-        print("Couldn't find {}. Please install it to proceed.".format(binary))
-        sys.exit(10)
+        exit_invoke(10, "Couldn't find {}. Please install to proceed.", binary)
 
 
 def exit_invoke(exitcode, message=None, *args, **kwargs):
