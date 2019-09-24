@@ -5,7 +5,7 @@ if [ -d .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ]; then
     rm -rf .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
 fi
 mkdir -p .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
-git clone https://github.com/s0undt3ch/salt-jenkins.git -b ${SALT_BRANCH} .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
+git clone https://github.com/saltstack/salt-jenkins.git -b ${SALT_BRANCH} .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states
 if test -n "${SALT_PR}"
 then
     (cd .tmp/${DISTRO_SLUG}/${SALT_BRANCH}/states ; git fetch origin "pull/${SALT_PR}/head")
