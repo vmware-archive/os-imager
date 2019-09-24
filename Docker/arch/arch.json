@@ -112,7 +112,7 @@
     [
       {
         "type": "docker-tag",
-        "repository": "{{ user `docker_repository` }}/{{ user `docker_image_prefix` }}-{{ user `os_name` | lower }}",
+        "repository": "{{ user `docker_repository` }}/{{ user `docker_image_prefix` }}-{{ user `os_name` | lower }}-{{ user `os_version` }}",
         "tag": "{{ user `salt_branch` | lower }}"
       },
       "docker-push"
