@@ -6,7 +6,7 @@
   "ami_owner": "137112412989",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "amazon/2",
-  "instance_type": "c5.large",
+  "instance_type": "m5.large",
   "build_type": "base",
   "os_name": "Amazon Linux",
   "os_version": "2"
