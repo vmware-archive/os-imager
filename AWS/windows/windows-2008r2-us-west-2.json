@@ -9,7 +9,7 @@
   "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "windows/2008r2",
-  "instance_type": "c5.large",
+  "instance_type": "m5.large",
   "build_type": "ci",
   "source_build_type": "base",
   "user_data_file": "AWS/windows/scripts/SetUpWinRM.ps1"

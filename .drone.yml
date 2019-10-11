@@ -57,6 +57,16 @@ steps:
   depends_on:
   - clone
 
+- name: CentOS 8
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --validate --distro=centos --distro-version=8
+  depends_on:
+  - clone
+
 - name: Debian 8
   image: hashicorp/packer
   commands:
@@ -1149,7 +1159,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Debian 8 (Staging)
+name: CentOS 8 (Staging)
 
 platform:
   os: linux
@@ -1163,7 +1173,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2017.7
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1180,7 +1190,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2018.3
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1197,7 +1207,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1214,7 +1224,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=neon
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1228,6 +1238,204 @@ steps:
   image: hashicorp/packer
   commands:
   - sh -c 'echo Sleeping 657 seconds; sleep 657'
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=develop
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - clone
+
+- name: delete-old-2017.7-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat 2017.7-manifest.json | jq
+  - export name_filter=$(cat 2017.7-manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2017.7
+
+- name: delete-old-2018.3-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat 2018.3-manifest.json | jq
+  - export name_filter=$(cat 2018.3-manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2018.3
+
+- name: delete-old-2019.2-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat 2019.2-manifest.json | jq
+  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - 2019.2
+
+- name: delete-old-neon-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat neon-manifest.json | jq
+  - export name_filter=$(cat neon-manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - neon
+
+- name: delete-old-develop-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat develop-manifest.json | jq
+  - export name_filter=$(cat develop-manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - develop
+
+trigger:
+  branch:
+  - ci
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Debian 8 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: 2017.7
+  image: hashicorp/packer
+  commands:
+  - sh -c 'echo Sleeping 83 seconds; sleep 83'
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2017.7
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - clone
+
+- name: 2018.3
+  image: hashicorp/packer
+  commands:
+  - sh -c 'echo Sleeping 249 seconds; sleep 249'
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2018.3
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - clone
+
+- name: 2019.2
+  image: hashicorp/packer
+  commands:
+  - sh -c 'echo Sleeping 415 seconds; sleep 415'
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - clone
+
+- name: neon
+  image: hashicorp/packer
+  commands:
+  - sh -c 'echo Sleeping 581 seconds; sleep 581'
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=neon
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - clone
+
+- name: develop
+  image: hashicorp/packer
+  commands:
+  - sh -c 'echo Sleeping 747 seconds; sleep 747'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1357,7 +1565,7 @@ steps:
 - name: 2017.7
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 73 seconds; sleep 73'
+  - sh -c 'echo Sleeping 93 seconds; sleep 93'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1374,7 +1582,7 @@ steps:
 - name: 2018.3
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 219 seconds; sleep 219'
+  - sh -c 'echo Sleeping 279 seconds; sleep 279'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1391,7 +1599,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 365 seconds; sleep 365'
+  - sh -c 'echo Sleeping 465 seconds; sleep 465'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1408,7 +1616,7 @@ steps:
 - name: neon
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 511 seconds; sleep 511'
+  - sh -c 'echo Sleeping 651 seconds; sleep 651'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1425,7 +1633,7 @@ steps:
 - name: develop
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 657 seconds; sleep 657'
+  - sh -c 'echo Sleeping 837 seconds; sleep 837'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1555,7 +1763,7 @@ steps:
 - name: 2017.7
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 83 seconds; sleep 83'
+  - sh -c 'echo Sleeping 103 seconds; sleep 103'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1572,7 +1780,7 @@ steps:
 - name: 2018.3
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 249 seconds; sleep 249'
+  - sh -c 'echo Sleeping 309 seconds; sleep 309'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1589,7 +1797,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 415 seconds; sleep 415'
+  - sh -c 'echo Sleeping 515 seconds; sleep 515'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1606,7 +1814,7 @@ steps:
 - name: neon
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 581 seconds; sleep 581'
+  - sh -c 'echo Sleeping 721 seconds; sleep 721'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1623,7 +1831,7 @@ steps:
 - name: develop
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 747 seconds; sleep 747'
+  - sh -c 'echo Sleeping 927 seconds; sleep 927'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1753,7 +1961,7 @@ steps:
 - name: 2017.7
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 113 seconds; sleep 113'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1770,7 +1978,7 @@ steps:
 - name: 2018.3
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 189 seconds; sleep 189'
+  - sh -c 'echo Sleeping 339 seconds; sleep 339'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1787,7 +1995,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 315 seconds; sleep 315'
+  - sh -c 'echo Sleeping 565 seconds; sleep 565'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1804,7 +2012,7 @@ steps:
 - name: neon
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 441 seconds; sleep 441'
+  - sh -c 'echo Sleeping 791 seconds; sleep 791'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1821,7 +2029,7 @@ steps:
 - name: develop
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 567 seconds; sleep 567'
+  - sh -c 'echo Sleeping 1017 seconds; sleep 1017'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1951,7 +2159,7 @@ steps:
 - name: 2017.7
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 53 seconds; sleep 53'
+  - sh -c 'echo Sleeping 123 seconds; sleep 123'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1968,7 +2176,7 @@ steps:
 - name: 2018.3
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 159 seconds; sleep 159'
+  - sh -c 'echo Sleeping 369 seconds; sleep 369'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1985,7 +2193,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 265 seconds; sleep 265'
+  - sh -c 'echo Sleeping 615 seconds; sleep 615'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -2002,7 +2210,7 @@ steps:
 - name: neon
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 371 seconds; sleep 371'
+  - sh -c 'echo Sleeping 861 seconds; sleep 861'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -2019,7 +2227,7 @@ steps:
 - name: develop
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 477 seconds; sleep 477'
+  - sh -c 'echo Sleeping 1107 seconds; sleep 1107'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -3129,6 +3337,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 545e3ed27c08340ada71c6e054f22b2867c050ba70d1edd4680bed734641d11a
+hmac: 7cdd92c44c1e237c3ffb23b7c4a1f7e21e178aea1b9535c1309f5663960d0876
 
 ...
