@@ -57,6 +57,16 @@ steps:
   depends_on:
   - clone
 
+- name: CentOS 8
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --validate --distro=centos --distro-version=8
+  depends_on:
+  - clone
+
 - name: Debian 8
   image: hashicorp/packer
   commands:
@@ -474,7 +484,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Debian 8
+name: CentOS 8
 
 platform:
   os: linux
@@ -485,6 +495,67 @@ steps:
   image: alpine
   commands:
   - sh -c 'echo Sleeping 42 seconds; sleep 42'
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --distro=centos --distro-version=8
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
+node:
+  project: open
+
+trigger:
+  event:
+  - tag
+  ref:
+  - refs/tags/aws-base-v1.*
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Debian 8
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - sh -c 'echo Sleeping 49 seconds; sleep 49'
 
 - name: base-image
   image: hashicorp/packer
@@ -545,7 +616,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 49 seconds; sleep 49'
+  - sh -c 'echo Sleeping 56 seconds; sleep 56'
 
 - name: base-image
   image: hashicorp/packer
@@ -606,7 +677,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 56 seconds; sleep 56'
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -667,7 +738,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -728,7 +799,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
+  - sh -c 'echo Sleeping 77 seconds; sleep 77'
 
 - name: base-image
   image: hashicorp/packer
@@ -789,7 +860,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 77 seconds; sleep 77'
+  - sh -c 'echo Sleeping 84 seconds; sleep 84'
 
 - name: base-image
   image: hashicorp/packer
@@ -1450,7 +1521,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Debian 8 (Staging)
+name: CentOS 8 (Staging)
 
 platform:
   os: linux
@@ -1461,6 +1532,67 @@ steps:
   image: alpine
   commands:
   - sh -c 'echo Sleeping 42 seconds; sleep 42'
+
+- name: base-image
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add make curl grep gawk sed python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --staging --distro=centos --distro-version=8
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - throttle-build
+
+- name: delete-old-amis
+  image: alpine
+  commands:
+  - apk --no-cache add --update python3 jq
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements/py3.6/base.txt
+  - cat manifest.json | jq
+  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - "echo \"Name Filter: $name_filter\""
+  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: username
+    AWS_DEFAULT_REGION: us-west-2
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: password
+  depends_on:
+  - base-image
+
+node:
+  project: open
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+depends_on:
+- Lint
+
+---
+kind: pipeline
+name: Debian 8 (Staging)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: throttle-build
+  image: alpine
+  commands:
+  - sh -c 'echo Sleeping 49 seconds; sleep 49'
 
 - name: base-image
   image: hashicorp/packer
@@ -1521,7 +1653,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 49 seconds; sleep 49'
+  - sh -c 'echo Sleeping 56 seconds; sleep 56'
 
 - name: base-image
   image: hashicorp/packer
@@ -1582,7 +1714,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 56 seconds; sleep 56'
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
 
 - name: base-image
   image: hashicorp/packer
@@ -1643,7 +1775,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 70 seconds; sleep 70'
 
 - name: base-image
   image: hashicorp/packer
@@ -1704,7 +1836,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
+  - sh -c 'echo Sleeping 77 seconds; sleep 77'
 
 - name: base-image
   image: hashicorp/packer
@@ -1765,7 +1897,7 @@ steps:
 - name: throttle-build
   image: alpine
   commands:
-  - sh -c 'echo Sleeping 77 seconds; sleep 77'
+  - sh -c 'echo Sleeping 84 seconds; sleep 84'
 
 - name: base-image
   image: hashicorp/packer
@@ -2121,6 +2253,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: b972438fa80998ebc30524cc027d898aa186ae5478008a6f432af1bafe7dc3b1
+hmac: 6c396aa9bd6b33bff80c9761048d7840c8c2ecce0292eb7b52310eecdc58b424
 
 ...
