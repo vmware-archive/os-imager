@@ -11,7 +11,7 @@
   "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "debian/jessie.8",
-  "instance_type": "m5.large",
+  "instance_type": "m4.large",
   "build_type": "ci",
   "source_build_type": "base"
 }
