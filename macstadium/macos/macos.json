@@ -1,14 +1,10 @@
 {
-  "variables": {
-    "artifactory_username": "{{ env `ARTIFACTORY_USERNAME` }}",
-    "artifactory_password": "{{ env `ARTIFACTORY_PASSWORD` }}"
-  },
   "builders": [
     {
       "communicator": "ssh",
-      "source_path": "https://{{ user `artifactory_username` }}:{{ user `artifactory_password` }}@artifactory.saltstack.net/artifactory/vagrant-boxes/macos/{{ user `box_name` }}.box",
+      "source_path": "https://artifactory.saltstack.net/artifactory/vagrant-boxes/macos/{{ user `box_name` }}.box",
       "box_name": "{{ user `box_name` }}",
-      "add_force": true,
+      "skip_add": true,
       "provider": "parallels",
       "type": "vagrant"
     }
@@ -16,7 +12,7 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "script": "macos/files/prep-linux.sh",
+      "script": "../files/prep-macos.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "SALT_PR={{ user `salt_pr` }}",
@@ -34,6 +30,7 @@
     {
       "type": "shell",
       "inline": [
+        "sudo mkdir -p /srv/{salt,pillar}",
         "sudo mkdir -p /etc/salt/minion.d",
         "sudo mv /tmp/gitfs.conf /etc/salt/minion.d/"
       ]
@@ -42,8 +39,7 @@
       "type": "salt-masterless",
       "local_state_tree": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states",
       "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
-      "custom_state": "gitpython",
-      "bootstrap_args": "{{ user `bootstrap_args` }} git v{{ user `bootstrap_version` }}"
+      "custom_state": "gitpython"
     },
     {
       "type": "file",
@@ -63,7 +59,7 @@
     },
     {
       "type": "shell-local",
-      "script": "AWS/files/prep-linux.sh",
+      "script": "../files/prep-macos.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "SALT_PR={{ user `salt_pr` }}",
@@ -90,7 +86,7 @@
     },
     {
       "type": "shell",
-      "script": "AWS/files/cleanup-linux.sh"
+      "script": "../files/cleanup.sh"
     }
   ]
 }
