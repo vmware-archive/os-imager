@@ -8,9 +8,9 @@ local distros = [
   { display_name: 'CentOS 8', name: 'centos', version: '8', multiplier: 6 },
   { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 7 },
   { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 8 },
-  { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 9 },
-  { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 10 },
-  { display_name: 'Fedora 31', name: 'fedora', version: '31', multiplier: 11 },
+  { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 7 },
+  { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 5 },
+  { display_name: 'Fedora 31', name: 'fedora', version: '31', multiplier: 4 },
   { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 3 },
   { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 2 },
   { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 1 },
@@ -75,6 +75,9 @@ local Lint() = {
 local Build(distro, staging) = {
   kind: 'pipeline',
   name: std.format('%s%s', [distro.display_name, if staging then ' (Staging)' else '']),
+  node: {
+    project: 'open',
+  },
   steps: [
     {
       name: salt_branch.name,

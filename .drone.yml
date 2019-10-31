@@ -248,6 +248,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -337,6 +340,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -428,6 +434,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -517,6 +526,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -608,6 +620,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -697,6 +712,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -788,6 +806,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -878,6 +899,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -899,7 +923,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 49 seconds; sleep 49'
+  - sh -c 'echo Sleeping 41 seconds; sleep 41'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -916,7 +940,7 @@ steps:
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 147 seconds; sleep 147'
+  - sh -c 'echo Sleeping 123 seconds; sleep 123'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -968,6 +992,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -989,7 +1016,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 53 seconds; sleep 53'
+  - sh -c 'echo Sleeping 33 seconds; sleep 33'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1006,7 +1033,7 @@ steps:
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 159 seconds; sleep 159'
+  - sh -c 'echo Sleeping 99 seconds; sleep 99'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1058,6 +1085,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -1079,7 +1109,7 @@ steps:
 - name: 2019.2
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 57 seconds; sleep 57'
+  - sh -c 'echo Sleeping 29 seconds; sleep 29'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1096,7 +1126,7 @@ steps:
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 171 seconds; sleep 171'
+  - sh -c 'echo Sleeping 87 seconds; sleep 87'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1147,6 +1177,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1238,6 +1271,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -1327,6 +1363,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1418,6 +1457,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -1507,6 +1549,9 @@ steps:
       from_secret: password
   depends_on:
   - master
+
+node:
+  project: open
 
 trigger:
   branch:
@@ -1598,6 +1643,9 @@ steps:
   depends_on:
   - master
 
+node:
+  project: open
+
 trigger:
   branch:
   - ci
@@ -1609,6 +1657,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: afe84e959df308c0471546d9735e707ee61a6b68ceee2cf9d9b24e19bd5c372d
+hmac: ef39d2eb4a7342ddd59109178cf2cef3f01723fe73c5938aa2fee93e47cfcee6
 
 ...

@@ -60,7 +60,7 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "script": "AWS/files/prep-windows.sh",
+      "script": "files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "SALT_PR={{ user `salt_pr` }}",
@@ -74,7 +74,7 @@
     },
     {
       "type": "powershell",
-      "script": "AWS/files/update-git-path.ps1"
+      "script": "files/update-git-path.ps1"
     },
     {
       "type": "powershell",
@@ -141,7 +141,7 @@
     },
     {
       "type": "shell-local",
-      "script": "AWS/files/prep-windows.sh",
+      "script": "files/prep-windows.sh",
       "environment_vars": [
         "SALT_BRANCH={{ user `salt_branch` }}",
         "SALT_PR={{ user `salt_pr` }}",
