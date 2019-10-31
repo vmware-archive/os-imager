@@ -1,0 +1,45 @@
+{
+  "_comment": "Build with `packer build opensuse.json`",
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{ user `docker_image` }}",
+      "pull": true,
+      "commit": true,
+      "changes": [
+        "Entrypoint [\"/bin/sh\", \"-c\"]",
+        "CMD [\"/bin/bash\"]",
+        "LABEL Name=\"{{ user `build_type` | upper }} // {{ user `os_name` }} {{ user `os_version`}}\"",
+        "LABEL OS-Name={{ user `os_name` }}",
+        "LABEL OS-Version={{ user `os_version` }}",
+        "LABEL BuildDate={{ isotime }}",
+        "LABEL BuildType={{ user `build_type` | upper }}",
+        "LABEL CreatedBy=packer",
+        "LABEL Owner=SRE",
+        "LABEL Description=\"{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }}\""
+      ],
+      "message": "{{ user `build_type` | upper }} Image of {{ user `os_name` }} {{ user `os_version` }} on {{ isotime }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "zypper --non-interactive --gpg-auto-import-keys refresh",
+        "zypper --non-interactive --gpg-auto-import-keys update",
+        "zypper --non-interactive install --auto-agree-with-licenses dbus-1 systemd git vim",
+        "rm -rf /tmp/* && zypper --non-interactive clean -a"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `docker_repository` }}/{{ user `docker_image_prefix` }}-{{ user `os_name` | lower }}-{{ user `os_version` }}",
+        "tag": "{{ user `build_type` | lower }}"
+      },
+      "docker-push"
+    ]
+  ]
+}

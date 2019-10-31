@@ -60,7 +60,7 @@
     {
       "type": "shell",
       "inline": [
-        "sudo  rm -rf /etc/apt/apt.conf.d/50unattended-upgrades",
+        "sudo  rm -rf /etc/apt/apt.conf.d/20auto-upgrades",
         "echo 'Acquire::Check-Valid-Until false;' | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid",
         "sudo rm -rf /etc/apt/sources.list.d/*",
         "sudo mv /tmp/sources.list /etc/apt/sources.list",

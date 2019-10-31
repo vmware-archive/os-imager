@@ -22,14 +22,14 @@ check-paths:
 .PHONY: validate
 validate: check-paths
 	$(warning Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --validate' instead.)
-+	@exit 1
+	@exit 1
 
 .PHONY: build
 build: check-paths
 	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV)' instead.)
-+	@exit 1
+	@exit 1
 
 .PHONY: build-staging
 build-staging: check-paths
 	$(error Please run 'inv build-aws --distro $(OS) --distro-version $(OS_REV) --staging' instead.)
-+	@exit 1
+	@exit 1
