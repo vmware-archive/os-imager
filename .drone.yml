@@ -97,16 +97,6 @@ steps:
   depends_on:
   - clone
 
-- name: Fedora 29
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --validate --distro=fedora --distro-version=29
-  depends_on:
-  - clone
-
 - name: Fedora 30
   image: hashicorp/packer
   commands:
@@ -114,6 +104,16 @@ steps:
   - pip3 install --upgrade pip
   - pip3 install invoke
   - inv build-aws --validate --distro=fedora --distro-version=30
+  depends_on:
+  - clone
+
+- name: Fedora 31
+  image: hashicorp/packer
+  commands:
+  - apk --no-cache add --update python3
+  - pip3 install --upgrade pip
+  - pip3 install invoke
+  - inv build-aws --validate --distro=fedora --distro-version=31
   depends_on:
   - clone
 
@@ -1951,7 +1951,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Fedora 29 (Staging)
+name: Fedora 30 (Staging)
 
 platform:
   os: linux
@@ -1965,7 +1965,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2017.7
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1982,7 +1982,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2018.3
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1999,7 +1999,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=2019.2
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2016,7 +2016,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=neon
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2033,7 +2033,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=29 --salt-branch=develop
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2149,7 +2149,7 @@ depends_on:
 
 ---
 kind: pipeline
-name: Fedora 30 (Staging)
+name: Fedora 31 (Staging)
 
 platform:
   os: linux
@@ -2163,7 +2163,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2017.7
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=2017.7
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2180,7 +2180,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2018.3
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=2018.3
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2197,7 +2197,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2019.2
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=2019.2
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2214,7 +2214,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=neon
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=neon
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2231,7 +2231,7 @@ steps:
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=develop
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=develop
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -3337,6 +3337,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: 7cdd92c44c1e237c3ffb23b7c4a1f7e21e178aea1b9535c1309f5663960d0876
+hmac: 8ccfdf7739e12a38f858910f452fb5863932c3ea8d6d580b5d06edd2f0700c04
 
 ...
