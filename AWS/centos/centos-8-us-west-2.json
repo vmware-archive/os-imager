@@ -1,16 +1,16 @@
 {
-  "_comment": "Build with `packer build -var-file=fedora-29-us-west-2.json fedora.json`",
-  "ssh_username": "fedora",
+  "_comment": "Build with `packer build -var-file=centos-8-us-west-2.json centos.json`",
+  "ssh_username": "centos",
   "aws_region": "us-west-2",
-  "os_name": "Fedora",
-  "os_version": "29",
+  "os_name": "CentOS",
+  "os_version": "8",
   "bootstrap_args": "-qXU",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
-  "ami_name_suffix": "fedora/29",
-  "instance_type": "m5.large",
+  "ami_name_suffix": "centos/8",
+  "instance_type": "c5.xlarge",
   "build_type": "ci",
   "source_build_type": "base"
 }
