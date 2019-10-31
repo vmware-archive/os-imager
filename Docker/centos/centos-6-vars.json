@@ -8,7 +8,7 @@
   "os_version": "6",
   "bootstrap_args": "-qXU -P -y -x python2.7",
   "bootstrap_version": "2018.3.4",
-  "salt_branch": "develop",
+  "salt_branch": "master",
   "state_name": "git.minimal",
   "run_command": "/sbin/init"
 }

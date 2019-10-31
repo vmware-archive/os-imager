@@ -8,7 +8,7 @@
   "os_version": "30",
   "bootstrap_args": "-qXU -x python2",
   "bootstrap_version": "2018.3.4",
-  "salt_branch": "develop",
+  "salt_branch": "master",
   "state_name": "git.minimal",
   "run_command": "/usr/lib/systemd/systemd"
 }
