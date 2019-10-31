@@ -9,7 +9,6 @@ local distros = [
   { display_name: 'Debian 8', name: 'debian', version: '8', multiplier: 7 },
   { display_name: 'Debian 9', name: 'debian', version: '9', multiplier: 8 },
   { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 7 },
-  { display_name: 'Fedora 29', name: 'fedora', version: '29', multiplier: 6 },
   { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 5 },
   { display_name: 'Fedora 31', name: 'fedora', version: '31', multiplier: 4 },
   { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 3 },

@@ -1,6 +1,6 @@
 {
   "_comment": "Build with `packer build -var-file=fedora-30-vars.json fedora.json`",
-  "docker_image": "saltstack/ci-fedora-29:base",
+  "docker_image": "saltstack/ci-fedora-20:base",
   "docker_repository": "saltstack",
   "docker_image_prefix": "ci",
   "build_type": "ci",
