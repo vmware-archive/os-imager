@@ -43,11 +43,8 @@ local salt_branches = [
   /*
    * These are the salt branches, which map to salt-jenkins branches
    */
-  { multiplier: 1, name: '2017.7' },
-  { multiplier: 3, name: '2018.3' },
-  { multiplier: 5, name: '2019.2' },
-  { multiplier: 7, name: 'neon' },
-  { multiplier: 9, name: 'develop' },
+  { multiplier: 1, name: '2019.2' },
+  { multiplier: 3, name: 'master' },
 ];
 
 
