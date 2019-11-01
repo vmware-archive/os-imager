@@ -1,6 +1,6 @@
 local distros = [
   // Multiprier is way to throttle API requests in order not to hit the limits
-  { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
+  { display_name: 'Arch', name: 'arch', version: 'lts', multiplier: 1 },
   { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 2 },
   { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
   { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 4 },
@@ -15,15 +15,15 @@ local distros = [
   { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 13 },
   { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 14 },
   // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
-  //  { display_name: 'Windows 2008r2', name: 'windows', version: '2008r2', multiplier: 0 },
-  { display_name: 'Windows 2012r2', name: 'windows', version: '2012r2', multiplier: 0 },
+  // { display_name: 'Windows 2008r2', name: 'windows', version: '2008r2', multiplier: 0 },
+  // { display_name: 'Windows 2012r2', name: 'windows', version: '2012r2', multiplier: 0 },
   { display_name: 'Windows 2016', name: 'windows', version: '2016', multiplier: 0 },
   { display_name: 'Windows 2019', name: 'windows', version: '2019', multiplier: 0 },
 ];
 
 local BuildTrigger() = {
   ref: [
-    'refs/tags/aws-base-v1.*',
+    'refs/tags/aws-ci-v2.*',
   ],
   event: [
     'tag',
@@ -35,12 +35,19 @@ local StagingBuildTrigger() = {
     'push',
   ],
   branch: [
-    'master',
+    'ci',
   ],
 };
 
-local Lint() = {
+local salt_branches = [
+  /*
+   * These are the salt branches, which map to salt-jenkins branches
+   */
+  { multiplier: 3, name: 'master' },
+];
 
+
+local Lint() = {
   kind: 'pipeline',
   name: 'Lint',
   steps: [
@@ -72,18 +79,7 @@ local Build(distro, staging) = {
   },
   steps: [
     {
-      name: 'throttle-build',
-      image: 'alpine',
-      commands: [
-        std.format(
-          "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
-          { offset: 7 * distro.multiplier }
-        ),
-      ],
-    },
-  ] + [
-    {
-      name: 'base-image',
+      name: salt_branch.name,
       image: 'hashicorp/packer',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -95,22 +91,28 @@ local Build(distro, staging) = {
         },
       },
       commands: [
+        std.format(
+          "sh -c 'echo Sleeping %(offset)s seconds; sleep %(offset)s'",
+          { offset: (2 * salt_branch.multiplier * std.length(salt_branches) * distro.multiplier) + (salt_branch.multiplier * 13) }
+        ),
         'apk --no-cache add make curl grep gawk sed python3',
         'pip3 install --upgrade pip',
         'pip3 install invoke',
-        std.format('inv build-aws%s --distro=%s --distro-version=%s', [
+        std.format('inv build-aws%s --distro=%s --distro-version=%s --salt-branch=%s', [
           if staging then ' --staging' else '',
           distro.name,
           distro.version,
+          salt_branch.name,
         ]),
       ],
       depends_on: [
-        'throttle-build',
+        'clone',
       ],
-    },
+    }
+    for salt_branch in salt_branches
   ] + [
     {
-      name: 'delete-old-amis',
+      name: std.format('delete-old-%s-amis', [salt_branch.name]),
       image: 'alpine',
       environment: {
         AWS_DEFAULT_REGION: 'us-west-2',
@@ -125,8 +127,14 @@ local Build(distro, staging) = {
         'apk --no-cache add --update python3 jq',
         'pip3 install --upgrade pip',
         'pip3 install -r requirements/py3.6/base.txt',
-        'cat manifest.json | jq',
-        'export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")',
+        std.format(
+          'cat %s-manifest.json | jq',
+          [salt_branch.name]
+        ),
+        std.format(
+          'export name_filter=$(cat %s-manifest.json | jq -r ".builds[].custom_data.ami_name")',
+          [salt_branch.name]
+        ),
         'echo "Name Filter: $name_filter"',
         std.format(
           'inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=%s',
@@ -137,22 +145,20 @@ local Build(distro, staging) = {
         ),
       ],
       depends_on: [
-        'base-image',
+        salt_branch.name,
       ],
-    },
-  ],
+    }
+    for salt_branch in salt_branches
+  ]
+  ,
   trigger: if staging then StagingBuildTrigger() else BuildTrigger(),
   depends_on: [
     'Lint',
   ],
 };
 
-
 [
   Lint(),
-] + [
-  Build(distro, false)
-  for distro in distros
 ] + [
   Build(distro, true)
   for distro in distros

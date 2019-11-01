@@ -13,7 +13,7 @@ steps:
   - apk --no-cache add --update python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --validate --distro=arch --distro-version=2019-01-09
+  - inv build-aws --validate --distro=arch --distro-version=lts
   depends_on:
   - clone
 
@@ -147,16 +147,6 @@ steps:
   depends_on:
   - clone
 
-- name: Windows 2012r2
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add --update python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --validate --distro=windows --distro-version=2012r2
-  depends_on:
-  - clone
-
 - name: Windows 2016
   image: hashicorp/packer
   commands:
@@ -179,1043 +169,6 @@ steps:
 
 ---
 kind: pipeline
-name: Arch
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 7 seconds; sleep 7'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=arch --distro-version=2019-01-09
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Amazon 1
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 14 seconds; sleep 14'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=amazon --distro-version=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Amazon 2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 21 seconds; sleep 21'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=amazon --distro-version=2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: CentOS 6
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 28 seconds; sleep 28'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=centos --distro-version=6
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: CentOS 7
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 35 seconds; sleep 35'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=centos --distro-version=7
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: CentOS 8
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 42 seconds; sleep 42'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=centos --distro-version=8
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Debian 8
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 49 seconds; sleep 49'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=debian --distro-version=8
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Debian 9
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 56 seconds; sleep 56'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=debian --distro-version=9
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Debian 10
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=debian --distro-version=10
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 30
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=fedora --distro-version=30
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Fedora 31
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 77 seconds; sleep 77'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=fedora --distro-version=31
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Opensuse 15
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 84 seconds; sleep 84'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=opensuse --distro-version=15
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Ubuntu 1604
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 91 seconds; sleep 91'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1604
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Ubuntu 1804
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 98 seconds; sleep 98'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=ubuntu --distro-version=1804
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Windows 2012r2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=windows --distro-version=2012r2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Windows 2016
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=windows --distro-version=2016
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Windows 2019
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --distro=windows --distro-version=2019
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  event:
-  - tag
-  ref:
-  - refs/tags/aws-base-v1.*
-
-depends_on:
-- Lint
-
----
-kind: pipeline
 name: Arch (Staging)
 
 platform:
@@ -1223,18 +176,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 7 seconds; sleep 7'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 45 seconds; sleep 45'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=2019-01-09
+  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1242,16 +191,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1261,14 +210,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1284,18 +233,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 14 seconds; sleep 14'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 51 seconds; sleep 51'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=1
+  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1303,16 +248,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1322,14 +267,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1345,18 +290,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 21 seconds; sleep 21'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 57 seconds; sleep 57'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=2
+  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1364,16 +305,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1383,14 +324,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1406,18 +347,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 28 seconds; sleep 28'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 63 seconds; sleep 63'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=6
+  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1425,16 +362,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1444,14 +381,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1467,18 +404,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 35 seconds; sleep 35'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 69 seconds; sleep 69'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=7
+  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1486,16 +419,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1505,14 +438,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1528,18 +461,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 42 seconds; sleep 42'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 75 seconds; sleep 75'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=8
+  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1547,16 +476,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1566,14 +495,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1589,18 +518,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 49 seconds; sleep 49'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 81 seconds; sleep 81'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8
+  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1608,16 +533,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1627,14 +552,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1650,18 +575,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 56 seconds; sleep 56'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 87 seconds; sleep 87'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=9
+  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1669,16 +590,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1688,14 +609,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1711,18 +632,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 93 seconds; sleep 93'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=10
+  - inv build-aws --staging --distro=debian --distro-version=10 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1730,16 +647,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1749,14 +666,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1772,18 +689,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 70 seconds; sleep 70'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 99 seconds; sleep 99'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30
+  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1791,16 +704,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1810,14 +723,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1833,18 +746,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 77 seconds; sleep 77'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 105 seconds; sleep 105'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=31
+  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1852,16 +761,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1871,14 +780,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1894,18 +803,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 84 seconds; sleep 84'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 111 seconds; sleep 111'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=15
+  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1913,16 +818,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1932,14 +837,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -1955,18 +860,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 91 seconds; sleep 91'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 117 seconds; sleep 117'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1604
+  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -1974,16 +875,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -1993,14 +894,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -2016,18 +917,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 98 seconds; sleep 98'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 123 seconds; sleep 123'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1804
+  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2035,16 +932,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2054,75 +951,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
-  event:
-  - push
-
-depends_on:
-- Lint
-
----
-kind: pipeline
-name: Windows 2012r2 (Staging)
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
-  image: hashicorp/packer
-  commands:
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2012r2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - throttle-build
-
-- name: delete-old-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - base-image
-
-node:
-  project: open
-
-trigger:
-  branch:
-  - master
+  - ci
   event:
   - push
 
@@ -2138,18 +974,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 39 seconds; sleep 39'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2016
+  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2157,16 +989,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2176,14 +1008,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -2199,18 +1031,14 @@ platform:
   arch: amd64
 
 steps:
-- name: throttle-build
-  image: alpine
-  commands:
-  - sh -c 'echo Sleeping 0 seconds; sleep 0'
-
-- name: base-image
+- name: master
   image: hashicorp/packer
   commands:
+  - sh -c 'echo Sleeping 39 seconds; sleep 39'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2019
+  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=master
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: username
@@ -2218,16 +1046,16 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - throttle-build
+  - clone
 
-- name: delete-old-amis
+- name: delete-old-master-amis
   image: alpine
   commands:
   - apk --no-cache add --update python3 jq
   - pip3 install --upgrade pip
   - pip3 install -r requirements/py3.6/base.txt
-  - cat manifest.json | jq
-  - export name_filter=$(cat manifest.json | jq -r ".builds[].custom_data.ami_name")
+  - cat master-manifest.json | jq
+  - export name_filter=$(cat master-manifest.json | jq -r ".builds[].custom_data.ami_name")
   - "echo \"Name Filter: $name_filter\""
   - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
   environment:
@@ -2237,14 +1065,14 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: password
   depends_on:
-  - base-image
+  - master
 
 node:
   project: open
 
 trigger:
   branch:
-  - master
+  - ci
   event:
   - push
 
@@ -2253,6 +1081,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: d582571e18ea505dc7244afb25c13e88b6148a7b02cd80526e6217f9270c3897
+hmac: 33a3e50034a2997c1e4bd6c0ad682df1d719cbd5545855198ce7c9eee97240ca
 
 ...
