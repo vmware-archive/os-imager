@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "artifactory_username": "{{ env `ARTIFACTORY_USERNAME` }}",
+    "artifactory_password": "{{ env `ARTIFACTORY_PASSWORD` }}"
+  },
+  "builders": [
+    {
+      "communicator": "ssh",
+      "source_path": "https://{{ user `artifactory_username` }}:{{ user `artifactory_password` }}@artifactory.saltstack.net/artifactory/vagrant-boxes/macos/{{ user `box_name` }}.box",
+      "box_name": "{{ user `box_name` }}",
+      "add_force": true,
+      "provider": "parallels",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "environment_vars": [
+        "ARTIFACTORY_USERNAME={{ user `artifactory_username` }}",
+        "ARTIFACTORY_PASSWORD={{ user `artifactory_password` }}"
+      ],
+      "expect_disconnect": true,
+      "scripts": [
+        "../files/setup-base.sh",
+        "../files/cleanup.sh"
+      ],
+      "start_retry_timeout": "10000s",
+      "type": "shell"
+    }
+  ]
+}
