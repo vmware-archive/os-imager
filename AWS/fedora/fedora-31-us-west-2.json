@@ -4,7 +4,7 @@
   "aws_region": "us-west-2",
   "os_name": "Fedora",
   "os_version": "31",
-  "bootstrap_args": "-qXU",
+  "bootstrap_args": "-qXU -x python3",
   "bootstrap_version": "2018.3.4",
   "salt_branch": "develop",
   "state_name": "git.minimal",
