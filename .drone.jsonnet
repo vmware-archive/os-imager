@@ -1,5 +1,5 @@
 local distros = [
-  // Multiprier is way to throttle API requests in order not to hit the limits
+  // Multiplier is way to throttle API requests in order not to hit the limits
   { display_name: 'Arch', name: 'arch', version: 'lts', multiplier: 1 },
   { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 2 },
   { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
