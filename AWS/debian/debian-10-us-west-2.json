@@ -7,7 +7,7 @@
   "os_version": "10",
   "bootstrap_args": "-qXUP -x python3",
   "bootstrap_version": "2019.2.2",
-  "salt_branch": "develop",
+  "salt_branch": "master",
   "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "debian/buster.10",

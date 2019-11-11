@@ -6,7 +6,7 @@
   "os_version": "31",
   "bootstrap_args": "-qXUP -x python3",
   "bootstrap_version": "2018.3.4",
-  "salt_branch": "develop",
+  "salt_branch": "master",
   "state_name": "git.minimal",
   "ami_name_prefix": "saltstack",
   "ami_name_suffix": "fedora/31",
