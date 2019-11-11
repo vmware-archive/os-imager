@@ -1,5 +1,5 @@
 local distros = [
-  // Multiprier is way to throttle API requests in order not to hit the limits
+  // Multiplier is way to throttle API requests in order not to hit the limits
   { display_name: 'Arch', name: 'arch', version: 'lts', multiplier: 1 },
   { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 2 },
   { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
@@ -43,8 +43,7 @@ local salt_branches = [
   /*
    * These are the salt branches, which map to salt-jenkins branches
    */
-  { multiplier: 1, name: '2019.2' },
-  { multiplier: 3, name: 'master' },
+  { multiplier: 1, name: 'master' },
 ];
 
 

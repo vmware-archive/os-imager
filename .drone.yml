@@ -176,27 +176,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 17 seconds; sleep 17'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=arch --distro-version=lts --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 51 seconds; sleep 51'
+  - sh -c 'echo Sleeping 15 seconds; sleep 15'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -209,25 +192,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -269,27 +233,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 21 seconds; sleep 21'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=1 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 17 seconds; sleep 17'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -302,25 +249,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -362,27 +290,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 25 seconds; sleep 25'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=amazon --distro-version=2 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 75 seconds; sleep 75'
+  - sh -c 'echo Sleeping 19 seconds; sleep 19'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -395,25 +306,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -455,27 +347,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 29 seconds; sleep 29'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=6 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 87 seconds; sleep 87'
+  - sh -c 'echo Sleeping 21 seconds; sleep 21'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -488,25 +363,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -548,27 +404,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 33 seconds; sleep 33'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=7 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 99 seconds; sleep 99'
+  - sh -c 'echo Sleeping 23 seconds; sleep 23'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -581,25 +420,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -641,27 +461,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 37 seconds; sleep 37'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=centos --distro-version=8 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 111 seconds; sleep 111'
+  - sh -c 'echo Sleeping 25 seconds; sleep 25'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -674,25 +477,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -734,27 +518,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 41 seconds; sleep 41'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=8 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 123 seconds; sleep 123'
+  - sh -c 'echo Sleeping 27 seconds; sleep 27'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -767,25 +534,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -827,27 +575,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 45 seconds; sleep 45'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=9 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 135 seconds; sleep 135'
+  - sh -c 'echo Sleeping 29 seconds; sleep 29'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -860,25 +591,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -920,27 +632,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 41 seconds; sleep 41'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=debian --distro-version=10 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 123 seconds; sleep 123'
+  - sh -c 'echo Sleeping 27 seconds; sleep 27'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -953,25 +648,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1013,27 +689,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 33 seconds; sleep 33'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=30 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 99 seconds; sleep 99'
+  - sh -c 'echo Sleeping 23 seconds; sleep 23'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1046,25 +705,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1106,27 +746,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 29 seconds; sleep 29'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=fedora --distro-version=31 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 87 seconds; sleep 87'
+  - sh -c 'echo Sleeping 21 seconds; sleep 21'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1139,25 +762,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1199,27 +803,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 25 seconds; sleep 25'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=opensuse --distro-version=15 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 75 seconds; sleep 75'
+  - sh -c 'echo Sleeping 19 seconds; sleep 19'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1232,25 +819,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1292,27 +860,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 21 seconds; sleep 21'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1604 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 63 seconds; sleep 63'
+  - sh -c 'echo Sleeping 17 seconds; sleep 17'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1325,25 +876,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1385,27 +917,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 17 seconds; sleep 17'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=ubuntu --distro-version=1804 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 51 seconds; sleep 51'
+  - sh -c 'echo Sleeping 15 seconds; sleep 15'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1418,25 +933,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1478,27 +974,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 13 seconds; sleep 13'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2016 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 39 seconds; sleep 39'
+  - sh -c 'echo Sleeping 13 seconds; sleep 13'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1511,25 +990,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1571,27 +1031,10 @@ platform:
   arch: amd64
 
 steps:
-- name: 2019.2
-  image: hashicorp/packer
-  commands:
-  - sh -c 'echo Sleeping 13 seconds; sleep 13'
-  - apk --no-cache add make curl grep gawk sed python3
-  - pip3 install --upgrade pip
-  - pip3 install invoke
-  - inv build-aws --staging --distro=windows --distro-version=2019 --salt-branch=2019.2
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - clone
-
 - name: master
   image: hashicorp/packer
   commands:
-  - sh -c 'echo Sleeping 39 seconds; sleep 39'
+  - sh -c 'echo Sleeping 13 seconds; sleep 13'
   - apk --no-cache add make curl grep gawk sed python3
   - pip3 install --upgrade pip
   - pip3 install invoke
@@ -1604,25 +1047,6 @@ steps:
       from_secret: password
   depends_on:
   - clone
-
-- name: delete-old-2019.2-amis
-  image: alpine
-  commands:
-  - apk --no-cache add --update python3 jq
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements/py3.6/base.txt
-  - cat 2019.2-manifest.json | jq
-  - export name_filter=$(cat 2019.2-manifest.json | jq -r ".builds[].custom_data.ami_name")
-  - "echo \"Name Filter: $name_filter\""
-  - inv cleanup-aws --region=$AWS_DEFAULT_REGION --name-filter=$name_filter --assume-yes --num-to-keep=1
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: username
-    AWS_DEFAULT_REGION: us-west-2
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: password
-  depends_on:
-  - 2019.2
 
 - name: delete-old-master-amis
   image: alpine
@@ -1657,6 +1081,6 @@ depends_on:
 
 ---
 kind: signature
-hmac: ef39d2eb4a7342ddd59109178cf2cef3f01723fe73c5938aa2fee93e47cfcee6
+hmac: 49c5166f9c6a805884ca4c819c8a1121846a154dcd3d3a6f281cebe7b6437af9
 
 ...
