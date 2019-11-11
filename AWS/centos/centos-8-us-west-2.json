@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build -var-file=centos-8-us-west-2.json centos.json`",
+  "_comment": "Build with `packer build -var-file=centos-8-us-west-2.json centos-8.json`",
   "ssh_username": "centos",
   "aws_region": "us-west-2",
   "os_name": "CentOS",
