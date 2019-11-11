@@ -44,7 +44,7 @@
         "Provision-State-Name": "{{ user `state_name` }}",
         "Bootstrapped-Salt-Args": "{{ user `bootstrap_args` }}",
         "Bootstrapped-Salt-Version": "{{ user `bootstrap_version` }}",
-        "Python-2": true,
+        "Python-2": false,
         "Python-3": true,
         "Promoted": false
       },
@@ -94,32 +94,6 @@
       "local_state_tree": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states",
       "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
       "custom_state": "gitpython"
-    },
-    {
-      "type": "file",
-      "generated": true,
-      "source": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
-      "destination": "/tmp/pillar",
-      "direction": "upload"
-    },
-    {
-      "type": "shell",
-      "inline": [
-        "sudo rm -rf /srv/pillar",
-        "sudo mv /tmp/pillar /srv",
-        "sudo salt-call --local state.sls {{ user `state_name` }} --retcode-passthrough",
-        "sudo rm -rf /srv/pillar/* /tmp/pillar"
-      ]
-    },
-    {
-      "type": "shell-local",
-      "script": "files/prep-linux.sh",
-      "environment_vars": [
-        "SALT_BRANCH={{ user `salt_branch` }}",
-        "SALT_PR={{ user `salt_pr` }}",
-        "DISTRO_SLUG={{ user `distro_slug` }}",
-        "PY_VERSION=2"
-      ]
     },
     {
       "type": "file",
