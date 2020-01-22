@@ -91,8 +91,8 @@
     },
     {
       "type": "salt-masterless",
-      "local_state_tree": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states",
-      "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar",
+      "local_state_tree": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/states/",
+      "local_pillar_roots": ".tmp/{{ user `distro_slug` }}/{{ user `salt_branch` }}/pillar/",
       "custom_state": "windows.repo",
       "guest_os_type": "windows",
       "disable_sudo": true,
