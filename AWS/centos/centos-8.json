@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build centos.json`",
+  "_comment": "Build with `packer build centos-8.json`",
   "builders": [
     {
       "type": "amazon-ebs",
@@ -10,9 +10,7 @@
         "filters": {
           "virtualization-type": "hvm",
           "name": "{{ user `ami_filter` }}",
-          "root-device-type": "ebs",
-          "product-code": "{{ user `ami_productcode` }}",
-          "product-code.type": "marketplace"
+          "root-device-type": "ebs"
         },
         "owners": [
           "{{ user `ami_owner` }}"

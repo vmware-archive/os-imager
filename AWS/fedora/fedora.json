@@ -54,9 +54,9 @@
     {
       "type": "shell",
       "inline": [
-        "sudo yum update -y",
-        "sudo yum install git vim -y",
-        "sudo rm -rf /tmp/* && sudo yum clean all"
+        "sudo dnf update -y",
+        "sudo dnf install git vim -y",
+        "sudo rm -rf /tmp/* && sudo dnf clean all"
       ],
       "pause_after": "5s"
     }

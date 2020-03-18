@@ -1,6 +1,6 @@
 local distros = [
   // Multiprier is way to throttle API requests in order not to hit the limits
-  { display_name: 'Arch', name: 'arch', version: '2019-01-09', multiplier: 1 },
+  { display_name: 'Arch', name: 'arch', version: 'lts', multiplier: 1 },
   { display_name: 'Amazon 1', name: 'amazon', version: '1', multiplier: 2 },
   { display_name: 'Amazon 2', name: 'amazon', version: '2', multiplier: 3 },
   { display_name: 'CentOS 6', name: 'centos', version: '6', multiplier: 4 },
@@ -11,9 +11,11 @@ local distros = [
   { display_name: 'Debian 10', name: 'debian', version: '10', multiplier: 9 },
   { display_name: 'Fedora 30', name: 'fedora', version: '30', multiplier: 10 },
   { display_name: 'Fedora 31', name: 'fedora', version: '31', multiplier: 11 },
+  { display_name: 'Fedora 32', name: 'fedora', version: '32', multiplier: 12 },
   { display_name: 'Opensuse 15', name: 'opensuse', version: '15', multiplier: 12 },
   { display_name: 'Ubuntu 1604', name: 'ubuntu', version: '1604', multiplier: 13 },
   { display_name: 'Ubuntu 1804', name: 'ubuntu', version: '1804', multiplier: 14 },
+  { display_name: 'Ubuntu 2004', name: 'ubuntu', version: '2004', multiplier: 15 },
   // Windows builds have a 0 multiplier because we want them to start first and they are few enough not to hit API limits
   //  { display_name: 'Windows 2008r2', name: 'windows', version: '2008r2', multiplier: 0 },
   { display_name: 'Windows 2012r2', name: 'windows', version: '2012r2', multiplier: 0 },
@@ -151,9 +153,9 @@ local Build(distro, staging) = {
 [
   Lint(),
 ] + [
-  Build(distro, false)
-  for distro in distros
-] + [
+//  Build(distro, false)
+//  for distro in distros
+//] + [
   Build(distro, true)
   for distro in distros
 ]
